@@ -27,4 +27,4 @@ Definir los valores de las siguientes variables de entorno:
 Ejemplo: API_PRODUCCION_ACADEMICA_HTTP_PORT=8083 PRODUCCION_ACADEMICA_CRUD__PGUSER=user PRODUCCION_ACADEMICA_CRUD__PGPASS=password PRODUCCION_ACADEMICA_CRUD__PGURLS=localhost PRODUCCION_ACADEMICA_CRUD__PGDB=udistrital_core_db PRODUCCION_ACADEMICA_CRUD__SCHEMA=core_new bee run
 
 ## MODELO
-![image]().
+![image](https://github.com/udistrital/produccion_academica_crud/blob/develop/producion_academica_crud.png).
