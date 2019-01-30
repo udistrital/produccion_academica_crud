@@ -10,14 +10,14 @@ import (
 )
 
 type OtroDocumento struct {
-	Id            int    `orm:"column(id);pk"`
+	Id            int    `orm:"column(id);pk;auto"`
 	Persona       int    `orm:"column(persona)"`
 	Titulo        string `orm:"column(titulo)"`
 	NumeroPaginas int    `orm:"column(numero_paginas)"`
 	Ano           int    `orm:"column(ano)"`
 	Mes           int    `orm:"column(mes)"`
-	Url           int    `orm:"column(url)"`
-	Doi           int    `orm:"column(doi)"`
+	Url           string    `orm:"column(url)"`
+	Doi           string    `orm:"column(doi)"`
 }
 
 func (t *OtroDocumento) TableName() string {

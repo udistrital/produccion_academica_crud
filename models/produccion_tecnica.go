@@ -10,13 +10,13 @@ import (
 )
 
 type ProduccionTecnica struct {
-	Id                    int                    `orm:"column(id);pk"`
+	Id                    int                    `orm:"column(id);pk;auto"`
 	Persona               int                    `orm:"column(persona)"`
 	TipoProduccionTecnica *TipoProduccionTecnica `orm:"column(tipo_produccion_tecnica);rel(fk)"`
 	Nombre                string                 `orm:"column(nombre)"`
 	Ano                   int                    `orm:"column(ano)"`
 	Mes                   int                    `orm:"column(mes)"`
-	Ciudad                string                 `orm:"column(ciudad)"`
+	Ubicacion             int	                 `orm:"column(ubicacion)"`
 	Descripcion           string                 `orm:"column(descripcion)"`
 }
 

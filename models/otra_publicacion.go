@@ -10,7 +10,7 @@ import (
 )
 
 type OtraPublicacion struct {
-	Id      int                  `orm:"column(id);pk"`
+	Id      int                  `orm:"column(id);pk;auto"`
 	Persona int                  `orm:"column(persona)"`
 	Titulo  string               `orm:"column(titulo)"`
 	Autor   string               `orm:"column(autor)"`
@@ -51,7 +51,7 @@ func GetOtraPublicacionById(id int) (v *OtraPublicacion, err error) {
 func GetAllOtraPublicacion(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(OtraPublicacion)).RelatedSel()
+	qs := o.QueryTable(new(OtraPublicacion))
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute

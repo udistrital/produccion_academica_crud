@@ -10,13 +10,13 @@ import (
 )
 
 type ProduccionArtesArquDiseno struct {
-	Id            int             `orm:"column(id);pk"`
-	Persona       int             `orm:"column(persona)"`
-	Nombre        string          `orm:"column(nombre)"`
-	TipoDiciplina *TipoDisciplina `orm:"column(tipo_diciplina);rel(fk)"`
-	Mes           int             `orm:"column(mes)"`
-	Ano           int             `orm:"column(ano)"`
-	Descripcion   string          `orm:"column(descripcion)"`
+	Id             int             `orm:"column(id);pk;auto"`
+	Persona        int             `orm:"column(persona)"`
+	Nombre         string          `orm:"column(nombre)"`
+	TipoDisciplina *TipoDisciplina `orm:"column(tipo_disciplina);rel(fk)"`
+	Mes            int             `orm:"column(mes)"`
+	Ano            int             `orm:"column(ano)"`
+	Descripcion    string          `orm:"column(descripcion)"`
 }
 
 func (t *ProduccionArtesArquDiseno) TableName() string {
