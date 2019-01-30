@@ -1746,7 +1746,7 @@ definitions:
         format: int64
       Doi:
         type: string
-      Fasiculo:
+      Fasciculo:
         type: integer
         format: int64
       Id:
@@ -1754,9 +1754,6 @@ definitions:
         format: int64
       Idioma:
         type: string
-      Lugar:
-        type: integer
-        format: int64
       MedioDivulgacion:
         $ref: '#/definitions/models.MedioDivulgacion'
       Mes:
@@ -1774,6 +1771,9 @@ definitions:
         format: int64
       Tipo:
         $ref: '#/definitions/models.TipoArticulo'
+      Ubicacion:
+        type: integer
+        format: int64
       Url:
         type: string
       Volumen:
@@ -1792,9 +1792,6 @@ definitions:
         type: integer
         format: int64
       Isbn:
-        type: integer
-        format: int64
-      Lugar:
         type: integer
         format: int64
       MedioDivulgacion:
@@ -1816,6 +1813,9 @@ definitions:
         type: string
       TituloLibro:
         type: string
+      Ubicacion:
+        type: integer
+        format: int64
   models.MedioDivulgacion:
     title: MedioDivulgacion
     type: object
@@ -1882,8 +1882,7 @@ definitions:
         type: integer
         format: int64
       Doi:
-        type: integer
-        format: int64
+        type: string
       Id:
         type: integer
         format: int64
@@ -1899,8 +1898,7 @@ definitions:
       Titulo:
         type: string
       Url:
-        type: integer
-        format: int64
+        type: string
   models.ProduccionArtesArquDiseno:
     title: ProduccionArtesArquDiseno
     type: object
@@ -1921,7 +1919,7 @@ definitions:
       Persona:
         type: integer
         format: int64
-      TipoDiciplina:
+      TipoDisciplina:
         $ref: '#/definitions/models.TipoDisciplina'
   models.ProduccionTecnica:
     title: ProduccionTecnica
@@ -1930,8 +1928,6 @@ definitions:
       Ano:
         type: integer
         format: int64
-      Ciudad:
-        type: string
       Descripcion:
         type: string
       Id:
@@ -1947,6 +1943,9 @@ definitions:
         format: int64
       TipoProduccionTecnica:
         $ref: '#/definitions/models.TipoProduccionTecnica'
+      Ubicacion:
+        type: integer
+        format: int64
   models.TipoArticulo:
     title: TipoArticulo
     type: object
@@ -2071,9 +2070,11 @@ definitions:
         type: integer
         format: int64
       IdiomaOriginal:
-        type: string
+        type: integer
+        format: int64
       IdiomaTraducido:
-        type: string
+        type: integer
+        format: int64
       MedioDivulgacion:
         $ref: '#/definitions/models.MedioDivulgacion'
       Mes:
@@ -2081,6 +2082,9 @@ definitions:
         format: int64
       NombreOriginal:
         type: string
+      Persona:
+        type: integer
+        format: int64
       Serie:
         type: integer
         format: int64
@@ -2089,48 +2093,48 @@ definitions:
       Titulo:
         type: string
 tags:
-- name: medio_divulgacion
-  description: |
-    MedioDivulgacionController operations for MedioDivulgacion
-- name: medio_publicacion
-  description: |
-    MedioPublicacionController operations for MedioPublicacion
-- name: produccion_artes_arqu_diseno
-  description: |
-    ProduccionArtesArquDisenoController operations for ProduccionArtesArquDiseno
-- name: tipo_publicacion_libro
-  description: |
-    TipoPublicacionLibroController operations for TipoPublicacionLibro
-- name: articulo
-  description: |
-    ArticuloController operations for Articulo
-- name: otra_publicacion
-  description: |
-    OtraPublicacionController operations for OtraPublicacion
-- name: otro_documento
-  description: |
-    OtroDocumentoController operations for OtroDocumento
-- name: tipo_disciplina
-  description: |
-    TipoDisciplinaController operations for TipoDisciplina
-- name: traduccion
-  description: |
-    TraduccionController operations for Traduccion
-- name: libro
-  description: |
-    LibroController operations for Libro
-- name: produccion_tecnica
-  description: |
-    ProduccionTecnicaController operations for ProduccionTecnica
-- name: tipo_articulo
-  description: |
-    TipoArticuloController operations for TipoArticulo
 - name: tipo_otra_publicacion
   description: |
     TipoOtraPublicacionController operations for TipoOtraPublicacion
 - name: tipo_produccion_tecnica
   description: |
     TipoProduccionTecnicaController operations for TipoProduccionTecnica
+- name: libro
+  description: |
+    LibroController operations for Libro
+- name: otro_documento
+  description: |
+    OtroDocumentoController operations for OtroDocumento
+- name: produccion_tecnica
+  description: |
+    ProduccionTecnicaController operations for ProduccionTecnica
+- name: otra_publicacion
+  description: |
+    OtraPublicacionController operations for OtraPublicacion
+- name: traduccion
+  description: |
+    TraduccionController operations for Traduccion
+- name: tipo_disciplina
+  description: |
+    TipoDisciplinaController operations for TipoDisciplina
 - name: tipo_traduccion
   description: |
     TipoTraduccionController operations for TipoTraduccion
+- name: articulo
+  description: |
+    ArticuloController operations for Articulo
+- name: produccion_artes_arqu_diseno
+  description: |
+    ProduccionArtesArquDisenoController operations for ProduccionArtesArquDiseno
+- name: tipo_articulo
+  description: |
+    TipoArticuloController operations for TipoArticulo
+- name: medio_divulgacion
+  description: |
+    MedioDivulgacionController operations for MedioDivulgacion
+- name: medio_publicacion
+  description: |
+    MedioPublicacionController operations for MedioPublicacion
+- name: tipo_publicacion_libro
+  description: |
+    TipoPublicacionLibroController operations for TipoPublicacionLibro

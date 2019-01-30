@@ -10,13 +10,14 @@ import (
 )
 
 type Traduccion struct {
-	Id               int               `orm:"column(id);pk"`
+	Id               int               `orm:"column(id);pk;auto"`
+	Persona			 int			   `orm:"column(persona)"`
 	TipoTraduccion   *TipoTraduccion   `orm:"column(tipo_traduccion);rel(fk)"`
-	Titulo           string               `orm:"column(titulo)"`
-	NombreOriginal   string               `orm:"column(nombre_original)"`
-	Autor            string               `orm:"column(autor)"`
-	IdiomaOriginal   string               `orm:"column(idioma_original)"`
-	IdiomaTraducido  string               `orm:"column(idioma_traducido)"`
+	Titulo           string            `orm:"column(titulo)"`
+	NombreOriginal   string            `orm:"column(nombre_original)"`
+	Autor            string            `orm:"column(autor)"`
+	IdiomaOriginal   int            `orm:"column(idioma_original)"`
+	IdiomaTraducido  int            `orm:"column(idioma_traducido)"`
 	Ano              int               `orm:"column(ano)"`
 	Mes              int               `orm:"column(mes)"`
 	MedioDivulgacion *MedioDivulgacion `orm:"column(medio_divulgacion);rel(fk)"`

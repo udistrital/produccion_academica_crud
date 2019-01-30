@@ -2623,7 +2623,7 @@
                 "Doi": {
                     "type": "string"
                 },
-                "Fasiculo": {
+                "Fasciculo": {
                     "type": "integer",
                     "format": "int64"
                 },
@@ -2633,10 +2633,6 @@
                 },
                 "Idioma": {
                     "type": "string"
-                },
-                "Lugar": {
-                    "type": "integer",
-                    "format": "int64"
                 },
                 "MedioDivulgacion": {
                     "$ref": "#/definitions/models.MedioDivulgacion"
@@ -2661,6 +2657,10 @@
                 },
                 "Tipo": {
                     "$ref": "#/definitions/models.TipoArticulo"
+                },
+                "Ubicacion": {
+                    "type": "integer",
+                    "format": "int64"
                 },
                 "Url": {
                     "type": "string"
@@ -2690,10 +2690,6 @@
                     "type": "integer",
                     "format": "int64"
                 },
-                "Lugar": {
-                    "type": "integer",
-                    "format": "int64"
-                },
                 "MedioDivulgacion": {
                     "$ref": "#/definitions/models.MedioDivulgacion"
                 },
@@ -2720,6 +2716,10 @@
                 },
                 "TituloLibro": {
                     "type": "string"
+                },
+                "Ubicacion": {
+                    "type": "integer",
+                    "format": "int64"
                 }
             }
         },
@@ -2815,8 +2815,7 @@
                     "format": "int64"
                 },
                 "Doi": {
-                    "type": "integer",
-                    "format": "int64"
+                    "type": "string"
                 },
                 "Id": {
                     "type": "integer",
@@ -2838,8 +2837,7 @@
                     "type": "string"
                 },
                 "Url": {
-                    "type": "integer",
-                    "format": "int64"
+                    "type": "string"
                 }
             }
         },
@@ -2869,7 +2867,7 @@
                     "type": "integer",
                     "format": "int64"
                 },
-                "TipoDiciplina": {
+                "TipoDisciplina": {
                     "$ref": "#/definitions/models.TipoDisciplina"
                 }
             }
@@ -2881,9 +2879,6 @@
                 "Ano": {
                     "type": "integer",
                     "format": "int64"
-                },
-                "Ciudad": {
-                    "type": "string"
                 },
                 "Descripcion": {
                     "type": "string"
@@ -2905,6 +2900,10 @@
                 },
                 "TipoProduccionTecnica": {
                     "$ref": "#/definitions/models.TipoProduccionTecnica"
+                },
+                "Ubicacion": {
+                    "type": "integer",
+                    "format": "int64"
                 }
             }
         },
@@ -3084,10 +3083,12 @@
                     "format": "int64"
                 },
                 "IdiomaOriginal": {
-                    "type": "string"
+                    "type": "integer",
+                    "format": "int64"
                 },
                 "IdiomaTraducido": {
-                    "type": "string"
+                    "type": "integer",
+                    "format": "int64"
                 },
                 "MedioDivulgacion": {
                     "$ref": "#/definitions/models.MedioDivulgacion"
@@ -3098,6 +3099,10 @@
                 },
                 "NombreOriginal": {
                     "type": "string"
+                },
+                "Persona": {
+                    "type": "integer",
+                    "format": "int64"
                 },
                 "Serie": {
                     "type": "integer",
@@ -3114,54 +3119,6 @@
     },
     "tags": [
         {
-            "name": "medio_divulgacion",
-            "description": "MedioDivulgacionController operations for MedioDivulgacion\n"
-        },
-        {
-            "name": "medio_publicacion",
-            "description": "MedioPublicacionController operations for MedioPublicacion\n"
-        },
-        {
-            "name": "produccion_artes_arqu_diseno",
-            "description": "ProduccionArtesArquDisenoController operations for ProduccionArtesArquDiseno\n"
-        },
-        {
-            "name": "tipo_publicacion_libro",
-            "description": "TipoPublicacionLibroController operations for TipoPublicacionLibro\n"
-        },
-        {
-            "name": "articulo",
-            "description": "ArticuloController operations for Articulo\n"
-        },
-        {
-            "name": "otra_publicacion",
-            "description": "OtraPublicacionController operations for OtraPublicacion\n"
-        },
-        {
-            "name": "otro_documento",
-            "description": "OtroDocumentoController operations for OtroDocumento\n"
-        },
-        {
-            "name": "tipo_disciplina",
-            "description": "TipoDisciplinaController operations for TipoDisciplina\n"
-        },
-        {
-            "name": "traduccion",
-            "description": "TraduccionController operations for Traduccion\n"
-        },
-        {
-            "name": "libro",
-            "description": "LibroController operations for Libro\n"
-        },
-        {
-            "name": "produccion_tecnica",
-            "description": "ProduccionTecnicaController operations for ProduccionTecnica\n"
-        },
-        {
-            "name": "tipo_articulo",
-            "description": "TipoArticuloController operations for TipoArticulo\n"
-        },
-        {
             "name": "tipo_otra_publicacion",
             "description": "TipoOtraPublicacionController operations for TipoOtraPublicacion\n"
         },
@@ -3170,8 +3127,56 @@
             "description": "TipoProduccionTecnicaController operations for TipoProduccionTecnica\n"
         },
         {
+            "name": "libro",
+            "description": "LibroController operations for Libro\n"
+        },
+        {
+            "name": "otro_documento",
+            "description": "OtroDocumentoController operations for OtroDocumento\n"
+        },
+        {
+            "name": "produccion_tecnica",
+            "description": "ProduccionTecnicaController operations for ProduccionTecnica\n"
+        },
+        {
+            "name": "otra_publicacion",
+            "description": "OtraPublicacionController operations for OtraPublicacion\n"
+        },
+        {
+            "name": "traduccion",
+            "description": "TraduccionController operations for Traduccion\n"
+        },
+        {
+            "name": "tipo_disciplina",
+            "description": "TipoDisciplinaController operations for TipoDisciplina\n"
+        },
+        {
             "name": "tipo_traduccion",
             "description": "TipoTraduccionController operations for TipoTraduccion\n"
+        },
+        {
+            "name": "articulo",
+            "description": "ArticuloController operations for Articulo\n"
+        },
+        {
+            "name": "produccion_artes_arqu_diseno",
+            "description": "ProduccionArtesArquDisenoController operations for ProduccionArtesArquDiseno\n"
+        },
+        {
+            "name": "tipo_articulo",
+            "description": "TipoArticuloController operations for TipoArticulo\n"
+        },
+        {
+            "name": "medio_divulgacion",
+            "description": "MedioDivulgacionController operations for MedioDivulgacion\n"
+        },
+        {
+            "name": "medio_publicacion",
+            "description": "MedioPublicacionController operations for MedioPublicacion\n"
+        },
+        {
+            "name": "tipo_publicacion_libro",
+            "description": "TipoPublicacionLibroController operations for TipoPublicacionLibro\n"
         }
     ]
 }

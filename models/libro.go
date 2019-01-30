@@ -10,7 +10,7 @@ import (
 )
 
 type Libro struct {
-	Id               int                   `orm:"column(id);pk"`
+	Id               int                   `orm:"column(id);pk;auto"`
 	Persona          int                   `orm:"column(persona)"`
 	TituloLibro      string                `orm:"column(titulo_libro)"`
 	TipoPublicacion  *TipoPublicacionLibro `orm:"column(tipo_publicacion);rel(fk)"`
@@ -18,8 +18,8 @@ type Libro struct {
 	Paginas          int                   `orm:"column(paginas)"`
 	Ano              int                   `orm:"column(ano)"`
 	Mes              int                   `orm:"column(mes)"`
-	Isbn             int                   `orm:"column(isbn)"`
-	Lugar            int                   `orm:"column(lugar)"`
+	Isbn             int64                   `orm:"column(isbn)"`
+	Ubicacion        int                   `orm:"column(ubicacion)"`
 	MedioDivulgacion *MedioDivulgacion     `orm:"column(medio_divulgacion);rel(fk)"`
 	MedioPublicacion *MedioPublicacion     `orm:"column(medio_publicacion);rel(fk)"`
 	Editorial        string                `orm:"column(editorial)"`

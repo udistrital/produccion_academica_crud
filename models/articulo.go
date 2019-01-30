@@ -10,7 +10,7 @@ import (
 )
 
 type Articulo struct {
-	Id               int               `orm:"column(id);pk"`
+	Id               int               `orm:"column(id);pk;auto"`
 	Persona          int               `orm:"column(persona)"`
 	Tipo             *TipoArticulo     `orm:"column(tipo);rel(fk)"`
 	Nombre           string            `orm:"column(nombre)"`
@@ -19,9 +19,9 @@ type Articulo struct {
 	Mes              int               `orm:"column(mes)"`
 	Revista          string            `orm:"column(revista)"`
 	Volumen          int               `orm:"column(volumen);null"`
-	Fasiculo         int               `orm:"column(fasiculo);null"`
+	Fasciculo        int               `orm:"column(fasciculo);null"`
 	Serie            int               `orm:"column(serie);null"`
-	Lugar            int               `orm:"column(lugar)"`
+	Ubicacion        int               `orm:"column(ubicacion)"`
 	MedioDivulgacion *MedioDivulgacion `orm:"column(medio_divulgacion);rel(fk)"`
 	Url              string            `orm:"column(url);null"`
 	Doi              string            `orm:"column(doi);null"`
