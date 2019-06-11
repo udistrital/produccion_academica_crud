@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+
 	_ "github.com/udistrital/produccion_academica_crud/routers"
 
 	"github.com/astaxie/beego"
@@ -13,13 +15,29 @@ import (
 )
 
 func init() {
-	orm.RegisterDataBase("default", "postgres", "postgres://"+beego.AppConfig.String("PGuser")+":"+beego.AppConfig.String("PGpass")+"@"+beego.AppConfig.String("PGurls")+"/"+beego.AppConfig.String("PGdb")+"?sslmode=disable&search_path="+beego.AppConfig.String("PGschemas")+"")
+	orm.RegisterDataBase("default", "postgres", beego.AppConfig.String("sqlconn"))
+	if beego.BConfig.RunMode == "dev" {
+		// Database alias.
+		name := "default"
+
+		// Drop table and re-create.
+		force := false
+
+		// Print log.
+		verbose := true
+
+		// Error.
+		err := orm.RunSyncdb(name, force, verbose)
+		if err != nil {
+			fmt.Println(err)
+		}
+	}
 }
 
 func main() {
-	//orm.Debug = true
 	if beego.BConfig.RunMode == "dev" {
 		beego.BConfig.WebConfig.DirectoryIndex = true
+		orm.Debug = true
 		beego.BConfig.WebConfig.StaticDir["/swagger"] = "swagger"
 	}
 	beego.InsertFilter("*", beego.BeforeRouter, cors.Allow(&cors.Options{
