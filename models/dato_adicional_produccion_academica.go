@@ -9,50 +9,46 @@ import (
 	"github.com/astaxie/beego/orm"
 )
 
-type ProduccionTecnica struct {
-	Id                    int                    `orm:"column(id);pk;auto"`
-	Persona               int                    `orm:"column(persona)"`
-	TipoProduccionTecnica *TipoProduccionTecnica `orm:"column(tipo_produccion_tecnica);rel(fk)"`
-	Nombre                string                 `orm:"column(nombre)"`
-	Ano                   int                    `orm:"column(ano)"`
-	Mes                   int                    `orm:"column(mes)"`
-	Ubicacion             int	                 `orm:"column(ubicacion)"`
-	Descripcion           string                 `orm:"column(descripcion)"`
+type DatoAdicionalProduccionAcademica struct {
+	Id                             int                             `orm:"column(id);pk"`
+	ProduccionAcademica            *ProduccionAcademica            `orm:"column(produccion_academica);rel(fk)"`
+	DatoAdicionalSubtipoProduccion *DatoAdicionalSubtipoProduccion `orm:"column(dato_adicional_subtipo_produccion);rel(fk)"`
+	Valor                          string                          `orm:"column(valor)"`
 }
 
-func (t *ProduccionTecnica) TableName() string {
-	return "produccion_tecnica"
+func (t *DatoAdicionalProduccionAcademica) TableName() string {
+	return "dato_adicional_produccion_academica"
 }
 
 func init() {
-	orm.RegisterModel(new(ProduccionTecnica))
+	orm.RegisterModel(new(DatoAdicionalProduccionAcademica))
 }
 
-// AddProduccionTecnica insert a new ProduccionTecnica into database and returns
+// AddDatoAdicionalProduccionAcademica insert a new DatoAdicionalProduccionAcademica into database and returns
 // last inserted Id on success.
-func AddProduccionTecnica(m *ProduccionTecnica) (id int64, err error) {
+func AddDatoAdicionalProduccionAcademica(m *DatoAdicionalProduccionAcademica) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetProduccionTecnicaById retrieves ProduccionTecnica by Id. Returns error if
+// GetDatoAdicionalProduccionAcademicaById retrieves DatoAdicionalProduccionAcademica by Id. Returns error if
 // Id doesn't exist
-func GetProduccionTecnicaById(id int) (v *ProduccionTecnica, err error) {
+func GetDatoAdicionalProduccionAcademicaById(id int) (v *DatoAdicionalProduccionAcademica, err error) {
 	o := orm.NewOrm()
-	v = &ProduccionTecnica{Id: id}
+	v = &DatoAdicionalProduccionAcademica{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllProduccionTecnica retrieves all ProduccionTecnica matches certain condition. Returns empty list if
+// GetAllDatoAdicionalProduccionAcademica retrieves all DatoAdicionalProduccionAcademica matches certain condition. Returns empty list if
 // no records exist
-func GetAllProduccionTecnica(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllDatoAdicionalProduccionAcademica(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(ProduccionTecnica)).RelatedSel()
+	qs := o.QueryTable(new(DatoAdicionalProduccionAcademica))
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
@@ -102,7 +98,7 @@ func GetAllProduccionTecnica(query map[string]string, fields []string, sortby []
 		}
 	}
 
-	var l []ProduccionTecnica
+	var l []DatoAdicionalProduccionAcademica
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -125,11 +121,11 @@ func GetAllProduccionTecnica(query map[string]string, fields []string, sortby []
 	return nil, err
 }
 
-// UpdateProduccionTecnica updates ProduccionTecnica by Id and returns error if
+// UpdateDatoAdicionalProduccionAcademica updates DatoAdicionalProduccionAcademica by Id and returns error if
 // the record to be updated doesn't exist
-func UpdateProduccionTecnicaById(m *ProduccionTecnica) (err error) {
+func UpdateDatoAdicionalProduccionAcademicaById(m *DatoAdicionalProduccionAcademica) (err error) {
 	o := orm.NewOrm()
-	v := ProduccionTecnica{Id: m.Id}
+	v := DatoAdicionalProduccionAcademica{Id: m.Id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -140,15 +136,15 @@ func UpdateProduccionTecnicaById(m *ProduccionTecnica) (err error) {
 	return
 }
 
-// DeleteProduccionTecnica deletes ProduccionTecnica by Id and returns error if
+// DeleteDatoAdicionalProduccionAcademica deletes DatoAdicionalProduccionAcademica by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteProduccionTecnica(id int) (err error) {
+func DeleteDatoAdicionalProduccionAcademica(id int) (err error) {
 	o := orm.NewOrm()
-	v := ProduccionTecnica{Id: id}
+	v := DatoAdicionalProduccionAcademica{Id: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&ProduccionTecnica{Id: id}); err == nil {
+		if num, err = o.Delete(&DatoAdicionalProduccionAcademica{Id: id}); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}

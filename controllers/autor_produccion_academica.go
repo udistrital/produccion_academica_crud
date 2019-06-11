@@ -10,13 +10,13 @@ import (
 	"github.com/astaxie/beego"
 )
 
-// TipoProduccionTecnicaController operations for TipoProduccionTecnica
-type TipoProduccionTecnicaController struct {
+// AutorProduccionAcademicaController operations for AutorProduccionAcademica
+type AutorProduccionAcademicaController struct {
 	beego.Controller
 }
 
 // URLMapping ...
-func (c *TipoProduccionTecnicaController) URLMapping() {
+func (c *AutorProduccionAcademicaController) URLMapping() {
 	c.Mapping("Post", c.Post)
 	c.Mapping("GetOne", c.GetOne)
 	c.Mapping("GetAll", c.GetAll)
@@ -26,15 +26,15 @@ func (c *TipoProduccionTecnicaController) URLMapping() {
 
 // Post ...
 // @Title Post
-// @Description create TipoProduccionTecnica
-// @Param	body		body 	models.TipoProduccionTecnica	true		"body for TipoProduccionTecnica content"
-// @Success 201 {int} models.TipoProduccionTecnica
+// @Description create AutorProduccionAcademica
+// @Param	body		body 	models.AutorProduccionAcademica	true		"body for AutorProduccionAcademica content"
+// @Success 201 {int} models.AutorProduccionAcademica
 // @Failure 403 body is empty
 // @router / [post]
-func (c *TipoProduccionTecnicaController) Post() {
-	var v models.TipoProduccionTecnica
+func (c *AutorProduccionAcademicaController) Post() {
+	var v models.AutorProduccionAcademica
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if _, err := models.AddTipoProduccionTecnica(&v); err == nil {
+		if _, err := models.AddAutorProduccionAcademica(&v); err == nil {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
 		} else {
@@ -48,15 +48,15 @@ func (c *TipoProduccionTecnicaController) Post() {
 
 // GetOne ...
 // @Title Get One
-// @Description get TipoProduccionTecnica by id
+// @Description get AutorProduccionAcademica by id
 // @Param	id		path 	string	true		"The key for staticblock"
-// @Success 200 {object} models.TipoProduccionTecnica
+// @Success 200 {object} models.AutorProduccionAcademica
 // @Failure 403 :id is empty
 // @router /:id [get]
-func (c *TipoProduccionTecnicaController) GetOne() {
+func (c *AutorProduccionAcademicaController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v, err := models.GetTipoProduccionTecnicaById(id)
+	v, err := models.GetAutorProduccionAcademicaById(id)
 	if err != nil {
 		c.Data["json"] = err.Error()
 	} else {
@@ -67,17 +67,17 @@ func (c *TipoProduccionTecnicaController) GetOne() {
 
 // GetAll ...
 // @Title Get All
-// @Description get TipoProduccionTecnica
+// @Description get AutorProduccionAcademica
 // @Param	query	query	string	false	"Filter. e.g. col1:v1,col2:v2 ..."
 // @Param	fields	query	string	false	"Fields returned. e.g. col1,col2 ..."
 // @Param	sortby	query	string	false	"Sorted-by fields. e.g. col1,col2 ..."
 // @Param	order	query	string	false	"Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ..."
 // @Param	limit	query	string	false	"Limit the size of result set. Must be an integer"
 // @Param	offset	query	string	false	"Start position of result set. Must be an integer"
-// @Success 200 {object} models.TipoProduccionTecnica
+// @Success 200 {object} models.AutorProduccionAcademica
 // @Failure 403
 // @router / [get]
-func (c *TipoProduccionTecnicaController) GetAll() {
+func (c *AutorProduccionAcademicaController) GetAll() {
 	var fields []string
 	var sortby []string
 	var order []string
@@ -119,7 +119,7 @@ func (c *TipoProduccionTecnicaController) GetAll() {
 		}
 	}
 
-	l, err := models.GetAllTipoProduccionTecnica(query, fields, sortby, order, offset, limit)
+	l, err := models.GetAllAutorProduccionAcademica(query, fields, sortby, order, offset, limit)
 	if err != nil {
 		c.Data["json"] = err.Error()
 	} else {
@@ -130,18 +130,18 @@ func (c *TipoProduccionTecnicaController) GetAll() {
 
 // Put ...
 // @Title Put
-// @Description update the TipoProduccionTecnica
+// @Description update the AutorProduccionAcademica
 // @Param	id		path 	string	true		"The id you want to update"
-// @Param	body		body 	models.TipoProduccionTecnica	true		"body for TipoProduccionTecnica content"
-// @Success 200 {object} models.TipoProduccionTecnica
+// @Param	body		body 	models.AutorProduccionAcademica	true		"body for AutorProduccionAcademica content"
+// @Success 200 {object} models.AutorProduccionAcademica
 // @Failure 403 :id is not int
 // @router /:id [put]
-func (c *TipoProduccionTecnicaController) Put() {
+func (c *AutorProduccionAcademicaController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v := models.TipoProduccionTecnica{Id: id}
+	v := models.AutorProduccionAcademica{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if err := models.UpdateTipoProduccionTecnicaById(&v); err == nil {
+		if err := models.UpdateAutorProduccionAcademicaById(&v); err == nil {
 			c.Data["json"] = "OK"
 		} else {
 			c.Data["json"] = err.Error()
@@ -154,15 +154,15 @@ func (c *TipoProduccionTecnicaController) Put() {
 
 // Delete ...
 // @Title Delete
-// @Description delete the TipoProduccionTecnica
+// @Description delete the AutorProduccionAcademica
 // @Param	id		path 	string	true		"The id you want to delete"
 // @Success 200 {string} delete success!
 // @Failure 403 id is empty
 // @router /:id [delete]
-func (c *TipoProduccionTecnicaController) Delete() {
+func (c *AutorProduccionAcademicaController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	if err := models.DeleteTipoProduccionTecnica(id); err == nil {
+	if err := models.DeleteAutorProduccionAcademica(id); err == nil {
 		c.Data["json"] = "OK"
 	} else {
 		c.Data["json"] = err.Error()

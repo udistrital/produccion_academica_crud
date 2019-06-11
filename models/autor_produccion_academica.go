@@ -9,49 +9,46 @@ import (
 	"github.com/astaxie/beego/orm"
 )
 
-type ProduccionArtesArquDiseno struct {
-	Id             int             `orm:"column(id);pk;auto"`
-	Persona        int             `orm:"column(persona)"`
-	Nombre         string          `orm:"column(nombre)"`
-	TipoDisciplina *TipoDisciplina `orm:"column(tipo_disciplina);rel(fk)"`
-	Mes            int             `orm:"column(mes)"`
-	Ano            int             `orm:"column(ano)"`
-	Descripcion    string          `orm:"column(descripcion)"`
+type AutorProduccionAcademica struct {
+	Id                    int                    `orm:"column(id);pk"`
+	ProduccionAcademica   *ProduccionAcademica   `orm:"column(produccion_academica);rel(fk)"`
+	Ente                  int                    `orm:"column(ente)"`
+	EstadoAutorProduccion *EstadoAutorProduccion `orm:"column(estado_autor_produccion);rel(fk)"`
 }
 
-func (t *ProduccionArtesArquDiseno) TableName() string {
-	return "produccion_artes_arqu_diseno"
+func (t *AutorProduccionAcademica) TableName() string {
+	return "autor_produccion_academica"
 }
 
 func init() {
-	orm.RegisterModel(new(ProduccionArtesArquDiseno))
+	orm.RegisterModel(new(AutorProduccionAcademica))
 }
 
-// AddProduccionArtesArquDiseno insert a new ProduccionArtesArquDiseno into database and returns
+// AddAutorProduccionAcademica insert a new AutorProduccionAcademica into database and returns
 // last inserted Id on success.
-func AddProduccionArtesArquDiseno(m *ProduccionArtesArquDiseno) (id int64, err error) {
+func AddAutorProduccionAcademica(m *AutorProduccionAcademica) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetProduccionArtesArquDisenoById retrieves ProduccionArtesArquDiseno by Id. Returns error if
+// GetAutorProduccionAcademicaById retrieves AutorProduccionAcademica by Id. Returns error if
 // Id doesn't exist
-func GetProduccionArtesArquDisenoById(id int) (v *ProduccionArtesArquDiseno, err error) {
+func GetAutorProduccionAcademicaById(id int) (v *AutorProduccionAcademica, err error) {
 	o := orm.NewOrm()
-	v = &ProduccionArtesArquDiseno{Id: id}
+	v = &AutorProduccionAcademica{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllProduccionArtesArquDiseno retrieves all ProduccionArtesArquDiseno matches certain condition. Returns empty list if
+// GetAllAutorProduccionAcademica retrieves all AutorProduccionAcademica matches certain condition. Returns empty list if
 // no records exist
-func GetAllProduccionArtesArquDiseno(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllAutorProduccionAcademica(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(ProduccionArtesArquDiseno)).RelatedSel()
+	qs := o.QueryTable(new(AutorProduccionAcademica))
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
@@ -101,7 +98,7 @@ func GetAllProduccionArtesArquDiseno(query map[string]string, fields []string, s
 		}
 	}
 
-	var l []ProduccionArtesArquDiseno
+	var l []AutorProduccionAcademica
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -124,11 +121,11 @@ func GetAllProduccionArtesArquDiseno(query map[string]string, fields []string, s
 	return nil, err
 }
 
-// UpdateProduccionArtesArquDiseno updates ProduccionArtesArquDiseno by Id and returns error if
+// UpdateAutorProduccionAcademica updates AutorProduccionAcademica by Id and returns error if
 // the record to be updated doesn't exist
-func UpdateProduccionArtesArquDisenoById(m *ProduccionArtesArquDiseno) (err error) {
+func UpdateAutorProduccionAcademicaById(m *AutorProduccionAcademica) (err error) {
 	o := orm.NewOrm()
-	v := ProduccionArtesArquDiseno{Id: m.Id}
+	v := AutorProduccionAcademica{Id: m.Id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -139,15 +136,15 @@ func UpdateProduccionArtesArquDisenoById(m *ProduccionArtesArquDiseno) (err erro
 	return
 }
 
-// DeleteProduccionArtesArquDiseno deletes ProduccionArtesArquDiseno by Id and returns error if
+// DeleteAutorProduccionAcademica deletes AutorProduccionAcademica by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteProduccionArtesArquDiseno(id int) (err error) {
+func DeleteAutorProduccionAcademica(id int) (err error) {
 	o := orm.NewOrm()
-	v := ProduccionArtesArquDiseno{Id: id}
+	v := AutorProduccionAcademica{Id: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&ProduccionArtesArquDiseno{Id: id}); err == nil {
+		if num, err = o.Delete(&AutorProduccionAcademica{Id: id}); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}

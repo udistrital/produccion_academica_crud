@@ -9,57 +9,48 @@ import (
 	"github.com/astaxie/beego/orm"
 )
 
-type Articulo struct {
-	Id               int               `orm:"column(id);pk;auto"`
-	Persona          int               `orm:"column(persona)"`
-	Tipo             *TipoArticulo     `orm:"column(tipo);rel(fk)"`
-	Nombre           string            `orm:"column(nombre)"`
-	Idioma           string            `orm:"column(idioma)"`
-	Ano              int               `orm:"column(ano)"`
-	Mes              int               `orm:"column(mes)"`
-	Revista          string            `orm:"column(revista)"`
-	Volumen          int               `orm:"column(volumen);null"`
-	Fasciculo        int               `orm:"column(fasciculo);null"`
-	Serie            int               `orm:"column(serie);null"`
-	Ubicacion        int               `orm:"column(ubicacion)"`
-	MedioDivulgacion *MedioDivulgacion `orm:"column(medio_divulgacion);rel(fk)"`
-	Url              string            `orm:"column(url);null"`
-	Doi              string            `orm:"column(doi);null"`
+type TipoProduccion struct {
+	Id                int     `orm:"column(id);pk"`
+	Nombre            string  `orm:"column(nombre)"`
+	Descripcion       string  `orm:"column(descripcion);null"`
+	CodigoAbreviacion string  `orm:"column(codigo_abreviacion);null"`
+	Activo            bool    `orm:"column(activo)"`
+	NumeroOrden       float64 `orm:"column(numero_orden);null"`
 }
 
-func (t *Articulo) TableName() string {
-	return "articulo"
+func (t *TipoProduccion) TableName() string {
+	return "tipo_produccion"
 }
 
 func init() {
-	orm.RegisterModel(new(Articulo))
+	orm.RegisterModel(new(TipoProduccion))
 }
 
-// AddArticulo insert a new Articulo into database and returns
+// AddTipoProduccion insert a new TipoProduccion into database and returns
 // last inserted Id on success.
-func AddArticulo(m *Articulo) (id int64, err error) {
+func AddTipoProduccion(m *TipoProduccion) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetArticuloById retrieves Articulo by Id. Returns error if
+// GetTipoProduccionById retrieves TipoProduccion by Id. Returns error if
 // Id doesn't exist
-func GetArticuloById(id int) (v *Articulo, err error) {
+func GetTipoProduccionById(id int) (v *TipoProduccion, err error) {
 	o := orm.NewOrm()
-	v = &Articulo{Id: id}
+	v = &TipoProduccion{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllArticulo retrieves all Articulo matches certain condition. Returns empty list if
+// GetAllTipoProduccion retrieves all TipoProduccion matches certain condition. Returns empty list if
 // no records exist
-func GetAllArticulo(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllTipoProduccion(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(Articulo)).RelatedSel()
+	qs := o.QueryTable(new(TipoProduccion))
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
@@ -109,7 +100,7 @@ func GetAllArticulo(query map[string]string, fields []string, sortby []string, o
 		}
 	}
 
-	var l []Articulo
+	var l []TipoProduccion
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -132,11 +123,11 @@ func GetAllArticulo(query map[string]string, fields []string, sortby []string, o
 	return nil, err
 }
 
-// UpdateArticulo updates Articulo by Id and returns error if
+// UpdateTipoProduccion updates TipoProduccion by Id and returns error if
 // the record to be updated doesn't exist
-func UpdateArticuloById(m *Articulo) (err error) {
+func UpdateTipoProduccionById(m *TipoProduccion) (err error) {
 	o := orm.NewOrm()
-	v := Articulo{Id: m.Id}
+	v := TipoProduccion{Id: m.Id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -147,15 +138,15 @@ func UpdateArticuloById(m *Articulo) (err error) {
 	return
 }
 
-// DeleteArticulo deletes Articulo by Id and returns error if
+// DeleteTipoProduccion deletes TipoProduccion by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteArticulo(id int) (err error) {
+func DeleteTipoProduccion(id int) (err error) {
 	o := orm.NewOrm()
-	v := Articulo{Id: id}
+	v := TipoProduccion{Id: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&Articulo{Id: id}); err == nil {
+		if num, err = o.Delete(&TipoProduccion{Id: id}); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}

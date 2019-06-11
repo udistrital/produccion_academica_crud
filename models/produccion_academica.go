@@ -5,52 +5,52 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
+	"time"
 
 	"github.com/astaxie/beego/orm"
 )
 
-type TipoDisciplina struct {
-	Id                int    `orm:"column(id);pk"`
-	Nombre            string `orm:"column(nombre)"`
-	Descripcion       string `orm:"column(descripcion);null"`
-	CodigoAbreviacion string `orm:"column(codigo_abreviacion);null"`
-	NumeroOrden       int    `orm:"column(numero_orden);null"`
-	Activo            bool   `orm:"column(activo)"`
+type ProduccionAcademica struct {
+	Id                int                `orm:"column(id);pk"`
+	SubtipoProduccion *SubtipoProduccion `orm:"column(subtipo_produccion);rel(fk)"`
+	Titulo            string             `orm:"column(titulo)"`
+	Resumen           string             `orm:"column(resumen);null"`
+	Fecha             time.Time          `orm:"column(fecha);type(date)"`
 }
 
-func (t *TipoDisciplina) TableName() string {
-	return "tipo_disciplina"
+func (t *ProduccionAcademica) TableName() string {
+	return "produccion_academica"
 }
 
 func init() {
-	orm.RegisterModel(new(TipoDisciplina))
+	orm.RegisterModel(new(ProduccionAcademica))
 }
 
-// AddTipoDisciplina insert a new TipoDisciplina into database and returns
+// AddProduccionAcademica insert a new ProduccionAcademica into database and returns
 // last inserted Id on success.
-func AddTipoDisciplina(m *TipoDisciplina) (id int64, err error) {
+func AddProduccionAcademica(m *ProduccionAcademica) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetTipoDisciplinaById retrieves TipoDisciplina by Id. Returns error if
+// GetProduccionAcademicaById retrieves ProduccionAcademica by Id. Returns error if
 // Id doesn't exist
-func GetTipoDisciplinaById(id int) (v *TipoDisciplina, err error) {
+func GetProduccionAcademicaById(id int) (v *ProduccionAcademica, err error) {
 	o := orm.NewOrm()
-	v = &TipoDisciplina{Id: id}
+	v = &ProduccionAcademica{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllTipoDisciplina retrieves all TipoDisciplina matches certain condition. Returns empty list if
+// GetAllProduccionAcademica retrieves all ProduccionAcademica matches certain condition. Returns empty list if
 // no records exist
-func GetAllTipoDisciplina(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllProduccionAcademica(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(TipoDisciplina))
+	qs := o.QueryTable(new(ProduccionAcademica))
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
@@ -100,7 +100,7 @@ func GetAllTipoDisciplina(query map[string]string, fields []string, sortby []str
 		}
 	}
 
-	var l []TipoDisciplina
+	var l []ProduccionAcademica
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -123,11 +123,11 @@ func GetAllTipoDisciplina(query map[string]string, fields []string, sortby []str
 	return nil, err
 }
 
-// UpdateTipoDisciplina updates TipoDisciplina by Id and returns error if
+// UpdateProduccionAcademica updates ProduccionAcademica by Id and returns error if
 // the record to be updated doesn't exist
-func UpdateTipoDisciplinaById(m *TipoDisciplina) (err error) {
+func UpdateProduccionAcademicaById(m *ProduccionAcademica) (err error) {
 	o := orm.NewOrm()
-	v := TipoDisciplina{Id: m.Id}
+	v := ProduccionAcademica{Id: m.Id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -138,15 +138,15 @@ func UpdateTipoDisciplinaById(m *TipoDisciplina) (err error) {
 	return
 }
 
-// DeleteTipoDisciplina deletes TipoDisciplina by Id and returns error if
+// DeleteProduccionAcademica deletes ProduccionAcademica by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteTipoDisciplina(id int) (err error) {
+func DeleteProduccionAcademica(id int) (err error) {
 	o := orm.NewOrm()
-	v := TipoDisciplina{Id: id}
+	v := ProduccionAcademica{Id: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&TipoDisciplina{Id: id}); err == nil {
+		if num, err = o.Delete(&ProduccionAcademica{Id: id}); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}

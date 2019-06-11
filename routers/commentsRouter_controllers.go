@@ -7,7 +7,7 @@ import (
 
 func init() {
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:ArticuloController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:ArticuloController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:AutorProduccionAcademicaController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:AutorProduccionAcademicaController"],
         beego.ControllerComments{
             Method: "Post",
             Router: `/`,
@@ -16,7 +16,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:ArticuloController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:ArticuloController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:AutorProduccionAcademicaController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:AutorProduccionAcademicaController"],
         beego.ControllerComments{
             Method: "GetAll",
             Router: `/`,
@@ -25,7 +25,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:ArticuloController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:ArticuloController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:AutorProduccionAcademicaController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:AutorProduccionAcademicaController"],
         beego.ControllerComments{
             Method: "GetOne",
             Router: `/:id`,
@@ -34,7 +34,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:ArticuloController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:ArticuloController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:AutorProduccionAcademicaController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:AutorProduccionAcademicaController"],
         beego.ControllerComments{
             Method: "Put",
             Router: `/:id`,
@@ -43,7 +43,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:ArticuloController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:ArticuloController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:AutorProduccionAcademicaController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:AutorProduccionAcademicaController"],
         beego.ControllerComments{
             Method: "Delete",
             Router: `/:id`,
@@ -52,7 +52,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:LibroController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:LibroController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:DatoAdicionalProduccionAcademicaController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:DatoAdicionalProduccionAcademicaController"],
         beego.ControllerComments{
             Method: "Post",
             Router: `/`,
@@ -61,7 +61,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:LibroController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:LibroController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:DatoAdicionalProduccionAcademicaController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:DatoAdicionalProduccionAcademicaController"],
         beego.ControllerComments{
             Method: "GetAll",
             Router: `/`,
@@ -70,7 +70,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:LibroController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:LibroController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:DatoAdicionalProduccionAcademicaController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:DatoAdicionalProduccionAcademicaController"],
         beego.ControllerComments{
             Method: "GetOne",
             Router: `/:id`,
@@ -79,7 +79,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:LibroController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:LibroController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:DatoAdicionalProduccionAcademicaController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:DatoAdicionalProduccionAcademicaController"],
         beego.ControllerComments{
             Method: "Put",
             Router: `/:id`,
@@ -88,7 +88,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:LibroController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:LibroController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:DatoAdicionalProduccionAcademicaController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:DatoAdicionalProduccionAcademicaController"],
         beego.ControllerComments{
             Method: "Delete",
             Router: `/:id`,
@@ -97,7 +97,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:MedioDivulgacionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:MedioDivulgacionController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:DatoAdicionalSubtipoProduccionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:DatoAdicionalSubtipoProduccionController"],
         beego.ControllerComments{
             Method: "Post",
             Router: `/`,
@@ -106,7 +106,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:MedioDivulgacionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:MedioDivulgacionController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:DatoAdicionalSubtipoProduccionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:DatoAdicionalSubtipoProduccionController"],
         beego.ControllerComments{
             Method: "GetAll",
             Router: `/`,
@@ -115,7 +115,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:MedioDivulgacionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:MedioDivulgacionController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:DatoAdicionalSubtipoProduccionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:DatoAdicionalSubtipoProduccionController"],
         beego.ControllerComments{
             Method: "GetOne",
             Router: `/:id`,
@@ -124,7 +124,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:MedioDivulgacionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:MedioDivulgacionController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:DatoAdicionalSubtipoProduccionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:DatoAdicionalSubtipoProduccionController"],
         beego.ControllerComments{
             Method: "Put",
             Router: `/:id`,
@@ -133,7 +133,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:MedioDivulgacionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:MedioDivulgacionController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:DatoAdicionalSubtipoProduccionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:DatoAdicionalSubtipoProduccionController"],
         beego.ControllerComments{
             Method: "Delete",
             Router: `/:id`,
@@ -142,7 +142,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:MedioPublicacionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:MedioPublicacionController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:EstadoAutorProduccionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:EstadoAutorProduccionController"],
         beego.ControllerComments{
             Method: "Post",
             Router: `/`,
@@ -151,7 +151,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:MedioPublicacionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:MedioPublicacionController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:EstadoAutorProduccionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:EstadoAutorProduccionController"],
         beego.ControllerComments{
             Method: "GetAll",
             Router: `/`,
@@ -160,7 +160,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:MedioPublicacionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:MedioPublicacionController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:EstadoAutorProduccionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:EstadoAutorProduccionController"],
         beego.ControllerComments{
             Method: "GetOne",
             Router: `/:id`,
@@ -169,7 +169,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:MedioPublicacionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:MedioPublicacionController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:EstadoAutorProduccionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:EstadoAutorProduccionController"],
         beego.ControllerComments{
             Method: "Put",
             Router: `/:id`,
@@ -178,7 +178,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:MedioPublicacionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:MedioPublicacionController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:EstadoAutorProduccionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:EstadoAutorProduccionController"],
         beego.ControllerComments{
             Method: "Delete",
             Router: `/:id`,
@@ -187,7 +187,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:OtraPublicacionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:OtraPublicacionController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:ProduccionAcademicaController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:ProduccionAcademicaController"],
         beego.ControllerComments{
             Method: "Post",
             Router: `/`,
@@ -196,7 +196,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:OtraPublicacionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:OtraPublicacionController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:ProduccionAcademicaController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:ProduccionAcademicaController"],
         beego.ControllerComments{
             Method: "GetAll",
             Router: `/`,
@@ -205,7 +205,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:OtraPublicacionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:OtraPublicacionController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:ProduccionAcademicaController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:ProduccionAcademicaController"],
         beego.ControllerComments{
             Method: "GetOne",
             Router: `/:id`,
@@ -214,7 +214,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:OtraPublicacionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:OtraPublicacionController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:ProduccionAcademicaController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:ProduccionAcademicaController"],
         beego.ControllerComments{
             Method: "Put",
             Router: `/:id`,
@@ -223,7 +223,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:OtraPublicacionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:OtraPublicacionController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:ProduccionAcademicaController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:ProduccionAcademicaController"],
         beego.ControllerComments{
             Method: "Delete",
             Router: `/:id`,
@@ -232,7 +232,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:OtroDocumentoController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:OtroDocumentoController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:SoporteProduccionAcademicaController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:SoporteProduccionAcademicaController"],
         beego.ControllerComments{
             Method: "Post",
             Router: `/`,
@@ -241,7 +241,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:OtroDocumentoController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:OtroDocumentoController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:SoporteProduccionAcademicaController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:SoporteProduccionAcademicaController"],
         beego.ControllerComments{
             Method: "GetAll",
             Router: `/`,
@@ -250,7 +250,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:OtroDocumentoController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:OtroDocumentoController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:SoporteProduccionAcademicaController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:SoporteProduccionAcademicaController"],
         beego.ControllerComments{
             Method: "GetOne",
             Router: `/:id`,
@@ -259,7 +259,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:OtroDocumentoController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:OtroDocumentoController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:SoporteProduccionAcademicaController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:SoporteProduccionAcademicaController"],
         beego.ControllerComments{
             Method: "Put",
             Router: `/:id`,
@@ -268,7 +268,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:OtroDocumentoController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:OtroDocumentoController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:SoporteProduccionAcademicaController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:SoporteProduccionAcademicaController"],
         beego.ControllerComments{
             Method: "Delete",
             Router: `/:id`,
@@ -277,7 +277,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:ProduccionArtesArquDisenoController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:ProduccionArtesArquDisenoController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:SubtipoProduccionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:SubtipoProduccionController"],
         beego.ControllerComments{
             Method: "Post",
             Router: `/`,
@@ -286,7 +286,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:ProduccionArtesArquDisenoController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:ProduccionArtesArquDisenoController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:SubtipoProduccionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:SubtipoProduccionController"],
         beego.ControllerComments{
             Method: "GetAll",
             Router: `/`,
@@ -295,7 +295,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:ProduccionArtesArquDisenoController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:ProduccionArtesArquDisenoController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:SubtipoProduccionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:SubtipoProduccionController"],
         beego.ControllerComments{
             Method: "GetOne",
             Router: `/:id`,
@@ -304,7 +304,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:ProduccionArtesArquDisenoController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:ProduccionArtesArquDisenoController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:SubtipoProduccionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:SubtipoProduccionController"],
         beego.ControllerComments{
             Method: "Put",
             Router: `/:id`,
@@ -313,7 +313,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:ProduccionArtesArquDisenoController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:ProduccionArtesArquDisenoController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:SubtipoProduccionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:SubtipoProduccionController"],
         beego.ControllerComments{
             Method: "Delete",
             Router: `/:id`,
@@ -322,7 +322,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:ProduccionTecnicaController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:ProduccionTecnicaController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoDatoAdicionalController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoDatoAdicionalController"],
         beego.ControllerComments{
             Method: "Post",
             Router: `/`,
@@ -331,7 +331,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:ProduccionTecnicaController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:ProduccionTecnicaController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoDatoAdicionalController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoDatoAdicionalController"],
         beego.ControllerComments{
             Method: "GetAll",
             Router: `/`,
@@ -340,7 +340,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:ProduccionTecnicaController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:ProduccionTecnicaController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoDatoAdicionalController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoDatoAdicionalController"],
         beego.ControllerComments{
             Method: "GetOne",
             Router: `/:id`,
@@ -349,7 +349,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:ProduccionTecnicaController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:ProduccionTecnicaController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoDatoAdicionalController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoDatoAdicionalController"],
         beego.ControllerComments{
             Method: "Put",
             Router: `/:id`,
@@ -358,7 +358,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:ProduccionTecnicaController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:ProduccionTecnicaController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoDatoAdicionalController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoDatoAdicionalController"],
         beego.ControllerComments{
             Method: "Delete",
             Router: `/:id`,
@@ -367,7 +367,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoArticuloController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoArticuloController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoProduccionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoProduccionController"],
         beego.ControllerComments{
             Method: "Post",
             Router: `/`,
@@ -376,7 +376,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoArticuloController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoArticuloController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoProduccionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoProduccionController"],
         beego.ControllerComments{
             Method: "GetAll",
             Router: `/`,
@@ -385,7 +385,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoArticuloController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoArticuloController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoProduccionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoProduccionController"],
         beego.ControllerComments{
             Method: "GetOne",
             Router: `/:id`,
@@ -394,7 +394,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoArticuloController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoArticuloController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoProduccionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoProduccionController"],
         beego.ControllerComments{
             Method: "Put",
             Router: `/:id`,
@@ -403,277 +403,7 @@ func init() {
             Filters: nil,
             Params: nil})
 
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoArticuloController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoArticuloController"],
-        beego.ControllerComments{
-            Method: "Delete",
-            Router: `/:id`,
-            AllowHTTPMethods: []string{"delete"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
-
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoDisciplinaController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoDisciplinaController"],
-        beego.ControllerComments{
-            Method: "Post",
-            Router: `/`,
-            AllowHTTPMethods: []string{"post"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
-
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoDisciplinaController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoDisciplinaController"],
-        beego.ControllerComments{
-            Method: "GetAll",
-            Router: `/`,
-            AllowHTTPMethods: []string{"get"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
-
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoDisciplinaController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoDisciplinaController"],
-        beego.ControllerComments{
-            Method: "GetOne",
-            Router: `/:id`,
-            AllowHTTPMethods: []string{"get"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
-
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoDisciplinaController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoDisciplinaController"],
-        beego.ControllerComments{
-            Method: "Put",
-            Router: `/:id`,
-            AllowHTTPMethods: []string{"put"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
-
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoDisciplinaController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoDisciplinaController"],
-        beego.ControllerComments{
-            Method: "Delete",
-            Router: `/:id`,
-            AllowHTTPMethods: []string{"delete"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
-
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoOtraPublicacionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoOtraPublicacionController"],
-        beego.ControllerComments{
-            Method: "Post",
-            Router: `/`,
-            AllowHTTPMethods: []string{"post"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
-
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoOtraPublicacionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoOtraPublicacionController"],
-        beego.ControllerComments{
-            Method: "GetAll",
-            Router: `/`,
-            AllowHTTPMethods: []string{"get"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
-
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoOtraPublicacionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoOtraPublicacionController"],
-        beego.ControllerComments{
-            Method: "GetOne",
-            Router: `/:id`,
-            AllowHTTPMethods: []string{"get"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
-
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoOtraPublicacionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoOtraPublicacionController"],
-        beego.ControllerComments{
-            Method: "Put",
-            Router: `/:id`,
-            AllowHTTPMethods: []string{"put"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
-
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoOtraPublicacionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoOtraPublicacionController"],
-        beego.ControllerComments{
-            Method: "Delete",
-            Router: `/:id`,
-            AllowHTTPMethods: []string{"delete"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
-
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoProduccionTecnicaController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoProduccionTecnicaController"],
-        beego.ControllerComments{
-            Method: "Post",
-            Router: `/`,
-            AllowHTTPMethods: []string{"post"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
-
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoProduccionTecnicaController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoProduccionTecnicaController"],
-        beego.ControllerComments{
-            Method: "GetAll",
-            Router: `/`,
-            AllowHTTPMethods: []string{"get"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
-
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoProduccionTecnicaController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoProduccionTecnicaController"],
-        beego.ControllerComments{
-            Method: "GetOne",
-            Router: `/:id`,
-            AllowHTTPMethods: []string{"get"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
-
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoProduccionTecnicaController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoProduccionTecnicaController"],
-        beego.ControllerComments{
-            Method: "Put",
-            Router: `/:id`,
-            AllowHTTPMethods: []string{"put"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
-
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoProduccionTecnicaController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoProduccionTecnicaController"],
-        beego.ControllerComments{
-            Method: "Delete",
-            Router: `/:id`,
-            AllowHTTPMethods: []string{"delete"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
-
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoPublicacionLibroController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoPublicacionLibroController"],
-        beego.ControllerComments{
-            Method: "Post",
-            Router: `/`,
-            AllowHTTPMethods: []string{"post"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
-
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoPublicacionLibroController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoPublicacionLibroController"],
-        beego.ControllerComments{
-            Method: "GetAll",
-            Router: `/`,
-            AllowHTTPMethods: []string{"get"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
-
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoPublicacionLibroController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoPublicacionLibroController"],
-        beego.ControllerComments{
-            Method: "GetOne",
-            Router: `/:id`,
-            AllowHTTPMethods: []string{"get"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
-
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoPublicacionLibroController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoPublicacionLibroController"],
-        beego.ControllerComments{
-            Method: "Put",
-            Router: `/:id`,
-            AllowHTTPMethods: []string{"put"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
-
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoPublicacionLibroController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoPublicacionLibroController"],
-        beego.ControllerComments{
-            Method: "Delete",
-            Router: `/:id`,
-            AllowHTTPMethods: []string{"delete"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
-
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoTraduccionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoTraduccionController"],
-        beego.ControllerComments{
-            Method: "Post",
-            Router: `/`,
-            AllowHTTPMethods: []string{"post"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
-
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoTraduccionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoTraduccionController"],
-        beego.ControllerComments{
-            Method: "GetAll",
-            Router: `/`,
-            AllowHTTPMethods: []string{"get"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
-
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoTraduccionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoTraduccionController"],
-        beego.ControllerComments{
-            Method: "GetOne",
-            Router: `/:id`,
-            AllowHTTPMethods: []string{"get"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
-
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoTraduccionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoTraduccionController"],
-        beego.ControllerComments{
-            Method: "Put",
-            Router: `/:id`,
-            AllowHTTPMethods: []string{"put"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
-
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoTraduccionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoTraduccionController"],
-        beego.ControllerComments{
-            Method: "Delete",
-            Router: `/:id`,
-            AllowHTTPMethods: []string{"delete"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
-
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TraduccionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TraduccionController"],
-        beego.ControllerComments{
-            Method: "Post",
-            Router: `/`,
-            AllowHTTPMethods: []string{"post"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
-
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TraduccionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TraduccionController"],
-        beego.ControllerComments{
-            Method: "GetAll",
-            Router: `/`,
-            AllowHTTPMethods: []string{"get"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
-
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TraduccionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TraduccionController"],
-        beego.ControllerComments{
-            Method: "GetOne",
-            Router: `/:id`,
-            AllowHTTPMethods: []string{"get"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
-
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TraduccionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TraduccionController"],
-        beego.ControllerComments{
-            Method: "Put",
-            Router: `/:id`,
-            AllowHTTPMethods: []string{"put"},
-            MethodParams: param.Make(),
-            Filters: nil,
-            Params: nil})
-
-    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TraduccionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TraduccionController"],
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoProduccionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TipoProduccionController"],
         beego.ControllerComments{
             Method: "Delete",
             Router: `/:id`,

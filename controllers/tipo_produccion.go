@@ -10,13 +10,13 @@ import (
 	"github.com/astaxie/beego"
 )
 
-// TipoArticuloController operations for TipoArticulo
-type TipoArticuloController struct {
+// TipoProduccionController operations for TipoProduccion
+type TipoProduccionController struct {
 	beego.Controller
 }
 
 // URLMapping ...
-func (c *TipoArticuloController) URLMapping() {
+func (c *TipoProduccionController) URLMapping() {
 	c.Mapping("Post", c.Post)
 	c.Mapping("GetOne", c.GetOne)
 	c.Mapping("GetAll", c.GetAll)
@@ -26,15 +26,15 @@ func (c *TipoArticuloController) URLMapping() {
 
 // Post ...
 // @Title Post
-// @Description create TipoArticulo
-// @Param	body		body 	models.TipoArticulo	true		"body for TipoArticulo content"
-// @Success 201 {int} models.TipoArticulo
+// @Description create TipoProduccion
+// @Param	body		body 	models.TipoProduccion	true		"body for TipoProduccion content"
+// @Success 201 {int} models.TipoProduccion
 // @Failure 403 body is empty
 // @router / [post]
-func (c *TipoArticuloController) Post() {
-	var v models.TipoArticulo
+func (c *TipoProduccionController) Post() {
+	var v models.TipoProduccion
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if _, err := models.AddTipoArticulo(&v); err == nil {
+		if _, err := models.AddTipoProduccion(&v); err == nil {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
 		} else {
@@ -48,15 +48,15 @@ func (c *TipoArticuloController) Post() {
 
 // GetOne ...
 // @Title Get One
-// @Description get TipoArticulo by id
+// @Description get TipoProduccion by id
 // @Param	id		path 	string	true		"The key for staticblock"
-// @Success 200 {object} models.TipoArticulo
+// @Success 200 {object} models.TipoProduccion
 // @Failure 403 :id is empty
 // @router /:id [get]
-func (c *TipoArticuloController) GetOne() {
+func (c *TipoProduccionController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v, err := models.GetTipoArticuloById(id)
+	v, err := models.GetTipoProduccionById(id)
 	if err != nil {
 		c.Data["json"] = err.Error()
 	} else {
@@ -67,17 +67,17 @@ func (c *TipoArticuloController) GetOne() {
 
 // GetAll ...
 // @Title Get All
-// @Description get TipoArticulo
+// @Description get TipoProduccion
 // @Param	query	query	string	false	"Filter. e.g. col1:v1,col2:v2 ..."
 // @Param	fields	query	string	false	"Fields returned. e.g. col1,col2 ..."
 // @Param	sortby	query	string	false	"Sorted-by fields. e.g. col1,col2 ..."
 // @Param	order	query	string	false	"Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ..."
 // @Param	limit	query	string	false	"Limit the size of result set. Must be an integer"
 // @Param	offset	query	string	false	"Start position of result set. Must be an integer"
-// @Success 200 {object} models.TipoArticulo
+// @Success 200 {object} models.TipoProduccion
 // @Failure 403
 // @router / [get]
-func (c *TipoArticuloController) GetAll() {
+func (c *TipoProduccionController) GetAll() {
 	var fields []string
 	var sortby []string
 	var order []string
@@ -119,7 +119,7 @@ func (c *TipoArticuloController) GetAll() {
 		}
 	}
 
-	l, err := models.GetAllTipoArticulo(query, fields, sortby, order, offset, limit)
+	l, err := models.GetAllTipoProduccion(query, fields, sortby, order, offset, limit)
 	if err != nil {
 		c.Data["json"] = err.Error()
 	} else {
@@ -130,18 +130,18 @@ func (c *TipoArticuloController) GetAll() {
 
 // Put ...
 // @Title Put
-// @Description update the TipoArticulo
+// @Description update the TipoProduccion
 // @Param	id		path 	string	true		"The id you want to update"
-// @Param	body		body 	models.TipoArticulo	true		"body for TipoArticulo content"
-// @Success 200 {object} models.TipoArticulo
+// @Param	body		body 	models.TipoProduccion	true		"body for TipoProduccion content"
+// @Success 200 {object} models.TipoProduccion
 // @Failure 403 :id is not int
 // @router /:id [put]
-func (c *TipoArticuloController) Put() {
+func (c *TipoProduccionController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v := models.TipoArticulo{Id: id}
+	v := models.TipoProduccion{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if err := models.UpdateTipoArticuloById(&v); err == nil {
+		if err := models.UpdateTipoProduccionById(&v); err == nil {
 			c.Data["json"] = "OK"
 		} else {
 			c.Data["json"] = err.Error()
@@ -154,15 +154,15 @@ func (c *TipoArticuloController) Put() {
 
 // Delete ...
 // @Title Delete
-// @Description delete the TipoArticulo
+// @Description delete the TipoProduccion
 // @Param	id		path 	string	true		"The id you want to delete"
 // @Success 200 {string} delete success!
 // @Failure 403 id is empty
 // @router /:id [delete]
-func (c *TipoArticuloController) Delete() {
+func (c *TipoProduccionController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	if err := models.DeleteTipoArticulo(id); err == nil {
+	if err := models.DeleteTipoProduccion(id); err == nil {
 		c.Data["json"] = "OK"
 	} else {
 		c.Data["json"] = err.Error()

@@ -10,13 +10,13 @@ import (
 	"github.com/astaxie/beego"
 )
 
-// OtraPublicacionController operations for OtraPublicacion
-type OtraPublicacionController struct {
+// DatoAdicionalSubtipoProduccionController operations for DatoAdicionalSubtipoProduccion
+type DatoAdicionalSubtipoProduccionController struct {
 	beego.Controller
 }
 
 // URLMapping ...
-func (c *OtraPublicacionController) URLMapping() {
+func (c *DatoAdicionalSubtipoProduccionController) URLMapping() {
 	c.Mapping("Post", c.Post)
 	c.Mapping("GetOne", c.GetOne)
 	c.Mapping("GetAll", c.GetAll)
@@ -26,15 +26,15 @@ func (c *OtraPublicacionController) URLMapping() {
 
 // Post ...
 // @Title Post
-// @Description create OtraPublicacion
-// @Param	body		body 	models.OtraPublicacion	true		"body for OtraPublicacion content"
-// @Success 201 {int} models.OtraPublicacion
+// @Description create DatoAdicionalSubtipoProduccion
+// @Param	body		body 	models.DatoAdicionalSubtipoProduccion	true		"body for DatoAdicionalSubtipoProduccion content"
+// @Success 201 {int} models.DatoAdicionalSubtipoProduccion
 // @Failure 403 body is empty
 // @router / [post]
-func (c *OtraPublicacionController) Post() {
-	var v models.OtraPublicacion
+func (c *DatoAdicionalSubtipoProduccionController) Post() {
+	var v models.DatoAdicionalSubtipoProduccion
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if _, err := models.AddOtraPublicacion(&v); err == nil {
+		if _, err := models.AddDatoAdicionalSubtipoProduccion(&v); err == nil {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
 		} else {
@@ -48,15 +48,15 @@ func (c *OtraPublicacionController) Post() {
 
 // GetOne ...
 // @Title Get One
-// @Description get OtraPublicacion by id
+// @Description get DatoAdicionalSubtipoProduccion by id
 // @Param	id		path 	string	true		"The key for staticblock"
-// @Success 200 {object} models.OtraPublicacion
+// @Success 200 {object} models.DatoAdicionalSubtipoProduccion
 // @Failure 403 :id is empty
 // @router /:id [get]
-func (c *OtraPublicacionController) GetOne() {
+func (c *DatoAdicionalSubtipoProduccionController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v, err := models.GetOtraPublicacionById(id)
+	v, err := models.GetDatoAdicionalSubtipoProduccionById(id)
 	if err != nil {
 		c.Data["json"] = err.Error()
 	} else {
@@ -67,17 +67,17 @@ func (c *OtraPublicacionController) GetOne() {
 
 // GetAll ...
 // @Title Get All
-// @Description get OtraPublicacion
+// @Description get DatoAdicionalSubtipoProduccion
 // @Param	query	query	string	false	"Filter. e.g. col1:v1,col2:v2 ..."
 // @Param	fields	query	string	false	"Fields returned. e.g. col1,col2 ..."
 // @Param	sortby	query	string	false	"Sorted-by fields. e.g. col1,col2 ..."
 // @Param	order	query	string	false	"Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ..."
 // @Param	limit	query	string	false	"Limit the size of result set. Must be an integer"
 // @Param	offset	query	string	false	"Start position of result set. Must be an integer"
-// @Success 200 {object} models.OtraPublicacion
+// @Success 200 {object} models.DatoAdicionalSubtipoProduccion
 // @Failure 403
 // @router / [get]
-func (c *OtraPublicacionController) GetAll() {
+func (c *DatoAdicionalSubtipoProduccionController) GetAll() {
 	var fields []string
 	var sortby []string
 	var order []string
@@ -119,7 +119,7 @@ func (c *OtraPublicacionController) GetAll() {
 		}
 	}
 
-	l, err := models.GetAllOtraPublicacion(query, fields, sortby, order, offset, limit)
+	l, err := models.GetAllDatoAdicionalSubtipoProduccion(query, fields, sortby, order, offset, limit)
 	if err != nil {
 		c.Data["json"] = err.Error()
 	} else {
@@ -130,18 +130,18 @@ func (c *OtraPublicacionController) GetAll() {
 
 // Put ...
 // @Title Put
-// @Description update the OtraPublicacion
+// @Description update the DatoAdicionalSubtipoProduccion
 // @Param	id		path 	string	true		"The id you want to update"
-// @Param	body		body 	models.OtraPublicacion	true		"body for OtraPublicacion content"
-// @Success 200 {object} models.OtraPublicacion
+// @Param	body		body 	models.DatoAdicionalSubtipoProduccion	true		"body for DatoAdicionalSubtipoProduccion content"
+// @Success 200 {object} models.DatoAdicionalSubtipoProduccion
 // @Failure 403 :id is not int
 // @router /:id [put]
-func (c *OtraPublicacionController) Put() {
+func (c *DatoAdicionalSubtipoProduccionController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v := models.OtraPublicacion{Id: id}
+	v := models.DatoAdicionalSubtipoProduccion{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if err := models.UpdateOtraPublicacionById(&v); err == nil {
+		if err := models.UpdateDatoAdicionalSubtipoProduccionById(&v); err == nil {
 			c.Data["json"] = "OK"
 		} else {
 			c.Data["json"] = err.Error()
@@ -154,15 +154,15 @@ func (c *OtraPublicacionController) Put() {
 
 // Delete ...
 // @Title Delete
-// @Description delete the OtraPublicacion
+// @Description delete the DatoAdicionalSubtipoProduccion
 // @Param	id		path 	string	true		"The id you want to delete"
 // @Success 200 {string} delete success!
 // @Failure 403 id is empty
 // @router /:id [delete]
-func (c *OtraPublicacionController) Delete() {
+func (c *DatoAdicionalSubtipoProduccionController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	if err := models.DeleteOtraPublicacion(id); err == nil {
+	if err := models.DeleteDatoAdicionalSubtipoProduccion(id); err == nil {
 		c.Data["json"] = "OK"
 	} else {
 		c.Data["json"] = err.Error()

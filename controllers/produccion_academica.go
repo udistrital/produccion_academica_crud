@@ -10,13 +10,13 @@ import (
 	"github.com/astaxie/beego"
 )
 
-// ArticuloController operations for Articulo
-type ArticuloController struct {
+// ProduccionAcademicaController operations for ProduccionAcademica
+type ProduccionAcademicaController struct {
 	beego.Controller
 }
 
 // URLMapping ...
-func (c *ArticuloController) URLMapping() {
+func (c *ProduccionAcademicaController) URLMapping() {
 	c.Mapping("Post", c.Post)
 	c.Mapping("GetOne", c.GetOne)
 	c.Mapping("GetAll", c.GetAll)
@@ -26,15 +26,15 @@ func (c *ArticuloController) URLMapping() {
 
 // Post ...
 // @Title Post
-// @Description create Articulo
-// @Param	body		body 	models.Articulo	true		"body for Articulo content"
-// @Success 201 {int} models.Articulo
+// @Description create ProduccionAcademica
+// @Param	body		body 	models.ProduccionAcademica	true		"body for ProduccionAcademica content"
+// @Success 201 {int} models.ProduccionAcademica
 // @Failure 403 body is empty
 // @router / [post]
-func (c *ArticuloController) Post() {
-	var v models.Articulo
+func (c *ProduccionAcademicaController) Post() {
+	var v models.ProduccionAcademica
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if _, err := models.AddArticulo(&v); err == nil {
+		if _, err := models.AddProduccionAcademica(&v); err == nil {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
 		} else {
@@ -48,15 +48,15 @@ func (c *ArticuloController) Post() {
 
 // GetOne ...
 // @Title Get One
-// @Description get Articulo by id
+// @Description get ProduccionAcademica by id
 // @Param	id		path 	string	true		"The key for staticblock"
-// @Success 200 {object} models.Articulo
+// @Success 200 {object} models.ProduccionAcademica
 // @Failure 403 :id is empty
 // @router /:id [get]
-func (c *ArticuloController) GetOne() {
+func (c *ProduccionAcademicaController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v, err := models.GetArticuloById(id)
+	v, err := models.GetProduccionAcademicaById(id)
 	if err != nil {
 		c.Data["json"] = err.Error()
 	} else {
@@ -67,17 +67,17 @@ func (c *ArticuloController) GetOne() {
 
 // GetAll ...
 // @Title Get All
-// @Description get Articulo
+// @Description get ProduccionAcademica
 // @Param	query	query	string	false	"Filter. e.g. col1:v1,col2:v2 ..."
 // @Param	fields	query	string	false	"Fields returned. e.g. col1,col2 ..."
 // @Param	sortby	query	string	false	"Sorted-by fields. e.g. col1,col2 ..."
 // @Param	order	query	string	false	"Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ..."
 // @Param	limit	query	string	false	"Limit the size of result set. Must be an integer"
 // @Param	offset	query	string	false	"Start position of result set. Must be an integer"
-// @Success 200 {object} models.Articulo
+// @Success 200 {object} models.ProduccionAcademica
 // @Failure 403
 // @router / [get]
-func (c *ArticuloController) GetAll() {
+func (c *ProduccionAcademicaController) GetAll() {
 	var fields []string
 	var sortby []string
 	var order []string
@@ -119,7 +119,7 @@ func (c *ArticuloController) GetAll() {
 		}
 	}
 
-	l, err := models.GetAllArticulo(query, fields, sortby, order, offset, limit)
+	l, err := models.GetAllProduccionAcademica(query, fields, sortby, order, offset, limit)
 	if err != nil {
 		c.Data["json"] = err.Error()
 	} else {
@@ -130,18 +130,18 @@ func (c *ArticuloController) GetAll() {
 
 // Put ...
 // @Title Put
-// @Description update the Articulo
+// @Description update the ProduccionAcademica
 // @Param	id		path 	string	true		"The id you want to update"
-// @Param	body		body 	models.Articulo	true		"body for Articulo content"
-// @Success 200 {object} models.Articulo
+// @Param	body		body 	models.ProduccionAcademica	true		"body for ProduccionAcademica content"
+// @Success 200 {object} models.ProduccionAcademica
 // @Failure 403 :id is not int
 // @router /:id [put]
-func (c *ArticuloController) Put() {
+func (c *ProduccionAcademicaController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v := models.Articulo{Id: id}
+	v := models.ProduccionAcademica{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if err := models.UpdateArticuloById(&v); err == nil {
+		if err := models.UpdateProduccionAcademicaById(&v); err == nil {
 			c.Data["json"] = "OK"
 		} else {
 			c.Data["json"] = err.Error()
@@ -154,15 +154,15 @@ func (c *ArticuloController) Put() {
 
 // Delete ...
 // @Title Delete
-// @Description delete the Articulo
+// @Description delete the ProduccionAcademica
 // @Param	id		path 	string	true		"The id you want to delete"
 // @Success 200 {string} delete success!
 // @Failure 403 id is empty
 // @router /:id [delete]
-func (c *ArticuloController) Delete() {
+func (c *ProduccionAcademicaController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	if err := models.DeleteArticulo(id); err == nil {
+	if err := models.DeleteProduccionAcademica(id); err == nil {
 		c.Data["json"] = "OK"
 	} else {
 		c.Data["json"] = err.Error()

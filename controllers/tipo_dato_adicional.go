@@ -10,13 +10,13 @@ import (
 	"github.com/astaxie/beego"
 )
 
-// MedioPublicacionController operations for MedioPublicacion
-type MedioPublicacionController struct {
+// TipoDatoAdicionalController operations for TipoDatoAdicional
+type TipoDatoAdicionalController struct {
 	beego.Controller
 }
 
 // URLMapping ...
-func (c *MedioPublicacionController) URLMapping() {
+func (c *TipoDatoAdicionalController) URLMapping() {
 	c.Mapping("Post", c.Post)
 	c.Mapping("GetOne", c.GetOne)
 	c.Mapping("GetAll", c.GetAll)
@@ -26,15 +26,15 @@ func (c *MedioPublicacionController) URLMapping() {
 
 // Post ...
 // @Title Post
-// @Description create MedioPublicacion
-// @Param	body		body 	models.MedioPublicacion	true		"body for MedioPublicacion content"
-// @Success 201 {int} models.MedioPublicacion
+// @Description create TipoDatoAdicional
+// @Param	body		body 	models.TipoDatoAdicional	true		"body for TipoDatoAdicional content"
+// @Success 201 {int} models.TipoDatoAdicional
 // @Failure 403 body is empty
 // @router / [post]
-func (c *MedioPublicacionController) Post() {
-	var v models.MedioPublicacion
+func (c *TipoDatoAdicionalController) Post() {
+	var v models.TipoDatoAdicional
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if _, err := models.AddMedioPublicacion(&v); err == nil {
+		if _, err := models.AddTipoDatoAdicional(&v); err == nil {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
 		} else {
@@ -48,15 +48,15 @@ func (c *MedioPublicacionController) Post() {
 
 // GetOne ...
 // @Title Get One
-// @Description get MedioPublicacion by id
+// @Description get TipoDatoAdicional by id
 // @Param	id		path 	string	true		"The key for staticblock"
-// @Success 200 {object} models.MedioPublicacion
+// @Success 200 {object} models.TipoDatoAdicional
 // @Failure 403 :id is empty
 // @router /:id [get]
-func (c *MedioPublicacionController) GetOne() {
+func (c *TipoDatoAdicionalController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v, err := models.GetMedioPublicacionById(id)
+	v, err := models.GetTipoDatoAdicionalById(id)
 	if err != nil {
 		c.Data["json"] = err.Error()
 	} else {
@@ -67,17 +67,17 @@ func (c *MedioPublicacionController) GetOne() {
 
 // GetAll ...
 // @Title Get All
-// @Description get MedioPublicacion
+// @Description get TipoDatoAdicional
 // @Param	query	query	string	false	"Filter. e.g. col1:v1,col2:v2 ..."
 // @Param	fields	query	string	false	"Fields returned. e.g. col1,col2 ..."
 // @Param	sortby	query	string	false	"Sorted-by fields. e.g. col1,col2 ..."
 // @Param	order	query	string	false	"Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ..."
 // @Param	limit	query	string	false	"Limit the size of result set. Must be an integer"
 // @Param	offset	query	string	false	"Start position of result set. Must be an integer"
-// @Success 200 {object} models.MedioPublicacion
+// @Success 200 {object} models.TipoDatoAdicional
 // @Failure 403
 // @router / [get]
-func (c *MedioPublicacionController) GetAll() {
+func (c *TipoDatoAdicionalController) GetAll() {
 	var fields []string
 	var sortby []string
 	var order []string
@@ -119,7 +119,7 @@ func (c *MedioPublicacionController) GetAll() {
 		}
 	}
 
-	l, err := models.GetAllMedioPublicacion(query, fields, sortby, order, offset, limit)
+	l, err := models.GetAllTipoDatoAdicional(query, fields, sortby, order, offset, limit)
 	if err != nil {
 		c.Data["json"] = err.Error()
 	} else {
@@ -130,18 +130,18 @@ func (c *MedioPublicacionController) GetAll() {
 
 // Put ...
 // @Title Put
-// @Description update the MedioPublicacion
+// @Description update the TipoDatoAdicional
 // @Param	id		path 	string	true		"The id you want to update"
-// @Param	body		body 	models.MedioPublicacion	true		"body for MedioPublicacion content"
-// @Success 200 {object} models.MedioPublicacion
+// @Param	body		body 	models.TipoDatoAdicional	true		"body for TipoDatoAdicional content"
+// @Success 200 {object} models.TipoDatoAdicional
 // @Failure 403 :id is not int
 // @router /:id [put]
-func (c *MedioPublicacionController) Put() {
+func (c *TipoDatoAdicionalController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v := models.MedioPublicacion{Id: id}
+	v := models.TipoDatoAdicional{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if err := models.UpdateMedioPublicacionById(&v); err == nil {
+		if err := models.UpdateTipoDatoAdicionalById(&v); err == nil {
 			c.Data["json"] = "OK"
 		} else {
 			c.Data["json"] = err.Error()
@@ -154,15 +154,15 @@ func (c *MedioPublicacionController) Put() {
 
 // Delete ...
 // @Title Delete
-// @Description delete the MedioPublicacion
+// @Description delete the TipoDatoAdicional
 // @Param	id		path 	string	true		"The id you want to delete"
 // @Success 200 {string} delete success!
 // @Failure 403 id is empty
 // @router /:id [delete]
-func (c *MedioPublicacionController) Delete() {
+func (c *TipoDatoAdicionalController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	if err := models.DeleteMedioPublicacion(id); err == nil {
+	if err := models.DeleteTipoDatoAdicional(id); err == nil {
 		c.Data["json"] = "OK"
 	} else {
 		c.Data["json"] = err.Error()
