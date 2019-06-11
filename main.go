@@ -12,6 +12,7 @@ import (
 	_ "github.com/lib/pq"
 	apistatus "github.com/udistrital/utils_oas/apiStatusLib"
 
+	"github.com/udistrital/utils_oas/customerror"
 )
 
 func init() {
@@ -58,7 +59,8 @@ func main() {
 	logPath += "\"}"
 	logs.SetLogger(logs.AdapterFile, logPath)
 
+	beego.ErrorController(&customerror.CustomErrorController{})
+
 	apistatus.Init()
 	beego.Run()
 }
-

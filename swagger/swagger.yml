@@ -48,8 +48,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.AutorProduccionAcademica'
-        "403":
-          description: ""
+        "404":
+          description: not found resource
     post:
       tags:
       - autor_produccion_academica
@@ -65,8 +65,8 @@ paths:
       responses:
         "201":
           description: '{int} models.AutorProduccionAcademica'
-        "403":
-          description: body is empty
+        "400":
+          description: the request contains incorrect syntax
   /autor_produccion_academica/{id}:
     get:
       tags:
@@ -84,8 +84,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.AutorProduccionAcademica'
-        "403":
-          description: :id is empty
+        "404":
+          description: not found resource
     put:
       tags:
       - autor_produccion_academica
@@ -108,8 +108,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.AutorProduccionAcademica'
-        "403":
-          description: :id is not int
+        "400":
+          description: the request contains incorrect syntax
     delete:
       tags:
       - autor_produccion_academica
@@ -124,8 +124,8 @@ paths:
       responses:
         "200":
           description: '{string} delete success!'
-        "403":
-          description: id is empty
+        "404":
+          description: not found resource
   /dato_adicional_produccion_academica/:
     get:
       tags:
@@ -163,8 +163,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.DatoAdicionalProduccionAcademica'
-        "403":
-          description: ""
+        "404":
+          description: not found resource
     post:
       tags:
       - dato_adicional_produccion_academica
@@ -180,8 +180,8 @@ paths:
       responses:
         "201":
           description: '{int} models.DatoAdicionalProduccionAcademica'
-        "403":
-          description: body is empty
+        "400":
+          description: the request contains incorrect syntax
   /dato_adicional_produccion_academica/{id}:
     get:
       tags:
@@ -199,8 +199,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.DatoAdicionalProduccionAcademica'
-        "403":
-          description: :id is empty
+        "404":
+          description: not found resource
     put:
       tags:
       - dato_adicional_produccion_academica
@@ -223,8 +223,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.DatoAdicionalProduccionAcademica'
-        "403":
-          description: :id is not int
+        "400":
+          description: the request contains incorrect syntax
     delete:
       tags:
       - dato_adicional_produccion_academica
@@ -239,8 +239,8 @@ paths:
       responses:
         "200":
           description: '{string} delete success!'
-        "403":
-          description: id is empty
+        "404":
+          description: not found resource
   /dato_adicional_subtipo_produccion/:
     get:
       tags:
@@ -278,8 +278,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.DatoAdicionalSubtipoProduccion'
-        "403":
-          description: ""
+        "404":
+          description: not found resource
     post:
       tags:
       - dato_adicional_subtipo_produccion
@@ -295,8 +295,8 @@ paths:
       responses:
         "201":
           description: '{int} models.DatoAdicionalSubtipoProduccion'
-        "403":
-          description: body is empty
+        "400":
+          description: the request contains incorrect syntax
   /dato_adicional_subtipo_produccion/{id}:
     get:
       tags:
@@ -314,8 +314,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.DatoAdicionalSubtipoProduccion'
-        "403":
-          description: :id is empty
+        "404":
+          description: not found resource
     put:
       tags:
       - dato_adicional_subtipo_produccion
@@ -338,8 +338,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.DatoAdicionalSubtipoProduccion'
-        "403":
-          description: :id is not int
+        "400":
+          description: the request contains incorrect syntax
     delete:
       tags:
       - dato_adicional_subtipo_produccion
@@ -354,8 +354,8 @@ paths:
       responses:
         "200":
           description: '{string} delete success!'
-        "403":
-          description: id is empty
+        "404":
+          description: not found resource
   /estado_autor_produccion/:
     get:
       tags:
@@ -393,8 +393,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.EstadoAutorProduccion'
-        "403":
-          description: ""
+        "404":
+          description: not found resource
     post:
       tags:
       - estado_autor_produccion
@@ -410,8 +410,8 @@ paths:
       responses:
         "201":
           description: '{int} models.EstadoAutorProduccion'
-        "403":
-          description: body is empty
+        "400":
+          description: the request contains incorrect syntax
   /estado_autor_produccion/{id}:
     get:
       tags:
@@ -429,8 +429,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.EstadoAutorProduccion'
-        "403":
-          description: :id is empty
+        "404":
+          description: not found resource
     put:
       tags:
       - estado_autor_produccion
@@ -453,8 +453,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.EstadoAutorProduccion'
-        "403":
-          description: :id is not int
+        "400":
+          description: the request contains incorrect syntax
     delete:
       tags:
       - estado_autor_produccion
@@ -469,8 +469,8 @@ paths:
       responses:
         "200":
           description: '{string} delete success!'
-        "403":
-          description: id is empty
+        "404":
+          description: not found resource
   /produccion_academica/:
     get:
       tags:
@@ -508,8 +508,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.ProduccionAcademica'
-        "403":
-          description: ""
+        "404":
+          description: not found resource
     post:
       tags:
       - produccion_academica
@@ -525,8 +525,8 @@ paths:
       responses:
         "201":
           description: '{int} models.ProduccionAcademica'
-        "403":
-          description: body is empty
+        "400":
+          description: the request contains incorrect syntax
   /produccion_academica/{id}:
     get:
       tags:
@@ -544,8 +544,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.ProduccionAcademica'
-        "403":
-          description: :id is empty
+        "404":
+          description: not found resource
     put:
       tags:
       - produccion_academica
@@ -568,8 +568,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.ProduccionAcademica'
-        "403":
-          description: :id is not int
+        "400":
+          description: the request contains incorrect syntax
     delete:
       tags:
       - produccion_academica
@@ -584,8 +584,8 @@ paths:
       responses:
         "200":
           description: '{string} delete success!'
-        "403":
-          description: id is empty
+        "404":
+          description: not found resource
   /soporte_produccion_academica/:
     get:
       tags:
@@ -623,8 +623,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.SoporteProduccionAcademica'
-        "403":
-          description: ""
+        "404":
+          description: not found resource
     post:
       tags:
       - soporte_produccion_academica
@@ -640,8 +640,8 @@ paths:
       responses:
         "201":
           description: '{int} models.SoporteProduccionAcademica'
-        "403":
-          description: body is empty
+        "400":
+          description: the request contains incorrect syntax
   /soporte_produccion_academica/{id}:
     get:
       tags:
@@ -659,8 +659,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.SoporteProduccionAcademica'
-        "403":
-          description: :id is empty
+        "404":
+          description: not found resource
     put:
       tags:
       - soporte_produccion_academica
@@ -683,8 +683,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.SoporteProduccionAcademica'
-        "403":
-          description: :id is not int
+        "400":
+          description: the request contains incorrect syntax
     delete:
       tags:
       - soporte_produccion_academica
@@ -699,8 +699,8 @@ paths:
       responses:
         "200":
           description: '{string} delete success!'
-        "403":
-          description: id is empty
+        "404":
+          description: not found resource
   /subtipo_produccion/:
     get:
       tags:
@@ -738,8 +738,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.SubtipoProduccion'
-        "403":
-          description: ""
+        "404":
+          description: not found resource
     post:
       tags:
       - subtipo_produccion
@@ -755,8 +755,8 @@ paths:
       responses:
         "201":
           description: '{int} models.SubtipoProduccion'
-        "403":
-          description: body is empty
+        "400":
+          description: the request contains incorrect syntax
   /subtipo_produccion/{id}:
     get:
       tags:
@@ -774,8 +774,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.SubtipoProduccion'
-        "403":
-          description: :id is empty
+        "404":
+          description: not found resource
     put:
       tags:
       - subtipo_produccion
@@ -798,8 +798,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.SubtipoProduccion'
-        "403":
-          description: :id is not int
+        "400":
+          description: the request contains incorrect syntax
     delete:
       tags:
       - subtipo_produccion
@@ -814,8 +814,8 @@ paths:
       responses:
         "200":
           description: '{string} delete success!'
-        "403":
-          description: id is empty
+        "404":
+          description: not found resource
   /tipo_dato_adicional/:
     get:
       tags:
@@ -853,8 +853,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.TipoDatoAdicional'
-        "403":
-          description: ""
+        "404":
+          description: not found resource
     post:
       tags:
       - tipo_dato_adicional
@@ -870,8 +870,8 @@ paths:
       responses:
         "201":
           description: '{int} models.TipoDatoAdicional'
-        "403":
-          description: body is empty
+        "400":
+          description: the request contains incorrect syntax
   /tipo_dato_adicional/{id}:
     get:
       tags:
@@ -889,8 +889,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.TipoDatoAdicional'
-        "403":
-          description: :id is empty
+        "404":
+          description: not found resource
     put:
       tags:
       - tipo_dato_adicional
@@ -913,8 +913,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.TipoDatoAdicional'
-        "403":
-          description: :id is not int
+        "400":
+          description: the request contains incorrect syntax
     delete:
       tags:
       - tipo_dato_adicional
@@ -929,8 +929,8 @@ paths:
       responses:
         "200":
           description: '{string} delete success!'
-        "403":
-          description: id is empty
+        "404":
+          description: not found resource
   /tipo_produccion/:
     get:
       tags:
@@ -968,8 +968,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.TipoProduccion'
-        "403":
-          description: ""
+        "404":
+          description: not found resource
     post:
       tags:
       - tipo_produccion
@@ -985,8 +985,8 @@ paths:
       responses:
         "201":
           description: '{int} models.TipoProduccion'
-        "403":
-          description: body is empty
+        "400":
+          description: the request contains incorrect syntax
   /tipo_produccion/{id}:
     get:
       tags:
@@ -1004,8 +1004,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.TipoProduccion'
-        "403":
-          description: :id is empty
+        "404":
+          description: not found resource
     put:
       tags:
       - tipo_produccion
@@ -1028,8 +1028,8 @@ paths:
           description: ""
           schema:
             $ref: '#/definitions/models.TipoProduccion'
-        "403":
-          description: :id is not int
+        "400":
+          description: the request contains incorrect syntax
     delete:
       tags:
       - tipo_produccion
@@ -1044,8 +1044,8 @@ paths:
       responses:
         "200":
           description: '{string} delete success!'
-        "403":
-          description: id is empty
+        "404":
+          description: not found resource
 definitions:
   models.AutorProduccionAcademica:
     title: AutorProduccionAcademica
