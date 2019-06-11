@@ -10,7 +10,7 @@ import (
 )
 
 type DatoAdicionalSubtipoProduccion struct {
-	Id                int                `orm:"column(id);pk"`
+	Id                int                `orm:"column(id);pk;auto"`
 	SubtipoProduccion *SubtipoProduccion `orm:"column(subtipo_produccion);rel(fk)"`
 	TipoDatoAdicional *TipoDatoAdicional `orm:"column(tipo_dato_adicional);rel(fk)"`
 }
@@ -47,7 +47,7 @@ func GetDatoAdicionalSubtipoProduccionById(id int) (v *DatoAdicionalSubtipoProdu
 func GetAllDatoAdicionalSubtipoProduccion(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(DatoAdicionalSubtipoProduccion))
+	qs := o.QueryTable(new(DatoAdicionalSubtipoProduccion)).RelatedSel()
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute

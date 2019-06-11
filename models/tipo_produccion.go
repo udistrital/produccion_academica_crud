@@ -10,7 +10,7 @@ import (
 )
 
 type TipoProduccion struct {
-	Id                int     `orm:"column(id);pk"`
+	Id                int     `orm:"column(id);pk;autos"`
 	Nombre            string  `orm:"column(nombre)"`
 	Descripcion       string  `orm:"column(descripcion);null"`
 	CodigoAbreviacion string  `orm:"column(codigo_abreviacion);null"`

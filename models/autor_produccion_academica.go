@@ -10,7 +10,7 @@ import (
 )
 
 type AutorProduccionAcademica struct {
-	Id                    int                    `orm:"column(id);pk"`
+	Id                    int                    `orm:"column(id);pk;auto"`
 	ProduccionAcademica   *ProduccionAcademica   `orm:"column(produccion_academica);rel(fk)"`
 	Ente                  int                    `orm:"column(ente)"`
 	EstadoAutorProduccion *EstadoAutorProduccion `orm:"column(estado_autor_produccion);rel(fk)"`
@@ -48,7 +48,7 @@ func GetAutorProduccionAcademicaById(id int) (v *AutorProduccionAcademica, err e
 func GetAllAutorProduccionAcademica(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(AutorProduccionAcademica))
+	qs := o.QueryTable(new(AutorProduccionAcademica)).RelatedSel()
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
