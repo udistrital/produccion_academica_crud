@@ -3,11 +3,11 @@ package controllers
 import (
 	"encoding/json"
 	"errors"
-	"github.com/udistrital/produccion_academica_crud/models"
 	"strconv"
 	"strings"
 
 	"github.com/astaxie/beego"
+	"github.com/planesticud/produccion_academica_crud/models"
 )
 
 // ArticuloController operations for Articulo
