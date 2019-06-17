@@ -26,7 +26,6 @@ services:
     volumes: 
       - postgres_data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_HOST=${PRODUCCION_ACADEMICA_CRUD__PGHOST}
       - POSTGRES_DB=${PRODUCCION_ACADEMICA_CRUD__PGDB}
       - POSTGRES_USER=${PRODUCCION_ACADEMICA_CRUD__PGUSER}
       - POSTGRES_PASSWORD=${PRODUCCION_ACADEMICA_CRUD__PGPASS}
