@@ -1599,6 +1599,35 @@
                     }
                 }
             }
+        },
+        "/tr_produccion_academica/{ente}": {
+            "get": {
+                "tags": [
+                    "tr_produccion_academica"
+                ],
+                "description": "get TrProduccionAcademicaController",
+                "operationId": "TrProduccionAcademicaController.Get All By Ente",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "Ente",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TrProduccionAcademicaController"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -1832,6 +1861,10 @@
                     "$ref": "#/definitions/models.ProduccionAcademica"
                 }
             }
+        },
+        "models.TrProduccionAcademicaController": {
+            "title": "TrProduccionAcademicaController",
+            "type": "object"
         }
     },
     "tags": [

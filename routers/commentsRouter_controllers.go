@@ -421,4 +421,13 @@ func init() {
             Filters: nil,
             Params: nil})
 
+    beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TrProduccionAcademicaController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TrProduccionAcademicaController"],
+        beego.ControllerComments{
+            Method: "GetAllByEnte",
+            Router: `/:ente`,
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
 }

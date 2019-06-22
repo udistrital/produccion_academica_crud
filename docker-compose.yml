@@ -20,7 +20,7 @@ services:
       - back_end
   db:
     container_name: ${PRODUCCION_ACADEMICA_CRUD__PGHOST}
-    image: postgres:9.5-alpine
+    image: postgres:10
     ports:
       - "${PRODUCCION_ACADEMICA_CRUD__PGPORT}:5432"
     volumes: 

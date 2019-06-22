@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"encoding/json"
+	"strconv"
 	
 	"github.com/udistrital/produccion_academica_crud/models"
 
@@ -16,6 +17,33 @@ type TrProduccionAcademicaController struct {
 
 func (c *TrProduccionAcademicaController) URLMapping() {
 	c.Mapping("Post", c.Post)
+	c.Mapping("GetAllByEnte", c.GetAllByEnte)
+}
+
+
+// GetAllByEnte ...
+// @Title Get All By Ente
+// @Description get TrProduccionAcademicaController
+// @Param	id		path 	string	true		"Ente"
+// @Success 200 {object} models.TrProduccionAcademicaController
+// @Failure 404 not found resource
+// @router /:ente [get]
+func (c *TrProduccionAcademicaController) GetAllByEnte() {
+	idEnteStr := c.Ctx.Input.Param(":ente")
+	idEnte, _ := strconv.Atoi(idEnteStr)
+	l, err := models.GetProduccionesAcademicasByEnte(idEnte)
+	if err != nil {
+		logs.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		c.Data["system"] = err
+		c.Abort("404")
+	} else {
+		if l == nil {
+			l = append(l, map[string]interface{}{})
+		}
+		c.Data["json"] = l
+	}
+	c.ServeJSON()
 }
 
 // @Title PostTrProduccionAcademica
