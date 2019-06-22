@@ -1571,9 +1571,45 @@
                     }
                 }
             }
+        },
+        "/tr_produccion_academica/": {
+            "post": {
+                "tags": [
+                    "tr_produccion_academica"
+                ],
+                "description": "create the TrProduccionAcademica",
+                "operationId": "TrProduccionAcademicaController.PostTrProduccionAcademica",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for TrProduccionAcademica content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.TrProduccionAcademica"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.TrProduccionAcademica"
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            }
         }
     },
     "definitions": {
+        "9243.\u003cnil\u003e.AutorProduccionAcademica": {
+            "title": "AutorProduccionAcademica",
+            "type": "object"
+        },
+        "9296.\u003cnil\u003e.DatoAdicionalProduccionAcademica": {
+            "title": "DatoAdicionalProduccionAcademica",
+            "type": "object"
+        },
         "models.AutorProduccionAcademica": {
             "title": "AutorProduccionAcademica",
             "type": "object",
@@ -1781,6 +1817,21 @@
                     "format": "double"
                 }
             }
+        },
+        "models.TrProduccionAcademica": {
+            "title": "TrProduccionAcademica",
+            "type": "object",
+            "properties": {
+                "Autores": {
+                    "$ref": "#/definitions/9243.\u003cnil\u003e.AutorProduccionAcademica"
+                },
+                "DatosAdicionales": {
+                    "$ref": "#/definitions/9296.\u003cnil\u003e.DatoAdicionalProduccionAcademica"
+                },
+                "ProduccionAcademica": {
+                    "$ref": "#/definitions/models.ProduccionAcademica"
+                }
+            }
         }
     },
     "tags": [
@@ -1815,6 +1866,10 @@
         {
             "name": "tipo_dato_adicional",
             "description": "TipoDatoAdicionalController operations for TipoDatoAdicional\n"
+        },
+        {
+            "name": "tr_produccion_academica",
+            "description": "operations for TrProduccionAcademica\n"
         },
         {
             "name": "estado_autor_produccion",
