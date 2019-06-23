@@ -18,13 +18,29 @@ func GetProduccionesAcademicasByEnte(ente int) (v []interface{}, err error) {
 	var autores []*AutorProduccionAcademica
 	if _, err := o.QueryTable(new(AutorProduccionAcademica)).RelatedSel().Filter("ente",ente).All(&autores); err == nil{
 		for _, autor := range autores {
-			v = append(v,TrProduccionAcademica{
-				ProduccionAcademica: autor.ProduccionAcademica,
-				Autores: nil,
-				DatosAdicionales: nil,
+
+			produccionAcademica := autor.ProduccionAcademica
+
+			var autoresProduccion []AutorProduccionAcademica
+			if _, err := o.QueryTable(new(AutorProduccionAcademica)).Filter("produccion_academica",produccionAcademica.Id).All(&autoresProduccion); err != nil{
+				return nil, err
+			}
+
+			var datosAdicionales []DatoAdicionalProduccionAcademica
+			if _, err := o.QueryTable(new(DatoAdicionalProduccionAcademica)).RelatedSel().Filter("ProduccionAcademica__Id",produccionAcademica.Id).All(&datosAdicionales); err != nil{
+				return nil, err
+			}
+
+			v = append(v,map[string]interface{}{
+				"Titulo": produccionAcademica.Titulo,
+				"Resumen": produccionAcademica.Resumen,
+				"Fecha": produccionAcademica.Fecha,
+				"SubtipoProduccion":produccionAcademica.SubtipoProduccion,
+				"Autores": &autoresProduccion,
+				"DatosAdicionales": &datosAdicionales,
 			})
 		}
-		fmt.Println(v)
+
 		return v, nil
 	}
 	return nil, err
