@@ -1083,6 +1083,23 @@ paths:
             $ref: '#/definitions/models.TrProduccionAcademicaController'
         "404":
           description: not found resource
+  /tr_produccion_academica/{id}:
+    delete:
+      tags:
+      - tr_produccion_academica
+      description: delete the ProduccionAcademica
+      operationId: TrProduccionAcademicaController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "404":
+          description: not found resource
 definitions:
   9243.<nil>.AutorProduccionAcademica:
     title: AutorProduccionAcademica

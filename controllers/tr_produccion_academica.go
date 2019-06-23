@@ -18,6 +18,7 @@ type TrProduccionAcademicaController struct {
 func (c *TrProduccionAcademicaController) URLMapping() {
 	c.Mapping("Post", c.Post)
 	c.Mapping("GetAllByEnte", c.GetAllByEnte)
+	c.Mapping("Delete",c.Delete)
 }
 
 
@@ -69,6 +70,27 @@ func (c *TrProduccionAcademicaController) Post() {
 		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
 		c.Data["system"] = err
 		c.Abort("400")
+	}
+	c.ServeJSON()
+}
+
+// Delete ...
+// @Title Delete
+// @Description delete the ProduccionAcademica
+// @Param	id		path 	string	true		"The id you want to delete"
+// @Success 200 {string} delete success!
+// @Failure 404 not found resource
+// @router /:id [delete]
+func (c *TrProduccionAcademicaController) Delete() {
+	idStr := c.Ctx.Input.Param(":id")
+	id, _ := strconv.Atoi(idStr)
+	if err := models.TrDeleteProduccionAcademica(id); err == nil {
+		c.Data["json"] = map[string]interface{}{"Id": id}
+	} else {
+		logs.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		c.Data["system"] = err
+		c.Abort("404")
 	}
 	c.ServeJSON()
 }

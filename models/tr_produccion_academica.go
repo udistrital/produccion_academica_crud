@@ -32,6 +32,7 @@ func GetProduccionesAcademicasByEnte(ente int) (v []interface{}, err error) {
 			}
 
 			v = append(v,map[string]interface{}{
+				"Id": produccionAcademica.Id,
 				"Titulo": produccionAcademica.Titulo,
 				"Resumen": produccionAcademica.Resumen,
 				"Fecha": produccionAcademica.Fecha,
@@ -80,5 +81,20 @@ func AddTransaccionProduccionAcademica(m *TrProduccionAcademica) (err error) {
 		_ = o.Rollback()
 	}
 
+	return
+}
+
+// TrDeleteProduccionAcademica deletes ProduccionAcademica by Id and returns error if
+// the record to be deleted doesn't exist
+func TrDeleteProduccionAcademica(id int) (err error) {
+	o := orm.NewOrm()
+	v := ProduccionAcademica{Id: id}
+	// ascertain id exists in the database
+	if err = o.Read(&v); err == nil {
+		var num int64
+		if num, err = o.Delete(&ProduccionAcademica{Id: id}); err == nil {
+			fmt.Println("Number of records deleted in database:", num)
+		}
+	}
 	return
 }
