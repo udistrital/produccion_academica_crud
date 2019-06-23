@@ -1084,6 +1084,30 @@ paths:
         "404":
           description: not found resource
   /tr_produccion_academica/{id}:
+    put:
+      tags:
+      - tr_produccion_academica
+      description: update the TrProduccionAcademica
+      operationId: TrProduccionAcademicaController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for TrProduccionAcademica content
+        required: true
+        schema:
+          $ref: '#/definitions/models.TrProduccionAcademica'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TrProduccionAcademica'
+        "400":
+          description: the request contains incorrect syntax
     delete:
       tags:
       - tr_produccion_academica

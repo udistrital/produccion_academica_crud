@@ -19,6 +19,7 @@ func (c *TrProduccionAcademicaController) URLMapping() {
 	c.Mapping("Post", c.Post)
 	c.Mapping("GetAllByEnte", c.GetAllByEnte)
 	c.Mapping("Delete",c.Delete)
+	c.Mapping("Put",c.Put)
 }
 
 
@@ -58,6 +59,37 @@ func (c *TrProduccionAcademicaController) Post() {
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if err := models.AddTransaccionProduccionAcademica(&v); err == nil {
 			c.Ctx.Output.SetStatus(201)
+			c.Data["json"] = v
+		} else {
+			logs.Error(err)
+			//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+			c.Data["system"] = err
+			c.Abort("400")
+		}
+	} else {
+		logs.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		c.Data["system"] = err
+		c.Abort("400")
+	}
+	c.ServeJSON()
+}
+
+// Put ...
+// @Title Put
+// @Description update the TrProduccionAcademica
+// @Param	id		path 	string	true		"The id you want to update"
+// @Param	body		body 	models.TrProduccionAcademica	true		"body for TrProduccionAcademica content"
+// @Success 200 {object} models.TrProduccionAcademica
+// @Failure 400 the request contains incorrect syntax
+// @router /:id [put]
+func (c *TrProduccionAcademicaController) Put() {
+	idStr := c.Ctx.Input.Param(":id")
+	id, _ := strconv.Atoi(idStr)
+	var v models.TrProduccionAcademica
+	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
+		v.ProduccionAcademica.Id = id
+		if err := models.UpdateTransaccionProduccionAcademica(&v); err == nil {
 			c.Data["json"] = v
 		} else {
 			logs.Error(err)

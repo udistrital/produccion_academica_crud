@@ -61,6 +61,7 @@ func AddTransaccionProduccionAcademica(m *TrProduccionAcademica) (err error) {
 				err = errTr
 				fmt.Println(err)
 				_ = o.Rollback()
+				return
 			}
 		}
 
@@ -81,6 +82,52 @@ func AddTransaccionProduccionAcademica(m *TrProduccionAcademica) (err error) {
 		_ = o.Rollback()
 	}
 
+	return
+}
+
+// UpdateTransaccionProduccionAcademica updates ProduccionAcademica by Id and returns error if
+// the record to be updated doesn't exist
+func UpdateTransaccionProduccionAcademica(m *TrProduccionAcademica) (err error) {
+	o := orm.NewOrm()
+	err = o.Begin()
+
+	v := ProduccionAcademica{Id: m.ProduccionAcademica.Id}
+	// ascertain id exists in the database
+	if errTr := o.Read(&v); errTr == nil {
+		var num int64
+		if num, errTr = o.Update(m.ProduccionAcademica); errTr == nil {
+			fmt.Println("Number of records updated in database:", num)
+
+			for _, v := range *m.DatosAdicionales {
+					var datoAdicional DatoAdicionalProduccionAcademica
+					if errTr = o.QueryTable(new(DatoAdicionalProduccionAcademica)).RelatedSel().Filter("DatoAdicionalSubtipoProduccion__Id",v.DatoAdicionalSubtipoProduccion.Id).Filter("ProduccionAcademica__Id",m.ProduccionAcademica.Id).One(&datoAdicional); err == nil{
+						datoAdicional.Valor = v.Valor
+						if _, errTr = o.Update(&datoAdicional,"Valor"); errTr != nil {
+							err = errTr
+							fmt.Println(err)
+							_ = o.Rollback()
+							return
+						}
+					} else {
+						err = errTr
+						fmt.Println(err)
+						_ = o.Rollback()
+						return
+					}		
+			}
+
+			_ = o.Commit()
+		}	else {
+			err = errTr
+			fmt.Println(err)
+			_ = o.Rollback()
+			return
+		}
+	} else {
+		err = errTr
+		fmt.Println(err)
+		_ = o.Rollback()
+	}
 	return
 }
 
