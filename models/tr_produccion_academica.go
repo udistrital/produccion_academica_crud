@@ -22,7 +22,7 @@ func GetProduccionesAcademicasByEnte(ente int) (v []interface{}, err error) {
 			produccionAcademica := autor.ProduccionAcademica
 
 			var autoresProduccion []AutorProduccionAcademica
-			if _, err := o.QueryTable(new(AutorProduccionAcademica)).Filter("produccion_academica",produccionAcademica.Id).All(&autoresProduccion); err != nil{
+			if _, err := o.QueryTable(new(AutorProduccionAcademica)).RelatedSel().Filter("produccion_academica",produccionAcademica.Id).All(&autoresProduccion); err != nil{
 				return nil, err
 			}
 
