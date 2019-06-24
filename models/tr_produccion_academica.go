@@ -102,12 +102,26 @@ func UpdateTransaccionProduccionAcademica(m *TrProduccionAcademica) (err error) 
 					var datoAdicional DatoAdicionalProduccionAcademica
 					if errTr = o.QueryTable(new(DatoAdicionalProduccionAcademica)).RelatedSel().Filter("DatoAdicionalSubtipoProduccion__Id",v.DatoAdicionalSubtipoProduccion.Id).Filter("ProduccionAcademica__Id",m.ProduccionAcademica.Id).One(&datoAdicional); err == nil{
 						datoAdicional.Valor = v.Valor
-						if _, errTr = o.Update(&datoAdicional,"Valor"); errTr != nil {
-							err = errTr
-							fmt.Println(err)
-							_ = o.Rollback()
-							return
+
+						if (datoAdicional.Id != 0) {
+							if _, errTr = o.Update(&datoAdicional,"Valor"); errTr != nil {
+								err = errTr
+								fmt.Println(err)
+								_ = o.Rollback()
+								return
+							}
+						} else {
+							datoAdicional.ProduccionAcademica = m.ProduccionAcademica
+							datoAdicional.DatoAdicionalSubtipoProduccion = v.DatoAdicionalSubtipoProduccion
+							if _, errTr = o.Insert(&datoAdicional); errTr != nil {
+								err = errTr
+								fmt.Println(err)
+								_ = o.Rollback()
+								return
+							}
 						}
+
+						
 					} else {
 						err = errTr
 						fmt.Println(err)
