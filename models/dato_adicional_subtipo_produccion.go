@@ -9,48 +9,45 @@ import (
 	"github.com/astaxie/beego/orm"
 )
 
-type TipoTraduccion struct {
-	Id                int    `orm:"column(id);pk"`
-	Nombre            string `orm:"column(nombre)"`
-	Descripcion       string `orm:"column(descripcion);null"`
-	CodigoAbreviacion string `orm:"column(codigo_abreviacion);null"`
-	NumeroOrden       int    `orm:"column(numero_orden);null"`
-	Activo            bool   `orm:"column(activo)"`
+type DatoAdicionalSubtipoProduccion struct {
+	Id                int                `orm:"column(id);pk;auto"`
+	SubtipoProduccion *SubtipoProduccion `orm:"column(subtipo_produccion);rel(fk)"`
+	TipoDatoAdicional *TipoDatoAdicional `orm:"column(tipo_dato_adicional);rel(fk)"`
 }
 
-func (t *TipoTraduccion) TableName() string {
-	return "tipo_traduccion"
+func (t *DatoAdicionalSubtipoProduccion) TableName() string {
+	return "dato_adicional_subtipo_produccion"
 }
 
 func init() {
-	orm.RegisterModel(new(TipoTraduccion))
+	orm.RegisterModel(new(DatoAdicionalSubtipoProduccion))
 }
 
-// AddTipoTraduccion insert a new TipoTraduccion into database and returns
+// AddDatoAdicionalSubtipoProduccion insert a new DatoAdicionalSubtipoProduccion into database and returns
 // last inserted Id on success.
-func AddTipoTraduccion(m *TipoTraduccion) (id int64, err error) {
+func AddDatoAdicionalSubtipoProduccion(m *DatoAdicionalSubtipoProduccion) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetTipoTraduccionById retrieves TipoTraduccion by Id. Returns error if
+// GetDatoAdicionalSubtipoProduccionById retrieves DatoAdicionalSubtipoProduccion by Id. Returns error if
 // Id doesn't exist
-func GetTipoTraduccionById(id int) (v *TipoTraduccion, err error) {
+func GetDatoAdicionalSubtipoProduccionById(id int) (v *DatoAdicionalSubtipoProduccion, err error) {
 	o := orm.NewOrm()
-	v = &TipoTraduccion{Id: id}
+	v = &DatoAdicionalSubtipoProduccion{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllTipoTraduccion retrieves all TipoTraduccion matches certain condition. Returns empty list if
+// GetAllDatoAdicionalSubtipoProduccion retrieves all DatoAdicionalSubtipoProduccion matches certain condition. Returns empty list if
 // no records exist
-func GetAllTipoTraduccion(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllDatoAdicionalSubtipoProduccion(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(TipoTraduccion))
+	qs := o.QueryTable(new(DatoAdicionalSubtipoProduccion)).RelatedSel()
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
@@ -100,7 +97,7 @@ func GetAllTipoTraduccion(query map[string]string, fields []string, sortby []str
 		}
 	}
 
-	var l []TipoTraduccion
+	var l []DatoAdicionalSubtipoProduccion
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -123,11 +120,11 @@ func GetAllTipoTraduccion(query map[string]string, fields []string, sortby []str
 	return nil, err
 }
 
-// UpdateTipoTraduccion updates TipoTraduccion by Id and returns error if
+// UpdateDatoAdicionalSubtipoProduccion updates DatoAdicionalSubtipoProduccion by Id and returns error if
 // the record to be updated doesn't exist
-func UpdateTipoTraduccionById(m *TipoTraduccion) (err error) {
+func UpdateDatoAdicionalSubtipoProduccionById(m *DatoAdicionalSubtipoProduccion) (err error) {
 	o := orm.NewOrm()
-	v := TipoTraduccion{Id: m.Id}
+	v := DatoAdicionalSubtipoProduccion{Id: m.Id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -138,15 +135,15 @@ func UpdateTipoTraduccionById(m *TipoTraduccion) (err error) {
 	return
 }
 
-// DeleteTipoTraduccion deletes TipoTraduccion by Id and returns error if
+// DeleteDatoAdicionalSubtipoProduccion deletes DatoAdicionalSubtipoProduccion by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteTipoTraduccion(id int) (err error) {
+func DeleteDatoAdicionalSubtipoProduccion(id int) (err error) {
 	o := orm.NewOrm()
-	v := TipoTraduccion{Id: id}
+	v := DatoAdicionalSubtipoProduccion{Id: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&TipoTraduccion{Id: id}); err == nil {
+		if num, err = o.Delete(&DatoAdicionalSubtipoProduccion{Id: id}); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}

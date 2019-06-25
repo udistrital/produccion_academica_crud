@@ -11,12 +11,12 @@ info:
     url: http://www.apache.org/licenses/LICENSE-2.0.html
 basePath: /v1
 paths:
-  /articulo/:
+  /autor_produccion_academica/:
     get:
       tags:
-      - articulo
-      description: get Articulo
-      operationId: ArticuloController.Get All
+      - autor_produccion_academica
+      description: get AutorProduccionAcademica
+      operationId: AutorProduccionAcademicaController.Get All
       parameters:
       - in: query
         name: query
@@ -47,32 +47,32 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.Articulo'
-        "403":
-          description: ""
+            $ref: '#/definitions/models.AutorProduccionAcademica'
+        "404":
+          description: not found resource
     post:
       tags:
-      - articulo
-      description: create Articulo
-      operationId: ArticuloController.Post
+      - autor_produccion_academica
+      description: create AutorProduccionAcademica
+      operationId: AutorProduccionAcademicaController.Post
       parameters:
       - in: body
         name: body
-        description: body for Articulo content
+        description: body for AutorProduccionAcademica content
         required: true
         schema:
-          $ref: '#/definitions/models.Articulo'
+          $ref: '#/definitions/models.AutorProduccionAcademica'
       responses:
         "201":
-          description: '{int} models.Articulo'
-        "403":
-          description: body is empty
-  /articulo/{id}:
+          description: '{int} models.AutorProduccionAcademica'
+        "400":
+          description: the request contains incorrect syntax
+  /autor_produccion_academica/{id}:
     get:
       tags:
-      - articulo
-      description: get Articulo by id
-      operationId: ArticuloController.Get One
+      - autor_produccion_academica
+      description: get AutorProduccionAcademica by id
+      operationId: AutorProduccionAcademicaController.Get One
       parameters:
       - in: path
         name: id
@@ -83,14 +83,14 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.Articulo'
-        "403":
-          description: :id is empty
+            $ref: '#/definitions/models.AutorProduccionAcademica'
+        "404":
+          description: not found resource
     put:
       tags:
-      - articulo
-      description: update the Articulo
-      operationId: ArticuloController.Put
+      - autor_produccion_academica
+      description: update the AutorProduccionAcademica
+      operationId: AutorProduccionAcademicaController.Put
       parameters:
       - in: path
         name: id
@@ -99,22 +99,22 @@ paths:
         type: string
       - in: body
         name: body
-        description: body for Articulo content
+        description: body for AutorProduccionAcademica content
         required: true
         schema:
-          $ref: '#/definitions/models.Articulo'
+          $ref: '#/definitions/models.AutorProduccionAcademica'
       responses:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.Articulo'
-        "403":
-          description: :id is not int
+            $ref: '#/definitions/models.AutorProduccionAcademica'
+        "400":
+          description: the request contains incorrect syntax
     delete:
       tags:
-      - articulo
-      description: delete the Articulo
-      operationId: ArticuloController.Delete
+      - autor_produccion_academica
+      description: delete the AutorProduccionAcademica
+      operationId: AutorProduccionAcademicaController.Delete
       parameters:
       - in: path
         name: id
@@ -124,14 +124,14 @@ paths:
       responses:
         "200":
           description: '{string} delete success!'
-        "403":
-          description: id is empty
-  /libro/:
+        "404":
+          description: not found resource
+  /dato_adicional_produccion_academica/:
     get:
       tags:
-      - libro
-      description: get Libro
-      operationId: LibroController.Get All
+      - dato_adicional_produccion_academica
+      description: get DatoAdicionalProduccionAcademica
+      operationId: DatoAdicionalProduccionAcademicaController.Get All
       parameters:
       - in: query
         name: query
@@ -162,32 +162,32 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.Libro'
-        "403":
-          description: ""
+            $ref: '#/definitions/models.DatoAdicionalProduccionAcademica'
+        "404":
+          description: not found resource
     post:
       tags:
-      - libro
-      description: create Libro
-      operationId: LibroController.Post
+      - dato_adicional_produccion_academica
+      description: create DatoAdicionalProduccionAcademica
+      operationId: DatoAdicionalProduccionAcademicaController.Post
       parameters:
       - in: body
         name: body
-        description: body for Libro content
+        description: body for DatoAdicionalProduccionAcademica content
         required: true
         schema:
-          $ref: '#/definitions/models.Libro'
+          $ref: '#/definitions/models.DatoAdicionalProduccionAcademica'
       responses:
         "201":
-          description: '{int} models.Libro'
-        "403":
-          description: body is empty
-  /libro/{id}:
+          description: '{int} models.DatoAdicionalProduccionAcademica'
+        "400":
+          description: the request contains incorrect syntax
+  /dato_adicional_produccion_academica/{id}:
     get:
       tags:
-      - libro
-      description: get Libro by id
-      operationId: LibroController.Get One
+      - dato_adicional_produccion_academica
+      description: get DatoAdicionalProduccionAcademica by id
+      operationId: DatoAdicionalProduccionAcademicaController.Get One
       parameters:
       - in: path
         name: id
@@ -198,14 +198,14 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.Libro'
-        "403":
-          description: :id is empty
+            $ref: '#/definitions/models.DatoAdicionalProduccionAcademica'
+        "404":
+          description: not found resource
     put:
       tags:
-      - libro
-      description: update the Libro
-      operationId: LibroController.Put
+      - dato_adicional_produccion_academica
+      description: update the DatoAdicionalProduccionAcademica
+      operationId: DatoAdicionalProduccionAcademicaController.Put
       parameters:
       - in: path
         name: id
@@ -214,22 +214,22 @@ paths:
         type: string
       - in: body
         name: body
-        description: body for Libro content
+        description: body for DatoAdicionalProduccionAcademica content
         required: true
         schema:
-          $ref: '#/definitions/models.Libro'
+          $ref: '#/definitions/models.DatoAdicionalProduccionAcademica'
       responses:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.Libro'
-        "403":
-          description: :id is not int
+            $ref: '#/definitions/models.DatoAdicionalProduccionAcademica'
+        "400":
+          description: the request contains incorrect syntax
     delete:
       tags:
-      - libro
-      description: delete the Libro
-      operationId: LibroController.Delete
+      - dato_adicional_produccion_academica
+      description: delete the DatoAdicionalProduccionAcademica
+      operationId: DatoAdicionalProduccionAcademicaController.Delete
       parameters:
       - in: path
         name: id
@@ -239,14 +239,14 @@ paths:
       responses:
         "200":
           description: '{string} delete success!'
-        "403":
-          description: id is empty
-  /medio_divulgacion/:
+        "404":
+          description: not found resource
+  /dato_adicional_subtipo_produccion/:
     get:
       tags:
-      - medio_divulgacion
-      description: get MedioDivulgacion
-      operationId: MedioDivulgacionController.Get All
+      - dato_adicional_subtipo_produccion
+      description: get DatoAdicionalSubtipoProduccion
+      operationId: DatoAdicionalSubtipoProduccionController.Get All
       parameters:
       - in: query
         name: query
@@ -277,32 +277,32 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.MedioDivulgacion'
-        "403":
-          description: ""
+            $ref: '#/definitions/models.DatoAdicionalSubtipoProduccion'
+        "404":
+          description: not found resource
     post:
       tags:
-      - medio_divulgacion
-      description: create MedioDivulgacion
-      operationId: MedioDivulgacionController.Post
+      - dato_adicional_subtipo_produccion
+      description: create DatoAdicionalSubtipoProduccion
+      operationId: DatoAdicionalSubtipoProduccionController.Post
       parameters:
       - in: body
         name: body
-        description: body for MedioDivulgacion content
+        description: body for DatoAdicionalSubtipoProduccion content
         required: true
         schema:
-          $ref: '#/definitions/models.MedioDivulgacion'
+          $ref: '#/definitions/models.DatoAdicionalSubtipoProduccion'
       responses:
         "201":
-          description: '{int} models.MedioDivulgacion'
-        "403":
-          description: body is empty
-  /medio_divulgacion/{id}:
+          description: '{int} models.DatoAdicionalSubtipoProduccion'
+        "400":
+          description: the request contains incorrect syntax
+  /dato_adicional_subtipo_produccion/{id}:
     get:
       tags:
-      - medio_divulgacion
-      description: get MedioDivulgacion by id
-      operationId: MedioDivulgacionController.Get One
+      - dato_adicional_subtipo_produccion
+      description: get DatoAdicionalSubtipoProduccion by id
+      operationId: DatoAdicionalSubtipoProduccionController.Get One
       parameters:
       - in: path
         name: id
@@ -313,14 +313,14 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.MedioDivulgacion'
-        "403":
-          description: :id is empty
+            $ref: '#/definitions/models.DatoAdicionalSubtipoProduccion'
+        "404":
+          description: not found resource
     put:
       tags:
-      - medio_divulgacion
-      description: update the MedioDivulgacion
-      operationId: MedioDivulgacionController.Put
+      - dato_adicional_subtipo_produccion
+      description: update the DatoAdicionalSubtipoProduccion
+      operationId: DatoAdicionalSubtipoProduccionController.Put
       parameters:
       - in: path
         name: id
@@ -329,22 +329,22 @@ paths:
         type: string
       - in: body
         name: body
-        description: body for MedioDivulgacion content
+        description: body for DatoAdicionalSubtipoProduccion content
         required: true
         schema:
-          $ref: '#/definitions/models.MedioDivulgacion'
+          $ref: '#/definitions/models.DatoAdicionalSubtipoProduccion'
       responses:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.MedioDivulgacion'
-        "403":
-          description: :id is not int
+            $ref: '#/definitions/models.DatoAdicionalSubtipoProduccion'
+        "400":
+          description: the request contains incorrect syntax
     delete:
       tags:
-      - medio_divulgacion
-      description: delete the MedioDivulgacion
-      operationId: MedioDivulgacionController.Delete
+      - dato_adicional_subtipo_produccion
+      description: delete the DatoAdicionalSubtipoProduccion
+      operationId: DatoAdicionalSubtipoProduccionController.Delete
       parameters:
       - in: path
         name: id
@@ -354,14 +354,14 @@ paths:
       responses:
         "200":
           description: '{string} delete success!'
-        "403":
-          description: id is empty
-  /medio_publicacion/:
+        "404":
+          description: not found resource
+  /estado_autor_produccion/:
     get:
       tags:
-      - medio_publicacion
-      description: get MedioPublicacion
-      operationId: MedioPublicacionController.Get All
+      - estado_autor_produccion
+      description: get EstadoAutorProduccion
+      operationId: EstadoAutorProduccionController.Get All
       parameters:
       - in: query
         name: query
@@ -392,32 +392,32 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.MedioPublicacion'
-        "403":
-          description: ""
+            $ref: '#/definitions/models.EstadoAutorProduccion'
+        "404":
+          description: not found resource
     post:
       tags:
-      - medio_publicacion
-      description: create MedioPublicacion
-      operationId: MedioPublicacionController.Post
+      - estado_autor_produccion
+      description: create EstadoAutorProduccion
+      operationId: EstadoAutorProduccionController.Post
       parameters:
       - in: body
         name: body
-        description: body for MedioPublicacion content
+        description: body for EstadoAutorProduccion content
         required: true
         schema:
-          $ref: '#/definitions/models.MedioPublicacion'
+          $ref: '#/definitions/models.EstadoAutorProduccion'
       responses:
         "201":
-          description: '{int} models.MedioPublicacion'
-        "403":
-          description: body is empty
-  /medio_publicacion/{id}:
+          description: '{int} models.EstadoAutorProduccion'
+        "400":
+          description: the request contains incorrect syntax
+  /estado_autor_produccion/{id}:
     get:
       tags:
-      - medio_publicacion
-      description: get MedioPublicacion by id
-      operationId: MedioPublicacionController.Get One
+      - estado_autor_produccion
+      description: get EstadoAutorProduccion by id
+      operationId: EstadoAutorProduccionController.Get One
       parameters:
       - in: path
         name: id
@@ -428,14 +428,14 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.MedioPublicacion'
-        "403":
-          description: :id is empty
+            $ref: '#/definitions/models.EstadoAutorProduccion'
+        "404":
+          description: not found resource
     put:
       tags:
-      - medio_publicacion
-      description: update the MedioPublicacion
-      operationId: MedioPublicacionController.Put
+      - estado_autor_produccion
+      description: update the EstadoAutorProduccion
+      operationId: EstadoAutorProduccionController.Put
       parameters:
       - in: path
         name: id
@@ -444,22 +444,22 @@ paths:
         type: string
       - in: body
         name: body
-        description: body for MedioPublicacion content
+        description: body for EstadoAutorProduccion content
         required: true
         schema:
-          $ref: '#/definitions/models.MedioPublicacion'
+          $ref: '#/definitions/models.EstadoAutorProduccion'
       responses:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.MedioPublicacion'
-        "403":
-          description: :id is not int
+            $ref: '#/definitions/models.EstadoAutorProduccion'
+        "400":
+          description: the request contains incorrect syntax
     delete:
       tags:
-      - medio_publicacion
-      description: delete the MedioPublicacion
-      operationId: MedioPublicacionController.Delete
+      - estado_autor_produccion
+      description: delete the EstadoAutorProduccion
+      operationId: EstadoAutorProduccionController.Delete
       parameters:
       - in: path
         name: id
@@ -469,14 +469,14 @@ paths:
       responses:
         "200":
           description: '{string} delete success!'
-        "403":
-          description: id is empty
-  /otra_publicacion/:
+        "404":
+          description: not found resource
+  /produccion_academica/:
     get:
       tags:
-      - otra_publicacion
-      description: get OtraPublicacion
-      operationId: OtraPublicacionController.Get All
+      - produccion_academica
+      description: get ProduccionAcademica
+      operationId: ProduccionAcademicaController.Get All
       parameters:
       - in: query
         name: query
@@ -507,32 +507,32 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.OtraPublicacion'
-        "403":
-          description: ""
+            $ref: '#/definitions/models.ProduccionAcademica'
+        "404":
+          description: not found resource
     post:
       tags:
-      - otra_publicacion
-      description: create OtraPublicacion
-      operationId: OtraPublicacionController.Post
+      - produccion_academica
+      description: create ProduccionAcademica
+      operationId: ProduccionAcademicaController.Post
       parameters:
       - in: body
         name: body
-        description: body for OtraPublicacion content
+        description: body for ProduccionAcademica content
         required: true
         schema:
-          $ref: '#/definitions/models.OtraPublicacion'
+          $ref: '#/definitions/models.ProduccionAcademica'
       responses:
         "201":
-          description: '{int} models.OtraPublicacion'
-        "403":
-          description: body is empty
-  /otra_publicacion/{id}:
+          description: '{int} models.ProduccionAcademica'
+        "400":
+          description: the request contains incorrect syntax
+  /produccion_academica/{id}:
     get:
       tags:
-      - otra_publicacion
-      description: get OtraPublicacion by id
-      operationId: OtraPublicacionController.Get One
+      - produccion_academica
+      description: get ProduccionAcademica by id
+      operationId: ProduccionAcademicaController.Get One
       parameters:
       - in: path
         name: id
@@ -543,14 +543,14 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.OtraPublicacion'
-        "403":
-          description: :id is empty
+            $ref: '#/definitions/models.ProduccionAcademica'
+        "404":
+          description: not found resource
     put:
       tags:
-      - otra_publicacion
-      description: update the OtraPublicacion
-      operationId: OtraPublicacionController.Put
+      - produccion_academica
+      description: update the ProduccionAcademica
+      operationId: ProduccionAcademicaController.Put
       parameters:
       - in: path
         name: id
@@ -559,22 +559,22 @@ paths:
         type: string
       - in: body
         name: body
-        description: body for OtraPublicacion content
+        description: body for ProduccionAcademica content
         required: true
         schema:
-          $ref: '#/definitions/models.OtraPublicacion'
+          $ref: '#/definitions/models.ProduccionAcademica'
       responses:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.OtraPublicacion'
-        "403":
-          description: :id is not int
+            $ref: '#/definitions/models.ProduccionAcademica'
+        "400":
+          description: the request contains incorrect syntax
     delete:
       tags:
-      - otra_publicacion
-      description: delete the OtraPublicacion
-      operationId: OtraPublicacionController.Delete
+      - produccion_academica
+      description: delete the ProduccionAcademica
+      operationId: ProduccionAcademicaController.Delete
       parameters:
       - in: path
         name: id
@@ -584,14 +584,14 @@ paths:
       responses:
         "200":
           description: '{string} delete success!'
-        "403":
-          description: id is empty
-  /otro_documento/:
+        "404":
+          description: not found resource
+  /soporte_produccion_academica/:
     get:
       tags:
-      - otro_documento
-      description: get OtroDocumento
-      operationId: OtroDocumentoController.Get All
+      - soporte_produccion_academica
+      description: get SoporteProduccionAcademica
+      operationId: SoporteProduccionAcademicaController.Get All
       parameters:
       - in: query
         name: query
@@ -622,32 +622,32 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.OtroDocumento'
-        "403":
-          description: ""
+            $ref: '#/definitions/models.SoporteProduccionAcademica'
+        "404":
+          description: not found resource
     post:
       tags:
-      - otro_documento
-      description: create OtroDocumento
-      operationId: OtroDocumentoController.Post
+      - soporte_produccion_academica
+      description: create SoporteProduccionAcademica
+      operationId: SoporteProduccionAcademicaController.Post
       parameters:
       - in: body
         name: body
-        description: body for OtroDocumento content
+        description: body for SoporteProduccionAcademica content
         required: true
         schema:
-          $ref: '#/definitions/models.OtroDocumento'
+          $ref: '#/definitions/models.SoporteProduccionAcademica'
       responses:
         "201":
-          description: '{int} models.OtroDocumento'
-        "403":
-          description: body is empty
-  /otro_documento/{id}:
+          description: '{int} models.SoporteProduccionAcademica'
+        "400":
+          description: the request contains incorrect syntax
+  /soporte_produccion_academica/{id}:
     get:
       tags:
-      - otro_documento
-      description: get OtroDocumento by id
-      operationId: OtroDocumentoController.Get One
+      - soporte_produccion_academica
+      description: get SoporteProduccionAcademica by id
+      operationId: SoporteProduccionAcademicaController.Get One
       parameters:
       - in: path
         name: id
@@ -658,14 +658,14 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.OtroDocumento'
-        "403":
-          description: :id is empty
+            $ref: '#/definitions/models.SoporteProduccionAcademica'
+        "404":
+          description: not found resource
     put:
       tags:
-      - otro_documento
-      description: update the OtroDocumento
-      operationId: OtroDocumentoController.Put
+      - soporte_produccion_academica
+      description: update the SoporteProduccionAcademica
+      operationId: SoporteProduccionAcademicaController.Put
       parameters:
       - in: path
         name: id
@@ -674,22 +674,22 @@ paths:
         type: string
       - in: body
         name: body
-        description: body for OtroDocumento content
+        description: body for SoporteProduccionAcademica content
         required: true
         schema:
-          $ref: '#/definitions/models.OtroDocumento'
+          $ref: '#/definitions/models.SoporteProduccionAcademica'
       responses:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.OtroDocumento'
-        "403":
-          description: :id is not int
+            $ref: '#/definitions/models.SoporteProduccionAcademica'
+        "400":
+          description: the request contains incorrect syntax
     delete:
       tags:
-      - otro_documento
-      description: delete the OtroDocumento
-      operationId: OtroDocumentoController.Delete
+      - soporte_produccion_academica
+      description: delete the SoporteProduccionAcademica
+      operationId: SoporteProduccionAcademicaController.Delete
       parameters:
       - in: path
         name: id
@@ -699,14 +699,14 @@ paths:
       responses:
         "200":
           description: '{string} delete success!'
-        "403":
-          description: id is empty
-  /produccion_artes_arqu_diseno/:
+        "404":
+          description: not found resource
+  /subtipo_produccion/:
     get:
       tags:
-      - produccion_artes_arqu_diseno
-      description: get ProduccionArtesArquDiseno
-      operationId: ProduccionArtesArquDisenoController.Get All
+      - subtipo_produccion
+      description: get SubtipoProduccion
+      operationId: SubtipoProduccionController.Get All
       parameters:
       - in: query
         name: query
@@ -737,32 +737,32 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.ProduccionArtesArquDiseno'
-        "403":
-          description: ""
+            $ref: '#/definitions/models.SubtipoProduccion'
+        "404":
+          description: not found resource
     post:
       tags:
-      - produccion_artes_arqu_diseno
-      description: create ProduccionArtesArquDiseno
-      operationId: ProduccionArtesArquDisenoController.Post
+      - subtipo_produccion
+      description: create SubtipoProduccion
+      operationId: SubtipoProduccionController.Post
       parameters:
       - in: body
         name: body
-        description: body for ProduccionArtesArquDiseno content
+        description: body for SubtipoProduccion content
         required: true
         schema:
-          $ref: '#/definitions/models.ProduccionArtesArquDiseno'
+          $ref: '#/definitions/models.SubtipoProduccion'
       responses:
         "201":
-          description: '{int} models.ProduccionArtesArquDiseno'
-        "403":
-          description: body is empty
-  /produccion_artes_arqu_diseno/{id}:
+          description: '{int} models.SubtipoProduccion'
+        "400":
+          description: the request contains incorrect syntax
+  /subtipo_produccion/{id}:
     get:
       tags:
-      - produccion_artes_arqu_diseno
-      description: get ProduccionArtesArquDiseno by id
-      operationId: ProduccionArtesArquDisenoController.Get One
+      - subtipo_produccion
+      description: get SubtipoProduccion by id
+      operationId: SubtipoProduccionController.Get One
       parameters:
       - in: path
         name: id
@@ -773,14 +773,14 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.ProduccionArtesArquDiseno'
-        "403":
-          description: :id is empty
+            $ref: '#/definitions/models.SubtipoProduccion'
+        "404":
+          description: not found resource
     put:
       tags:
-      - produccion_artes_arqu_diseno
-      description: update the ProduccionArtesArquDiseno
-      operationId: ProduccionArtesArquDisenoController.Put
+      - subtipo_produccion
+      description: update the SubtipoProduccion
+      operationId: SubtipoProduccionController.Put
       parameters:
       - in: path
         name: id
@@ -789,22 +789,22 @@ paths:
         type: string
       - in: body
         name: body
-        description: body for ProduccionArtesArquDiseno content
+        description: body for SubtipoProduccion content
         required: true
         schema:
-          $ref: '#/definitions/models.ProduccionArtesArquDiseno'
+          $ref: '#/definitions/models.SubtipoProduccion'
       responses:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.ProduccionArtesArquDiseno'
-        "403":
-          description: :id is not int
+            $ref: '#/definitions/models.SubtipoProduccion'
+        "400":
+          description: the request contains incorrect syntax
     delete:
       tags:
-      - produccion_artes_arqu_diseno
-      description: delete the ProduccionArtesArquDiseno
-      operationId: ProduccionArtesArquDisenoController.Delete
+      - subtipo_produccion
+      description: delete the SubtipoProduccion
+      operationId: SubtipoProduccionController.Delete
       parameters:
       - in: path
         name: id
@@ -814,14 +814,14 @@ paths:
       responses:
         "200":
           description: '{string} delete success!'
-        "403":
-          description: id is empty
-  /produccion_tecnica/:
+        "404":
+          description: not found resource
+  /tipo_dato_adicional/:
     get:
       tags:
-      - produccion_tecnica
-      description: get ProduccionTecnica
-      operationId: ProduccionTecnicaController.Get All
+      - tipo_dato_adicional
+      description: get TipoDatoAdicional
+      operationId: TipoDatoAdicionalController.Get All
       parameters:
       - in: query
         name: query
@@ -852,32 +852,32 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.ProduccionTecnica'
-        "403":
-          description: ""
+            $ref: '#/definitions/models.TipoDatoAdicional'
+        "404":
+          description: not found resource
     post:
       tags:
-      - produccion_tecnica
-      description: create ProduccionTecnica
-      operationId: ProduccionTecnicaController.Post
+      - tipo_dato_adicional
+      description: create TipoDatoAdicional
+      operationId: TipoDatoAdicionalController.Post
       parameters:
       - in: body
         name: body
-        description: body for ProduccionTecnica content
+        description: body for TipoDatoAdicional content
         required: true
         schema:
-          $ref: '#/definitions/models.ProduccionTecnica'
+          $ref: '#/definitions/models.TipoDatoAdicional'
       responses:
         "201":
-          description: '{int} models.ProduccionTecnica'
-        "403":
-          description: body is empty
-  /produccion_tecnica/{id}:
+          description: '{int} models.TipoDatoAdicional'
+        "400":
+          description: the request contains incorrect syntax
+  /tipo_dato_adicional/{id}:
     get:
       tags:
-      - produccion_tecnica
-      description: get ProduccionTecnica by id
-      operationId: ProduccionTecnicaController.Get One
+      - tipo_dato_adicional
+      description: get TipoDatoAdicional by id
+      operationId: TipoDatoAdicionalController.Get One
       parameters:
       - in: path
         name: id
@@ -888,14 +888,14 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.ProduccionTecnica'
-        "403":
-          description: :id is empty
+            $ref: '#/definitions/models.TipoDatoAdicional'
+        "404":
+          description: not found resource
     put:
       tags:
-      - produccion_tecnica
-      description: update the ProduccionTecnica
-      operationId: ProduccionTecnicaController.Put
+      - tipo_dato_adicional
+      description: update the TipoDatoAdicional
+      operationId: TipoDatoAdicionalController.Put
       parameters:
       - in: path
         name: id
@@ -904,22 +904,22 @@ paths:
         type: string
       - in: body
         name: body
-        description: body for ProduccionTecnica content
+        description: body for TipoDatoAdicional content
         required: true
         schema:
-          $ref: '#/definitions/models.ProduccionTecnica'
+          $ref: '#/definitions/models.TipoDatoAdicional'
       responses:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.ProduccionTecnica'
-        "403":
-          description: :id is not int
+            $ref: '#/definitions/models.TipoDatoAdicional'
+        "400":
+          description: the request contains incorrect syntax
     delete:
       tags:
-      - produccion_tecnica
-      description: delete the ProduccionTecnica
-      operationId: ProduccionTecnicaController.Delete
+      - tipo_dato_adicional
+      description: delete the TipoDatoAdicional
+      operationId: TipoDatoAdicionalController.Delete
       parameters:
       - in: path
         name: id
@@ -929,14 +929,14 @@ paths:
       responses:
         "200":
           description: '{string} delete success!'
-        "403":
-          description: id is empty
-  /tipo_articulo/:
+        "404":
+          description: not found resource
+  /tipo_produccion/:
     get:
       tags:
-      - tipo_articulo
-      description: get TipoArticulo
-      operationId: TipoArticuloController.Get All
+      - tipo_produccion
+      description: get TipoProduccion
+      operationId: TipoProduccionController.Get All
       parameters:
       - in: query
         name: query
@@ -967,32 +967,32 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.TipoArticulo'
-        "403":
-          description: ""
+            $ref: '#/definitions/models.TipoProduccion'
+        "404":
+          description: not found resource
     post:
       tags:
-      - tipo_articulo
-      description: create TipoArticulo
-      operationId: TipoArticuloController.Post
+      - tipo_produccion
+      description: create TipoProduccion
+      operationId: TipoProduccionController.Post
       parameters:
       - in: body
         name: body
-        description: body for TipoArticulo content
+        description: body for TipoProduccion content
         required: true
         schema:
-          $ref: '#/definitions/models.TipoArticulo'
+          $ref: '#/definitions/models.TipoProduccion'
       responses:
         "201":
-          description: '{int} models.TipoArticulo'
-        "403":
-          description: body is empty
-  /tipo_articulo/{id}:
+          description: '{int} models.TipoProduccion'
+        "400":
+          description: the request contains incorrect syntax
+  /tipo_produccion/{id}:
     get:
       tags:
-      - tipo_articulo
-      description: get TipoArticulo by id
-      operationId: TipoArticuloController.Get One
+      - tipo_produccion
+      description: get TipoProduccion by id
+      operationId: TipoProduccionController.Get One
       parameters:
       - in: path
         name: id
@@ -1003,14 +1003,14 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.TipoArticulo'
-        "403":
-          description: :id is empty
+            $ref: '#/definitions/models.TipoProduccion'
+        "404":
+          description: not found resource
     put:
       tags:
-      - tipo_articulo
-      description: update the TipoArticulo
-      operationId: TipoArticuloController.Put
+      - tipo_produccion
+      description: update the TipoProduccion
+      operationId: TipoProduccionController.Put
       parameters:
       - in: path
         name: id
@@ -1019,22 +1019,22 @@ paths:
         type: string
       - in: body
         name: body
-        description: body for TipoArticulo content
+        description: body for TipoProduccion content
         required: true
         schema:
-          $ref: '#/definitions/models.TipoArticulo'
+          $ref: '#/definitions/models.TipoProduccion'
       responses:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.TipoArticulo'
-        "403":
-          description: :id is not int
+            $ref: '#/definitions/models.TipoProduccion'
+        "400":
+          description: the request contains incorrect syntax
     delete:
       tags:
-      - tipo_articulo
-      description: delete the TipoArticulo
-      operationId: TipoArticuloController.Delete
+      - tipo_produccion
+      description: delete the TipoProduccion
+      operationId: TipoProduccionController.Delete
       parameters:
       - in: path
         name: id
@@ -1044,88 +1044,51 @@ paths:
       responses:
         "200":
           description: '{string} delete success!'
-        "403":
-          description: id is empty
-  /tipo_disciplina/:
-    get:
-      tags:
-      - tipo_disciplina
-      description: get TipoDisciplina
-      operationId: TipoDisciplinaController.Get All
-      parameters:
-      - in: query
-        name: query
-        description: Filter. e.g. col1:v1,col2:v2 ...
-        type: string
-      - in: query
-        name: fields
-        description: Fields returned. e.g. col1,col2 ...
-        type: string
-      - in: query
-        name: sortby
-        description: Sorted-by fields. e.g. col1,col2 ...
-        type: string
-      - in: query
-        name: order
-        description: Order corresponding to each sortby field, if single value, apply
-          to all sortby fields. e.g. desc,asc ...
-        type: string
-      - in: query
-        name: limit
-        description: Limit the size of result set. Must be an integer
-        type: string
-      - in: query
-        name: offset
-        description: Start position of result set. Must be an integer
-        type: string
-      responses:
-        "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/models.TipoDisciplina'
-        "403":
-          description: ""
+        "404":
+          description: not found resource
+  /tr_produccion_academica/:
     post:
       tags:
-      - tipo_disciplina
-      description: create TipoDisciplina
-      operationId: TipoDisciplinaController.Post
+      - tr_produccion_academica
+      description: create the TrProduccionAcademica
+      operationId: TrProduccionAcademicaController.PostTrProduccionAcademica
       parameters:
       - in: body
         name: body
-        description: body for TipoDisciplina content
+        description: body for TrProduccionAcademica content
         required: true
         schema:
-          $ref: '#/definitions/models.TipoDisciplina'
+          $ref: '#/definitions/models.TrProduccionAcademica'
       responses:
         "201":
-          description: '{int} models.TipoDisciplina'
-        "403":
-          description: body is empty
-  /tipo_disciplina/{id}:
+          description: '{int} models.TrProduccionAcademica'
+        "400":
+          description: the request contains incorrect syntax
+  /tr_produccion_academica/{ente}:
     get:
       tags:
-      - tipo_disciplina
-      description: get TipoDisciplina by id
-      operationId: TipoDisciplinaController.Get One
+      - tr_produccion_academica
+      description: get TrProduccionAcademicaController
+      operationId: TrProduccionAcademicaController.Get All By Ente
       parameters:
       - in: path
         name: id
-        description: The key for staticblock
+        description: Ente
         required: true
         type: string
       responses:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.TipoDisciplina'
-        "403":
-          description: :id is empty
+            $ref: '#/definitions/models.TrProduccionAcademicaController'
+        "404":
+          description: not found resource
+  /tr_produccion_academica/{id}:
     put:
       tags:
-      - tipo_disciplina
-      description: update the TipoDisciplina
-      operationId: TipoDisciplinaController.Put
+      - tr_produccion_academica
+      description: update the TrProduccionAcademica
+      operationId: TrProduccionAcademicaController.Put
       parameters:
       - in: path
         name: id
@@ -1134,22 +1097,22 @@ paths:
         type: string
       - in: body
         name: body
-        description: body for TipoDisciplina content
+        description: body for TrProduccionAcademica content
         required: true
         schema:
-          $ref: '#/definitions/models.TipoDisciplina'
+          $ref: '#/definitions/models.TrProduccionAcademica'
       responses:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.TipoDisciplina'
-        "403":
-          description: :id is not int
+            $ref: '#/definitions/models.TrProduccionAcademica'
+        "400":
+          description: the request contains incorrect syntax
     delete:
       tags:
-      - tipo_disciplina
-      description: delete the TipoDisciplina
-      operationId: TipoDisciplinaController.Delete
+      - tr_produccion_academica
+      description: delete the ProduccionAcademica
+      operationId: TrProduccionAcademicaController.Delete
       parameters:
       - in: path
         name: id
@@ -1159,665 +1122,55 @@ paths:
       responses:
         "200":
           description: '{string} delete success!'
-        "403":
-          description: id is empty
-  /tipo_otra_publicacion/:
-    get:
-      tags:
-      - tipo_otra_publicacion
-      description: get TipoOtraPublicacion
-      operationId: TipoOtraPublicacionController.Get All
-      parameters:
-      - in: query
-        name: query
-        description: Filter. e.g. col1:v1,col2:v2 ...
-        type: string
-      - in: query
-        name: fields
-        description: Fields returned. e.g. col1,col2 ...
-        type: string
-      - in: query
-        name: sortby
-        description: Sorted-by fields. e.g. col1,col2 ...
-        type: string
-      - in: query
-        name: order
-        description: Order corresponding to each sortby field, if single value, apply
-          to all sortby fields. e.g. desc,asc ...
-        type: string
-      - in: query
-        name: limit
-        description: Limit the size of result set. Must be an integer
-        type: string
-      - in: query
-        name: offset
-        description: Start position of result set. Must be an integer
-        type: string
-      responses:
-        "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/models.TipoOtraPublicacion'
-        "403":
-          description: ""
-    post:
-      tags:
-      - tipo_otra_publicacion
-      description: create TipoOtraPublicacion
-      operationId: TipoOtraPublicacionController.Post
-      parameters:
-      - in: body
-        name: body
-        description: body for TipoOtraPublicacion content
-        required: true
-        schema:
-          $ref: '#/definitions/models.TipoOtraPublicacion'
-      responses:
-        "201":
-          description: '{int} models.TipoOtraPublicacion'
-        "403":
-          description: body is empty
-  /tipo_otra_publicacion/{id}:
-    get:
-      tags:
-      - tipo_otra_publicacion
-      description: get TipoOtraPublicacion by id
-      operationId: TipoOtraPublicacionController.Get One
-      parameters:
-      - in: path
-        name: id
-        description: The key for staticblock
-        required: true
-        type: string
-      responses:
-        "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/models.TipoOtraPublicacion'
-        "403":
-          description: :id is empty
-    put:
-      tags:
-      - tipo_otra_publicacion
-      description: update the TipoOtraPublicacion
-      operationId: TipoOtraPublicacionController.Put
-      parameters:
-      - in: path
-        name: id
-        description: The id you want to update
-        required: true
-        type: string
-      - in: body
-        name: body
-        description: body for TipoOtraPublicacion content
-        required: true
-        schema:
-          $ref: '#/definitions/models.TipoOtraPublicacion'
-      responses:
-        "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/models.TipoOtraPublicacion'
-        "403":
-          description: :id is not int
-    delete:
-      tags:
-      - tipo_otra_publicacion
-      description: delete the TipoOtraPublicacion
-      operationId: TipoOtraPublicacionController.Delete
-      parameters:
-      - in: path
-        name: id
-        description: The id you want to delete
-        required: true
-        type: string
-      responses:
-        "200":
-          description: '{string} delete success!'
-        "403":
-          description: id is empty
-  /tipo_produccion_tecnica/:
-    get:
-      tags:
-      - tipo_produccion_tecnica
-      description: get TipoProduccionTecnica
-      operationId: TipoProduccionTecnicaController.Get All
-      parameters:
-      - in: query
-        name: query
-        description: Filter. e.g. col1:v1,col2:v2 ...
-        type: string
-      - in: query
-        name: fields
-        description: Fields returned. e.g. col1,col2 ...
-        type: string
-      - in: query
-        name: sortby
-        description: Sorted-by fields. e.g. col1,col2 ...
-        type: string
-      - in: query
-        name: order
-        description: Order corresponding to each sortby field, if single value, apply
-          to all sortby fields. e.g. desc,asc ...
-        type: string
-      - in: query
-        name: limit
-        description: Limit the size of result set. Must be an integer
-        type: string
-      - in: query
-        name: offset
-        description: Start position of result set. Must be an integer
-        type: string
-      responses:
-        "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/models.TipoProduccionTecnica'
-        "403":
-          description: ""
-    post:
-      tags:
-      - tipo_produccion_tecnica
-      description: create TipoProduccionTecnica
-      operationId: TipoProduccionTecnicaController.Post
-      parameters:
-      - in: body
-        name: body
-        description: body for TipoProduccionTecnica content
-        required: true
-        schema:
-          $ref: '#/definitions/models.TipoProduccionTecnica'
-      responses:
-        "201":
-          description: '{int} models.TipoProduccionTecnica'
-        "403":
-          description: body is empty
-  /tipo_produccion_tecnica/{id}:
-    get:
-      tags:
-      - tipo_produccion_tecnica
-      description: get TipoProduccionTecnica by id
-      operationId: TipoProduccionTecnicaController.Get One
-      parameters:
-      - in: path
-        name: id
-        description: The key for staticblock
-        required: true
-        type: string
-      responses:
-        "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/models.TipoProduccionTecnica'
-        "403":
-          description: :id is empty
-    put:
-      tags:
-      - tipo_produccion_tecnica
-      description: update the TipoProduccionTecnica
-      operationId: TipoProduccionTecnicaController.Put
-      parameters:
-      - in: path
-        name: id
-        description: The id you want to update
-        required: true
-        type: string
-      - in: body
-        name: body
-        description: body for TipoProduccionTecnica content
-        required: true
-        schema:
-          $ref: '#/definitions/models.TipoProduccionTecnica'
-      responses:
-        "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/models.TipoProduccionTecnica'
-        "403":
-          description: :id is not int
-    delete:
-      tags:
-      - tipo_produccion_tecnica
-      description: delete the TipoProduccionTecnica
-      operationId: TipoProduccionTecnicaController.Delete
-      parameters:
-      - in: path
-        name: id
-        description: The id you want to delete
-        required: true
-        type: string
-      responses:
-        "200":
-          description: '{string} delete success!'
-        "403":
-          description: id is empty
-  /tipo_publicacion_libro/:
-    get:
-      tags:
-      - tipo_publicacion_libro
-      description: get TipoPublicacionLibro
-      operationId: TipoPublicacionLibroController.Get All
-      parameters:
-      - in: query
-        name: query
-        description: Filter. e.g. col1:v1,col2:v2 ...
-        type: string
-      - in: query
-        name: fields
-        description: Fields returned. e.g. col1,col2 ...
-        type: string
-      - in: query
-        name: sortby
-        description: Sorted-by fields. e.g. col1,col2 ...
-        type: string
-      - in: query
-        name: order
-        description: Order corresponding to each sortby field, if single value, apply
-          to all sortby fields. e.g. desc,asc ...
-        type: string
-      - in: query
-        name: limit
-        description: Limit the size of result set. Must be an integer
-        type: string
-      - in: query
-        name: offset
-        description: Start position of result set. Must be an integer
-        type: string
-      responses:
-        "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/models.TipoPublicacionLibro'
-        "403":
-          description: ""
-    post:
-      tags:
-      - tipo_publicacion_libro
-      description: create TipoPublicacionLibro
-      operationId: TipoPublicacionLibroController.Post
-      parameters:
-      - in: body
-        name: body
-        description: body for TipoPublicacionLibro content
-        required: true
-        schema:
-          $ref: '#/definitions/models.TipoPublicacionLibro'
-      responses:
-        "201":
-          description: '{int} models.TipoPublicacionLibro'
-        "403":
-          description: body is empty
-  /tipo_publicacion_libro/{id}:
-    get:
-      tags:
-      - tipo_publicacion_libro
-      description: get TipoPublicacionLibro by id
-      operationId: TipoPublicacionLibroController.Get One
-      parameters:
-      - in: path
-        name: id
-        description: The key for staticblock
-        required: true
-        type: string
-      responses:
-        "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/models.TipoPublicacionLibro'
-        "403":
-          description: :id is empty
-    put:
-      tags:
-      - tipo_publicacion_libro
-      description: update the TipoPublicacionLibro
-      operationId: TipoPublicacionLibroController.Put
-      parameters:
-      - in: path
-        name: id
-        description: The id you want to update
-        required: true
-        type: string
-      - in: body
-        name: body
-        description: body for TipoPublicacionLibro content
-        required: true
-        schema:
-          $ref: '#/definitions/models.TipoPublicacionLibro'
-      responses:
-        "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/models.TipoPublicacionLibro'
-        "403":
-          description: :id is not int
-    delete:
-      tags:
-      - tipo_publicacion_libro
-      description: delete the TipoPublicacionLibro
-      operationId: TipoPublicacionLibroController.Delete
-      parameters:
-      - in: path
-        name: id
-        description: The id you want to delete
-        required: true
-        type: string
-      responses:
-        "200":
-          description: '{string} delete success!'
-        "403":
-          description: id is empty
-  /tipo_traduccion/:
-    get:
-      tags:
-      - tipo_traduccion
-      description: get TipoTraduccion
-      operationId: TipoTraduccionController.Get All
-      parameters:
-      - in: query
-        name: query
-        description: Filter. e.g. col1:v1,col2:v2 ...
-        type: string
-      - in: query
-        name: fields
-        description: Fields returned. e.g. col1,col2 ...
-        type: string
-      - in: query
-        name: sortby
-        description: Sorted-by fields. e.g. col1,col2 ...
-        type: string
-      - in: query
-        name: order
-        description: Order corresponding to each sortby field, if single value, apply
-          to all sortby fields. e.g. desc,asc ...
-        type: string
-      - in: query
-        name: limit
-        description: Limit the size of result set. Must be an integer
-        type: string
-      - in: query
-        name: offset
-        description: Start position of result set. Must be an integer
-        type: string
-      responses:
-        "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/models.TipoTraduccion'
-        "403":
-          description: ""
-    post:
-      tags:
-      - tipo_traduccion
-      description: create TipoTraduccion
-      operationId: TipoTraduccionController.Post
-      parameters:
-      - in: body
-        name: body
-        description: body for TipoTraduccion content
-        required: true
-        schema:
-          $ref: '#/definitions/models.TipoTraduccion'
-      responses:
-        "201":
-          description: '{int} models.TipoTraduccion'
-        "403":
-          description: body is empty
-  /tipo_traduccion/{id}:
-    get:
-      tags:
-      - tipo_traduccion
-      description: get TipoTraduccion by id
-      operationId: TipoTraduccionController.Get One
-      parameters:
-      - in: path
-        name: id
-        description: The key for staticblock
-        required: true
-        type: string
-      responses:
-        "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/models.TipoTraduccion'
-        "403":
-          description: :id is empty
-    put:
-      tags:
-      - tipo_traduccion
-      description: update the TipoTraduccion
-      operationId: TipoTraduccionController.Put
-      parameters:
-      - in: path
-        name: id
-        description: The id you want to update
-        required: true
-        type: string
-      - in: body
-        name: body
-        description: body for TipoTraduccion content
-        required: true
-        schema:
-          $ref: '#/definitions/models.TipoTraduccion'
-      responses:
-        "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/models.TipoTraduccion'
-        "403":
-          description: :id is not int
-    delete:
-      tags:
-      - tipo_traduccion
-      description: delete the TipoTraduccion
-      operationId: TipoTraduccionController.Delete
-      parameters:
-      - in: path
-        name: id
-        description: The id you want to delete
-        required: true
-        type: string
-      responses:
-        "200":
-          description: '{string} delete success!'
-        "403":
-          description: id is empty
-  /traduccion/:
-    get:
-      tags:
-      - traduccion
-      description: get Traduccion
-      operationId: TraduccionController.Get All
-      parameters:
-      - in: query
-        name: query
-        description: Filter. e.g. col1:v1,col2:v2 ...
-        type: string
-      - in: query
-        name: fields
-        description: Fields returned. e.g. col1,col2 ...
-        type: string
-      - in: query
-        name: sortby
-        description: Sorted-by fields. e.g. col1,col2 ...
-        type: string
-      - in: query
-        name: order
-        description: Order corresponding to each sortby field, if single value, apply
-          to all sortby fields. e.g. desc,asc ...
-        type: string
-      - in: query
-        name: limit
-        description: Limit the size of result set. Must be an integer
-        type: string
-      - in: query
-        name: offset
-        description: Start position of result set. Must be an integer
-        type: string
-      responses:
-        "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/models.Traduccion'
-        "403":
-          description: ""
-    post:
-      tags:
-      - traduccion
-      description: create Traduccion
-      operationId: TraduccionController.Post
-      parameters:
-      - in: body
-        name: body
-        description: body for Traduccion content
-        required: true
-        schema:
-          $ref: '#/definitions/models.Traduccion'
-      responses:
-        "201":
-          description: '{int} models.Traduccion'
-        "403":
-          description: body is empty
-  /traduccion/{id}:
-    get:
-      tags:
-      - traduccion
-      description: get Traduccion by id
-      operationId: TraduccionController.Get One
-      parameters:
-      - in: path
-        name: id
-        description: The key for staticblock
-        required: true
-        type: string
-      responses:
-        "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/models.Traduccion'
-        "403":
-          description: :id is empty
-    put:
-      tags:
-      - traduccion
-      description: update the Traduccion
-      operationId: TraduccionController.Put
-      parameters:
-      - in: path
-        name: id
-        description: The id you want to update
-        required: true
-        type: string
-      - in: body
-        name: body
-        description: body for Traduccion content
-        required: true
-        schema:
-          $ref: '#/definitions/models.Traduccion'
-      responses:
-        "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/models.Traduccion'
-        "403":
-          description: :id is not int
-    delete:
-      tags:
-      - traduccion
-      description: delete the Traduccion
-      operationId: TraduccionController.Delete
-      parameters:
-      - in: path
-        name: id
-        description: The id you want to delete
-        required: true
-        type: string
-      responses:
-        "200":
-          description: '{string} delete success!'
-        "403":
-          description: id is empty
+        "404":
+          description: not found resource
 definitions:
-  models.Articulo:
-    title: Articulo
+  13534.<nil>.AutorProduccionAcademica:
+    title: AutorProduccionAcademica
+    type: object
+  13587.<nil>.DatoAdicionalProduccionAcademica:
+    title: DatoAdicionalProduccionAcademica
+    type: object
+  models.AutorProduccionAcademica:
+    title: AutorProduccionAcademica
     type: object
     properties:
-      Ano:
+      Ente:
         type: integer
         format: int64
-      Doi:
-        type: string
-      Fasciculo:
-        type: integer
-        format: int64
+      EstadoAutorProduccion:
+        $ref: '#/definitions/models.EstadoAutorProduccion'
       Id:
         type: integer
         format: int64
-      Idioma:
-        type: string
-      MedioDivulgacion:
-        $ref: '#/definitions/models.MedioDivulgacion'
-      Mes:
-        type: integer
-        format: int64
-      Nombre:
-        type: string
-      Persona:
-        type: integer
-        format: int64
-      Revista:
-        type: string
-      Serie:
-        type: integer
-        format: int64
-      Tipo:
-        $ref: '#/definitions/models.TipoArticulo'
-      Ubicacion:
-        type: integer
-        format: int64
-      Url:
-        type: string
-      Volumen:
-        type: integer
-        format: int64
-  models.Libro:
-    title: Libro
+      ProduccionAcademica:
+        $ref: '#/definitions/models.ProduccionAcademica'
+  models.DatoAdicionalProduccionAcademica:
+    title: DatoAdicionalProduccionAcademica
     type: object
     properties:
-      Ano:
-        type: integer
-        format: int64
-      Editorial:
-        type: string
+      DatoAdicionalSubtipoProduccion:
+        $ref: '#/definitions/models.DatoAdicionalSubtipoProduccion'
       Id:
         type: integer
         format: int64
-      Isbn:
-        type: integer
-        format: int64
-      MedioDivulgacion:
-        $ref: '#/definitions/models.MedioDivulgacion'
-      MedioPublicacion:
-        $ref: '#/definitions/models.MedioPublicacion'
-      Mes:
-        type: integer
-        format: int64
-      Paginas:
-        type: integer
-        format: int64
-      Persona:
-        type: integer
-        format: int64
-      TipoPublicacion:
-        $ref: '#/definitions/models.TipoPublicacionLibro'
-      TituloCapitulo:
+      ProduccionAcademica:
+        $ref: '#/definitions/models.ProduccionAcademica'
+      Valor:
         type: string
-      TituloLibro:
-        type: string
-      Ubicacion:
+  models.DatoAdicionalSubtipoProduccion:
+    title: DatoAdicionalSubtipoProduccion
+    type: object
+    properties:
+      Id:
         type: integer
         format: int64
-  models.MedioDivulgacion:
-    title: MedioDivulgacion
+      SubtipoProduccion:
+        $ref: '#/definitions/models.SubtipoProduccion'
+      TipoDatoAdicional:
+        $ref: '#/definitions/models.TipoDatoAdicional'
+  models.EstadoAutorProduccion:
+    title: EstadoAutorProduccion
     type: object
     properties:
       Activo:
@@ -1832,122 +1185,40 @@ definitions:
       Nombre:
         type: string
       NumeroOrden:
-        type: integer
-        format: int64
-  models.MedioPublicacion:
-    title: MedioPublicacion
+        type: number
+        format: double
+  models.ProduccionAcademica:
+    title: ProduccionAcademica
     type: object
     properties:
-      Activo:
-        type: boolean
-      CodigoAbreviacion:
+      Fecha:
         type: string
-      Descripcion:
-        type: string
+        format: datetime
       Id:
         type: integer
         format: int64
-      Nombre:
+      Resumen:
         type: string
-      NumeroOrden:
-        type: integer
-        format: int64
-  models.OtraPublicacion:
-    title: OtraPublicacion
-    type: object
-    properties:
-      Ano:
-        type: integer
-        format: int64
-      Autor:
-        type: string
-      Id:
-        type: integer
-        format: int64
-      Mes:
-        type: integer
-        format: int64
-      Persona:
-        type: integer
-        format: int64
-      Tipo:
-        $ref: '#/definitions/models.TipoOtraPublicacion'
+      SubtipoProduccion:
+        $ref: '#/definitions/models.SubtipoProduccion'
       Titulo:
         type: string
-  models.OtroDocumento:
-    title: OtroDocumento
+  models.SoporteProduccionAcademica:
+    title: SoporteProduccionAcademica
     type: object
     properties:
-      Ano:
-        type: integer
-        format: int64
-      Doi:
-        type: string
-      Id:
-        type: integer
-        format: int64
-      Mes:
-        type: integer
-        format: int64
-      NumeroPaginas:
-        type: integer
-        format: int64
-      Persona:
-        type: integer
-        format: int64
-      Titulo:
-        type: string
-      Url:
-        type: string
-  models.ProduccionArtesArquDiseno:
-    title: ProduccionArtesArquDiseno
-    type: object
-    properties:
-      Ano:
-        type: integer
-        format: int64
       Descripcion:
         type: string
+      Documento:
+        type: integer
+        format: int64
       Id:
         type: integer
         format: int64
-      Mes:
-        type: integer
-        format: int64
-      Nombre:
-        type: string
-      Persona:
-        type: integer
-        format: int64
-      TipoDisciplina:
-        $ref: '#/definitions/models.TipoDisciplina'
-  models.ProduccionTecnica:
-    title: ProduccionTecnica
-    type: object
-    properties:
-      Ano:
-        type: integer
-        format: int64
-      Descripcion:
-        type: string
-      Id:
-        type: integer
-        format: int64
-      Mes:
-        type: integer
-        format: int64
-      Nombre:
-        type: string
-      Persona:
-        type: integer
-        format: int64
-      TipoProduccionTecnica:
-        $ref: '#/definitions/models.TipoProduccionTecnica'
-      Ubicacion:
-        type: integer
-        format: int64
-  models.TipoArticulo:
-    title: TipoArticulo
+      ProduccionAcademica:
+        $ref: '#/definitions/models.ProduccionAcademica'
+  models.SubtipoProduccion:
+    title: SubtipoProduccion
     type: object
     properties:
       Activo:
@@ -1962,10 +1233,32 @@ definitions:
       Nombre:
         type: string
       NumeroOrden:
+        type: number
+        format: double
+      TipoProduccion:
+        $ref: '#/definitions/models.TipoProduccion'
+  models.TipoDatoAdicional:
+    title: TipoDatoAdicional
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      CodigoAbreviacion:
+        type: string
+      Descripcion:
+        type: string
+      FormDefiniton:
+        type: string
+      Id:
         type: integer
         format: int64
-  models.TipoDisciplina:
-    title: TipoDisciplina
+      Nombre:
+        type: string
+      NumeroOrden:
+        type: number
+        format: double
+  models.TipoProduccion:
+    title: TipoProduccion
     type: object
     properties:
       Activo:
@@ -1980,161 +1273,49 @@ definitions:
       Nombre:
         type: string
       NumeroOrden:
-        type: integer
-        format: int64
-  models.TipoOtraPublicacion:
-    title: TipoOtraPublicacion
+        type: number
+        format: double
+  models.TrProduccionAcademica:
+    title: TrProduccionAcademica
     type: object
     properties:
-      Activo:
-        type: boolean
-      CodigoAbreviacion:
-        type: string
-      Descripcion:
-        type: string
-      Id:
-        type: integer
-        format: int64
-      Nombre:
-        type: string
-      NumeroOrden:
-        type: integer
-        format: int64
-  models.TipoProduccionTecnica:
-    title: TipoProduccionTecnica
+      Autores:
+        $ref: '#/definitions/13534.<nil>.AutorProduccionAcademica'
+      DatosAdicionales:
+        $ref: '#/definitions/13587.<nil>.DatoAdicionalProduccionAcademica'
+      ProduccionAcademica:
+        $ref: '#/definitions/models.ProduccionAcademica'
+  models.TrProduccionAcademicaController:
+    title: TrProduccionAcademicaController
     type: object
-    properties:
-      Activo:
-        type: boolean
-      CodigoAbreviacion:
-        type: string
-      Descripcion:
-        type: string
-      Id:
-        type: integer
-        format: int64
-      Nombre:
-        type: string
-      NumeroOrden:
-        type: integer
-        format: int64
-  models.TipoPublicacionLibro:
-    title: TipoPublicacionLibro
-    type: object
-    properties:
-      Activo:
-        type: boolean
-      CodigoAbreviacion:
-        type: string
-      Descripcion:
-        type: string
-      Id:
-        type: integer
-        format: int64
-      Nombre:
-        type: string
-      NumeroOrden:
-        type: integer
-        format: int64
-  models.TipoTraduccion:
-    title: TipoTraduccion
-    type: object
-    properties:
-      Activo:
-        type: boolean
-      CodigoAbreviacion:
-        type: string
-      Descripcion:
-        type: string
-      Id:
-        type: integer
-        format: int64
-      Nombre:
-        type: string
-      NumeroOrden:
-        type: integer
-        format: int64
-  models.Traduccion:
-    title: Traduccion
-    type: object
-    properties:
-      Ano:
-        type: integer
-        format: int64
-      Autor:
-        type: string
-      Edicion:
-        type: integer
-        format: int64
-      Id:
-        type: integer
-        format: int64
-      IdiomaOriginal:
-        type: integer
-        format: int64
-      IdiomaTraducido:
-        type: integer
-        format: int64
-      MedioDivulgacion:
-        $ref: '#/definitions/models.MedioDivulgacion'
-      Mes:
-        type: integer
-        format: int64
-      NombreOriginal:
-        type: string
-      Persona:
-        type: integer
-        format: int64
-      Serie:
-        type: integer
-        format: int64
-      TipoTraduccion:
-        $ref: '#/definitions/models.TipoTraduccion'
-      Titulo:
-        type: string
 tags:
-- name: tipo_otra_publicacion
+- name: tipo_produccion
   description: |
-    TipoOtraPublicacionController operations for TipoOtraPublicacion
-- name: tipo_produccion_tecnica
+    TipoProduccionController operations for TipoProduccion
+- name: subtipo_produccion
   description: |
-    TipoProduccionTecnicaController operations for TipoProduccionTecnica
-- name: libro
+    SubtipoProduccionController operations for SubtipoProduccion
+- name: produccion_academica
   description: |
-    LibroController operations for Libro
-- name: otro_documento
+    ProduccionAcademicaController operations for ProduccionAcademica
+- name: dato_adicional_produccion_academica
   description: |
-    OtroDocumentoController operations for OtroDocumento
-- name: produccion_tecnica
+    DatoAdicionalProduccionAcademicaController operations for DatoAdicionalProduccionAcademica
+- name: soporte_produccion_academica
   description: |
-    ProduccionTecnicaController operations for ProduccionTecnica
-- name: otra_publicacion
+    SoporteProduccionAcademicaController operations for SoporteProduccionAcademica
+- name: autor_produccion_academica
   description: |
-    OtraPublicacionController operations for OtraPublicacion
-- name: traduccion
+    AutorProduccionAcademicaController operations for AutorProduccionAcademica
+- name: dato_adicional_subtipo_produccion
   description: |
-    TraduccionController operations for Traduccion
-- name: tipo_disciplina
+    DatoAdicionalSubtipoProduccionController operations for DatoAdicionalSubtipoProduccion
+- name: tipo_dato_adicional
   description: |
-    TipoDisciplinaController operations for TipoDisciplina
-- name: tipo_traduccion
+    TipoDatoAdicionalController operations for TipoDatoAdicional
+- name: tr_produccion_academica
   description: |
-    TipoTraduccionController operations for TipoTraduccion
-- name: articulo
+    operations for TrProduccionAcademica
+- name: estado_autor_produccion
   description: |
-    ArticuloController operations for Articulo
-- name: produccion_artes_arqu_diseno
-  description: |
-    ProduccionArtesArquDisenoController operations for ProduccionArtesArquDiseno
-- name: tipo_articulo
-  description: |
-    TipoArticuloController operations for TipoArticulo
-- name: medio_divulgacion
-  description: |
-    MedioDivulgacionController operations for MedioDivulgacion
-- name: medio_publicacion
-  description: |
-    MedioPublicacionController operations for MedioPublicacion
-- name: tipo_publicacion_libro
-  description: |
-    TipoPublicacionLibroController operations for TipoPublicacionLibro
+    EstadoAutorProduccionController operations for EstadoAutorProduccion

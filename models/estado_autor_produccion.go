@@ -9,48 +9,48 @@ import (
 	"github.com/astaxie/beego/orm"
 )
 
-type TipoPublicacionLibro struct {
-	Id                int    `orm:"column(id);pk"`
-	Nombre            string `orm:"column(nombre)"`
-	Descripcion       string `orm:"column(descripcion);null"`
-	CodigoAbreviacion string `orm:"column(codigo_abreviacion);null"`
-	NumeroOrden       int    `orm:"column(numero_orden);null"`
-	Activo            bool   `orm:"column(activo)"`
+type EstadoAutorProduccion struct {
+	Id                int     `orm:"column(id);pk;auto"`
+	Nombre            string  `orm:"column(nombre)"`
+	Descripcion       string  `orm:"column(descripcion);null"`
+	CodigoAbreviacion string  `orm:"column(codigo_abreviacion);null"`
+	Activo            bool    `orm:"column(activo)"`
+	NumeroOrden       float64 `orm:"column(numero_orden);null"`
 }
 
-func (t *TipoPublicacionLibro) TableName() string {
-	return "tipo_publicacion_libro"
+func (t *EstadoAutorProduccion) TableName() string {
+	return "estado_autor_produccion"
 }
 
 func init() {
-	orm.RegisterModel(new(TipoPublicacionLibro))
+	orm.RegisterModel(new(EstadoAutorProduccion))
 }
 
-// AddTipoPublicacionLibro insert a new TipoPublicacionLibro into database and returns
+// AddEstadoAutorProduccion insert a new EstadoAutorProduccion into database and returns
 // last inserted Id on success.
-func AddTipoPublicacionLibro(m *TipoPublicacionLibro) (id int64, err error) {
+func AddEstadoAutorProduccion(m *EstadoAutorProduccion) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetTipoPublicacionLibroById retrieves TipoPublicacionLibro by Id. Returns error if
+// GetEstadoAutorProduccionById retrieves EstadoAutorProduccion by Id. Returns error if
 // Id doesn't exist
-func GetTipoPublicacionLibroById(id int) (v *TipoPublicacionLibro, err error) {
+func GetEstadoAutorProduccionById(id int) (v *EstadoAutorProduccion, err error) {
 	o := orm.NewOrm()
-	v = &TipoPublicacionLibro{Id: id}
+	v = &EstadoAutorProduccion{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllTipoPublicacionLibro retrieves all TipoPublicacionLibro matches certain condition. Returns empty list if
+// GetAllEstadoAutorProduccion retrieves all EstadoAutorProduccion matches certain condition. Returns empty list if
 // no records exist
-func GetAllTipoPublicacionLibro(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllEstadoAutorProduccion(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(TipoPublicacionLibro))
+	qs := o.QueryTable(new(EstadoAutorProduccion))
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
@@ -100,7 +100,7 @@ func GetAllTipoPublicacionLibro(query map[string]string, fields []string, sortby
 		}
 	}
 
-	var l []TipoPublicacionLibro
+	var l []EstadoAutorProduccion
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -123,11 +123,11 @@ func GetAllTipoPublicacionLibro(query map[string]string, fields []string, sortby
 	return nil, err
 }
 
-// UpdateTipoPublicacionLibro updates TipoPublicacionLibro by Id and returns error if
+// UpdateEstadoAutorProduccion updates EstadoAutorProduccion by Id and returns error if
 // the record to be updated doesn't exist
-func UpdateTipoPublicacionLibroById(m *TipoPublicacionLibro) (err error) {
+func UpdateEstadoAutorProduccionById(m *EstadoAutorProduccion) (err error) {
 	o := orm.NewOrm()
-	v := TipoPublicacionLibro{Id: m.Id}
+	v := EstadoAutorProduccion{Id: m.Id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -138,15 +138,15 @@ func UpdateTipoPublicacionLibroById(m *TipoPublicacionLibro) (err error) {
 	return
 }
 
-// DeleteTipoPublicacionLibro deletes TipoPublicacionLibro by Id and returns error if
+// DeleteEstadoAutorProduccion deletes EstadoAutorProduccion by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteTipoPublicacionLibro(id int) (err error) {
+func DeleteEstadoAutorProduccion(id int) (err error) {
 	o := orm.NewOrm()
-	v := TipoPublicacionLibro{Id: id}
+	v := EstadoAutorProduccion{Id: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&TipoPublicacionLibro{Id: id}); err == nil {
+		if num, err = o.Delete(&EstadoAutorProduccion{Id: id}); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}

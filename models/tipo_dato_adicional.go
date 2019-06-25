@@ -9,49 +9,49 @@ import (
 	"github.com/astaxie/beego/orm"
 )
 
-type OtraPublicacion struct {
-	Id      int                  `orm:"column(id);pk;auto"`
-	Persona int                  `orm:"column(persona)"`
-	Titulo  string               `orm:"column(titulo)"`
-	Autor   string               `orm:"column(autor)"`
-	Ano     int                  `orm:"column(ano)"`
-	Mes     int                  `orm:"column(mes)"`
-	Tipo    *TipoOtraPublicacion `orm:"column(tipo);rel(fk)"`
+type TipoDatoAdicional struct {
+	Id                int     `orm:"column(id);pk"`
+	Nombre            string  `orm:"column(nombre)"`
+	Descripcion       string  `orm:"column(descripcion);null"`
+	CodigoAbreviacion string  `orm:"column(codigo_abreviacion);null"`
+	Activo            bool    `orm:"column(activo)"`
+	NumeroOrden       float64 `orm:"column(numero_orden);null"`
+	FormDefiniton     string  `orm:"column(form_definiton);type(json)"`
 }
 
-func (t *OtraPublicacion) TableName() string {
-	return "otra_publicacion"
+func (t *TipoDatoAdicional) TableName() string {
+	return "tipo_dato_adicional"
 }
 
 func init() {
-	orm.RegisterModel(new(OtraPublicacion))
+	orm.RegisterModel(new(TipoDatoAdicional))
 }
 
-// AddOtraPublicacion insert a new OtraPublicacion into database and returns
+// AddTipoDatoAdicional insert a new TipoDatoAdicional into database and returns
 // last inserted Id on success.
-func AddOtraPublicacion(m *OtraPublicacion) (id int64, err error) {
+func AddTipoDatoAdicional(m *TipoDatoAdicional) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetOtraPublicacionById retrieves OtraPublicacion by Id. Returns error if
+// GetTipoDatoAdicionalById retrieves TipoDatoAdicional by Id. Returns error if
 // Id doesn't exist
-func GetOtraPublicacionById(id int) (v *OtraPublicacion, err error) {
+func GetTipoDatoAdicionalById(id int) (v *TipoDatoAdicional, err error) {
 	o := orm.NewOrm()
-	v = &OtraPublicacion{Id: id}
+	v = &TipoDatoAdicional{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllOtraPublicacion retrieves all OtraPublicacion matches certain condition. Returns empty list if
+// GetAllTipoDatoAdicional retrieves all TipoDatoAdicional matches certain condition. Returns empty list if
 // no records exist
-func GetAllOtraPublicacion(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllTipoDatoAdicional(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(OtraPublicacion))
+	qs := o.QueryTable(new(TipoDatoAdicional))
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
@@ -101,7 +101,7 @@ func GetAllOtraPublicacion(query map[string]string, fields []string, sortby []st
 		}
 	}
 
-	var l []OtraPublicacion
+	var l []TipoDatoAdicional
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -124,11 +124,11 @@ func GetAllOtraPublicacion(query map[string]string, fields []string, sortby []st
 	return nil, err
 }
 
-// UpdateOtraPublicacion updates OtraPublicacion by Id and returns error if
+// UpdateTipoDatoAdicional updates TipoDatoAdicional by Id and returns error if
 // the record to be updated doesn't exist
-func UpdateOtraPublicacionById(m *OtraPublicacion) (err error) {
+func UpdateTipoDatoAdicionalById(m *TipoDatoAdicional) (err error) {
 	o := orm.NewOrm()
-	v := OtraPublicacion{Id: m.Id}
+	v := TipoDatoAdicional{Id: m.Id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -139,15 +139,15 @@ func UpdateOtraPublicacionById(m *OtraPublicacion) (err error) {
 	return
 }
 
-// DeleteOtraPublicacion deletes OtraPublicacion by Id and returns error if
+// DeleteTipoDatoAdicional deletes TipoDatoAdicional by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteOtraPublicacion(id int) (err error) {
+func DeleteTipoDatoAdicional(id int) (err error) {
 	o := orm.NewOrm()
-	v := OtraPublicacion{Id: id}
+	v := TipoDatoAdicional{Id: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&OtraPublicacion{Id: id}); err == nil {
+		if num, err = o.Delete(&TipoDatoAdicional{Id: id}); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}

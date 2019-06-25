@@ -8,7 +8,7 @@
 package routers
 
 import (
-	"github.com/udistrital/produccion_academica_crud/controllers"
+	"github.com/planesticud/produccion_academica_crud/controllers"
 
 	"github.com/astaxie/beego"
 )
@@ -16,93 +16,63 @@ import (
 func init() {
 	ns := beego.NewNamespace("/v1",
 
-		beego.NSNamespace("/tipo_otra_publicacion",
+		beego.NSNamespace("/tipo_produccion",
 			beego.NSInclude(
-				&controllers.TipoOtraPublicacionController{},
+				&controllers.TipoProduccionController{},
 			),
 		),
 
-		beego.NSNamespace("/tipo_produccion_tecnica",
+		beego.NSNamespace("/subtipo_produccion",
 			beego.NSInclude(
-				&controllers.TipoProduccionTecnicaController{},
+				&controllers.SubtipoProduccionController{},
 			),
 		),
 
-		beego.NSNamespace("/libro",
+		beego.NSNamespace("/produccion_academica",
 			beego.NSInclude(
-				&controllers.LibroController{},
+				&controllers.ProduccionAcademicaController{},
 			),
 		),
 
-		beego.NSNamespace("/otro_documento",
+		beego.NSNamespace("/dato_adicional_produccion_academica",
 			beego.NSInclude(
-				&controllers.OtroDocumentoController{},
+				&controllers.DatoAdicionalProduccionAcademicaController{},
 			),
 		),
 
-		beego.NSNamespace("/produccion_tecnica",
+		beego.NSNamespace("/soporte_produccion_academica",
 			beego.NSInclude(
-				&controllers.ProduccionTecnicaController{},
+				&controllers.SoporteProduccionAcademicaController{},
 			),
 		),
 
-		beego.NSNamespace("/otra_publicacion",
+		beego.NSNamespace("/autor_produccion_academica",
 			beego.NSInclude(
-				&controllers.OtraPublicacionController{},
+				&controllers.AutorProduccionAcademicaController{},
 			),
 		),
 
-		beego.NSNamespace("/traduccion",
+		beego.NSNamespace("/dato_adicional_subtipo_produccion",
 			beego.NSInclude(
-				&controllers.TraduccionController{},
+				&controllers.DatoAdicionalSubtipoProduccionController{},
 			),
 		),
 
-		beego.NSNamespace("/tipo_disciplina",
+		beego.NSNamespace("/tipo_dato_adicional",
 			beego.NSInclude(
-				&controllers.TipoDisciplinaController{},
+				&controllers.TipoDatoAdicionalController{},
 			),
 		),
 
-		beego.NSNamespace("/tipo_traduccion",
+		beego.NSNamespace("/tr_produccion_academica",
 			beego.NSInclude(
-				&controllers.TipoTraduccionController{},
+				&controllers.TrProduccionAcademicaController{},
 			),
 		),
 
-		beego.NSNamespace("/articulo",
+		beego.NSNamespace("/estado_autor_produccion",
 			beego.NSInclude(
-				&controllers.ArticuloController{},
-			),
-		),
-
-		beego.NSNamespace("/produccion_artes_arqu_diseno",
-			beego.NSInclude(
-				&controllers.ProduccionArtesArquDisenoController{},
-			),
-		),
-
-		beego.NSNamespace("/tipo_articulo",
-			beego.NSInclude(
-				&controllers.TipoArticuloController{},
-			),
-		),
-
-		beego.NSNamespace("/medio_divulgacion",
-			beego.NSInclude(
-				&controllers.MedioDivulgacionController{},
-			),
-		),
-
-		beego.NSNamespace("/medio_publicacion",
-			beego.NSInclude(
-				&controllers.MedioPublicacionController{},
-			),
-		),
-
-		beego.NSNamespace("/tipo_publicacion_libro",
-			beego.NSInclude(
-				&controllers.TipoPublicacionLibroController{},
+				&controllers.EstadoAutorProduccionController{},
 			),
 		),
 	)
