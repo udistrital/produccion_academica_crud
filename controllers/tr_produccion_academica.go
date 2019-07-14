@@ -17,22 +17,22 @@ type TrProduccionAcademicaController struct {
 
 func (c *TrProduccionAcademicaController) URLMapping() {
 	c.Mapping("Post", c.Post)
-	c.Mapping("GetAllByEnte", c.GetAllByEnte)
+	c.Mapping("GetAllByPersona", c.GetAllByPersona)
 	c.Mapping("Delete", c.Delete)
 	c.Mapping("Put", c.Put)
 }
 
-// GetAllByEnte ...
-// @Title Get All By Ente
+// GetAllByPersona ...
+// @Title Get All By Persona
 // @Description get TrProduccionAcademicaController
-// @Param	id		path 	string	true		"Ente"
+// @Param	id		path 	string	true		"Persona"
 // @Success 200 {object} models.TrProduccionAcademicaController
 // @Failure 404 not found resource
-// @router /:ente [get]
-func (c *TrProduccionAcademicaController) GetAllByEnte() {
-	idEnteStr := c.Ctx.Input.Param(":ente")
-	idEnte, _ := strconv.Atoi(idEnteStr)
-	l, err := models.GetProduccionesAcademicasByEnte(idEnte)
+// @router /:persona [get]
+func (c *TrProduccionAcademicaController) GetAllByPersona() {
+	idPersonaStr := c.Ctx.Input.Param(":persona")
+	idPersona, _ := strconv.Atoi(idPersonaStr)
+	l, err := models.GetProduccionesAcademicasByPersona(idPersona)
 	if err != nil {
 		logs.Error(err)
 		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}

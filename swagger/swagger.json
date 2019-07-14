@@ -1574,8 +1574,12 @@
         }
     },
     "definitions": {
-        "19596.\u003cnil\u003e.AutorProduccionAcademica": {
+        "19590.\u003cnil\u003e.AutorProduccionAcademica": {
             "title": "AutorProduccionAcademica",
+            "type": "object"
+        },
+        "19636.\u003cnil\u003e.MetadatoProduccionAcademica": {
+            "title": "MetadatoProduccionAcademica",
             "type": "object"
         },
         "models.AutorProduccionAcademica": {
@@ -1878,7 +1882,10 @@
             "type": "object",
             "properties": {
                 "Autores": {
-                    "$ref": "#/definitions/19596.\u003cnil\u003e.AutorProduccionAcademica"
+                    "$ref": "#/definitions/19590.\u003cnil\u003e.AutorProduccionAcademica"
+                },
+                "Metadatos": {
+                    "$ref": "#/definitions/19636.\u003cnil\u003e.MetadatoProduccionAcademica"
                 },
                 "ProduccionAcademica": {
                     "$ref": "#/definitions/models.ProduccionAcademica"

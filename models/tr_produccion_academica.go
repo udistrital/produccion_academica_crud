@@ -1,36 +1,33 @@
 package models
 
 import (
-	// "fmt"
+	"fmt"
 
-	// "github.com/astaxie/beego/orm"
+	"github.com/astaxie/beego/orm"
 )
 
 type TrProduccionAcademica struct {
 	ProduccionAcademica            *ProduccionAcademica
 	Autores  *[]AutorProduccionAcademica
-	/*
-	DatosAdicionales        *[]DatoAdicionalProduccionAcademica
-	*/
+	Metadatos        *[]MetadatoProduccionAcademica
 }
 
-// GetProduccionesAcademicas Transacción para consultar todas las producciones con toda la información de las mismas
-func GetProduccionesAcademicasByEnte(ente int) (v []interface{}, err error) {
-	/*
+// GetProduccionesAcademicasByPersona Transacción para consultar todas las producciones con toda la información de las mismas
+func GetProduccionesAcademicasByPersona(persona int) (v []interface{}, err error) {
 	o := orm.NewOrm()
 	var autores []*AutorProduccionAcademica
-	if _, err := o.QueryTable(new(AutorProduccionAcademica)).RelatedSel().Filter("ente",ente).All(&autores); err == nil{
+	if _, err := o.QueryTable(new(AutorProduccionAcademica)).RelatedSel().Filter("persona",persona).All(&autores); err == nil{
 		for _, autor := range autores {
 
-			produccionAcademica := autor.ProduccionAcademica
+			produccionAcademica := autor.ProduccionAcademicaId
 
 			var autoresProduccion []AutorProduccionAcademica
-			if _, err := o.QueryTable(new(AutorProduccionAcademica)).RelatedSel().Filter("produccion_academica",produccionAcademica.Id).All(&autoresProduccion); err != nil{
+			if _, err := o.QueryTable(new(AutorProduccionAcademica)).RelatedSel().Filter("ProduccionAcademicaId__Id",produccionAcademica.Id).All(&autoresProduccion); err != nil{
 				return nil, err
 			}
 
-			var datosAdicionales []DatoAdicionalProduccionAcademica
-			if _, err := o.QueryTable(new(DatoAdicionalProduccionAcademica)).RelatedSel().Filter("ProduccionAcademica__Id",produccionAcademica.Id).All(&datosAdicionales); err != nil{
+			var metadatos []MetadatoProduccionAcademica
+			if _, err := o.QueryTable(new(MetadatoProduccionAcademica)).RelatedSel().Filter("ProduccionAcademicaId__Id",produccionAcademica.Id).All(&metadatos); err != nil{
 				return nil, err
 			}
 
@@ -39,21 +36,19 @@ func GetProduccionesAcademicasByEnte(ente int) (v []interface{}, err error) {
 				"Titulo": produccionAcademica.Titulo,
 				"Resumen": produccionAcademica.Resumen,
 				"Fecha": produccionAcademica.Fecha,
-				"SubtipoProduccion":produccionAcademica.SubtipoProduccion,
+				"SubtipoProduccion":produccionAcademica.SubtipoProduccionId,
 				"Autores": &autoresProduccion,
-				"DatosAdicionales": &datosAdicionales,
+				"Metadatos": &metadatos,
 			})
 		}
 
 		return v, nil
 	}
-	*/
 	return nil, err
 }
 
 // AddTransaccionProduccionAcademica Transacción para registrar toda la información de una producción
 func AddTransaccionProduccionAcademica(m *TrProduccionAcademica) (err error) {
-	/*
 	o := orm.NewOrm()
 	err = o.Begin()
 	
@@ -61,7 +56,7 @@ func AddTransaccionProduccionAcademica(m *TrProduccionAcademica) (err error) {
 		fmt.Println(idProduccion)
 
 		for _, v := range *m.Autores {
-			v.ProduccionAcademica.Id = int(idProduccion)
+			v.ProduccionAcademicaId.Id = int(idProduccion)
 			if _, errTr = o.Insert(&v); errTr != nil {
 				err = errTr
 				fmt.Println(err)
@@ -70,8 +65,8 @@ func AddTransaccionProduccionAcademica(m *TrProduccionAcademica) (err error) {
 			}
 		}
 
-		for _, v := range *m.DatosAdicionales {
-			v.ProduccionAcademica.Id = int(idProduccion)
+		for _, v := range *m.Metadatos {
+			v.ProduccionAcademicaId.Id = int(idProduccion)
 			if _, errTr = o.Insert(&v); errTr != nil {
 				err = errTr
 				fmt.Println(err)
@@ -86,14 +81,12 @@ func AddTransaccionProduccionAcademica(m *TrProduccionAcademica) (err error) {
 		fmt.Println(err)
 		_ = o.Rollback()
 	}
-	*/
 	return
 }
 
 // UpdateTransaccionProduccionAcademica updates ProduccionAcademica by Id and returns error if
 // the record to be updated doesn't exist
 func UpdateTransaccionProduccionAcademica(m *TrProduccionAcademica) (err error) {
-	/*
 	o := orm.NewOrm()
 	err = o.Begin()
 	v := ProduccionAcademica{Id: m.ProduccionAcademica.Id}
@@ -103,22 +96,22 @@ func UpdateTransaccionProduccionAcademica(m *TrProduccionAcademica) (err error) 
 		if num, errTr = o.Update(m.ProduccionAcademica); errTr == nil {
 			fmt.Println("Number of records updated in database:", num)
 
-			for _, v := range *m.DatosAdicionales {
-					var datoAdicional DatoAdicionalProduccionAcademica
-					if errTr = o.QueryTable(new(DatoAdicionalProduccionAcademica)).RelatedSel().Filter("DatoAdicionalSubtipoProduccion__Id",v.DatoAdicionalSubtipoProduccion.Id).Filter("ProduccionAcademica__Id",m.ProduccionAcademica.Id).One(&datoAdicional); err == nil{
-						datoAdicional.Valor = v.Valor
+			for _, v := range *m.Metadatos {
+					var metadato MetadatoProduccionAcademica
+					if errTr = o.QueryTable(new(MetadatoProduccionAcademica)).RelatedSel().Filter("MetadatoSubtipoProduccionId__Id",v.MetadatoSubtipoProduccionId.Id).Filter("ProduccionAcademicaId__Id",m.ProduccionAcademica.Id).One(&metadato); err == nil{
+						metadato.Valor = v.Valor
 
-						if (datoAdicional.Id != 0) {
-							if _, errTr = o.Update(&datoAdicional,"Valor"); errTr != nil {
+						if (metadato.Id != 0) {
+							if _, errTr = o.Update(&metadato,"Valor"); errTr != nil {
 								err = errTr
 								fmt.Println(err)
 								_ = o.Rollback()
 								return
 							}
 						} else {
-							datoAdicional.ProduccionAcademica = m.ProduccionAcademica
-							datoAdicional.DatoAdicionalSubtipoProduccion = v.DatoAdicionalSubtipoProduccion
-							if _, errTr = o.Insert(&datoAdicional); errTr != nil {
+							metadato.ProduccionAcademicaId= m.ProduccionAcademica
+							metadato.MetadatoSubtipoProduccionId = v.MetadatoSubtipoProduccionId
+							if _, errTr = o.Insert(&metadato); errTr != nil {
 								err = errTr
 								fmt.Println(err)
 								_ = o.Rollback()
@@ -147,14 +140,12 @@ func UpdateTransaccionProduccionAcademica(m *TrProduccionAcademica) (err error) 
 		fmt.Println(err)
 		_ = o.Rollback()
 	}
-	*/
 	return
 }
 
 // TrDeleteProduccionAcademica deletes ProduccionAcademica by Id and returns error if
 // the record to be deleted doesn't exist
 func TrDeleteProduccionAcademica(id int) (err error) {
-	/*
 	o := orm.NewOrm()
 	v := ProduccionAcademica{Id: id}
 	// ascertain id exists in the database
@@ -164,6 +155,5 @@ func TrDeleteProduccionAcademica(id int) (err error) {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}
-	*/
 	return
 }
