@@ -4,6 +4,6 @@ insert into produccion_academica.estado_autor_produccion (id, nombre, descripcio
 insert into produccion_academica.estado_autor_produccion (id, nombre, descripcion, codigo_abreviacion, activo, numero_orden, fecha_creacion, fecha_modificacion) 
 	values (2, 'Autor confirmado', 'Autor que confirma que pertenece a la producción', 'AutConf', true, 2, now(), now()); 
 insert into produccion_academica.estado_autor_produccion (id, nombre, descripcion, codigo_abreviacion, activo, numero_orden, fecha_creacion, fecha_modificacion) 
-	values (3, 'Autor sin confirmar', 'Autor que aún no confirma su autoria', 'AutConf', true, 3, now(), now()); 
+	values (3, 'Autor sin confirmar', 'Autor que aún no confirma su autoria', 'AutSinConf', true, 3, now(), now()); 
 insert into produccion_academica.estado_autor_produccion (id, nombre, descripcion, codigo_abreviacion, activo, numero_orden, fecha_creacion, fecha_modificacion) 
-	values (4, 'Niega participación', 'El ente niega la participación en la producción', '', true, 4, now(), now()); 
+	values (4, 'Niega participación', 'El ente niega la participación en la producción', 'AutNie', true, 4, now(), now()); 

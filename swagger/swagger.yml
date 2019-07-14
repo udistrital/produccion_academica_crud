@@ -1046,6 +1046,84 @@ paths:
           description: '{string} delete success!'
         "404":
           description: not found resource
+  /tr_produccion_academica/:
+    post:
+      tags:
+      - tr_produccion_academica
+      description: create the TrProduccionAcademica
+      operationId: TrProduccionAcademicaController.PostTrProduccionAcademica
+      parameters:
+      - in: body
+        name: body
+        description: body for TrProduccionAcademica content
+        required: true
+        schema:
+          $ref: '#/definitions/models.TrProduccionAcademica'
+      responses:
+        "201":
+          description: '{int} models.TrProduccionAcademica'
+        "400":
+          description: the request contains incorrect syntax
+  /tr_produccion_academica/{id}:
+    put:
+      tags:
+      - tr_produccion_academica
+      description: update the TrProduccionAcademica
+      operationId: TrProduccionAcademicaController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for TrProduccionAcademica content
+        required: true
+        schema:
+          $ref: '#/definitions/models.TrProduccionAcademica'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TrProduccionAcademica'
+        "400":
+          description: the request contains incorrect syntax
+    delete:
+      tags:
+      - tr_produccion_academica
+      description: delete the ProduccionAcademica
+      operationId: TrProduccionAcademicaController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "404":
+          description: not found resource
+  /tr_produccion_academica/{persona}:
+    get:
+      tags:
+      - tr_produccion_academica
+      description: get TrProduccionAcademicaController
+      operationId: TrProduccionAcademicaController.Get All By Persona
+      parameters:
+      - in: path
+        name: id
+        description: Persona
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TrProduccionAcademicaController'
+        "404":
+          description: not found resource
 definitions:
   19590.<nil>.AutorProduccionAcademica:
     title: AutorProduccionAcademica
@@ -1293,6 +1371,9 @@ tags:
 - name: produccion_academica
   description: |
     ProduccionAcademicaController operations for ProduccionAcademica
+- name: tr_produccion_academica
+  description: |
+    operations for TrProduccionAcademica
 - name: estado_autor_produccion
   description: |
     EstadoAutorProduccionController operations for EstadoAutorProduccion

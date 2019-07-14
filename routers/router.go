@@ -52,6 +52,12 @@ func init() {
 			),
 		),
 
+		beego.NSNamespace("/tr_produccion_academica",
+			beego.NSInclude(
+				&controllers.TrProduccionAcademicaController{},
+			),
+		),
+
 		beego.NSNamespace("/estado_autor_produccion",
 			beego.NSInclude(
 				&controllers.EstadoAutorProduccionController{},
