@@ -12,23 +12,23 @@ services:
       - custom.env
       - .env
     ports: 
-      - "${API_PRODUCCION_ACADEMICA_HTTP_PORT}:${API_PRODUCCION_ACADEMICA_HTTP_PORT}"
-    command: sh -c 'cd ${API_BASE_DIR}/${API_NAME};go get -v ./...; bee run --downdoc=true --gendoc=true'
+      - "${API_PORT}:${API_PORT}"
+    command: sh -c 'cd ${API_BASE_DIR}/${API_NAME};go get -v ./...; bee migrate -driver=postgres -conn="postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}/${POSTGRES_DB}?sslmode=disable&search_path=public" || true; bee run -downdoc=true -gendoc=true'
     depends_on: 
       - db
     networks: 
       - back_end
   db:
-    container_name: ${PRODUCCION_ACADEMICA_CRUD__PGHOST}
+    container_name: ${POSTGRES_HOST}
     image: postgres:10
     ports:
-      - "${PRODUCCION_ACADEMICA_CRUD__PGPORT}:5432"
+      - "${POSTGRES_PORT}:5432"
     volumes: 
       - postgres_data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=${PRODUCCION_ACADEMICA_CRUD__PGDB}
-      - POSTGRES_USER=${PRODUCCION_ACADEMICA_CRUD__PGUSER}
-      - POSTGRES_PASSWORD=${PRODUCCION_ACADEMICA_CRUD__PGPASS}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     networks: 
       - back_end
 

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	// "fmt"
 
 	_ "github.com/udistrital/produccion_academica_crud/routers"
 
@@ -18,6 +18,7 @@ import (
 func init() {
 	orm.RegisterDataBase("default", "postgres", "postgres://"+beego.AppConfig.String("PGuser")+":"+beego.AppConfig.String("PGpass")+"@"+beego.AppConfig.String("PGurls")+"/"+beego.AppConfig.String("PGdb")+"?sslmode=disable&search_path="+beego.AppConfig.String("PGschemas")+"")
 	if beego.BConfig.RunMode == "dev" {
+		/*
 		// Database alias.
 		name := "default"
 
@@ -32,6 +33,7 @@ func init() {
 		if err != nil {
 			fmt.Println(err)
 		}
+		*/
 	}
 }
 
