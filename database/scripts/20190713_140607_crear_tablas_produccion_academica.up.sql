@@ -366,3 +366,7 @@ REFERENCES produccion_academica.estado_autor_produccion (id) MATCH FULL
 ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --
 
+-- Permisos de usuario
+GRANT USAGE ON SCHEMA produccion_academica TO test;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA produccion_academica TO test;
+GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA produccion_academica TO test;
