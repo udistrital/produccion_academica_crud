@@ -5,17 +5,20 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
+	"time"
 
 	"github.com/astaxie/beego/orm"
 )
 
 type TipoProduccion struct {
-	Id                int     `orm:"column(id);pk;auto"`
-	Nombre            string  `orm:"column(nombre)"`
-	Descripcion       string  `orm:"column(descripcion);null"`
-	CodigoAbreviacion string  `orm:"column(codigo_abreviacion);null"`
-	Activo            bool    `orm:"column(activo)"`
-	NumeroOrden       float64 `orm:"column(numero_orden);null"`
+	Id                int       `orm:"column(id);pk;auto"`
+	Nombre            string    `orm:"column(nombre)"`
+	Descripcion       string    `orm:"column(descripcion);null"`
+	CodigoAbreviacion string    `orm:"column(codigo_abreviacion);null"`
+	Activo            bool      `orm:"column(activo)"`
+	NumeroOrden       float64   `orm:"column(numero_orden);null"`
+	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(timestamp without time zone)"`
+	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
 }
 
 func (t *TipoProduccion) TableName() string {
@@ -50,7 +53,7 @@ func GetTipoProduccionById(id int) (v *TipoProduccion, err error) {
 func GetAllTipoProduccion(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(TipoProduccion))
+	qs := o.QueryTable(new(TipoProduccion)).RelatedSel()
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute

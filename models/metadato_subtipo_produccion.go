@@ -5,49 +5,53 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
+	"time"
 
 	"github.com/astaxie/beego/orm"
 )
 
-type DatoAdicionalSubtipoProduccion struct {
-	Id                int                `orm:"column(id);pk;auto"`
-	SubtipoProduccion *SubtipoProduccion `orm:"column(subtipo_produccion);rel(fk)"`
-	TipoDatoAdicional *TipoDatoAdicional `orm:"column(tipo_dato_adicional);rel(fk)"`
+type MetadatoSubtipoProduccion struct {
+	Id                  int                `orm:"column(id);pk;auto"`
+	Activo              bool               `orm:"column(activo)"`
+	FechaCreacion       time.Time          `orm:"column(fecha_creacion);type(timestamp without time zone)"`
+	FechaModificacion   time.Time          `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+	TipoMetadatoId      *TipoMetadato      `orm:"column(tipo_metadato_id);rel(fk)"`
+	SubtipoProduccionId *SubtipoProduccion `orm:"column(subtipo_produccion_id);rel(fk)"`
 }
 
-func (t *DatoAdicionalSubtipoProduccion) TableName() string {
-	return "dato_adicional_subtipo_produccion"
+func (t *MetadatoSubtipoProduccion) TableName() string {
+	return "metadato_subtipo_produccion"
 }
 
 func init() {
-	orm.RegisterModel(new(DatoAdicionalSubtipoProduccion))
+	orm.RegisterModel(new(MetadatoSubtipoProduccion))
 }
 
-// AddDatoAdicionalSubtipoProduccion insert a new DatoAdicionalSubtipoProduccion into database and returns
+// AddMetadatoSubtipoProduccion insert a new MetadatoSubtipoProduccion into database and returns
 // last inserted Id on success.
-func AddDatoAdicionalSubtipoProduccion(m *DatoAdicionalSubtipoProduccion) (id int64, err error) {
+func AddMetadatoSubtipoProduccion(m *MetadatoSubtipoProduccion) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetDatoAdicionalSubtipoProduccionById retrieves DatoAdicionalSubtipoProduccion by Id. Returns error if
+// GetMetadatoSubtipoProduccionById retrieves MetadatoSubtipoProduccion by Id. Returns error if
 // Id doesn't exist
-func GetDatoAdicionalSubtipoProduccionById(id int) (v *DatoAdicionalSubtipoProduccion, err error) {
+func GetMetadatoSubtipoProduccionById(id int) (v *MetadatoSubtipoProduccion, err error) {
 	o := orm.NewOrm()
-	v = &DatoAdicionalSubtipoProduccion{Id: id}
+	v = &MetadatoSubtipoProduccion{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllDatoAdicionalSubtipoProduccion retrieves all DatoAdicionalSubtipoProduccion matches certain condition. Returns empty list if
+// GetAllMetadatoSubtipoProduccion retrieves all MetadatoSubtipoProduccion matches certain condition. Returns empty list if
 // no records exist
-func GetAllDatoAdicionalSubtipoProduccion(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllMetadatoSubtipoProduccion(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(DatoAdicionalSubtipoProduccion)).RelatedSel()
+	qs := o.QueryTable(new(MetadatoSubtipoProduccion)).RelatedSel()
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
@@ -97,7 +101,7 @@ func GetAllDatoAdicionalSubtipoProduccion(query map[string]string, fields []stri
 		}
 	}
 
-	var l []DatoAdicionalSubtipoProduccion
+	var l []MetadatoSubtipoProduccion
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -120,11 +124,11 @@ func GetAllDatoAdicionalSubtipoProduccion(query map[string]string, fields []stri
 	return nil, err
 }
 
-// UpdateDatoAdicionalSubtipoProduccion updates DatoAdicionalSubtipoProduccion by Id and returns error if
+// UpdateMetadatoSubtipoProduccion updates MetadatoSubtipoProduccion by Id and returns error if
 // the record to be updated doesn't exist
-func UpdateDatoAdicionalSubtipoProduccionById(m *DatoAdicionalSubtipoProduccion) (err error) {
+func UpdateMetadatoSubtipoProduccionById(m *MetadatoSubtipoProduccion) (err error) {
 	o := orm.NewOrm()
-	v := DatoAdicionalSubtipoProduccion{Id: m.Id}
+	v := MetadatoSubtipoProduccion{Id: m.Id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -135,15 +139,15 @@ func UpdateDatoAdicionalSubtipoProduccionById(m *DatoAdicionalSubtipoProduccion)
 	return
 }
 
-// DeleteDatoAdicionalSubtipoProduccion deletes DatoAdicionalSubtipoProduccion by Id and returns error if
+// DeleteMetadatoSubtipoProduccion deletes MetadatoSubtipoProduccion by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteDatoAdicionalSubtipoProduccion(id int) (err error) {
+func DeleteMetadatoSubtipoProduccion(id int) (err error) {
 	o := orm.NewOrm()
-	v := DatoAdicionalSubtipoProduccion{Id: id}
+	v := MetadatoSubtipoProduccion{Id: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&DatoAdicionalSubtipoProduccion{Id: id}); err == nil {
+		if num, err = o.Delete(&MetadatoSubtipoProduccion{Id: id}); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}

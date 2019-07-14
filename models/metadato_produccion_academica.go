@@ -5,50 +5,54 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
+	"time"
 
 	"github.com/astaxie/beego/orm"
 )
 
-type DatoAdicionalProduccionAcademica struct {
-	Id                             int                             `orm:"column(id);pk;auto"`
-	ProduccionAcademica            *ProduccionAcademica            `orm:"column(produccion_academica);rel(fk)"`
-	DatoAdicionalSubtipoProduccion *DatoAdicionalSubtipoProduccion `orm:"column(dato_adicional_subtipo_produccion);rel(fk)"`
-	Valor                          string                          `orm:"column(valor)"`
+type MetadatoProduccionAcademica struct {
+	Id                          int                        `orm:"column(id);pk;auto"`
+	Valor                       string                     `orm:"column(valor)"`
+	Activo                      bool                       `orm:"column(activo)"`
+	FechaCreacion               time.Time                  `orm:"column(fecha_creacion);type(timestamp without time zone)"`
+	FechaModificacion           time.Time                  `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+	MetadatoSubtipoProduccionId *MetadatoSubtipoProduccion `orm:"column(metadato_subtipo_produccion_id);rel(fk)"`
+	ProduccionAcademicaId       *ProduccionAcademica       `orm:"column(produccion_academica_id);rel(fk)"`
 }
 
-func (t *DatoAdicionalProduccionAcademica) TableName() string {
-	return "dato_adicional_produccion_academica"
+func (t *MetadatoProduccionAcademica) TableName() string {
+	return "metadato_produccion_academica"
 }
 
 func init() {
-	orm.RegisterModel(new(DatoAdicionalProduccionAcademica))
+	orm.RegisterModel(new(MetadatoProduccionAcademica))
 }
 
-// AddDatoAdicionalProduccionAcademica insert a new DatoAdicionalProduccionAcademica into database and returns
+// AddMetadatoProduccionAcademica insert a new MetadatoProduccionAcademica into database and returns
 // last inserted Id on success.
-func AddDatoAdicionalProduccionAcademica(m *DatoAdicionalProduccionAcademica) (id int64, err error) {
+func AddMetadatoProduccionAcademica(m *MetadatoProduccionAcademica) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetDatoAdicionalProduccionAcademicaById retrieves DatoAdicionalProduccionAcademica by Id. Returns error if
+// GetMetadatoProduccionAcademicaById retrieves MetadatoProduccionAcademica by Id. Returns error if
 // Id doesn't exist
-func GetDatoAdicionalProduccionAcademicaById(id int) (v *DatoAdicionalProduccionAcademica, err error) {
+func GetMetadatoProduccionAcademicaById(id int) (v *MetadatoProduccionAcademica, err error) {
 	o := orm.NewOrm()
-	v = &DatoAdicionalProduccionAcademica{Id: id}
+	v = &MetadatoProduccionAcademica{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllDatoAdicionalProduccionAcademica retrieves all DatoAdicionalProduccionAcademica matches certain condition. Returns empty list if
+// GetAllMetadatoProduccionAcademica retrieves all MetadatoProduccionAcademica matches certain condition. Returns empty list if
 // no records exist
-func GetAllDatoAdicionalProduccionAcademica(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllMetadatoProduccionAcademica(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(DatoAdicionalProduccionAcademica)).RelatedSel()
+	qs := o.QueryTable(new(MetadatoProduccionAcademica)).RelatedSel()
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
@@ -98,7 +102,7 @@ func GetAllDatoAdicionalProduccionAcademica(query map[string]string, fields []st
 		}
 	}
 
-	var l []DatoAdicionalProduccionAcademica
+	var l []MetadatoProduccionAcademica
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -121,11 +125,11 @@ func GetAllDatoAdicionalProduccionAcademica(query map[string]string, fields []st
 	return nil, err
 }
 
-// UpdateDatoAdicionalProduccionAcademica updates DatoAdicionalProduccionAcademica by Id and returns error if
+// UpdateMetadatoProduccionAcademica updates MetadatoProduccionAcademica by Id and returns error if
 // the record to be updated doesn't exist
-func UpdateDatoAdicionalProduccionAcademicaById(m *DatoAdicionalProduccionAcademica) (err error) {
+func UpdateMetadatoProduccionAcademicaById(m *MetadatoProduccionAcademica) (err error) {
 	o := orm.NewOrm()
-	v := DatoAdicionalProduccionAcademica{Id: m.Id}
+	v := MetadatoProduccionAcademica{Id: m.Id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -136,15 +140,15 @@ func UpdateDatoAdicionalProduccionAcademicaById(m *DatoAdicionalProduccionAcadem
 	return
 }
 
-// DeleteDatoAdicionalProduccionAcademica deletes DatoAdicionalProduccionAcademica by Id and returns error if
+// DeleteMetadatoProduccionAcademica deletes MetadatoProduccionAcademica by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteDatoAdicionalProduccionAcademica(id int) (err error) {
+func DeleteMetadatoProduccionAcademica(id int) (err error) {
 	o := orm.NewOrm()
-	v := DatoAdicionalProduccionAcademica{Id: id}
+	v := MetadatoProduccionAcademica{Id: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&DatoAdicionalProduccionAcademica{Id: id}); err == nil {
+		if num, err = o.Delete(&MetadatoProduccionAcademica{Id: id}); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}

@@ -5,53 +5,56 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
+	"time"
 
 	"github.com/astaxie/beego/orm"
 )
 
-type TipoDatoAdicional struct {
-	Id                int     `orm:"column(id);pk"`
-	Nombre            string  `orm:"column(nombre)"`
-	Descripcion       string  `orm:"column(descripcion);null"`
-	CodigoAbreviacion string  `orm:"column(codigo_abreviacion);null"`
-	Activo            bool    `orm:"column(activo)"`
-	NumeroOrden       float64 `orm:"column(numero_orden);null"`
-	FormDefiniton     string  `orm:"column(form_definiton);type(json)"`
+type TipoMetadato struct {
+	Id                int       `orm:"column(id);pk;auto"`
+	Nombre            string    `orm:"column(nombre)"`
+	Descripcion       string    `orm:"column(descripcion);null"`
+	CodigoAbreviacion string    `orm:"column(codigo_abreviacion);null"`
+	Activo            bool      `orm:"column(activo)"`
+	NumeroOrden       float64   `orm:"column(numero_orden);null"`
+	FormDefinition    string    `orm:"column(form_definition);type(json);null"`
+	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(timestamp without time zone)"`
+	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
 }
 
-func (t *TipoDatoAdicional) TableName() string {
-	return "tipo_dato_adicional"
+func (t *TipoMetadato) TableName() string {
+	return "tipo_metadato"
 }
 
 func init() {
-	orm.RegisterModel(new(TipoDatoAdicional))
+	orm.RegisterModel(new(TipoMetadato))
 }
 
-// AddTipoDatoAdicional insert a new TipoDatoAdicional into database and returns
+// AddTipoMetadato insert a new TipoMetadato into database and returns
 // last inserted Id on success.
-func AddTipoDatoAdicional(m *TipoDatoAdicional) (id int64, err error) {
+func AddTipoMetadato(m *TipoMetadato) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetTipoDatoAdicionalById retrieves TipoDatoAdicional by Id. Returns error if
+// GetTipoMetadatoById retrieves TipoMetadato by Id. Returns error if
 // Id doesn't exist
-func GetTipoDatoAdicionalById(id int) (v *TipoDatoAdicional, err error) {
+func GetTipoMetadatoById(id int) (v *TipoMetadato, err error) {
 	o := orm.NewOrm()
-	v = &TipoDatoAdicional{Id: id}
+	v = &TipoMetadato{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllTipoDatoAdicional retrieves all TipoDatoAdicional matches certain condition. Returns empty list if
+// GetAllTipoMetadato retrieves all TipoMetadato matches certain condition. Returns empty list if
 // no records exist
-func GetAllTipoDatoAdicional(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllTipoMetadato(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(TipoDatoAdicional))
+	qs := o.QueryTable(new(TipoMetadato)).RelatedSel()
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
@@ -101,7 +104,7 @@ func GetAllTipoDatoAdicional(query map[string]string, fields []string, sortby []
 		}
 	}
 
-	var l []TipoDatoAdicional
+	var l []TipoMetadato
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -124,11 +127,11 @@ func GetAllTipoDatoAdicional(query map[string]string, fields []string, sortby []
 	return nil, err
 }
 
-// UpdateTipoDatoAdicional updates TipoDatoAdicional by Id and returns error if
+// UpdateTipoMetadato updates TipoMetadato by Id and returns error if
 // the record to be updated doesn't exist
-func UpdateTipoDatoAdicionalById(m *TipoDatoAdicional) (err error) {
+func UpdateTipoMetadatoById(m *TipoMetadato) (err error) {
 	o := orm.NewOrm()
-	v := TipoDatoAdicional{Id: m.Id}
+	v := TipoMetadato{Id: m.Id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -139,15 +142,15 @@ func UpdateTipoDatoAdicionalById(m *TipoDatoAdicional) (err error) {
 	return
 }
 
-// DeleteTipoDatoAdicional deletes TipoDatoAdicional by Id and returns error if
+// DeleteTipoMetadato deletes TipoMetadato by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteTipoDatoAdicional(id int) (err error) {
+func DeleteTipoMetadato(id int) (err error) {
 	o := orm.NewOrm()
-	v := TipoDatoAdicional{Id: id}
+	v := TipoMetadato{Id: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&TipoDatoAdicional{Id: id}); err == nil {
+		if num, err = o.Delete(&TipoMetadato{Id: id}); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}

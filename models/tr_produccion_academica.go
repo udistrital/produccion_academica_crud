@@ -1,19 +1,22 @@
 package models
 
 import (
-	"fmt"
+	// "fmt"
 
-	"github.com/astaxie/beego/orm"
+	// "github.com/astaxie/beego/orm"
 )
 
 type TrProduccionAcademica struct {
 	ProduccionAcademica            *ProduccionAcademica
 	Autores  *[]AutorProduccionAcademica
+	/*
 	DatosAdicionales        *[]DatoAdicionalProduccionAcademica
+	*/
 }
 
 // GetProduccionesAcademicas Transacción para consultar todas las producciones con toda la información de las mismas
 func GetProduccionesAcademicasByEnte(ente int) (v []interface{}, err error) {
+	/*
 	o := orm.NewOrm()
 	var autores []*AutorProduccionAcademica
 	if _, err := o.QueryTable(new(AutorProduccionAcademica)).RelatedSel().Filter("ente",ente).All(&autores); err == nil{
@@ -44,11 +47,13 @@ func GetProduccionesAcademicasByEnte(ente int) (v []interface{}, err error) {
 
 		return v, nil
 	}
+	*/
 	return nil, err
 }
 
 // AddTransaccionProduccionAcademica Transacción para registrar toda la información de una producción
 func AddTransaccionProduccionAcademica(m *TrProduccionAcademica) (err error) {
+	/*
 	o := orm.NewOrm()
 	err = o.Begin()
 	
@@ -81,16 +86,16 @@ func AddTransaccionProduccionAcademica(m *TrProduccionAcademica) (err error) {
 		fmt.Println(err)
 		_ = o.Rollback()
 	}
-
+	*/
 	return
 }
 
 // UpdateTransaccionProduccionAcademica updates ProduccionAcademica by Id and returns error if
 // the record to be updated doesn't exist
 func UpdateTransaccionProduccionAcademica(m *TrProduccionAcademica) (err error) {
+	/*
 	o := orm.NewOrm()
 	err = o.Begin()
-
 	v := ProduccionAcademica{Id: m.ProduccionAcademica.Id}
 	// ascertain id exists in the database
 	if errTr := o.Read(&v); errTr == nil {
@@ -142,12 +147,14 @@ func UpdateTransaccionProduccionAcademica(m *TrProduccionAcademica) (err error) 
 		fmt.Println(err)
 		_ = o.Rollback()
 	}
+	*/
 	return
 }
 
 // TrDeleteProduccionAcademica deletes ProduccionAcademica by Id and returns error if
 // the record to be deleted doesn't exist
 func TrDeleteProduccionAcademica(id int) (err error) {
+	/*
 	o := orm.NewOrm()
 	v := ProduccionAcademica{Id: id}
 	// ascertain id exists in the database
@@ -157,5 +164,6 @@ func TrDeleteProduccionAcademica(id int) (err error) {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}
+	*/
 	return
 }
