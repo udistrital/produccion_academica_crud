@@ -3,7 +3,7 @@ package controllers
 import (
 	"encoding/json"
 	"strconv"
-	
+
 	"github.com/udistrital/produccion_academica_crud/models"
 
 	"github.com/astaxie/beego"
@@ -18,10 +18,9 @@ type TrProduccionAcademicaController struct {
 func (c *TrProduccionAcademicaController) URLMapping() {
 	c.Mapping("Post", c.Post)
 	c.Mapping("GetAllByEnte", c.GetAllByEnte)
-	c.Mapping("Delete",c.Delete)
-	c.Mapping("Put",c.Put)
+	c.Mapping("Delete", c.Delete)
+	c.Mapping("Put", c.Put)
 }
-
 
 // GetAllByEnte ...
 // @Title Get All By Ente

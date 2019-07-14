@@ -12,13 +12,13 @@ import (
 	"github.com/astaxie/beego/logs"
 )
 
-// DatoAdicionalSubtipoProduccionController operations for DatoAdicionalSubtipoProduccion
-type DatoAdicionalSubtipoProduccionController struct {
+// TipoMetadatoController operations for TipoMetadato
+type TipoMetadatoController struct {
 	beego.Controller
 }
 
 // URLMapping ...
-func (c *DatoAdicionalSubtipoProduccionController) URLMapping() {
+func (c *TipoMetadatoController) URLMapping() {
 	c.Mapping("Post", c.Post)
 	c.Mapping("GetOne", c.GetOne)
 	c.Mapping("GetAll", c.GetAll)
@@ -28,15 +28,15 @@ func (c *DatoAdicionalSubtipoProduccionController) URLMapping() {
 
 // Post ...
 // @Title Post
-// @Description create DatoAdicionalSubtipoProduccion
-// @Param	body		body 	models.DatoAdicionalSubtipoProduccion	true		"body for DatoAdicionalSubtipoProduccion content"
-// @Success 201 {int} models.DatoAdicionalSubtipoProduccion
+// @Description create TipoMetadato
+// @Param	body		body 	models.TipoMetadato	true		"body for TipoMetadato content"
+// @Success 201 {int} models.TipoMetadato
 // @Failure 400 the request contains incorrect syntax
 // @router / [post]
-func (c *DatoAdicionalSubtipoProduccionController) Post() {
-	var v models.DatoAdicionalSubtipoProduccion
+func (c *TipoMetadatoController) Post() {
+	var v models.TipoMetadato
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if _, err := models.AddDatoAdicionalSubtipoProduccion(&v); err == nil {
+		if _, err := models.AddTipoMetadato(&v); err == nil {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
 		} else {
@@ -56,15 +56,15 @@ func (c *DatoAdicionalSubtipoProduccionController) Post() {
 
 // GetOne ...
 // @Title Get One
-// @Description get DatoAdicionalSubtipoProduccion by id
+// @Description get TipoMetadato by id
 // @Param	id		path 	string	true		"The key for staticblock"
-// @Success 200 {object} models.DatoAdicionalSubtipoProduccion
+// @Success 200 {object} models.TipoMetadato
 // @Failure 404 not found resource
 // @router /:id [get]
-func (c *DatoAdicionalSubtipoProduccionController) GetOne() {
+func (c *TipoMetadatoController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v, err := models.GetDatoAdicionalSubtipoProduccionById(id)
+	v, err := models.GetTipoMetadatoById(id)
 	if err != nil {
 		logs.Error(err)
 		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
@@ -78,17 +78,17 @@ func (c *DatoAdicionalSubtipoProduccionController) GetOne() {
 
 // GetAll ...
 // @Title Get All
-// @Description get DatoAdicionalSubtipoProduccion
+// @Description get TipoMetadato
 // @Param	query	query	string	false	"Filter. e.g. col1:v1,col2:v2 ..."
 // @Param	fields	query	string	false	"Fields returned. e.g. col1,col2 ..."
 // @Param	sortby	query	string	false	"Sorted-by fields. e.g. col1,col2 ..."
 // @Param	order	query	string	false	"Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ..."
 // @Param	limit	query	string	false	"Limit the size of result set. Must be an integer"
 // @Param	offset	query	string	false	"Start position of result set. Must be an integer"
-// @Success 200 {object} models.DatoAdicionalSubtipoProduccion
+// @Success 200 {object} models.TipoMetadato
 // @Failure 404 not found resource
 // @router / [get]
-func (c *DatoAdicionalSubtipoProduccionController) GetAll() {
+func (c *TipoMetadatoController) GetAll() {
 	var fields []string
 	var sortby []string
 	var order []string
@@ -130,7 +130,7 @@ func (c *DatoAdicionalSubtipoProduccionController) GetAll() {
 		}
 	}
 
-	l, err := models.GetAllDatoAdicionalSubtipoProduccion(query, fields, sortby, order, offset, limit)
+	l, err := models.GetAllTipoMetadato(query, fields, sortby, order, offset, limit)
 	if err != nil {
 		logs.Error(err)
 		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
@@ -147,18 +147,18 @@ func (c *DatoAdicionalSubtipoProduccionController) GetAll() {
 
 // Put ...
 // @Title Put
-// @Description update the DatoAdicionalSubtipoProduccion
+// @Description update the TipoMetadato
 // @Param	id		path 	string	true		"The id you want to update"
-// @Param	body		body 	models.DatoAdicionalSubtipoProduccion	true		"body for DatoAdicionalSubtipoProduccion content"
-// @Success 200 {object} models.DatoAdicionalSubtipoProduccion
+// @Param	body		body 	models.TipoMetadato	true		"body for TipoMetadato content"
+// @Success 200 {object} models.TipoMetadato
 // @Failure 400 the request contains incorrect syntax
 // @router /:id [put]
-func (c *DatoAdicionalSubtipoProduccionController) Put() {
+func (c *TipoMetadatoController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v := models.DatoAdicionalSubtipoProduccion{Id: id}
+	v := models.TipoMetadato{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if err := models.UpdateDatoAdicionalSubtipoProduccionById(&v); err == nil {
+		if err := models.UpdateTipoMetadatoById(&v); err == nil {
 			c.Data["json"] = v
 		} else {
 			logs.Error(err)
@@ -177,15 +177,15 @@ func (c *DatoAdicionalSubtipoProduccionController) Put() {
 
 // Delete ...
 // @Title Delete
-// @Description delete the DatoAdicionalSubtipoProduccion
+// @Description delete the TipoMetadato
 // @Param	id		path 	string	true		"The id you want to delete"
 // @Success 200 {string} delete success!
 // @Failure 404 not found resource
 // @router /:id [delete]
-func (c *DatoAdicionalSubtipoProduccionController) Delete() {
+func (c *TipoMetadatoController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	if err := models.DeleteDatoAdicionalSubtipoProduccion(id); err == nil {
+	if err := models.DeleteTipoMetadato(id); err == nil {
 		c.Data["json"] = map[string]interface{}{"Id": id}
 	} else {
 		logs.Error(err)
