@@ -1,0 +1,1 @@
+delete from produccion_academica.estado_autor_produccion;
