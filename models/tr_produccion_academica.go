@@ -36,7 +36,7 @@ func GetProduccionesAcademicasByPersona(persona int) (v []interface{}, err error
 				"Titulo": produccionAcademica.Titulo,
 				"Resumen": produccionAcademica.Resumen,
 				"Fecha": produccionAcademica.Fecha,
-				"SubtipoProduccion":produccionAcademica.SubtipoProduccionId,
+				"SubtipoProduccionId":produccionAcademica.SubtipoProduccionId,
 				"Autores": &autoresProduccion,
 				"Metadatos": &metadatos,
 			})
