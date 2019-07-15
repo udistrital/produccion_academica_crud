@@ -16,7 +16,7 @@ type TrProduccionAcademica struct {
 func GetProduccionesAcademicasByPersona(persona int) (v []interface{}, err error) {
 	o := orm.NewOrm()
 	var autores []*AutorProduccionAcademica
-	if _, err := o.QueryTable(new(AutorProduccionAcademica)).RelatedSel().Filter("persona",persona).All(&autores); err == nil{
+	if _, err := o.QueryTable(new(AutorProduccionAcademica)).RelatedSel().Filter("persona",persona).Filter("ProduccionAcademicaId__Activo",true).All(&autores); err == nil{
 		for _, autor := range autores {
 
 			produccionAcademica := autor.ProduccionAcademicaId
