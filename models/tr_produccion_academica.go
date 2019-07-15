@@ -93,16 +93,21 @@ func UpdateTransaccionProduccionAcademica(m *TrProduccionAcademica) (err error) 
 	// ascertain id exists in the database
 	if errTr := o.Read(&v); errTr == nil {
 		var num int64
-		if num, errTr = o.Update(m.ProduccionAcademica); errTr == nil {
+		if num, errTr = o.Update(m.ProduccionAcademica,"Titulo","Resumen","Fecha","FechaModificacion"); errTr == nil {
 			fmt.Println("Number of records updated in database:", num)
 
 			for _, v := range *m.Metadatos {
+					fmt.Println("metadatos",m.Metadatos)
 					var metadato MetadatoProduccionAcademica
 					if errTr = o.QueryTable(new(MetadatoProduccionAcademica)).RelatedSel().Filter("MetadatoSubtipoProduccionId__Id",v.MetadatoSubtipoProduccionId.Id).Filter("ProduccionAcademicaId__Id",m.ProduccionAcademica.Id).One(&metadato); err == nil{
-						metadato.Valor = v.Valor
+						
+						if (metadato.Valor != v.Valor) {
+							metadato.Valor = v.Valor
+							metadato.FechaModificacion = v.FechaModificacion
+						}
 
 						if (metadato.Id != 0) {
-							if _, errTr = o.Update(&metadato,"Valor"); errTr != nil {
+							if _, errTr = o.Update(&metadato,"Valor","FechaModificacion"); errTr != nil {
 								err = errTr
 								fmt.Println(err)
 								_ = o.Rollback()
@@ -111,6 +116,7 @@ func UpdateTransaccionProduccionAcademica(m *TrProduccionAcademica) (err error) 
 						} else {
 							metadato.ProduccionAcademicaId= m.ProduccionAcademica
 							metadato.MetadatoSubtipoProduccionId = v.MetadatoSubtipoProduccionId
+							metadato.FechaCreacion = v.FechaCreacion
 							if _, errTr = o.Insert(&metadato); errTr != nil {
 								err = errTr
 								fmt.Println(err)
