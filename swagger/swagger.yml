@@ -1125,10 +1125,10 @@ paths:
         "404":
           description: not found resource
 definitions:
-  44398.<nil>.AutorProduccionAcademica:
+  44407.<nil>.AutorProduccionAcademica:
     title: AutorProduccionAcademica
     type: object
-  44445.<nil>.MetadatoProduccionAcademica:
+  44454.<nil>.MetadatoProduccionAcademica:
     title: MetadatoProduccionAcademica
     type: object
   models.AutorProduccionAcademica:
@@ -1344,9 +1344,9 @@ definitions:
     type: object
     properties:
       Autores:
-        $ref: '#/definitions/44398.<nil>.AutorProduccionAcademica'
+        $ref: '#/definitions/44407.<nil>.AutorProduccionAcademica'
       Metadatos:
-        $ref: '#/definitions/44445.<nil>.MetadatoProduccionAcademica'
+        $ref: '#/definitions/44454.<nil>.MetadatoProduccionAcademica'
       ProduccionAcademica:
         $ref: '#/definitions/models.ProduccionAcademica'
   models.TrProduccionAcademicaController:
