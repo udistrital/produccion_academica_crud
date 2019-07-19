@@ -16,6 +16,12 @@ import (
 func init() {
 	ns := beego.NewNamespace("/v1",
 
+		beego.NSNamespace("/metadato_produccion_academica",
+			beego.NSInclude(
+				&controllers.MetadatoProduccionAcademicaController{},
+			),
+		),
+
 		beego.NSNamespace("/tipo_produccion",
 			beego.NSInclude(
 				&controllers.TipoProduccionController{},
@@ -28,39 +34,21 @@ func init() {
 			),
 		),
 
+		beego.NSNamespace("/metadato_subtipo_produccion",
+			beego.NSInclude(
+				&controllers.MetadatoSubtipoProduccionController{},
+			),
+		),
+
+		beego.NSNamespace("/tipo_metadato",
+			beego.NSInclude(
+				&controllers.TipoMetadatoController{},
+			),
+		),
+
 		beego.NSNamespace("/produccion_academica",
 			beego.NSInclude(
 				&controllers.ProduccionAcademicaController{},
-			),
-		),
-
-		beego.NSNamespace("/dato_adicional_produccion_academica",
-			beego.NSInclude(
-				&controllers.DatoAdicionalProduccionAcademicaController{},
-			),
-		),
-
-		beego.NSNamespace("/soporte_produccion_academica",
-			beego.NSInclude(
-				&controllers.SoporteProduccionAcademicaController{},
-			),
-		),
-
-		beego.NSNamespace("/autor_produccion_academica",
-			beego.NSInclude(
-				&controllers.AutorProduccionAcademicaController{},
-			),
-		),
-
-		beego.NSNamespace("/dato_adicional_subtipo_produccion",
-			beego.NSInclude(
-				&controllers.DatoAdicionalSubtipoProduccionController{},
-			),
-		),
-
-		beego.NSNamespace("/tipo_dato_adicional",
-			beego.NSInclude(
-				&controllers.TipoDatoAdicionalController{},
 			),
 		),
 
@@ -73,6 +61,18 @@ func init() {
 		beego.NSNamespace("/estado_autor_produccion",
 			beego.NSInclude(
 				&controllers.EstadoAutorProduccionController{},
+			),
+		),
+
+		beego.NSNamespace("/soporte_produccion_academica",
+			beego.NSInclude(
+				&controllers.SoporteProduccionAcademicaController{},
+			),
+		),
+
+		beego.NSNamespace("/autor_produccion_academica",
+			beego.NSInclude(
+				&controllers.AutorProduccionAcademicaController{},
 			),
 		),
 	)

@@ -2,6 +2,7 @@ package models
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/astaxie/beego/orm"
 )
@@ -9,25 +10,25 @@ import (
 type TrProduccionAcademica struct {
 	ProduccionAcademica            *ProduccionAcademica
 	Autores  *[]AutorProduccionAcademica
-	DatosAdicionales        *[]DatoAdicionalProduccionAcademica
+	Metadatos        *[]MetadatoProduccionAcademica
 }
 
-// GetProduccionesAcademicas Transacción para consultar todas las producciones con toda la información de las mismas
-func GetProduccionesAcademicasByEnte(ente int) (v []interface{}, err error) {
+// GetProduccionesAcademicasByPersona Transacción para consultar todas las producciones con toda la información de las mismas
+func GetProduccionesAcademicasByPersona(persona int) (v []interface{}, err error) {
 	o := orm.NewOrm()
 	var autores []*AutorProduccionAcademica
-	if _, err := o.QueryTable(new(AutorProduccionAcademica)).RelatedSel().Filter("ente",ente).All(&autores); err == nil{
+	if _, err := o.QueryTable(new(AutorProduccionAcademica)).RelatedSel().Filter("persona",persona).Filter("ProduccionAcademicaId__Activo",true).All(&autores); err == nil{
 		for _, autor := range autores {
 
-			produccionAcademica := autor.ProduccionAcademica
+			produccionAcademica := autor.ProduccionAcademicaId
 
 			var autoresProduccion []AutorProduccionAcademica
-			if _, err := o.QueryTable(new(AutorProduccionAcademica)).RelatedSel().Filter("produccion_academica",produccionAcademica.Id).All(&autoresProduccion); err != nil{
+			if _, err := o.QueryTable(new(AutorProduccionAcademica)).RelatedSel().Filter("ProduccionAcademicaId__Id",produccionAcademica.Id).All(&autoresProduccion); err != nil{
 				return nil, err
 			}
 
-			var datosAdicionales []DatoAdicionalProduccionAcademica
-			if _, err := o.QueryTable(new(DatoAdicionalProduccionAcademica)).RelatedSel().Filter("ProduccionAcademica__Id",produccionAcademica.Id).All(&datosAdicionales); err != nil{
+			var metadatos []MetadatoProduccionAcademica
+			if _, err := o.QueryTable(new(MetadatoProduccionAcademica)).RelatedSel().Filter("ProduccionAcademicaId__Id",produccionAcademica.Id).All(&metadatos); err != nil{
 				return nil, err
 			}
 
@@ -36,9 +37,9 @@ func GetProduccionesAcademicasByEnte(ente int) (v []interface{}, err error) {
 				"Titulo": produccionAcademica.Titulo,
 				"Resumen": produccionAcademica.Resumen,
 				"Fecha": produccionAcademica.Fecha,
-				"SubtipoProduccion":produccionAcademica.SubtipoProduccion,
+				"SubtipoProduccionId":produccionAcademica.SubtipoProduccionId,
 				"Autores": &autoresProduccion,
-				"DatosAdicionales": &datosAdicionales,
+				"Metadatos": &metadatos,
 			})
 		}
 
@@ -56,7 +57,7 @@ func AddTransaccionProduccionAcademica(m *TrProduccionAcademica) (err error) {
 		fmt.Println(idProduccion)
 
 		for _, v := range *m.Autores {
-			v.ProduccionAcademica.Id = int(idProduccion)
+			v.ProduccionAcademicaId.Id = int(idProduccion)
 			if _, errTr = o.Insert(&v); errTr != nil {
 				err = errTr
 				fmt.Println(err)
@@ -65,8 +66,8 @@ func AddTransaccionProduccionAcademica(m *TrProduccionAcademica) (err error) {
 			}
 		}
 
-		for _, v := range *m.DatosAdicionales {
-			v.ProduccionAcademica.Id = int(idProduccion)
+		for _, v := range *m.Metadatos {
+			v.ProduccionAcademicaId.Id = int(idProduccion)
 			if _, errTr = o.Insert(&v); errTr != nil {
 				err = errTr
 				fmt.Println(err)
@@ -81,7 +82,6 @@ func AddTransaccionProduccionAcademica(m *TrProduccionAcademica) (err error) {
 		fmt.Println(err)
 		_ = o.Rollback()
 	}
-
 	return
 }
 
@@ -90,30 +90,35 @@ func AddTransaccionProduccionAcademica(m *TrProduccionAcademica) (err error) {
 func UpdateTransaccionProduccionAcademica(m *TrProduccionAcademica) (err error) {
 	o := orm.NewOrm()
 	err = o.Begin()
-
 	v := ProduccionAcademica{Id: m.ProduccionAcademica.Id}
 	// ascertain id exists in the database
 	if errTr := o.Read(&v); errTr == nil {
 		var num int64
-		if num, errTr = o.Update(m.ProduccionAcademica); errTr == nil {
+		if num, errTr = o.Update(m.ProduccionAcademica,"Titulo","Resumen","Fecha","FechaModificacion"); errTr == nil {
 			fmt.Println("Number of records updated in database:", num)
 
-			for _, v := range *m.DatosAdicionales {
-					var datoAdicional DatoAdicionalProduccionAcademica
-					if errTr = o.QueryTable(new(DatoAdicionalProduccionAcademica)).RelatedSel().Filter("DatoAdicionalSubtipoProduccion__Id",v.DatoAdicionalSubtipoProduccion.Id).Filter("ProduccionAcademica__Id",m.ProduccionAcademica.Id).One(&datoAdicional); err == nil{
-						datoAdicional.Valor = v.Valor
+			for _, v := range *m.Metadatos {
+					fmt.Println("metadatos",m.Metadatos)
+					var metadato MetadatoProduccionAcademica
+					if errTr = o.QueryTable(new(MetadatoProduccionAcademica)).RelatedSel().Filter("MetadatoSubtipoProduccionId__Id",v.MetadatoSubtipoProduccionId.Id).Filter("ProduccionAcademicaId__Id",m.ProduccionAcademica.Id).One(&metadato); err == nil{
+						
+						if (metadato.Valor != v.Valor) {
+							metadato.Valor = v.Valor
+							metadato.FechaModificacion = v.FechaModificacion
+						}
 
-						if (datoAdicional.Id != 0) {
-							if _, errTr = o.Update(&datoAdicional,"Valor"); errTr != nil {
+						if (metadato.Id != 0) {
+							if _, errTr = o.Update(&metadato,"Valor","FechaModificacion"); errTr != nil {
 								err = errTr
 								fmt.Println(err)
 								_ = o.Rollback()
 								return
 							}
 						} else {
-							datoAdicional.ProduccionAcademica = m.ProduccionAcademica
-							datoAdicional.DatoAdicionalSubtipoProduccion = v.DatoAdicionalSubtipoProduccion
-							if _, errTr = o.Insert(&datoAdicional); errTr != nil {
+							metadato.ProduccionAcademicaId= m.ProduccionAcademica
+							metadato.MetadatoSubtipoProduccionId = v.MetadatoSubtipoProduccionId
+							metadato.FechaCreacion = v.FechaCreacion
+							if _, errTr = o.Insert(&metadato); errTr != nil {
 								err = errTr
 								fmt.Println(err)
 								_ = o.Rollback()
@@ -153,8 +158,10 @@ func TrDeleteProduccionAcademica(id int) (err error) {
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&ProduccionAcademica{Id: id}); err == nil {
-			fmt.Println("Number of records deleted in database:", num)
+		// if num, err = o.Delete(&ProduccionAcademica{Id: id}); err == nil {
+			// fmt.Println("Number of records deleted in database:", num)
+		if num, err = o.Update(&ProduccionAcademica{Id: id, Activo: false, FechaModificacion: time.Now()},"Activo", "FechaModificacion"); err == nil {
+			fmt.Println("Number of records updated in database:", num)
 		}
 	}
 	return

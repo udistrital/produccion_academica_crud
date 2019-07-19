@@ -11,11 +11,14 @@ import (
 )
 
 type ProduccionAcademica struct {
-	Id                int                `orm:"column(id);pk;auto"`
-	SubtipoProduccion *SubtipoProduccion `orm:"column(subtipo_produccion);rel(fk)"`
-	Titulo            string             `orm:"column(titulo)"`
-	Resumen           string             `orm:"column(resumen);null"`
-	Fecha             time.Time          `orm:"column(fecha);type(date)"`
+	Id                  int                `orm:"column(id);pk;auto"`
+	Titulo              string             `orm:"column(titulo)"`
+	Resumen             string             `orm:"column(resumen);null"`
+	Fecha               time.Time          `orm:"column(fecha);type(date)"`
+	Activo              bool               `orm:"column(activo)"`
+	FechaCreacion       time.Time          `orm:"column(fecha_creacion);type(timestamp without time zone)"`
+	FechaModificacion   time.Time          `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+	SubtipoProduccionId *SubtipoProduccion `orm:"column(subtipo_produccion_id);rel(fk)"`
 }
 
 func (t *ProduccionAcademica) TableName() string {

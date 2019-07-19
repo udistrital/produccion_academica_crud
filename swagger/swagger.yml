@@ -126,236 +126,6 @@ paths:
           description: '{string} delete success!'
         "404":
           description: not found resource
-  /dato_adicional_produccion_academica/:
-    get:
-      tags:
-      - dato_adicional_produccion_academica
-      description: get DatoAdicionalProduccionAcademica
-      operationId: DatoAdicionalProduccionAcademicaController.Get All
-      parameters:
-      - in: query
-        name: query
-        description: Filter. e.g. col1:v1,col2:v2 ...
-        type: string
-      - in: query
-        name: fields
-        description: Fields returned. e.g. col1,col2 ...
-        type: string
-      - in: query
-        name: sortby
-        description: Sorted-by fields. e.g. col1,col2 ...
-        type: string
-      - in: query
-        name: order
-        description: Order corresponding to each sortby field, if single value, apply
-          to all sortby fields. e.g. desc,asc ...
-        type: string
-      - in: query
-        name: limit
-        description: Limit the size of result set. Must be an integer
-        type: string
-      - in: query
-        name: offset
-        description: Start position of result set. Must be an integer
-        type: string
-      responses:
-        "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/models.DatoAdicionalProduccionAcademica'
-        "404":
-          description: not found resource
-    post:
-      tags:
-      - dato_adicional_produccion_academica
-      description: create DatoAdicionalProduccionAcademica
-      operationId: DatoAdicionalProduccionAcademicaController.Post
-      parameters:
-      - in: body
-        name: body
-        description: body for DatoAdicionalProduccionAcademica content
-        required: true
-        schema:
-          $ref: '#/definitions/models.DatoAdicionalProduccionAcademica'
-      responses:
-        "201":
-          description: '{int} models.DatoAdicionalProduccionAcademica'
-        "400":
-          description: the request contains incorrect syntax
-  /dato_adicional_produccion_academica/{id}:
-    get:
-      tags:
-      - dato_adicional_produccion_academica
-      description: get DatoAdicionalProduccionAcademica by id
-      operationId: DatoAdicionalProduccionAcademicaController.Get One
-      parameters:
-      - in: path
-        name: id
-        description: The key for staticblock
-        required: true
-        type: string
-      responses:
-        "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/models.DatoAdicionalProduccionAcademica'
-        "404":
-          description: not found resource
-    put:
-      tags:
-      - dato_adicional_produccion_academica
-      description: update the DatoAdicionalProduccionAcademica
-      operationId: DatoAdicionalProduccionAcademicaController.Put
-      parameters:
-      - in: path
-        name: id
-        description: The id you want to update
-        required: true
-        type: string
-      - in: body
-        name: body
-        description: body for DatoAdicionalProduccionAcademica content
-        required: true
-        schema:
-          $ref: '#/definitions/models.DatoAdicionalProduccionAcademica'
-      responses:
-        "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/models.DatoAdicionalProduccionAcademica'
-        "400":
-          description: the request contains incorrect syntax
-    delete:
-      tags:
-      - dato_adicional_produccion_academica
-      description: delete the DatoAdicionalProduccionAcademica
-      operationId: DatoAdicionalProduccionAcademicaController.Delete
-      parameters:
-      - in: path
-        name: id
-        description: The id you want to delete
-        required: true
-        type: string
-      responses:
-        "200":
-          description: '{string} delete success!'
-        "404":
-          description: not found resource
-  /dato_adicional_subtipo_produccion/:
-    get:
-      tags:
-      - dato_adicional_subtipo_produccion
-      description: get DatoAdicionalSubtipoProduccion
-      operationId: DatoAdicionalSubtipoProduccionController.Get All
-      parameters:
-      - in: query
-        name: query
-        description: Filter. e.g. col1:v1,col2:v2 ...
-        type: string
-      - in: query
-        name: fields
-        description: Fields returned. e.g. col1,col2 ...
-        type: string
-      - in: query
-        name: sortby
-        description: Sorted-by fields. e.g. col1,col2 ...
-        type: string
-      - in: query
-        name: order
-        description: Order corresponding to each sortby field, if single value, apply
-          to all sortby fields. e.g. desc,asc ...
-        type: string
-      - in: query
-        name: limit
-        description: Limit the size of result set. Must be an integer
-        type: string
-      - in: query
-        name: offset
-        description: Start position of result set. Must be an integer
-        type: string
-      responses:
-        "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/models.DatoAdicionalSubtipoProduccion'
-        "404":
-          description: not found resource
-    post:
-      tags:
-      - dato_adicional_subtipo_produccion
-      description: create DatoAdicionalSubtipoProduccion
-      operationId: DatoAdicionalSubtipoProduccionController.Post
-      parameters:
-      - in: body
-        name: body
-        description: body for DatoAdicionalSubtipoProduccion content
-        required: true
-        schema:
-          $ref: '#/definitions/models.DatoAdicionalSubtipoProduccion'
-      responses:
-        "201":
-          description: '{int} models.DatoAdicionalSubtipoProduccion'
-        "400":
-          description: the request contains incorrect syntax
-  /dato_adicional_subtipo_produccion/{id}:
-    get:
-      tags:
-      - dato_adicional_subtipo_produccion
-      description: get DatoAdicionalSubtipoProduccion by id
-      operationId: DatoAdicionalSubtipoProduccionController.Get One
-      parameters:
-      - in: path
-        name: id
-        description: The key for staticblock
-        required: true
-        type: string
-      responses:
-        "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/models.DatoAdicionalSubtipoProduccion'
-        "404":
-          description: not found resource
-    put:
-      tags:
-      - dato_adicional_subtipo_produccion
-      description: update the DatoAdicionalSubtipoProduccion
-      operationId: DatoAdicionalSubtipoProduccionController.Put
-      parameters:
-      - in: path
-        name: id
-        description: The id you want to update
-        required: true
-        type: string
-      - in: body
-        name: body
-        description: body for DatoAdicionalSubtipoProduccion content
-        required: true
-        schema:
-          $ref: '#/definitions/models.DatoAdicionalSubtipoProduccion'
-      responses:
-        "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/models.DatoAdicionalSubtipoProduccion'
-        "400":
-          description: the request contains incorrect syntax
-    delete:
-      tags:
-      - dato_adicional_subtipo_produccion
-      description: delete the DatoAdicionalSubtipoProduccion
-      operationId: DatoAdicionalSubtipoProduccionController.Delete
-      parameters:
-      - in: path
-        name: id
-        description: The id you want to delete
-        required: true
-        type: string
-      responses:
-        "200":
-          description: '{string} delete success!'
-        "404":
-          description: not found resource
   /estado_autor_produccion/:
     get:
       tags:
@@ -460,6 +230,236 @@ paths:
       - estado_autor_produccion
       description: delete the EstadoAutorProduccion
       operationId: EstadoAutorProduccionController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "404":
+          description: not found resource
+  /metadato_produccion_academica/:
+    get:
+      tags:
+      - metadato_produccion_academica
+      description: get MetadatoProduccionAcademica
+      operationId: MetadatoProduccionAcademicaController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.MetadatoProduccionAcademica'
+        "404":
+          description: not found resource
+    post:
+      tags:
+      - metadato_produccion_academica
+      description: create MetadatoProduccionAcademica
+      operationId: MetadatoProduccionAcademicaController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for MetadatoProduccionAcademica content
+        required: true
+        schema:
+          $ref: '#/definitions/models.MetadatoProduccionAcademica'
+      responses:
+        "201":
+          description: '{int} models.MetadatoProduccionAcademica'
+        "400":
+          description: the request contains incorrect syntax
+  /metadato_produccion_academica/{id}:
+    get:
+      tags:
+      - metadato_produccion_academica
+      description: get MetadatoProduccionAcademica by id
+      operationId: MetadatoProduccionAcademicaController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.MetadatoProduccionAcademica'
+        "404":
+          description: not found resource
+    put:
+      tags:
+      - metadato_produccion_academica
+      description: update the MetadatoProduccionAcademica
+      operationId: MetadatoProduccionAcademicaController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for MetadatoProduccionAcademica content
+        required: true
+        schema:
+          $ref: '#/definitions/models.MetadatoProduccionAcademica'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.MetadatoProduccionAcademica'
+        "400":
+          description: the request contains incorrect syntax
+    delete:
+      tags:
+      - metadato_produccion_academica
+      description: delete the MetadatoProduccionAcademica
+      operationId: MetadatoProduccionAcademicaController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "404":
+          description: not found resource
+  /metadato_subtipo_produccion/:
+    get:
+      tags:
+      - metadato_subtipo_produccion
+      description: get MetadatoSubtipoProduccion
+      operationId: MetadatoSubtipoProduccionController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.MetadatoSubtipoProduccion'
+        "404":
+          description: not found resource
+    post:
+      tags:
+      - metadato_subtipo_produccion
+      description: create MetadatoSubtipoProduccion
+      operationId: MetadatoSubtipoProduccionController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for MetadatoSubtipoProduccion content
+        required: true
+        schema:
+          $ref: '#/definitions/models.MetadatoSubtipoProduccion'
+      responses:
+        "201":
+          description: '{int} models.MetadatoSubtipoProduccion'
+        "400":
+          description: the request contains incorrect syntax
+  /metadato_subtipo_produccion/{id}:
+    get:
+      tags:
+      - metadato_subtipo_produccion
+      description: get MetadatoSubtipoProduccion by id
+      operationId: MetadatoSubtipoProduccionController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.MetadatoSubtipoProduccion'
+        "404":
+          description: not found resource
+    put:
+      tags:
+      - metadato_subtipo_produccion
+      description: update the MetadatoSubtipoProduccion
+      operationId: MetadatoSubtipoProduccionController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for MetadatoSubtipoProduccion content
+        required: true
+        schema:
+          $ref: '#/definitions/models.MetadatoSubtipoProduccion'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.MetadatoSubtipoProduccion'
+        "400":
+          description: the request contains incorrect syntax
+    delete:
+      tags:
+      - metadato_subtipo_produccion
+      description: delete the MetadatoSubtipoProduccion
+      operationId: MetadatoSubtipoProduccionController.Delete
       parameters:
       - in: path
         name: id
@@ -816,12 +816,12 @@ paths:
           description: '{string} delete success!'
         "404":
           description: not found resource
-  /tipo_dato_adicional/:
+  /tipo_metadato/:
     get:
       tags:
-      - tipo_dato_adicional
-      description: get TipoDatoAdicional
-      operationId: TipoDatoAdicionalController.Get All
+      - tipo_metadato
+      description: get TipoMetadato
+      operationId: TipoMetadatoController.Get All
       parameters:
       - in: query
         name: query
@@ -852,32 +852,32 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.TipoDatoAdicional'
+            $ref: '#/definitions/models.TipoMetadato'
         "404":
           description: not found resource
     post:
       tags:
-      - tipo_dato_adicional
-      description: create TipoDatoAdicional
-      operationId: TipoDatoAdicionalController.Post
+      - tipo_metadato
+      description: create TipoMetadato
+      operationId: TipoMetadatoController.Post
       parameters:
       - in: body
         name: body
-        description: body for TipoDatoAdicional content
+        description: body for TipoMetadato content
         required: true
         schema:
-          $ref: '#/definitions/models.TipoDatoAdicional'
+          $ref: '#/definitions/models.TipoMetadato'
       responses:
         "201":
-          description: '{int} models.TipoDatoAdicional'
+          description: '{int} models.TipoMetadato'
         "400":
           description: the request contains incorrect syntax
-  /tipo_dato_adicional/{id}:
+  /tipo_metadato/{id}:
     get:
       tags:
-      - tipo_dato_adicional
-      description: get TipoDatoAdicional by id
-      operationId: TipoDatoAdicionalController.Get One
+      - tipo_metadato
+      description: get TipoMetadato by id
+      operationId: TipoMetadatoController.Get One
       parameters:
       - in: path
         name: id
@@ -888,14 +888,14 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.TipoDatoAdicional'
+            $ref: '#/definitions/models.TipoMetadato'
         "404":
           description: not found resource
     put:
       tags:
-      - tipo_dato_adicional
-      description: update the TipoDatoAdicional
-      operationId: TipoDatoAdicionalController.Put
+      - tipo_metadato
+      description: update the TipoMetadato
+      operationId: TipoMetadatoController.Put
       parameters:
       - in: path
         name: id
@@ -904,22 +904,22 @@ paths:
         type: string
       - in: body
         name: body
-        description: body for TipoDatoAdicional content
+        description: body for TipoMetadato content
         required: true
         schema:
-          $ref: '#/definitions/models.TipoDatoAdicional'
+          $ref: '#/definitions/models.TipoMetadato'
       responses:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.TipoDatoAdicional'
+            $ref: '#/definitions/models.TipoMetadato'
         "400":
           description: the request contains incorrect syntax
     delete:
       tags:
-      - tipo_dato_adicional
-      description: delete the TipoDatoAdicional
-      operationId: TipoDatoAdicionalController.Delete
+      - tipo_metadato
+      description: delete the TipoMetadato
+      operationId: TipoMetadatoController.Delete
       parameters:
       - in: path
         name: id
@@ -1064,25 +1064,6 @@ paths:
           description: '{int} models.TrProduccionAcademica'
         "400":
           description: the request contains incorrect syntax
-  /tr_produccion_academica/{ente}:
-    get:
-      tags:
-      - tr_produccion_academica
-      description: get TrProduccionAcademicaController
-      operationId: TrProduccionAcademicaController.Get All By Ente
-      parameters:
-      - in: path
-        name: id
-        description: Ente
-        required: true
-        type: string
-      responses:
-        "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/models.TrProduccionAcademicaController'
-        "404":
-          description: not found resource
   /tr_produccion_academica/{id}:
     put:
       tags:
@@ -1124,51 +1105,54 @@ paths:
           description: '{string} delete success!'
         "404":
           description: not found resource
+  /tr_produccion_academica/{persona}:
+    get:
+      tags:
+      - tr_produccion_academica
+      description: get TrProduccionAcademicaController
+      operationId: TrProduccionAcademicaController.Get All By Persona
+      parameters:
+      - in: path
+        name: id
+        description: Persona
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TrProduccionAcademicaController'
+        "404":
+          description: not found resource
 definitions:
-  13534.<nil>.AutorProduccionAcademica:
+  19184.<nil>.AutorProduccionAcademica:
     title: AutorProduccionAcademica
     type: object
-  13587.<nil>.DatoAdicionalProduccionAcademica:
-    title: DatoAdicionalProduccionAcademica
+  19230.<nil>.MetadatoProduccionAcademica:
+    title: MetadatoProduccionAcademica
     type: object
   models.AutorProduccionAcademica:
     title: AutorProduccionAcademica
     type: object
     properties:
-      Ente:
-        type: integer
-        format: int64
-      EstadoAutorProduccion:
+      Activo:
+        type: boolean
+      EstadoAutorProduccionId:
         $ref: '#/definitions/models.EstadoAutorProduccion'
-      Id:
-        type: integer
-        format: int64
-      ProduccionAcademica:
-        $ref: '#/definitions/models.ProduccionAcademica'
-  models.DatoAdicionalProduccionAcademica:
-    title: DatoAdicionalProduccionAcademica
-    type: object
-    properties:
-      DatoAdicionalSubtipoProduccion:
-        $ref: '#/definitions/models.DatoAdicionalSubtipoProduccion'
-      Id:
-        type: integer
-        format: int64
-      ProduccionAcademica:
-        $ref: '#/definitions/models.ProduccionAcademica'
-      Valor:
+      FechaCreacion:
         type: string
-  models.DatoAdicionalSubtipoProduccion:
-    title: DatoAdicionalSubtipoProduccion
-    type: object
-    properties:
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
       Id:
         type: integer
         format: int64
-      SubtipoProduccion:
-        $ref: '#/definitions/models.SubtipoProduccion'
-      TipoDatoAdicional:
-        $ref: '#/definitions/models.TipoDatoAdicional'
+      Persona:
+        type: integer
+        format: int64
+      ProduccionAcademicaId:
+        $ref: '#/definitions/models.ProduccionAcademica'
   models.EstadoAutorProduccion:
     title: EstadoAutorProduccion
     type: object
@@ -1179,6 +1163,12 @@ definitions:
         type: string
       Descripcion:
         type: string
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
       Id:
         type: integer
         format: int64
@@ -1187,11 +1177,59 @@ definitions:
       NumeroOrden:
         type: number
         format: double
+  models.MetadatoProduccionAcademica:
+    title: MetadatoProduccionAcademica
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
+      Id:
+        type: integer
+        format: int64
+      MetadatoSubtipoProduccionId:
+        $ref: '#/definitions/models.MetadatoSubtipoProduccion'
+      ProduccionAcademicaId:
+        $ref: '#/definitions/models.ProduccionAcademica'
+      Valor:
+        type: string
+  models.MetadatoSubtipoProduccion:
+    title: MetadatoSubtipoProduccion
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
+      Id:
+        type: integer
+        format: int64
+      SubtipoProduccionId:
+        $ref: '#/definitions/models.SubtipoProduccion'
+      TipoMetadatoId:
+        $ref: '#/definitions/models.TipoMetadato'
   models.ProduccionAcademica:
     title: ProduccionAcademica
     type: object
     properties:
+      Activo:
+        type: boolean
       Fecha:
+        type: string
+        format: datetime
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
         type: string
         format: datetime
       Id:
@@ -1199,7 +1237,7 @@ definitions:
         format: int64
       Resumen:
         type: string
-      SubtipoProduccion:
+      SubtipoProduccionId:
         $ref: '#/definitions/models.SubtipoProduccion'
       Titulo:
         type: string
@@ -1207,15 +1245,23 @@ definitions:
     title: SoporteProduccionAcademica
     type: object
     properties:
+      Activo:
+        type: boolean
       Descripcion:
         type: string
       Documento:
         type: integer
         format: int64
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
       Id:
         type: integer
         format: int64
-      ProduccionAcademica:
+      ProduccionAcademicaId:
         $ref: '#/definitions/models.ProduccionAcademica'
   models.SubtipoProduccion:
     title: SubtipoProduccion
@@ -1227,6 +1273,12 @@ definitions:
         type: string
       Descripcion:
         type: string
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
       Id:
         type: integer
         format: int64
@@ -1235,10 +1287,10 @@ definitions:
       NumeroOrden:
         type: number
         format: double
-      TipoProduccion:
+      TipoProduccionId:
         $ref: '#/definitions/models.TipoProduccion'
-  models.TipoDatoAdicional:
-    title: TipoDatoAdicional
+  models.TipoMetadato:
+    title: TipoMetadato
     type: object
     properties:
       Activo:
@@ -1247,7 +1299,13 @@ definitions:
         type: string
       Descripcion:
         type: string
-      FormDefiniton:
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
+      FormDefinition:
         type: string
       Id:
         type: integer
@@ -1267,6 +1325,12 @@ definitions:
         type: string
       Descripcion:
         type: string
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
       Id:
         type: integer
         format: int64
@@ -1280,42 +1344,42 @@ definitions:
     type: object
     properties:
       Autores:
-        $ref: '#/definitions/13534.<nil>.AutorProduccionAcademica'
-      DatosAdicionales:
-        $ref: '#/definitions/13587.<nil>.DatoAdicionalProduccionAcademica'
+        $ref: '#/definitions/19184.<nil>.AutorProduccionAcademica'
+      Metadatos:
+        $ref: '#/definitions/19230.<nil>.MetadatoProduccionAcademica'
       ProduccionAcademica:
         $ref: '#/definitions/models.ProduccionAcademica'
   models.TrProduccionAcademicaController:
     title: TrProduccionAcademicaController
     type: object
 tags:
+- name: metadato_produccion_academica
+  description: |
+    MetadatoProduccionAcademicaController operations for MetadatoProduccionAcademica
 - name: tipo_produccion
   description: |
     TipoProduccionController operations for TipoProduccion
 - name: subtipo_produccion
   description: |
     SubtipoProduccionController operations for SubtipoProduccion
+- name: metadato_subtipo_produccion
+  description: |
+    MetadatoSubtipoProduccionController operations for MetadatoSubtipoProduccion
+- name: tipo_metadato
+  description: |
+    TipoMetadatoController operations for TipoMetadato
 - name: produccion_academica
   description: |
     ProduccionAcademicaController operations for ProduccionAcademica
-- name: dato_adicional_produccion_academica
-  description: |
-    DatoAdicionalProduccionAcademicaController operations for DatoAdicionalProduccionAcademica
-- name: soporte_produccion_academica
-  description: |
-    SoporteProduccionAcademicaController operations for SoporteProduccionAcademica
-- name: autor_produccion_academica
-  description: |
-    AutorProduccionAcademicaController operations for AutorProduccionAcademica
-- name: dato_adicional_subtipo_produccion
-  description: |
-    DatoAdicionalSubtipoProduccionController operations for DatoAdicionalSubtipoProduccion
-- name: tipo_dato_adicional
-  description: |
-    TipoDatoAdicionalController operations for TipoDatoAdicional
 - name: tr_produccion_academica
   description: |
     operations for TrProduccionAcademica
 - name: estado_autor_produccion
   description: |
     EstadoAutorProduccionController operations for EstadoAutorProduccion
+- name: soporte_produccion_academica
+  description: |
+    SoporteProduccionAcademicaController operations for SoporteProduccionAcademica
+- name: autor_produccion_academica
+  description: |
+    AutorProduccionAcademicaController operations for AutorProduccionAcademica
