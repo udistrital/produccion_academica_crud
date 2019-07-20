@@ -1723,7 +1723,7 @@
                     "type": "integer",
                     "format": "int64"
                 },
-                "Persona": {
+                "PersonaId": {
                     "type": "integer",
                     "format": "int64"
                 },
@@ -1867,7 +1867,7 @@
                 "Descripcion": {
                     "type": "string"
                 },
-                "Documento": {
+                "DocumentoId": {
                     "type": "integer",
                     "format": "int64"
                 },

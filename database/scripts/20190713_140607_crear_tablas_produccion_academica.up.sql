@@ -198,7 +198,7 @@ COMMENT ON COLUMN produccion_academica.tipo_metadato.fecha_modificacion IS 'Camp
 -- DROP TABLE IF EXISTS produccion_academica.soporte_produccion_academica CASCADE;
 CREATE TABLE produccion_academica.soporte_produccion_academica (
 	id serial NOT NULL,
-	documento integer NOT NULL,
+	documento_id integer NOT NULL,
 	descripcion character varying(250),
 	activo boolean NOT NULL,
 	fecha_creacion timestamp NOT NULL,
@@ -225,7 +225,7 @@ COMMENT ON COLUMN produccion_academica.soporte_produccion_academica.fecha_modifi
 -- DROP TABLE IF EXISTS produccion_academica.autor_produccion_academica CASCADE;
 CREATE TABLE produccion_academica.autor_produccion_academica (
 	id serial NOT NULL,
-	persona integer NOT NULL,
+	persona_id integer NOT NULL,
 	activo boolean NOT NULL,
 	fecha_creacion timestamp NOT NULL,
 	fecha_modificacion timestamp NOT NULL,
@@ -332,8 +332,8 @@ ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --
 
 -- object: fk_metadato_produccion_academica_metadato_subtipo_pro_4208 | type: CONSTRAINT --
--- ALTER TABLE produccion_academica.metadato_produccion_academica DROP CONSTRAINT IF EXISTS fk_metadato_produccion_academica_metadato_subtipo_pro_4208 CASCADE;
-ALTER TABLE produccion_academica.metadato_produccion_academica ADD CONSTRAINT fk_metadato_produccion_academica_metadato_subtipo_pro_4208 FOREIGN KEY (metadato_subtipo_produccion_id)
+-- ALTER TABLE produccion_academica.metadato_produccion_academica DROP CONSTRAINT IF EXISTS fk_metadato_produccion_academica_metadato_subtipo CASCADE;
+ALTER TABLE produccion_academica.metadato_produccion_academica ADD CONSTRAINT fk_metadato_produccion_academica_metadato_subtipo FOREIGN KEY (metadato_subtipo_produccion_id)
 REFERENCES produccion_academica.metadato_subtipo_produccion (id) MATCH FULL
 ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --

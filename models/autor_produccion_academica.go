@@ -12,7 +12,7 @@ import (
 
 type AutorProduccionAcademica struct {
 	Id                      int                    `orm:"column(id);pk;auto"`
-	Persona                 int                    `orm:"column(persona)"`
+	PersonaId               int                    `orm:"column(persona_id)"`
 	Activo                  bool                   `orm:"column(activo)"`
 	FechaCreacion           time.Time              `orm:"column(fecha_creacion);type(timestamp without time zone)"`
 	FechaModificacion       time.Time              `orm:"column(fecha_modificacion);type(timestamp without time zone)"`

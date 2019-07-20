@@ -1148,7 +1148,7 @@ definitions:
       Id:
         type: integer
         format: int64
-      Persona:
+      PersonaId:
         type: integer
         format: int64
       ProduccionAcademicaId:
@@ -1249,7 +1249,7 @@ definitions:
         type: boolean
       Descripcion:
         type: string
-      Documento:
+      DocumentoId:
         type: integer
         format: int64
       FechaCreacion:

@@ -12,7 +12,7 @@ import (
 
 type SoporteProduccionAcademica struct {
 	Id                    int                  `orm:"column(id);pk;auto"`
-	Documento             int                  `orm:"column(documento)"`
+	DocumentoId           int                  `orm:"column(documento_id)"`
 	Descripcion           string               `orm:"column(descripcion);null"`
 	Activo                bool                 `orm:"column(activo)"`
 	FechaCreacion         time.Time            `orm:"column(fecha_creacion);type(timestamp without time zone)"`
