@@ -212,7 +212,7 @@ COMMENT ON TABLE produccion_academica.soporte_produccion_academica IS 'Tabla que
 -- ddl-end --
 COMMENT ON COLUMN produccion_academica.soporte_produccion_academica.id IS 'Identificador de la tabla';
 -- ddl-end --
-COMMENT ON COLUMN produccion_academica.soporte_produccion_academica.documento IS 'Documento que se referencia como soporte (Se hace referencia a a tabla documento).';
+COMMENT ON COLUMN produccion_academica.soporte_produccion_academica.documento_id IS 'Documento que se referencia como soporte (Se hace referencia a a tabla documento).';
 -- ddl-end --
 COMMENT ON COLUMN produccion_academica.soporte_produccion_academica.descripcion IS 'Descripción del documento soporte.';
 -- ddl-end --
@@ -239,7 +239,7 @@ COMMENT ON TABLE produccion_academica.autor_produccion_academica IS 'Tabla que a
 -- ddl-end --
 COMMENT ON COLUMN produccion_academica.autor_produccion_academica.id IS 'Identificador de la tabla';
 -- ddl-end --
-COMMENT ON COLUMN produccion_academica.autor_produccion_academica.persona IS 'Persona a la que se referencia como autor (Se hace referencia a a tabla persona).';
+COMMENT ON COLUMN produccion_academica.autor_produccion_academica.persona_id IS 'Persona a la que se referencia como autor (Se hace referencia a a tabla persona).';
 -- ddl-end --
 COMMENT ON COLUMN produccion_academica.autor_produccion_academica.fecha_creacion IS 'Campo para el registro de creacion de un autor de producion academica';
 -- ddl-end --
