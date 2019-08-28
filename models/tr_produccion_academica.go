@@ -2,15 +2,15 @@ package models
 
 import (
 	"fmt"
-	"time"
 
 	"github.com/astaxie/beego/orm"
+	"github.com/udistrital/utils_oas/time_bogota"
 )
 
 type TrProduccionAcademica struct {
-	ProduccionAcademica            *ProduccionAcademica
-	Autores  *[]AutorProduccionAcademica
-	Metadatos        *[]MetadatoProduccionAcademica
+	ProduccionAcademica	*ProduccionAcademica
+	Autores  						*[]AutorProduccionAcademica
+	Metadatos        		*[]MetadatoProduccionAcademica
 }
 
 // GetProduccionesAcademicasByPersona Transacción para consultar todas las producciones con toda la información de las mismas
@@ -160,7 +160,7 @@ func TrDeleteProduccionAcademica(id int) (err error) {
 		var num int64
 		// if num, err = o.Delete(&ProduccionAcademica{Id: id}); err == nil {
 			// fmt.Println("Number of records deleted in database:", num)
-		if num, err = o.Update(&ProduccionAcademica{Id: id, Activo: false, FechaModificacion: time.Now()},"Activo", "FechaModificacion"); err == nil {
+		if num, err = o.Update(&ProduccionAcademica{Id: id, Activo: false, FechaModificacion: time_bogota.TiempoBogotaFormato()},"Activo", "FechaModificacion"); err == nil {
 			fmt.Println("Number of records updated in database:", num)
 		}
 	}

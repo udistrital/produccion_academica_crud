@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
-	"time"
 
 	"github.com/astaxie/beego/orm"
+	"github.com/udistrital/utils_oas/time_bogota"
 )
 
 type SoporteProduccionAcademica struct {
@@ -15,9 +15,9 @@ type SoporteProduccionAcademica struct {
 	DocumentoId           int                  `orm:"column(documento_id)"`
 	Descripcion           string               `orm:"column(descripcion);null"`
 	Activo                bool                 `orm:"column(activo)"`
-	FechaCreacion         time.Time            `orm:"column(fecha_creacion);type(timestamp without time zone)"`
-	FechaModificacion     time.Time            `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
 	ProduccionAcademicaId *ProduccionAcademica `orm:"column(produccion_academica_id);rel(fk)"`
+	FechaCreacion     		string  						 `orm:"column(fecha_creacion);null"`
+	FechaModificacion 		string  						 `orm:"column(fecha_modificacion);null"`
 }
 
 func (t *SoporteProduccionAcademica) TableName() string {
@@ -31,6 +31,8 @@ func init() {
 // AddSoporteProduccionAcademica insert a new SoporteProduccionAcademica into database and returns
 // last inserted Id on success.
 func AddSoporteProduccionAcademica(m *SoporteProduccionAcademica) (id int64, err error) {
+	m.FechaCreacion = time_bogota.TiempoBogotaFormato()
+	m.FechaModificacion = time_bogota.TiempoBogotaFormato()
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
@@ -130,6 +132,7 @@ func GetAllSoporteProduccionAcademica(query map[string]string, fields []string, 
 func UpdateSoporteProduccionAcademicaById(m *SoporteProduccionAcademica) (err error) {
 	o := orm.NewOrm()
 	v := SoporteProduccionAcademica{Id: m.Id}
+	m.FechaModificacion = time_bogota.TiempoBogotaFormato()
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64

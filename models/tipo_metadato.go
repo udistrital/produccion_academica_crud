@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
-	"time"
 
 	"github.com/astaxie/beego/orm"
+	"github.com/udistrital/utils_oas/time_bogota"
 )
 
 type TipoMetadato struct {
@@ -18,8 +18,8 @@ type TipoMetadato struct {
 	Activo            bool      `orm:"column(activo)"`
 	NumeroOrden       float64   `orm:"column(numero_orden);null"`
 	FormDefinition    string    `orm:"column(form_definition);type(json);null"`
-	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(timestamp without time zone)"`
-	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+	FechaCreacion     string  	`orm:"column(fecha_creacion);null"`
+	FechaModificacion string  	`orm:"column(fecha_modificacion);null"`
 }
 
 func (t *TipoMetadato) TableName() string {
@@ -33,6 +33,8 @@ func init() {
 // AddTipoMetadato insert a new TipoMetadato into database and returns
 // last inserted Id on success.
 func AddTipoMetadato(m *TipoMetadato) (id int64, err error) {
+	m.FechaCreacion = time_bogota.TiempoBogotaFormato()
+	m.FechaModificacion = time_bogota.TiempoBogotaFormato()
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
@@ -132,6 +134,7 @@ func GetAllTipoMetadato(query map[string]string, fields []string, sortby []strin
 func UpdateTipoMetadatoById(m *TipoMetadato) (err error) {
 	o := orm.NewOrm()
 	v := TipoMetadato{Id: m.Id}
+	m.FechaModificacion = time_bogota.TiempoBogotaFormato()
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64

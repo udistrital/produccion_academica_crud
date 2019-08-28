@@ -5,7 +5,6 @@ import (
 	"strconv"
 
 	"github.com/planesticud/produccion_academica_crud/models"
-
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/logs"
 )
@@ -89,6 +88,7 @@ func (c *TrProduccionAcademicaController) Put() {
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		v.ProduccionAcademica.Id = id
 		if err := models.UpdateTransaccionProduccionAcademica(&v); err == nil {
+			c.Ctx.Output.SetStatus(200)
 			c.Data["json"] = v
 		} else {
 			logs.Error(err)

@@ -5,19 +5,19 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
-	"time"
 
 	"github.com/astaxie/beego/orm"
+	"github.com/udistrital/utils_oas/time_bogota"
 )
 
 type MetadatoProduccionAcademica struct {
 	Id                          int                        `orm:"column(id);pk;auto"`
 	Valor                       string                     `orm:"column(valor)"`
 	Activo                      bool                       `orm:"column(activo)"`
-	FechaCreacion               time.Time                  `orm:"column(fecha_creacion);type(timestamp without time zone)"`
-	FechaModificacion           time.Time                  `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
 	MetadatoSubtipoProduccionId *MetadatoSubtipoProduccion `orm:"column(metadato_subtipo_produccion_id);rel(fk)"`
 	ProduccionAcademicaId       *ProduccionAcademica       `orm:"column(produccion_academica_id);rel(fk)"`
+	FechaCreacion     					string  									 `orm:"column(fecha_creacion);null"`
+	FechaModificacion 					string  									 `orm:"column(fecha_modificacion);null"`
 }
 
 func (t *MetadatoProduccionAcademica) TableName() string {
@@ -31,6 +31,8 @@ func init() {
 // AddMetadatoProduccionAcademica insert a new MetadatoProduccionAcademica into database and returns
 // last inserted Id on success.
 func AddMetadatoProduccionAcademica(m *MetadatoProduccionAcademica) (id int64, err error) {
+	m.FechaCreacion = time_bogota.TiempoBogotaFormato()
+	m.FechaModificacion = time_bogota.TiempoBogotaFormato()
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
@@ -130,6 +132,7 @@ func GetAllMetadatoProduccionAcademica(query map[string]string, fields []string,
 func UpdateMetadatoProduccionAcademicaById(m *MetadatoProduccionAcademica) (err error) {
 	o := orm.NewOrm()
 	v := MetadatoProduccionAcademica{Id: m.Id}
+	m.FechaModificacion = time_bogota.TiempoBogotaFormato()
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64

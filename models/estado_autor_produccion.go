@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
-	"time"
 
 	"github.com/astaxie/beego/orm"
+	"github.com/udistrital/utils_oas/time_bogota"
 )
 
 type EstadoAutorProduccion struct {
@@ -17,8 +17,8 @@ type EstadoAutorProduccion struct {
 	CodigoAbreviacion string    `orm:"column(codigo_abreviacion);null"`
 	Activo            bool      `orm:"column(activo)"`
 	NumeroOrden       float64   `orm:"column(numero_orden);null"`
-	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(timestamp without time zone)"`
-	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+	FechaCreacion     string  	`orm:"column(fecha_creacion);null"`
+	FechaModificacion string  	`orm:"column(fecha_modificacion);null"`
 }
 
 func (t *EstadoAutorProduccion) TableName() string {
@@ -32,6 +32,8 @@ func init() {
 // AddEstadoAutorProduccion insert a new EstadoAutorProduccion into database and returns
 // last inserted Id on success.
 func AddEstadoAutorProduccion(m *EstadoAutorProduccion) (id int64, err error) {
+	m.FechaCreacion = time_bogota.TiempoBogotaFormato()
+	m.FechaModificacion = time_bogota.TiempoBogotaFormato()
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
@@ -131,6 +133,7 @@ func GetAllEstadoAutorProduccion(query map[string]string, fields []string, sortb
 func UpdateEstadoAutorProduccionById(m *EstadoAutorProduccion) (err error) {
 	o := orm.NewOrm()
 	v := EstadoAutorProduccion{Id: m.Id}
+	m.FechaModificacion = time_bogota.TiempoBogotaFormato()
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
