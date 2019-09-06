@@ -5,9 +5,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/planesticud/produccion_academica_crud/models"
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/logs"
+	"github.com/planesticud/produccion_academica_crud/models"
 )
 
 // AutorProduccionAcademicaController operations for AutorProduccionAcademica

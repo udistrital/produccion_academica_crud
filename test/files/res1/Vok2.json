@@ -1,0 +1,13 @@
+{
+  "title": "Example Schema",
+  "type": "object",
+  "properties": {
+    "Id": { "type": "integer" },
+    "PersonaId": { "type": "integer" },
+    "Activo": { "type": "boolean" },
+    "EstadoAutorProduccionId": { "type": "EstadoAutorProduccion" },
+    "ProduccionAcademicaId": { "type": "ProduccionAcademica" },
+    "FechaCreacion": { "type": "string" },
+    "FechaModificacion": { "type": "string" }
+  }
+}

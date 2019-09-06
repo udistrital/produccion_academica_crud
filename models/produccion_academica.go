@@ -18,8 +18,8 @@ type ProduccionAcademica struct {
 	Fecha               time.Time          `orm:"column(fecha);type(date)"`
 	Activo              bool               `orm:"column(activo)"`
 	SubtipoProduccionId *SubtipoProduccion `orm:"column(subtipo_produccion_id);rel(fk)"`
-	FechaCreacion     	string  					 `orm:"column(fecha_creacion);null"`
-	FechaModificacion 	string  					 `orm:"column(fecha_modificacion);null"`
+	FechaCreacion       string             `orm:"column(fecha_creacion);null"`
+	FechaModificacion   string             `orm:"column(fecha_modificacion);null"`
 }
 
 func (t *ProduccionAcademica) TableName() string {
@@ -138,7 +138,7 @@ func UpdateProduccionAcademicaById(m *ProduccionAcademica) (err error) {
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Update(m); err == nil {
+		if num, err = o.Update(m, "Titulo", "Resumen", "Fecha", "Activo", "SubtipoProduccionId", "FechaModificacion"); err == nil {
 			fmt.Println("Number of records updated in database:", num)
 		}
 	}

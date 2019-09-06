@@ -14,8 +14,8 @@ type AutorProduccionAcademica struct {
 	Id                      int                    `orm:"column(id);pk;auto"`
 	PersonaId               int                    `orm:"column(persona_id)"`
 	Activo                  bool                   `orm:"column(activo)"`
-	FechaCreacion     			string  							 `orm:"column(fecha_creacion);null"`
-	FechaModificacion 			string  							 `orm:"column(fecha_modificacion);null"`
+	FechaCreacion           string                 `orm:"column(fecha_creacion);null"`
+	FechaModificacion       string                 `orm:"column(fecha_modificacion);null"`
 	ProduccionAcademicaId   *ProduccionAcademica   `orm:"column(produccion_academica_id);rel(fk)"`
 	EstadoAutorProduccionId *EstadoAutorProduccion `orm:"column(estado_autor_produccion_id);rel(fk)"`
 }
@@ -136,7 +136,7 @@ func UpdateAutorProduccionAcademicaById(m *AutorProduccionAcademica) (err error)
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Update(m); err == nil {
+		if num, err = o.Update(m, "PersonaId", "Activo", "ProduccionAcademicaId", "EstadoAutorProduccionId", "FechaModificacion"); err == nil {
 			fmt.Println("Number of records updated in database:", num)
 		}
 	}

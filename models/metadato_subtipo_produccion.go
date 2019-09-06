@@ -15,8 +15,8 @@ type MetadatoSubtipoProduccion struct {
 	Activo              bool               `orm:"column(activo)"`
 	TipoMetadatoId      *TipoMetadato      `orm:"column(tipo_metadato_id);rel(fk)"`
 	SubtipoProduccionId *SubtipoProduccion `orm:"column(subtipo_produccion_id);rel(fk)"`
-	FechaCreacion     	string  					 `orm:"column(fecha_creacion);null"`
-	FechaModificacion 	string 						 `orm:"column(fecha_modificacion);null"`
+	FechaCreacion       string             `orm:"column(fecha_creacion);null"`
+	FechaModificacion   string             `orm:"column(fecha_modificacion);null"`
 }
 
 func (t *MetadatoSubtipoProduccion) TableName() string {
@@ -135,7 +135,7 @@ func UpdateMetadatoSubtipoProduccionById(m *MetadatoSubtipoProduccion) (err erro
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Update(m); err == nil {
+		if num, err = o.Update(m, "Activo", "TipoMetadatoId", "SubtipoProduccionId", "FechaModificacion"); err == nil {
 			fmt.Println("Number of records updated in database:", num)
 		}
 	}

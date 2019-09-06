@@ -1693,11 +1693,11 @@
         }
     },
     "definitions": {
-        "24634.\u003cnil\u003e.AutorProduccionAcademica": {
+        "25146.\u003cnil\u003e.AutorProduccionAcademica": {
             "title": "AutorProduccionAcademica",
             "type": "object"
         },
-        "24682.\u003cnil\u003e.MetadatoProduccionAcademica": {
+        "25194.\u003cnil\u003e.MetadatoProduccionAcademica": {
             "title": "MetadatoProduccionAcademica",
             "type": "object"
         },
@@ -1983,10 +1983,10 @@
             "type": "object",
             "properties": {
                 "Autores": {
-                    "$ref": "#/definitions/24634.\u003cnil\u003e.AutorProduccionAcademica"
+                    "$ref": "#/definitions/25146.\u003cnil\u003e.AutorProduccionAcademica"
                 },
                 "Metadatos": {
-                    "$ref": "#/definitions/24682.\u003cnil\u003e.MetadatoProduccionAcademica"
+                    "$ref": "#/definitions/25194.\u003cnil\u003e.MetadatoProduccionAcademica"
                 },
                 "ProduccionAcademica": {
                     "$ref": "#/definitions/models.ProduccionAcademica"
