@@ -31,7 +31,7 @@ func (m *CrearTablasProduccionAcademica_20190713_140607) Up() {
 		fmt.Println(err)
 	}
 
-	requests := strings.Split(string(file), ";\n")
+	requests := strings.Split(string(file), ";")
 
 	for _, request := range requests {
 		fmt.Println(request)
@@ -51,7 +51,7 @@ func (m *CrearTablasProduccionAcademica_20190713_140607) Down() {
 		fmt.Println(err)
 	}
 
-	requests := strings.Split(string(file), ";\n")
+	requests := strings.Split(string(file), ";")
 
 	for _, request := range requests {
 		fmt.Println(request)
