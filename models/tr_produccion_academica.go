@@ -94,7 +94,7 @@ func UpdateTransaccionProduccionAcademica(m *TrProduccionAcademica) (err error) 
 	// ascertain id exists in the database
 	if errTr := o.Read(&v); errTr == nil {
 		var num int64
-		if num, errTr = o.Update(m.ProduccionAcademica, "Titulo", "Resumen", "Fecha", "FechaModificacion"); errTr == nil {
+		if num, errTr = o.Update(m.ProduccionAcademica, "Titulo", "Resumen", "Fecha"); errTr == nil {
 			fmt.Println("Number of records updated in database:", num)
 
 			for _, v := range *m.Metadatos {
@@ -108,7 +108,7 @@ func UpdateTransaccionProduccionAcademica(m *TrProduccionAcademica) (err error) 
 					}
 
 					if metadato.Id != 0 {
-						if _, errTr = o.Update(&metadato, "Valor", "FechaModificacion"); errTr != nil {
+						if _, errTr = o.Update(&metadato, "Valor"); errTr != nil {
 							err = errTr
 							fmt.Println(err)
 							_ = o.Rollback()
