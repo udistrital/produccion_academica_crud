@@ -2,11 +2,12 @@ package controllers
 
 import (
 	"encoding/json"
+	"fmt"
 	"strconv"
 
-	"github.com/planesticud/produccion_academica_crud/models"
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/logs"
+	"github.com/planesticud/produccion_academica_crud/models"
 )
 
 // operations for TrProduccionAcademica
@@ -24,12 +25,13 @@ func (c *TrProduccionAcademicaController) URLMapping() {
 // GetAllByPersona ...
 // @Title Get All By Persona
 // @Description get TrProduccionAcademicaController
-// @Param	id		path 	string	true		"Persona"
+// @Param	persona		path 	string	true		"Persona"
 // @Success 200 {object} models.TrProduccionAcademicaController
 // @Failure 404 not found resource
 // @router /:persona [get]
 func (c *TrProduccionAcademicaController) GetAllByPersona() {
 	idPersonaStr := c.Ctx.Input.Param(":persona")
+	fmt.Println(idPersonaStr)
 	idPersona, _ := strconv.Atoi(idPersonaStr)
 	l, err := models.GetProduccionesAcademicasByPersona(idPersona)
 	if err != nil {

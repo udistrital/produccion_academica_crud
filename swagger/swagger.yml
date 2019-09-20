@@ -1113,7 +1113,7 @@ paths:
       operationId: TrProduccionAcademicaController.Get All By Persona
       parameters:
       - in: path
-        name: id
+        name: persona
         description: Persona
         required: true
         type: string
@@ -1125,10 +1125,10 @@ paths:
         "404":
           description: not found resource
 definitions:
-  25146.<nil>.AutorProduccionAcademica:
+  25151.<nil>.AutorProduccionAcademica:
     title: AutorProduccionAcademica
     type: object
-  25194.<nil>.MetadatoProduccionAcademica:
+  25200.<nil>.MetadatoProduccionAcademica:
     title: MetadatoProduccionAcademica
     type: object
   models.AutorProduccionAcademica:
@@ -1326,9 +1326,9 @@ definitions:
     type: object
     properties:
       Autores:
-        $ref: '#/definitions/25146.<nil>.AutorProduccionAcademica'
+        $ref: '#/definitions/25151.<nil>.AutorProduccionAcademica'
       Metadatos:
-        $ref: '#/definitions/25194.<nil>.MetadatoProduccionAcademica'
+        $ref: '#/definitions/25200.<nil>.MetadatoProduccionAcademica'
       ProduccionAcademica:
         $ref: '#/definitions/models.ProduccionAcademica'
   models.TrProduccionAcademicaController:
