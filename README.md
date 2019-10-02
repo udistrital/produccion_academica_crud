@@ -10,21 +10,23 @@ produccion_academica_crud master/develop
 Go version >= 1.8.
 
 ## Preparación:
-    Para usar el API, usar el comando:
+    Para descargar el API, usar el comando:
         - go get github.com/udistrital/produccion_academica_crud
 
 ## Run
 
 Definir los valores de las siguientes variables de entorno:
 
- - `API_PRODUCCION_ACADEMICA_HTTP_PORT`: Puerto asignado para la ejecución del API
- - `PRODUCCION_ACADEMICA_CRUD__PGUSER`: Usuario de la base de datos
- - `PRODUCCION_ACADEMICA_CRUD__PGPASS`: Clave del usuario para la conexión a la base de datos  
- - `PRODUCCION_ACADEMICA_CRUD__PGURLS`: Host de conexión
- - `PRODUCCION_ACADEMICA_CRUD__PGDB`: Nombre de la base de datos
- - `PRODUCCION_ACADEMICA_CRUD__SCHEMA`: Esquema a utilizar en la base de datos
+ - `PRODUCCION_ACADEMICA_CRUD__SQLCONN`: Dirección de la base de datos (formato 'postgres://user:pass@host:port/db_name?sslmode=disable&search_path=schema')
+ - `API_PRODUCCION_ACADEMICA_HTTP_PORT`: Puerto en el que se expone la api.
+ - `RUN_MODE`: Modo de ejecución del api.
 
-Ejemplo: API_PRODUCCION_ACADEMICA_HTTP_PORT=8083 PRODUCCION_ACADEMICA_CRUD__PGUSER=user PRODUCCION_ACADEMICA_CRUD__PGPASS=password PRODUCCION_ACADEMICA_CRUD__PGURLS=localhost PRODUCCION_ACADEMICA_CRUD__PGDB=udistrital_core_db PRODUCCION_ACADEMICA_CRUD__SCHEMA=core_new bee run
+
+Ejemplo: API_PRODUCCION_ACADEMICA_HTTP_PORT=8083 PRODUCCION_ACADEMICA_CRUD__SQLCONN=postgres://test:test@localhost:5432/core?sslmode=disable&search_path=produccion_academica bee run (Usar flags --downdoc=true --gendoc=true para generar documentacion)
+
+## Dev run
+
+Entorno de desarrollo creado con docker, para correr el proyecto modificar archivo .env con las variables de entorno, si se quiere que la base de datos se genere automaticamente dejar el esquema en blanco.
 
 ## MODELO
-![image](https://github.com/udistrital/produccion_academica_crud/blob/develop/producion_academica_crud.png).
+![produccion_academica_crud](https://user-images.githubusercontent.com/14035745/66079435-a8cdf300-e529-11e9-9f4e-7ca2b0807c06.png)
