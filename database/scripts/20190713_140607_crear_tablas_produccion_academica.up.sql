@@ -1,23 +1,3 @@
--- Database generated with pgModeler (PostgreSQL Database Modeler).
--- pgModeler  version: 0.9.2-alpha1
--- PostgreSQL version: 10.0
--- Project Site: pgmodeler.io
--- Model Author: ---
-
-
--- Database creation must be done outside a multicommand file.
--- These commands were put in this file only as a convenience.
--- -- object: core | type: DATABASE --
--- -- DROP DATABASE IF EXISTS core;
--- CREATE DATABASE core
--- 	ENCODING = 'UTF8'
--- 	LC_COLLATE = 'en_US'
--- 	LC_CTYPE = 'en_US'
--- 	TABLESPACE = pg_default
--- 	OWNER = postgres;
--- -- ddl-end --
--- 
-
 -- object: produccion_academica | type: SCHEMA --
 -- DROP SCHEMA IF EXISTS produccion_academica CASCADE;
 CREATE SCHEMA produccion_academica;
@@ -367,6 +347,6 @@ ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --
 
 -- Permisos de usuario
-GRANT USAGE ON SCHEMA acta_recibido TO desarrollooas;
-GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA acta_recibido TO desarrollooas;
-GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA acta_recibido TO desarrollooas;
+GRANT USAGE ON SCHEMA produccion_academica TO desarrollooas;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA produccion_academica TO desarrollooas;
+GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA produccion_academica TO desarrollooas;
