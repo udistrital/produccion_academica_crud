@@ -5,6 +5,7 @@ import (
 	"strconv"
 
 	"github.com/udistrital/produccion_academica_crud/models"
+	"github.com/udistrital/utils_oas/time_bogota"
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/logs"
@@ -42,6 +43,9 @@ func (c *TrProduccionAcademicaController) GetAllByPersona() {
 		if l == nil {
 			l = append(l, map[string]interface{}{})
 		}
+		if l == nil {
+			l = append(l, map[string]interface{}{})
+		}
 		c.Data["json"] = l
 	}
 	c.ServeJSON()
@@ -56,6 +60,8 @@ func (c *TrProduccionAcademicaController) GetAllByPersona() {
 func (c *TrProduccionAcademicaController) Post() {
 	var v models.TrProduccionAcademica
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
+		v.FechaCreacion = time_bogota.TiempoBogotaFormato()
+		v.FechaModificacion = time_bogota.TiempoBogotaFormato()
 		if err := models.AddTransaccionProduccionAcademica(&v); err == nil {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
@@ -87,6 +93,8 @@ func (c *TrProduccionAcademicaController) Put() {
 	id, _ := strconv.Atoi(idStr)
 	var v models.TrProduccionAcademica
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
+		v.FechaCreacion = time_bogota.TiempoCorreccionFormato(v.FechaCreacion)
+		v.FechaModificacion = time_bogota.TiempoBogotaFormato()
 		v.ProduccionAcademica.Id = id
 		if err := models.UpdateTransaccionProduccionAcademica(&v); err == nil {
 			c.Data["json"] = v
