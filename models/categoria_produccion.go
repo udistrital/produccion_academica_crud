@@ -10,49 +10,50 @@ import (
 	"github.com/astaxie/beego/orm"
 )
 
-type SoporteProduccionAcademica struct {
-	Id                    int                  `orm:"column(id);pk;auto"`
-	Documento             int                  `orm:"column(documento)"`
-	Descripcion           string               `orm:"column(descripcion);null"`
-	Activo                bool                 `orm:"column(activo)"`
-	FechaCreacion         time.Time            `orm:"column(fecha_creacion);type(timestamp without time zone)"`
-	FechaModificacion     time.Time            `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
-	ProduccionAcademicaId *ProduccionAcademica `orm:"column(produccion_academica_id);rel(fk)"`
+type CategoriaProduccion struct {
+	Id                int       `orm:"column(id);pk;auto"`
+	Nombre            string    `orm:"column(nombre)"`
+	Descripcion       string    `orm:"column(descripcion);null"`
+	Activo            bool      `orm:"column(activo)"`
+	TipoPuntaje       string    `orm:"column(tipo_puntaje);null"`
+	NumeroOrden       float64   `orm:"column(numero_orden);null"`
+	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(timestamp without time zone)"`
+	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
 }
 
-func (t *SoporteProduccionAcademica) TableName() string {
-	return "soporte_produccion_academica"
+func (t *CategoriaProduccion) TableName() string {
+	return "categoria_produccion"
 }
 
 func init() {
-	orm.RegisterModel(new(SoporteProduccionAcademica))
+	orm.RegisterModel(new(CategoriaProduccion))
 }
 
-// AddSoporteProduccionAcademica insert a new SoporteProduccionAcademica into database and returns
+// AddCategoriaProduccion insert a new CategoriaProduccion into database and returns
 // last inserted Id on success.
-func AddSoporteProduccionAcademica(m *SoporteProduccionAcademica) (id int64, err error) {
+func AddCategoriaProduccion(m *CategoriaProduccion) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetSoporteProduccionAcademicaById retrieves SoporteProduccionAcademica by Id. Returns error if
+// GetCategoriaProduccionById retrieves CategoriaProduccion by Id. Returns error if
 // Id doesn't exist
-func GetSoporteProduccionAcademicaById(id int) (v *SoporteProduccionAcademica, err error) {
+func GetCategoriaProduccionById(id int) (v *CategoriaProduccion, err error) {
 	o := orm.NewOrm()
-	v = &SoporteProduccionAcademica{Id: id}
+	v = &CategoriaProduccion{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllSoporteProduccionAcademica retrieves all SoporteProduccionAcademica matches certain condition. Returns empty list if
+// GetAllCategoriaProduccion retrieves all CategoriaProduccion matches certain condition. Returns empty list if
 // no records exist
-func GetAllSoporteProduccionAcademica(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllCategoriaProduccion(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(SoporteProduccionAcademica)).RelatedSel()
+	qs := o.QueryTable(new(CategoriaProduccion)).RelatedSel()
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
@@ -102,7 +103,7 @@ func GetAllSoporteProduccionAcademica(query map[string]string, fields []string, 
 		}
 	}
 
-	var l []SoporteProduccionAcademica
+	var l []CategoriaProduccion
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -125,11 +126,11 @@ func GetAllSoporteProduccionAcademica(query map[string]string, fields []string, 
 	return nil, err
 }
 
-// UpdateSoporteProduccionAcademica updates SoporteProduccionAcademica by Id and returns error if
+// UpdateCategoriaProduccion updates CategoriaProduccion by Id and returns error if
 // the record to be updated doesn't exist
-func UpdateSoporteProduccionAcademicaById(m *SoporteProduccionAcademica) (err error) {
+func UpdateCategoriaProduccionById(m *CategoriaProduccion) (err error) {
 	o := orm.NewOrm()
-	v := SoporteProduccionAcademica{Id: m.Id}
+	v := CategoriaProduccion{Id: m.Id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -140,15 +141,15 @@ func UpdateSoporteProduccionAcademicaById(m *SoporteProduccionAcademica) (err er
 	return
 }
 
-// DeleteSoporteProduccionAcademica deletes SoporteProduccionAcademica by Id and returns error if
+// DeleteCategoriaProduccion deletes CategoriaProduccion by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteSoporteProduccionAcademica(id int) (err error) {
+func DeleteCategoriaProduccion(id int) (err error) {
 	o := orm.NewOrm()
-	v := SoporteProduccionAcademica{Id: id}
+	v := CategoriaProduccion{Id: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&SoporteProduccionAcademica{Id: id}); err == nil {
+		if num, err = o.Delete(&CategoriaProduccion{Id: id}); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}

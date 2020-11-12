@@ -64,12 +64,6 @@ func init() {
 			),
 		),
 
-		beego.NSNamespace("/soporte_produccion_academica",
-			beego.NSInclude(
-				&controllers.SoporteProduccionAcademicaController{},
-			),
-		),
-
 		beego.NSNamespace("/autor_produccion_academica",
 			beego.NSInclude(
 				&controllers.AutorProduccionAcademicaController{},

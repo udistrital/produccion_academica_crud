@@ -12,13 +12,13 @@ import (
 	"github.com/astaxie/beego/logs"
 )
 
-// SoporteProduccionAcademicaController operations for SoporteProduccionAcademica
-type SoporteProduccionAcademicaController struct {
+// CategoriaProduccionController operations for CategoriaProduccion
+type CategoriaProduccionController struct {
 	beego.Controller
 }
 
 // URLMapping ...
-func (c *SoporteProduccionAcademicaController) URLMapping() {
+func (c *CategoriaProduccionController) URLMapping() {
 	c.Mapping("Post", c.Post)
 	c.Mapping("GetOne", c.GetOne)
 	c.Mapping("GetAll", c.GetAll)
@@ -28,15 +28,15 @@ func (c *SoporteProduccionAcademicaController) URLMapping() {
 
 // Post ...
 // @Title Post
-// @Description create SoporteProduccionAcademica
-// @Param	body		body 	models.SoporteProduccionAcademica	true		"body for SoporteProduccionAcademica content"
-// @Success 201 {int} models.SoporteProduccionAcademica
+// @Description create CategoriaProduccion
+// @Param	body		body 	models.CategoriaProduccion	true		"body for CategoriaProduccion content"
+// @Success 201 {int} models.CategoriaProduccion
 // @Failure 400 the request contains incorrect syntax
 // @router / [post]
-func (c *SoporteProduccionAcademicaController) Post() {
-	var v models.SoporteProduccionAcademica
+func (c *CategoriaProduccionController) Post() {
+	var v models.CategoriaProduccion
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if _, err := models.AddSoporteProduccionAcademica(&v); err == nil {
+		if _, err := models.AddCategoriaProduccion(&v); err == nil {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
 		} else {
@@ -56,15 +56,15 @@ func (c *SoporteProduccionAcademicaController) Post() {
 
 // GetOne ...
 // @Title Get One
-// @Description get SoporteProduccionAcademica by id
+// @Description get CategoriaProduccion by id
 // @Param	id		path 	string	true		"The key for staticblock"
-// @Success 200 {object} models.SoporteProduccionAcademica
+// @Success 200 {object} models.CategoriaProduccion
 // @Failure 404 not found resource
 // @router /:id [get]
-func (c *SoporteProduccionAcademicaController) GetOne() {
+func (c *CategoriaProduccionController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v, err := models.GetSoporteProduccionAcademicaById(id)
+	v, err := models.GetCategoriaProduccionById(id)
 	if err != nil {
 		logs.Error(err)
 		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
@@ -78,17 +78,17 @@ func (c *SoporteProduccionAcademicaController) GetOne() {
 
 // GetAll ...
 // @Title Get All
-// @Description get SoporteProduccionAcademica
+// @Description get CategoriaProduccion
 // @Param	query	query	string	false	"Filter. e.g. col1:v1,col2:v2 ..."
 // @Param	fields	query	string	false	"Fields returned. e.g. col1,col2 ..."
 // @Param	sortby	query	string	false	"Sorted-by fields. e.g. col1,col2 ..."
 // @Param	order	query	string	false	"Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ..."
 // @Param	limit	query	string	false	"Limit the size of result set. Must be an integer"
 // @Param	offset	query	string	false	"Start position of result set. Must be an integer"
-// @Success 200 {object} models.SoporteProduccionAcademica
+// @Success 200 {object} models.CategoriaProduccion
 // @Failure 404 not found resource
 // @router / [get]
-func (c *SoporteProduccionAcademicaController) GetAll() {
+func (c *CategoriaProduccionController) GetAll() {
 	var fields []string
 	var sortby []string
 	var order []string
@@ -130,7 +130,7 @@ func (c *SoporteProduccionAcademicaController) GetAll() {
 		}
 	}
 
-	l, err := models.GetAllSoporteProduccionAcademica(query, fields, sortby, order, offset, limit)
+	l, err := models.GetAllCategoriaProduccion(query, fields, sortby, order, offset, limit)
 	if err != nil {
 		logs.Error(err)
 		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
@@ -147,18 +147,18 @@ func (c *SoporteProduccionAcademicaController) GetAll() {
 
 // Put ...
 // @Title Put
-// @Description update the SoporteProduccionAcademica
+// @Description update the CategoriaProduccion
 // @Param	id		path 	string	true		"The id you want to update"
-// @Param	body		body 	models.SoporteProduccionAcademica	true		"body for SoporteProduccionAcademica content"
-// @Success 200 {object} models.SoporteProduccionAcademica
+// @Param	body		body 	models.CategoriaProduccion	true		"body for CategoriaProduccion content"
+// @Success 200 {object} models.CategoriaProduccion
 // @Failure 400 the request contains incorrect syntax
 // @router /:id [put]
-func (c *SoporteProduccionAcademicaController) Put() {
+func (c *CategoriaProduccionController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v := models.SoporteProduccionAcademica{Id: id}
+	v := models.CategoriaProduccion{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if err := models.UpdateSoporteProduccionAcademicaById(&v); err == nil {
+		if err := models.UpdateCategoriaProduccionById(&v); err == nil {
 			c.Data["json"] = v
 		} else {
 			logs.Error(err)
@@ -177,15 +177,15 @@ func (c *SoporteProduccionAcademicaController) Put() {
 
 // Delete ...
 // @Title Delete
-// @Description delete the SoporteProduccionAcademica
+// @Description delete the CategoriaProduccion
 // @Param	id		path 	string	true		"The id you want to delete"
 // @Success 200 {string} delete success!
 // @Failure 404 not found resource
 // @router /:id [delete]
-func (c *SoporteProduccionAcademicaController) Delete() {
+func (c *CategoriaProduccionController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	if err := models.DeleteSoporteProduccionAcademica(id); err == nil {
+	if err := models.DeleteCategoriaProduccion(id); err == nil {
 		c.Data["json"] = map[string]interface{}{"Id": id}
 	} else {
 		logs.Error(err)
