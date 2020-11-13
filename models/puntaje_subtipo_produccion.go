@@ -10,49 +10,51 @@ import (
 	"github.com/astaxie/beego/orm"
 )
 
-type Sistema struct {
-	Id                int       `orm:"column(id);pk;auto"`
-	Nombre            string    `orm:"column(nombre)"`
-	CodigoAbreviacion string    `orm:"column(codigo_abreviacion);null"`
-	Referencia        string    `orm:"column(referencia);type(json);"`
-	Activo            bool      `orm:"column(activo)"`
-	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(timestamp without time zone)"`
-	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+type PuntajeSubtipoProduccion struct {
+	Id                  int                `orm:"column(id);pk;auto"`
+	Nombre              string             `orm:"column(nombre)"`
+	Descripcion         string             `orm:"column(descripcion)"`
+	CodigoAbreviacion   string             `orm:"column(codigo_abreviacion);"`
+	Activo              bool               `orm:"column(activo)"`
+	Caracteristicas     string             `orm:"column(carecteristicas);type(json);"`
+	FechaCreacion       time.Time          `orm:"column(fecha_creacion);type(timestamp without time zone)"`
+	FechaModificacion   time.Time          `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+	SubtipoProduccionId *SubtipoProduccion `orm:"column(subtipo_produccion_id);rel(fk)"`
 }
 
-func (t *Sistema) TableName() string {
-	return "sistema"
+func (t *PuntajeSubtipoProduccion) TableName() string {
+	return "puntaje_subtipo_produccion"
 }
 
 func init() {
-	orm.RegisterModel(new(Sistema))
+	orm.RegisterModel(new(PuntajeSubtipoProduccion))
 }
 
-// AddSistema insert a new Sistema into database and returns
+// AddPuntajeSubtipoProduccion insert a new PuntajeSubtipoProduccion into database and returns
 // last inserted Id on success.
-func AddSistema(m *Sistema) (id int64, err error) {
+func AddPuntajeSubtipoProduccion(m *PuntajeSubtipoProduccion) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetSistemaById retrieves Sistema by Id. Returns error if
+// GetPuntajeSubtipoProduccionById retrieves PuntajeSubtipoProduccion by Id. Returns error if
 // Id doesn't exist
-func GetSistemaById(id int) (v *Sistema, err error) {
+func GetPuntajeSubtipoProduccionById(id int) (v *PuntajeSubtipoProduccion, err error) {
 	o := orm.NewOrm()
-	v = &Sistema{Id: id}
+	v = &PuntajeSubtipoProduccion{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllSistema retrieves all Sistema matches certain condition. Returns empty list if
+// GetAllPuntajeSubtipoProduccion retrieves all PuntajeSubtipoProduccion matches certain condition. Returns empty list if
 // no records exist
-func GetAllSistema(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllPuntajeSubtipoProduccion(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(Sistema)).RelatedSel()
+	qs := o.QueryTable(new(PuntajeSubtipoProduccion)).RelatedSel()
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
@@ -102,7 +104,7 @@ func GetAllSistema(query map[string]string, fields []string, sortby []string, or
 		}
 	}
 
-	var l []Sistema
+	var l []PuntajeSubtipoProduccion
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -125,11 +127,11 @@ func GetAllSistema(query map[string]string, fields []string, sortby []string, or
 	return nil, err
 }
 
-// UpdateSistema updates Sistema by Id and returns error if
+// UpdatePuntajeSubtipoProduccion updates PuntajeSubtipoProduccion by Id and returns error if
 // the record to be updated doesn't exist
-func UpdateSistemaById(m *Sistema) (err error) {
+func UpdatePuntajeSubtipoProduccionById(m *PuntajeSubtipoProduccion) (err error) {
 	o := orm.NewOrm()
-	v := Sistema{Id: m.Id}
+	v := PuntajeSubtipoProduccion{Id: m.Id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -140,15 +142,15 @@ func UpdateSistemaById(m *Sistema) (err error) {
 	return
 }
 
-// DeleteSistema deletes Sistema by Id and returns error if
+// DeletePuntajeSubtipoProduccion deletes PuntajeSubtipoProduccion by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteSistema(id int) (err error) {
+func DeletePuntajeSubtipoProduccion(id int) (err error) {
 	o := orm.NewOrm()
-	v := Sistema{Id: id}
+	v := PuntajeSubtipoProduccion{Id: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&Sistema{Id: id}); err == nil {
+		if num, err = o.Delete(&PuntajeSubtipoProduccion{Id: id}); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}
