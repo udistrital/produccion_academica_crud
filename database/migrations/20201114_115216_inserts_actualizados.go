@@ -9,22 +9,22 @@ import (
 )
 
 // DO NOT MODIFY
-type ActualizarEsquemaProduccionAcademica_20201112_164236 struct {
+type InsertsActualizados_20201114_115216 struct {
 	migration.Migration
 }
 
 // DO NOT MODIFY
 func init() {
-	m := &ActualizarEsquemaProduccionAcademica_20201112_164236{}
-	m.Created = "20201112_164236"
+	m := &InsertsActualizados_20201114_115216{}
+	m.Created = "20201114_115216"
 
-	migration.Register("ActualizarEsquemaProduccionAcademica_20201112_164236", m)
+	migration.Register("InsertsActualizados_20201114_115216", m)
 }
 
 // Run the migrations
-func (m *ActualizarEsquemaProduccionAcademica_20201112_164236) Up() {
+func (m *InsertsActualizados_20201114_115216) Up() {
 	// use m.SQL("CREATE TABLE ...") to make schema update
-	file, err := ioutil.ReadFile("../scripts/20201112_164236_actualizar_esquema_produccion_academica.up.sql")
+	file, err := ioutil.ReadFile("../scripts/20201114_115216_inserts_actualizados.up.sql")
 
 	if err != nil {
 		// handle error
@@ -41,9 +41,9 @@ func (m *ActualizarEsquemaProduccionAcademica_20201112_164236) Up() {
 }
 
 // Reverse the migrations
-func (m *ActualizarEsquemaProduccionAcademica_20201112_164236) Down() {
+func (m *InsertsActualizados_20201114_115216) Down() {
 	// use m.SQL("DROP TABLE ...") to reverse schema update
-	file, err := ioutil.ReadFile("../scripts/20201112_164236_actualizar_esquema_produccion_academica.down.sql")
+	file, err := ioutil.ReadFile("../scripts/20201114_115216_inserts_actualizados.down.sql")
 
 	if err != nil {
 		// handle error
