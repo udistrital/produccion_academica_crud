@@ -16,7 +16,6 @@ type CategoriaProduccion struct {
 	Descripcion       string    `orm:"column(descripcion);null"`
 	Activo            bool      `orm:"column(activo)"`
 	TipoPuntaje       string    `orm:"column(tipo_puntaje);null"`
-	NumeroOrden       float64   `orm:"column(numero_orden);null"`
 	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(timestamp without time zone)"`
 	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
 }
