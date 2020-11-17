@@ -16,10 +16,10 @@ type PuntajeSubtipoProduccion struct {
 	Descripcion         string             `orm:"column(descripcion)"`
 	CodigoAbreviacion   string             `orm:"column(codigo_abreviacion);"`
 	Activo              bool               `orm:"column(activo)"`
-	Caracteristicas     string             `orm:"column(carecteristicas);type(json);"`
+	Caracteristicas     string             `orm:"column(caracteristicas);type(json);"`
 	FechaCreacion       time.Time          `orm:"column(fecha_creacion);type(timestamp without time zone)"`
 	FechaModificacion   time.Time          `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
-	SubtipoProduccionId *SubtipoProduccion `orm:"column(subtipo_produccion_id);rel(fk)"`
+	SubtipoProduccionId *SubtipoProduccion `orm:"column(subtipo_produccion);rel(fk)"`
 }
 
 func (t *PuntajeSubtipoProduccion) TableName() string {
