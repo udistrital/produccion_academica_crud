@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
-	"time"
 
 	"github.com/astaxie/beego/orm"
 )
@@ -18,8 +17,8 @@ type TipoMetadato struct {
 	Activo            bool      `orm:"column(activo)"`
 	NumeroOrden       float64   `orm:"column(numero_orden);null"`
 	FormDefinition    string    `orm:"column(form_definition);type(json);null"`
-	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(timestamp without time zone)"`
-	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+	FechaCreacion     string    `orm:"column(fecha_creacion);type(timestamp without time zone)"`
+	FechaModificacion string    `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
 }
 
 func (t *TipoMetadato) TableName() string {
