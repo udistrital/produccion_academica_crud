@@ -2,6 +2,7 @@ package models
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/astaxie/beego/orm"
 	"github.com/udistrital/utils_oas/time_bogota"
@@ -98,7 +99,6 @@ func UpdateTransaccionProduccionAcademica(m *TrProduccionAcademica) (err error) 
 			fmt.Println("Number of records updated in database:", num)
 
 			for _, v := range *m.Metadatos {
-				fmt.Println("metadatos", m.Metadatos)
 				var metadato MetadatoProduccionAcademica
 				if errTr = o.QueryTable(new(MetadatoProduccionAcademica)).RelatedSel().Filter("MetadatoSubtipoProduccionId__Id", v.MetadatoSubtipoProduccionId.Id).Filter("ProduccionAcademicaId__Id", m.ProduccionAcademica.Id).One(&metadato); err == nil {
 
@@ -158,8 +158,8 @@ func TrDeleteProduccionAcademica(id int) (err error) {
 	if err = o.Read(&v); err == nil {
 		var num int64
 		// if num, err = o.Delete(&ProduccionAcademica{Id: id}); err == nil {
-		// fmt.Println("Number of records deleted in database:", num)
-		if num, err = o.Update(&ProduccionAcademica{Id: id, Activo: false, FechaModificacion: time_bogota.TiempoBogotaFormato()}, "Activo", "FechaModificacion"); err == nil {
+			// fmt.Println("Number of records deleted in database:", num)
+		if num, err = o.Update(&ProduccionAcademica{Id: id, Activo: false, FechaModificacion: time.Now()},"Activo", "FechaModificacion"); err == nil {
 			fmt.Println("Number of records updated in database:", num)
 		}
 	}
