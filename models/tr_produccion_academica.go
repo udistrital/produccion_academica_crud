@@ -104,7 +104,7 @@ func UpdateTransaccionProduccionAcademica(m *TrProduccionAcademica) (err error) 
 
 					if metadato.Valor != v.Valor {
 						metadato.Valor = v.Valor
-						metadato.FechaModificacion = v.FechaModificacion
+						metadato.FechaModificacion = time_bogota.TiempoBogotaFormato()
 					}
 
 					if metadato.Id != 0 {
@@ -117,7 +117,7 @@ func UpdateTransaccionProduccionAcademica(m *TrProduccionAcademica) (err error) 
 					} else {
 						metadato.ProduccionAcademicaId = m.ProduccionAcademica
 						metadato.MetadatoSubtipoProduccionId = v.MetadatoSubtipoProduccionId
-						metadato.FechaCreacion = v.FechaCreacion
+						metadato.FechaCreacion = time_bogota.TiempoBogotaFormato()
 						if _, errTr = o.Insert(&metadato); errTr != nil {
 							err = errTr
 							fmt.Println(err)
