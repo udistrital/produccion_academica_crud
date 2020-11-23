@@ -35,7 +35,7 @@ func (c *CategoriaProduccionController) URLMapping() {
 // @Failure 400 the request contains incorrect syntax
 // @router / [post]
 func (c *CategoriaProduccionController) Post() {
-	var v models.SistemaTipoProduccion
+	var v models.CategoriaProduccion
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 
 		v.FechaCreacion = time_bogota.TiempoBogotaFormato()
