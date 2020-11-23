@@ -7,7 +7,8 @@ import (
 	"strings"
 
 	"github.com/udistrital/produccion_academica_crud/models"
-
+	"github.com/udistrital/utils_oas/time_bogota"
+	
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/logs"
 )
@@ -36,6 +37,8 @@ func (c *PuntajeSubtipoProduccionController) URLMapping() {
 func (c *PuntajeSubtipoProduccionController) Post() {
 	var v models.PuntajeSubtipoProduccion
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
+		v.FechaCreacion = time_bogota.TiempoBogotaFormato()
+		v.FechaModificacion = time_bogota.TiempoBogotaFormato()
 		if _, err := models.AddPuntajeSubtipoProduccion(&v); err == nil {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
@@ -158,6 +161,8 @@ func (c *PuntajeSubtipoProduccionController) Put() {
 	id, _ := strconv.Atoi(idStr)
 	v := models.PuntajeSubtipoProduccion{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
+		v.FechaCreacion = time_bogota.TiempoCorreccionFormato(v.FechaCreacion)
+		v.FechaModificacion = time_bogota.TiempoBogotaFormato()
 		if err := models.UpdatePuntajeSubtipoProduccionById(&v); err == nil {
 			c.Data["json"] = v
 		} else {

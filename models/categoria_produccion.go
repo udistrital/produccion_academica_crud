@@ -9,14 +9,14 @@ import (
 	"github.com/astaxie/beego/orm"
 )
 
-type SoporteProduccionAcademica struct {
-	Id                    int                  `orm:"column(id);pk;auto"`
-	Documento             int                  `orm:"column(documento)"`
-	Descripcion           string               `orm:"column(descripcion);null"`
-	Activo                bool                 `orm:"column(activo)"`
-	FechaCreacion         string               `orm:"column(fecha_creacion);type(timestamp without time zone)"`
-	FechaModificacion     string               `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
-	ProduccionAcademicaId *ProduccionAcademica `orm:"column(produccion_academica_id);rel(fk)"`
+type CategoriaProduccion struct {
+	Id                int       `orm:"column(id);pk;auto"`
+	Nombre            string    `orm:"column(nombre)"`
+	Descripcion       string    `orm:"column(descripcion);null"`
+	Activo            bool      `orm:"column(activo)"`
+	TipoPuntaje       string    `orm:"column(tipo_puntaje);null"`
+	FechaCreacion     string `orm:"column(fecha_creacion);type(timestamp without time zone)"`
+	FechaModificacion string `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
 }
 
 func (t *CategoriaProduccion) TableName() string {

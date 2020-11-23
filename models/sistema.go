@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
-	"time"
+	
 
 	"github.com/astaxie/beego/orm"
 )
@@ -16,8 +16,8 @@ type Sistema struct {
 	CodigoAbreviacion string    `orm:"column(codigo_abreviacion);null"`
 	Referencia        string    `orm:"column(referencia);type(json);"`
 	Activo            bool      `orm:"column(activo)"`
-	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(timestamp without time zone)"`
-	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+	FechaCreacion     string `orm:"column(fecha_creacion);type(timestamp without time zone)"`
+	FechaModificacion string `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
 }
 
 func (t *Sistema) TableName() string {
