@@ -64,6 +64,9 @@ func (c *TrProduccionAcademicaController) GetAllByPersona() {
 		if l == nil {
 			l = append(l, map[string]interface{}{})
 		}
+		if l == nil {
+			l = append(l, map[string]interface{}{})
+		}
 		c.Data["json"] = l
 	}
 	c.ServeJSON()

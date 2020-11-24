@@ -16,8 +16,8 @@ type ProduccionAcademica struct {
 	Resumen             string             `orm:"column(resumen);null"`
 	Fecha               time.Time          `orm:"column(fecha);type(date)"`
 	Activo              bool               `orm:"column(activo)"`
-	FechaCreacion       time.Time          `orm:"column(fecha_creacion);type(timestamp without time zone)"`
-	FechaModificacion   time.Time          `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+	FechaCreacion       string             `orm:"column(fecha_creacion);type(timestamp without time zone)"`
+	FechaModificacion   string             `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
 	SubtipoProduccionId *SubtipoProduccion `orm:"column(subtipo_produccion_id);rel(fk)"`
 }
 
