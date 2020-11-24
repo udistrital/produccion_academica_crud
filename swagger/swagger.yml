@@ -1470,10 +1470,10 @@ paths:
         "404":
           description: not found resource
 definitions:
-  58563.<nil>.AutorProduccionAcademica:
+  58489.<nil>.AutorProduccionAcademica:
     title: AutorProduccionAcademica
     type: object
-  58613.<nil>.MetadatoProduccionAcademica:
+  58539.<nil>.MetadatoProduccionAcademica:
     title: MetadatoProduccionAcademica
     type: object
   models.AutorProduccionAcademica:
@@ -1486,10 +1486,8 @@ definitions:
         $ref: '#/definitions/models.EstadoAutorProduccion'
       FechaCreacion:
         type: string
-        format: datetime
       FechaModificacion:
         type: string
-        format: datetime
       Id:
         type: integer
         format: int64
@@ -1508,10 +1506,8 @@ definitions:
         type: string
       FechaCreacion:
         type: string
-        format: datetime
       FechaModificacion:
         type: string
-        format: datetime
       Id:
         type: integer
         format: int64
@@ -1531,10 +1527,8 @@ definitions:
         type: string
       FechaCreacion:
         type: string
-        format: datetime
       FechaModificacion:
         type: string
-        format: datetime
       Id:
         type: integer
         format: int64
@@ -1551,10 +1545,8 @@ definitions:
         type: boolean
       FechaCreacion:
         type: string
-        format: datetime
       FechaModificacion:
         type: string
-        format: datetime
       Id:
         type: integer
         format: int64
@@ -1572,10 +1564,8 @@ definitions:
         type: boolean
       FechaCreacion:
         type: string
-        format: datetime
       FechaModificacion:
         type: string
-        format: datetime
       Id:
         type: integer
         format: int64
@@ -1594,10 +1584,8 @@ definitions:
         format: datetime
       FechaCreacion:
         type: string
-        format: datetime
       FechaModificacion:
         type: string
-        format: datetime
       Id:
         type: integer
         format: int64
@@ -1621,10 +1609,8 @@ definitions:
         type: string
       FechaCreacion:
         type: string
-        format: datetime
       FechaModificacion:
         type: string
-        format: datetime
       Id:
         type: integer
         format: int64
@@ -1642,10 +1628,8 @@ definitions:
         type: string
       FechaCreacion:
         type: string
-        format: datetime
       FechaModificacion:
         type: string
-        format: datetime
       Id:
         type: integer
         format: int64
@@ -1661,10 +1645,8 @@ definitions:
         type: boolean
       FechaCreacion:
         type: string
-        format: datetime
       FechaModificacion:
         type: string
-        format: datetime
       Id:
         type: integer
         format: int64
@@ -1686,10 +1668,8 @@ definitions:
         type: string
       FechaCreacion:
         type: string
-        format: datetime
       FechaModificacion:
         type: string
-        format: datetime
       Id:
         type: integer
         format: int64
@@ -1712,10 +1692,8 @@ definitions:
         type: string
       FechaCreacion:
         type: string
-        format: datetime
       FechaModificacion:
         type: string
-        format: datetime
       FormDefinition:
         type: string
       Id:
@@ -1738,10 +1716,8 @@ definitions:
         type: string
       FechaCreacion:
         type: string
-        format: datetime
       FechaModificacion:
         type: string
-        format: datetime
       Id:
         type: integer
         format: int64
@@ -1755,9 +1731,9 @@ definitions:
     type: object
     properties:
       Autores:
-        $ref: '#/definitions/58563.<nil>.AutorProduccionAcademica'
+        $ref: '#/definitions/58489.<nil>.AutorProduccionAcademica'
       Metadatos:
-        $ref: '#/definitions/58613.<nil>.MetadatoProduccionAcademica'
+        $ref: '#/definitions/58539.<nil>.MetadatoProduccionAcademica'
       ProduccionAcademica:
         $ref: '#/definitions/models.ProduccionAcademica'
   models.TrProduccionAcademicaController:

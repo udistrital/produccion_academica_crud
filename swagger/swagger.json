@@ -2230,11 +2230,11 @@
         }
     },
     "definitions": {
-        "58563.\u003cnil\u003e.AutorProduccionAcademica": {
+        "58489.\u003cnil\u003e.AutorProduccionAcademica": {
             "title": "AutorProduccionAcademica",
             "type": "object"
         },
-        "58613.\u003cnil\u003e.MetadatoProduccionAcademica": {
+        "58539.\u003cnil\u003e.MetadatoProduccionAcademica": {
             "title": "MetadatoProduccionAcademica",
             "type": "object"
         },
@@ -2249,12 +2249,10 @@
                     "$ref": "#/definitions/models.EstadoAutorProduccion"
                 },
                 "FechaCreacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "FechaModificacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "Id": {
                     "type": "integer",
@@ -2280,12 +2278,10 @@
                     "type": "string"
                 },
                 "FechaCreacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "FechaModificacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "Id": {
                     "type": "integer",
@@ -2313,12 +2309,10 @@
                     "type": "string"
                 },
                 "FechaCreacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "FechaModificacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "Id": {
                     "type": "integer",
@@ -2341,12 +2335,10 @@
                     "type": "boolean"
                 },
                 "FechaCreacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "FechaModificacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "Id": {
                     "type": "integer",
@@ -2371,12 +2363,10 @@
                     "type": "boolean"
                 },
                 "FechaCreacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "FechaModificacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "Id": {
                     "type": "integer",
@@ -2402,12 +2392,10 @@
                     "format": "datetime"
                 },
                 "FechaCreacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "FechaModificacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "Id": {
                     "type": "integer",
@@ -2441,12 +2429,10 @@
                     "type": "string"
                 },
                 "FechaCreacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "FechaModificacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "Id": {
                     "type": "integer",
@@ -2471,12 +2457,10 @@
                     "type": "string"
                 },
                 "FechaCreacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "FechaModificacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "Id": {
                     "type": "integer",
@@ -2498,12 +2482,10 @@
                     "type": "boolean"
                 },
                 "FechaCreacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "FechaModificacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "Id": {
                     "type": "integer",
@@ -2534,12 +2516,10 @@
                     "type": "string"
                 },
                 "FechaCreacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "FechaModificacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "Id": {
                     "type": "integer",
@@ -2571,12 +2551,10 @@
                     "type": "string"
                 },
                 "FechaCreacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "FechaModificacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "FormDefinition": {
                     "type": "string"
@@ -2608,12 +2586,10 @@
                     "type": "string"
                 },
                 "FechaCreacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "FechaModificacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "Id": {
                     "type": "integer",
@@ -2633,10 +2609,10 @@
             "type": "object",
             "properties": {
                 "Autores": {
-                    "$ref": "#/definitions/58563.\u003cnil\u003e.AutorProduccionAcademica"
+                    "$ref": "#/definitions/58489.\u003cnil\u003e.AutorProduccionAcademica"
                 },
                 "Metadatos": {
-                    "$ref": "#/definitions/58613.\u003cnil\u003e.MetadatoProduccionAcademica"
+                    "$ref": "#/definitions/58539.\u003cnil\u003e.MetadatoProduccionAcademica"
                 },
                 "ProduccionAcademica": {
                     "$ref": "#/definitions/models.ProduccionAcademica"
