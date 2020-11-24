@@ -2092,6 +2092,24 @@
             }
         },
         "/tr_produccion_academica/": {
+            "get": {
+                "tags": [
+                    "tr_produccion_academica"
+                ],
+                "description": "get TrProduccionAcademicaController",
+                "operationId": "TrProduccionAcademicaController.Get All",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TrProduccionAcademicaController"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
             "post": {
                 "tags": [
                     "tr_produccion_academica"
@@ -2212,7 +2230,7 @@
         }
     },
     "definitions": {
-        "58566.\u003cnil\u003e.AutorProduccionAcademica": {
+        "58563.\u003cnil\u003e.AutorProduccionAcademica": {
             "title": "AutorProduccionAcademica",
             "type": "object"
         },
@@ -2615,7 +2633,7 @@
             "type": "object",
             "properties": {
                 "Autores": {
-                    "$ref": "#/definitions/58566.\u003cnil\u003e.AutorProduccionAcademica"
+                    "$ref": "#/definitions/58563.\u003cnil\u003e.AutorProduccionAcademica"
                 },
                 "Metadatos": {
                     "$ref": "#/definitions/58613.\u003cnil\u003e.MetadatoProduccionAcademica"

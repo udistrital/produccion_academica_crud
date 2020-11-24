@@ -396,6 +396,15 @@ func init() {
 
 	beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TrProduccionAcademicaController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TrProduccionAcademicaController"],
 		beego.ControllerComments{
+			Method:           "GetAll",
+			Router:           `/`,
+			AllowHTTPMethods: []string{"get"},
+			MethodParams:     param.Make(),
+			Filters:          nil,
+			Params:           nil})
+
+	beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TrProduccionAcademicaController"] = append(beego.GlobalControllerRouter["github.com/udistrital/produccion_academica_crud/controllers:TrProduccionAcademicaController"],
+		beego.ControllerComments{
 			Method:           "GetAllByPersona",
 			Router:           `/:persona`,
 			AllowHTTPMethods: []string{"get"},

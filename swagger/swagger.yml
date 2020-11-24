@@ -1380,6 +1380,18 @@ paths:
         "404":
           description: not found resource
   /tr_produccion_academica/:
+    get:
+      tags:
+      - tr_produccion_academica
+      description: get TrProduccionAcademicaController
+      operationId: TrProduccionAcademicaController.Get All
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TrProduccionAcademicaController'
+        "404":
+          description: not found resource
     post:
       tags:
       - tr_produccion_academica
@@ -1458,7 +1470,7 @@ paths:
         "404":
           description: not found resource
 definitions:
-  58566.<nil>.AutorProduccionAcademica:
+  58563.<nil>.AutorProduccionAcademica:
     title: AutorProduccionAcademica
     type: object
   58613.<nil>.MetadatoProduccionAcademica:
@@ -1743,7 +1755,7 @@ definitions:
     type: object
     properties:
       Autores:
-        $ref: '#/definitions/58566.<nil>.AutorProduccionAcademica'
+        $ref: '#/definitions/58563.<nil>.AutorProduccionAcademica'
       Metadatos:
         $ref: '#/definitions/58613.<nil>.MetadatoProduccionAcademica'
       ProduccionAcademica:
