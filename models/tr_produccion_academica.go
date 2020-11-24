@@ -2,7 +2,7 @@ package models
 
 import (
 	"fmt"
-
+	
 	"github.com/astaxie/beego/orm"
 	"github.com/udistrital/utils_oas/time_bogota"
 )
@@ -18,6 +18,41 @@ func GetProduccionesAcademicasByPersona(persona int) (v []interface{}, err error
 	o := orm.NewOrm()
 	var autores []*AutorProduccionAcademica
 	if _, err := o.QueryTable(new(AutorProduccionAcademica)).RelatedSel().Filter("persona", persona).Filter("ProduccionAcademicaId__Activo", true).All(&autores); err == nil {
+		for _, autor := range autores {
+
+			produccionAcademica := autor.ProduccionAcademicaId
+
+			var autoresProduccion []AutorProduccionAcademica
+			if _, err := o.QueryTable(new(AutorProduccionAcademica)).RelatedSel().Filter("ProduccionAcademicaId__Id", produccionAcademica.Id).All(&autoresProduccion); err != nil {
+				return nil, err
+			}
+
+			var metadatos []MetadatoProduccionAcademica
+			if _, err := o.QueryTable(new(MetadatoProduccionAcademica)).RelatedSel().Filter("ProduccionAcademicaId__Id", produccionAcademica.Id).All(&metadatos); err != nil {
+				return nil, err
+			}
+
+			v = append(v, map[string]interface{}{
+				"Id":                  produccionAcademica.Id,
+				"Titulo":              produccionAcademica.Titulo,
+				"Resumen":             produccionAcademica.Resumen,
+				"Fecha":               produccionAcademica.Fecha,
+				"SubtipoProduccionId": produccionAcademica.SubtipoProduccionId,
+				"Autores":             &autoresProduccion,
+				"Metadatos":           &metadatos,
+			})
+		}
+
+		return v, nil
+	}
+	return nil, err
+}
+
+// GetAllProduccionesAcademicas Transacción para consultar todas las producciones con toda la información de las mismas
+func GetAllProduccionesAcademicas() (v []interface{}, err error) {
+	o := orm.NewOrm()
+	var autores []*AutorProduccionAcademica
+	if _, err := o.QueryTable(new(AutorProduccionAcademica)).RelatedSel().Filter("ProduccionAcademicaId__Activo", true).All(&autores); err == nil {
 		for _, autor := range autores {
 
 			produccionAcademica := autor.ProduccionAcademicaId
@@ -98,7 +133,6 @@ func UpdateTransaccionProduccionAcademica(m *TrProduccionAcademica) (err error) 
 			fmt.Println("Number of records updated in database:", num)
 
 			for _, v := range *m.Metadatos {
-				fmt.Println("metadatos", m.Metadatos)
 				var metadato MetadatoProduccionAcademica
 				if errTr = o.QueryTable(new(MetadatoProduccionAcademica)).RelatedSel().Filter("MetadatoSubtipoProduccionId__Id", v.MetadatoSubtipoProduccionId.Id).Filter("ProduccionAcademicaId__Id", m.ProduccionAcademica.Id).One(&metadato); err == nil {
 
@@ -158,7 +192,7 @@ func TrDeleteProduccionAcademica(id int) (err error) {
 	if err = o.Read(&v); err == nil {
 		var num int64
 		// if num, err = o.Delete(&ProduccionAcademica{Id: id}); err == nil {
-		// fmt.Println("Number of records deleted in database:", num)
+			// fmt.Println("Number of records deleted in database:", num)
 		if num, err = o.Update(&ProduccionAcademica{Id: id, Activo: false, FechaModificacion: time_bogota.TiempoBogotaFormato()}, "Activo", "FechaModificacion"); err == nil {
 			fmt.Println("Number of records updated in database:", num)
 		}

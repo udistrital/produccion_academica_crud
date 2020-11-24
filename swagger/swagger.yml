@@ -32,8 +32,7 @@ paths:
         type: string
       - in: query
         name: order
-        description: Order corresponding to each sortby field, if single value, apply
-          to all sortby fields. e.g. desc,asc ...
+        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
         type: string
       - in: query
         name: limit
@@ -126,6 +125,120 @@ paths:
           description: '{string} delete success!'
         "404":
           description: not found resource
+  /categoria_produccion/:
+    get:
+      tags:
+      - categoria_produccion
+      description: get CategoriaProduccion
+      operationId: CategoriaProduccionController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.CategoriaProduccion'
+        "404":
+          description: not found resource
+    post:
+      tags:
+      - categoria_produccion
+      description: create CategoriaProduccion
+      operationId: CategoriaProduccionController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for CategoriaProduccion content
+        required: true
+        schema:
+          $ref: '#/definitions/models.CategoriaProduccion'
+      responses:
+        "201":
+          description: '{int} models.CategoriaProduccion'
+        "400":
+          description: the request contains incorrect syntax
+  /categoria_produccion/{id}:
+    get:
+      tags:
+      - categoria_produccion
+      description: get CategoriaProduccion by id
+      operationId: CategoriaProduccionController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.CategoriaProduccion'
+        "404":
+          description: not found resource
+    put:
+      tags:
+      - categoria_produccion
+      description: update the CategoriaProduccion
+      operationId: CategoriaProduccionController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for CategoriaProduccion content
+        required: true
+        schema:
+          $ref: '#/definitions/models.CategoriaProduccion'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.CategoriaProduccion'
+        "400":
+          description: the request contains incorrect syntax
+    delete:
+      tags:
+      - categoria_produccion
+      description: delete the CategoriaProduccion
+      operationId: CategoriaProduccionController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "404":
+          description: not found resource
   /estado_autor_produccion/:
     get:
       tags:
@@ -147,8 +260,7 @@ paths:
         type: string
       - in: query
         name: order
-        description: Order corresponding to each sortby field, if single value, apply
-          to all sortby fields. e.g. desc,asc ...
+        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
         type: string
       - in: query
         name: limit
@@ -262,8 +374,7 @@ paths:
         type: string
       - in: query
         name: order
-        description: Order corresponding to each sortby field, if single value, apply
-          to all sortby fields. e.g. desc,asc ...
+        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
         type: string
       - in: query
         name: limit
@@ -377,8 +488,7 @@ paths:
         type: string
       - in: query
         name: order
-        description: Order corresponding to each sortby field, if single value, apply
-          to all sortby fields. e.g. desc,asc ...
+        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
         type: string
       - in: query
         name: limit
@@ -492,8 +602,7 @@ paths:
         type: string
       - in: query
         name: order
-        description: Order corresponding to each sortby field, if single value, apply
-          to all sortby fields. e.g. desc,asc ...
+        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
         type: string
       - in: query
         name: limit
@@ -586,12 +695,12 @@ paths:
           description: '{string} delete success!'
         "404":
           description: not found resource
-  /soporte_produccion_academica/:
+  /puntaje_subtipo_produccion/:
     get:
       tags:
-      - soporte_produccion_academica
-      description: get SoporteProduccionAcademica
-      operationId: SoporteProduccionAcademicaController.Get All
+      - puntaje_subtipo_produccion
+      description: get PuntajeSubtipoProduccion
+      operationId: PuntajeSubtipoProduccionController.Get All
       parameters:
       - in: query
         name: query
@@ -607,8 +716,7 @@ paths:
         type: string
       - in: query
         name: order
-        description: Order corresponding to each sortby field, if single value, apply
-          to all sortby fields. e.g. desc,asc ...
+        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
         type: string
       - in: query
         name: limit
@@ -622,32 +730,32 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.SoporteProduccionAcademica'
+            $ref: '#/definitions/models.PuntajeSubtipoProduccion'
         "404":
           description: not found resource
     post:
       tags:
-      - soporte_produccion_academica
-      description: create SoporteProduccionAcademica
-      operationId: SoporteProduccionAcademicaController.Post
+      - puntaje_subtipo_produccion
+      description: create PuntajeSubtipoProduccion
+      operationId: PuntajeSubtipoProduccionController.Post
       parameters:
       - in: body
         name: body
-        description: body for SoporteProduccionAcademica content
+        description: body for PuntajeSubtipoProduccion content
         required: true
         schema:
-          $ref: '#/definitions/models.SoporteProduccionAcademica'
+          $ref: '#/definitions/models.PuntajeSubtipoProduccion'
       responses:
         "201":
-          description: '{int} models.SoporteProduccionAcademica'
+          description: '{int} models.PuntajeSubtipoProduccion'
         "400":
           description: the request contains incorrect syntax
-  /soporte_produccion_academica/{id}:
+  /puntaje_subtipo_produccion/{id}:
     get:
       tags:
-      - soporte_produccion_academica
-      description: get SoporteProduccionAcademica by id
-      operationId: SoporteProduccionAcademicaController.Get One
+      - puntaje_subtipo_produccion
+      description: get PuntajeSubtipoProduccion by id
+      operationId: PuntajeSubtipoProduccionController.Get One
       parameters:
       - in: path
         name: id
@@ -658,14 +766,14 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.SoporteProduccionAcademica'
+            $ref: '#/definitions/models.PuntajeSubtipoProduccion'
         "404":
           description: not found resource
     put:
       tags:
-      - soporte_produccion_academica
-      description: update the SoporteProduccionAcademica
-      operationId: SoporteProduccionAcademicaController.Put
+      - puntaje_subtipo_produccion
+      description: update the PuntajeSubtipoProduccion
+      operationId: PuntajeSubtipoProduccionController.Put
       parameters:
       - in: path
         name: id
@@ -674,22 +782,250 @@ paths:
         type: string
       - in: body
         name: body
-        description: body for SoporteProduccionAcademica content
+        description: body for PuntajeSubtipoProduccion content
         required: true
         schema:
-          $ref: '#/definitions/models.SoporteProduccionAcademica'
+          $ref: '#/definitions/models.PuntajeSubtipoProduccion'
       responses:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.SoporteProduccionAcademica'
+            $ref: '#/definitions/models.PuntajeSubtipoProduccion'
         "400":
           description: the request contains incorrect syntax
     delete:
       tags:
-      - soporte_produccion_academica
-      description: delete the SoporteProduccionAcademica
-      operationId: SoporteProduccionAcademicaController.Delete
+      - puntaje_subtipo_produccion
+      description: delete the PuntajeSubtipoProduccion
+      operationId: PuntajeSubtipoProduccionController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "404":
+          description: not found resource
+  /sistema/:
+    get:
+      tags:
+      - sistema
+      description: get Sistema
+      operationId: SistemaController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Sistema'
+        "404":
+          description: not found resource
+    post:
+      tags:
+      - sistema
+      description: create Sistema
+      operationId: SistemaController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for Sistema content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Sistema'
+      responses:
+        "201":
+          description: '{int} models.Sistema'
+        "400":
+          description: the request contains incorrect syntax
+  /sistema/{id}:
+    get:
+      tags:
+      - sistema
+      description: get Sistema by id
+      operationId: SistemaController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Sistema'
+        "404":
+          description: not found resource
+    put:
+      tags:
+      - sistema
+      description: update the Sistema
+      operationId: SistemaController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for Sistema content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Sistema'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Sistema'
+        "400":
+          description: the request contains incorrect syntax
+    delete:
+      tags:
+      - sistema
+      description: delete the Sistema
+      operationId: SistemaController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "404":
+          description: not found resource
+  /sistema_tipo_produccion/:
+    get:
+      tags:
+      - sistema_tipo_produccion
+      description: get SistemaTipoProduccion
+      operationId: SistemaTipoProduccionController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.SistemaTipoProduccion'
+        "404":
+          description: not found resource
+    post:
+      tags:
+      - sistema_tipo_produccion
+      description: create SistemaTipoProduccion
+      operationId: SistemaTipoProduccionController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for SistemaTipoProduccion content
+        required: true
+        schema:
+          $ref: '#/definitions/models.SistemaTipoProduccion'
+      responses:
+        "201":
+          description: '{int} models.SistemaTipoProduccion'
+        "400":
+          description: the request contains incorrect syntax
+  /sistema_tipo_produccion/{id}:
+    get:
+      tags:
+      - sistema_tipo_produccion
+      description: get SistemaTipoProduccion by id
+      operationId: SistemaTipoProduccionController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.SistemaTipoProduccion'
+        "404":
+          description: not found resource
+    put:
+      tags:
+      - sistema_tipo_produccion
+      description: update the SistemaTipoProduccion
+      operationId: SistemaTipoProduccionController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for SistemaTipoProduccion content
+        required: true
+        schema:
+          $ref: '#/definitions/models.SistemaTipoProduccion'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.SistemaTipoProduccion'
+        "400":
+          description: the request contains incorrect syntax
+    delete:
+      tags:
+      - sistema_tipo_produccion
+      description: delete the SistemaTipoProduccion
+      operationId: SistemaTipoProduccionController.Delete
       parameters:
       - in: path
         name: id
@@ -722,8 +1058,7 @@ paths:
         type: string
       - in: query
         name: order
-        description: Order corresponding to each sortby field, if single value, apply
-          to all sortby fields. e.g. desc,asc ...
+        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
         type: string
       - in: query
         name: limit
@@ -837,8 +1172,7 @@ paths:
         type: string
       - in: query
         name: order
-        description: Order corresponding to each sortby field, if single value, apply
-          to all sortby fields. e.g. desc,asc ...
+        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
         type: string
       - in: query
         name: limit
@@ -952,8 +1286,7 @@ paths:
         type: string
       - in: query
         name: order
-        description: Order corresponding to each sortby field, if single value, apply
-          to all sortby fields. e.g. desc,asc ...
+        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
         type: string
       - in: query
         name: limit
@@ -1047,6 +1380,18 @@ paths:
         "404":
           description: not found resource
   /tr_produccion_academica/:
+    get:
+      tags:
+      - tr_produccion_academica
+      description: get TrProduccionAcademicaController
+      operationId: TrProduccionAcademicaController.Get All
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TrProduccionAcademicaController'
+        "404":
+          description: not found resource
     post:
       tags:
       - tr_produccion_academica
@@ -1125,10 +1470,10 @@ paths:
         "404":
           description: not found resource
 definitions:
-  44407.<nil>.AutorProduccionAcademica:
+  58489.<nil>.AutorProduccionAcademica:
     title: AutorProduccionAcademica
     type: object
-  44454.<nil>.MetadatoProduccionAcademica:
+  58539.<nil>.MetadatoProduccionAcademica:
     title: MetadatoProduccionAcademica
     type: object
   models.AutorProduccionAcademica:
@@ -1141,10 +1486,8 @@ definitions:
         $ref: '#/definitions/models.EstadoAutorProduccion'
       FechaCreacion:
         type: string
-        format: datetime
       FechaModificacion:
         type: string
-        format: datetime
       Id:
         type: integer
         format: int64
@@ -1153,6 +1496,25 @@ definitions:
         format: int64
       ProduccionAcademicaId:
         $ref: '#/definitions/models.ProduccionAcademica'
+  models.CategoriaProduccion:
+    title: CategoriaProduccion
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      Descripcion:
+        type: string
+      FechaCreacion:
+        type: string
+      FechaModificacion:
+        type: string
+      Id:
+        type: integer
+        format: int64
+      Nombre:
+        type: string
+      TipoPuntaje:
+        type: string
   models.EstadoAutorProduccion:
     title: EstadoAutorProduccion
     type: object
@@ -1165,10 +1527,8 @@ definitions:
         type: string
       FechaCreacion:
         type: string
-        format: datetime
       FechaModificacion:
         type: string
-        format: datetime
       Id:
         type: integer
         format: int64
@@ -1185,10 +1545,8 @@ definitions:
         type: boolean
       FechaCreacion:
         type: string
-        format: datetime
       FechaModificacion:
         type: string
-        format: datetime
       Id:
         type: integer
         format: int64
@@ -1206,10 +1564,8 @@ definitions:
         type: boolean
       FechaCreacion:
         type: string
-        format: datetime
       FechaModificacion:
         type: string
-        format: datetime
       Id:
         type: integer
         format: int64
@@ -1228,10 +1584,8 @@ definitions:
         format: datetime
       FechaCreacion:
         type: string
-        format: datetime
       FechaModificacion:
         type: string
-        format: datetime
       Id:
         type: integer
         format: int64
@@ -1241,44 +1595,81 @@ definitions:
         $ref: '#/definitions/models.SubtipoProduccion'
       Titulo:
         type: string
-  models.SoporteProduccionAcademica:
-    title: SoporteProduccionAcademica
+  models.PuntajeSubtipoProduccion:
+    title: PuntajeSubtipoProduccion
     type: object
     properties:
       Activo:
         type: boolean
-      Descripcion:
+      Caracteristicas:
         type: string
-      Documento:
-        type: integer
-        format: int64
-      FechaCreacion:
-        type: string
-        format: datetime
-      FechaModificacion:
-        type: string
-        format: datetime
-      Id:
-        type: integer
-        format: int64
-      ProduccionAcademicaId:
-        $ref: '#/definitions/models.ProduccionAcademica'
-  models.SubtipoProduccion:
-    title: SubtipoProduccion
-    type: object
-    properties:
-      Activo:
-        type: boolean
       CodigoAbreviacion:
         type: string
       Descripcion:
         type: string
       FechaCreacion:
         type: string
-        format: datetime
       FechaModificacion:
         type: string
-        format: datetime
+      Id:
+        type: integer
+        format: int64
+      Nombre:
+        type: string
+      SubtipoProduccionId:
+        $ref: '#/definitions/models.SubtipoProduccion'
+  models.Sistema:
+    title: Sistema
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      CodigoAbreviacion:
+        type: string
+      FechaCreacion:
+        type: string
+      FechaModificacion:
+        type: string
+      Id:
+        type: integer
+        format: int64
+      Nombre:
+        type: string
+      Referencia:
+        type: string
+  models.SistemaTipoProduccion:
+    title: SistemaTipoProduccion
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      FechaCreacion:
+        type: string
+      FechaModificacion:
+        type: string
+      Id:
+        type: integer
+        format: int64
+      SistemaId:
+        $ref: '#/definitions/models.Sistema'
+      TipoProduccionId:
+        $ref: '#/definitions/models.TipoProduccion'
+  models.SubtipoProduccion:
+    title: SubtipoProduccion
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      CategoriaProduccion:
+        $ref: '#/definitions/models.CategoriaProduccion'
+      CodigoAbreviacion:
+        type: string
+      Descripcion:
+        type: string
+      FechaCreacion:
+        type: string
+      FechaModificacion:
+        type: string
       Id:
         type: integer
         format: int64
@@ -1301,10 +1692,8 @@ definitions:
         type: string
       FechaCreacion:
         type: string
-        format: datetime
       FechaModificacion:
         type: string
-        format: datetime
       FormDefinition:
         type: string
       Id:
@@ -1327,10 +1716,8 @@ definitions:
         type: string
       FechaCreacion:
         type: string
-        format: datetime
       FechaModificacion:
         type: string
-        format: datetime
       Id:
         type: integer
         format: int64
@@ -1344,9 +1731,9 @@ definitions:
     type: object
     properties:
       Autores:
-        $ref: '#/definitions/44407.<nil>.AutorProduccionAcademica'
+        $ref: '#/definitions/58489.<nil>.AutorProduccionAcademica'
       Metadatos:
-        $ref: '#/definitions/44454.<nil>.MetadatoProduccionAcademica'
+        $ref: '#/definitions/58539.<nil>.MetadatoProduccionAcademica'
       ProduccionAcademica:
         $ref: '#/definitions/models.ProduccionAcademica'
   models.TrProduccionAcademicaController:
@@ -1371,15 +1758,24 @@ tags:
 - name: produccion_academica
   description: |
     ProduccionAcademicaController operations for ProduccionAcademica
+- name: categoria_produccion
+  description: |
+    CategoriaProduccionController operations for CategoriaProduccion
+- name: puntaje_subtipo_produccion
+  description: |
+    PuntajeSubtipoProduccionController operations for PuntajeSubtipoProduccion
+- name: sistema_tipo_produccion
+  description: |
+    SistemaTipoProduccionController operations for SistemaTipoProduccion
+- name: sistema
+  description: |
+    SistemaController operations for Sistema
 - name: tr_produccion_academica
   description: |
     operations for TrProduccionAcademica
 - name: estado_autor_produccion
   description: |
     EstadoAutorProduccionController operations for EstadoAutorProduccion
-- name: soporte_produccion_academica
-  description: |
-    SoporteProduccionAcademicaController operations for SoporteProduccionAcademica
 - name: autor_produccion_academica
   description: |
     AutorProduccionAcademicaController operations for AutorProduccionAcademica
