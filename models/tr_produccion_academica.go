@@ -2,7 +2,7 @@ package models
 
 import (
 	"fmt"
-	
+
 	"github.com/astaxie/beego/orm"
 	"github.com/udistrital/utils_oas/time_bogota"
 )
@@ -138,25 +138,27 @@ func UpdateTransaccionProduccionAcademica(m *TrProduccionAcademica) (err error) 
 
 					if metadato.Valor != v.Valor {
 						metadato.Valor = v.Valor
-						metadato.FechaModificacion = time_bogota.TiempoBogotaFormato()
-					}
+						metadato.FechaModificacion = v.FechaModificacion
+						fmt.Println(metadato.Id)
+						fmt.Println(metadato.Valor)
 
-					if metadato.Id != 0 {
-						if _, errTr = o.Update(&metadato, "Valor", "FechaModificacion"); errTr != nil {
-							err = errTr
-							fmt.Println(err)
-							_ = o.Rollback()
-							return
-						}
-					} else {
-						metadato.ProduccionAcademicaId = m.ProduccionAcademica
-						metadato.MetadatoSubtipoProduccionId = v.MetadatoSubtipoProduccionId
-						metadato.FechaCreacion = time_bogota.TiempoBogotaFormato()
-						if _, errTr = o.Insert(&metadato); errTr != nil {
-							err = errTr
-							fmt.Println(err)
-							_ = o.Rollback()
-							return
+						if metadato.Id != 0 {
+							if _, errTr = o.Update(&metadato, "Valor", "FechaModificacion"); errTr != nil {
+								err = errTr
+								fmt.Println(err)
+								_ = o.Rollback()
+								return
+							}
+						} else {
+							fmt.Println("Paso")
+							metadato.ProduccionAcademicaId = m.ProduccionAcademica
+							metadato.MetadatoSubtipoProduccionId = v.MetadatoSubtipoProduccionId
+							if _, errTr = o.Insert(&metadato); errTr != nil {
+								err = errTr
+								fmt.Println(err)
+								_ = o.Rollback()
+								return
+							}
 						}
 					}
 
@@ -192,7 +194,7 @@ func TrDeleteProduccionAcademica(id int) (err error) {
 	if err = o.Read(&v); err == nil {
 		var num int64
 		// if num, err = o.Delete(&ProduccionAcademica{Id: id}); err == nil {
-			// fmt.Println("Number of records deleted in database:", num)
+		// fmt.Println("Number of records deleted in database:", num)
 		if num, err = o.Update(&ProduccionAcademica{Id: id, Activo: false, FechaModificacion: time_bogota.TiempoBogotaFormato()}, "Activo", "FechaModificacion"); err == nil {
 			fmt.Println("Number of records updated in database:", num)
 		}
