@@ -1,0 +1,9 @@
+delete from produccion_academica.sistema;
+delete from produccion_academica.tipo_produccion;
+delete from produccion_academica.categoria_produccion;
+delete from produccion_academica.sistema_tipo_produccion;
+delete from produccion_academica.subtipo_produccion;
+delete from produccion_academica.puntaje_subtipo_produccion;
+delete from produccion_academica.tipo_metadato;
+delete from produccion_academica.metadato_subtipo_produccion;
+delete from produccion_academica.estado_autor_produccion;

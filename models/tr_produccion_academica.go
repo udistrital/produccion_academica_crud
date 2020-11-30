@@ -48,6 +48,41 @@ func GetProduccionesAcademicasByPersona(persona int) (v []interface{}, err error
 	return nil, err
 }
 
+// GetAllProduccionesAcademicas Transacción para consultar todas las producciones con toda la información de las mismas
+func GetAllProduccionesAcademicas() (v []interface{}, err error) {
+	o := orm.NewOrm()
+	var autores []*AutorProduccionAcademica
+	if _, err := o.QueryTable(new(AutorProduccionAcademica)).RelatedSel().Filter("ProduccionAcademicaId__Activo", true).All(&autores); err == nil {
+		for _, autor := range autores {
+
+			produccionAcademica := autor.ProduccionAcademicaId
+
+			var autoresProduccion []AutorProduccionAcademica
+			if _, err := o.QueryTable(new(AutorProduccionAcademica)).RelatedSel().Filter("ProduccionAcademicaId__Id", produccionAcademica.Id).All(&autoresProduccion); err != nil {
+				return nil, err
+			}
+
+			var metadatos []MetadatoProduccionAcademica
+			if _, err := o.QueryTable(new(MetadatoProduccionAcademica)).RelatedSel().Filter("ProduccionAcademicaId__Id", produccionAcademica.Id).All(&metadatos); err != nil {
+				return nil, err
+			}
+
+			v = append(v, map[string]interface{}{
+				"Id":                  produccionAcademica.Id,
+				"Titulo":              produccionAcademica.Titulo,
+				"Resumen":             produccionAcademica.Resumen,
+				"Fecha":               produccionAcademica.Fecha,
+				"SubtipoProduccionId": produccionAcademica.SubtipoProduccionId,
+				"Autores":             &autoresProduccion,
+				"Metadatos":           &metadatos,
+			})
+		}
+
+		return v, nil
+	}
+	return nil, err
+}
+
 // AddTransaccionProduccionAcademica Transacción para registrar toda la información de una producción
 func AddTransaccionProduccionAcademica(m *TrProduccionAcademica) (err error) {
 	o := orm.NewOrm()
@@ -98,31 +133,32 @@ func UpdateTransaccionProduccionAcademica(m *TrProduccionAcademica) (err error) 
 			fmt.Println("Number of records updated in database:", num)
 
 			for _, v := range *m.Metadatos {
-				fmt.Println("metadatos", m.Metadatos)
 				var metadato MetadatoProduccionAcademica
 				if errTr = o.QueryTable(new(MetadatoProduccionAcademica)).RelatedSel().Filter("MetadatoSubtipoProduccionId__Id", v.MetadatoSubtipoProduccionId.Id).Filter("ProduccionAcademicaId__Id", m.ProduccionAcademica.Id).One(&metadato); err == nil {
 
 					if metadato.Valor != v.Valor {
 						metadato.Valor = v.Valor
-						metadato.FechaModificacion = time_bogota.TiempoBogotaFormato()
-					}
+						metadato.FechaModificacion = v.FechaModificacion
+						fmt.Println(metadato.Id)
+						fmt.Println(metadato.Valor)
 
-					if metadato.Id != 0 {
-						if _, errTr = o.Update(&metadato, "Valor", "FechaModificacion"); errTr != nil {
-							err = errTr
-							fmt.Println(err)
-							_ = o.Rollback()
-							return
-						}
-					} else {
-						metadato.ProduccionAcademicaId = m.ProduccionAcademica
-						metadato.MetadatoSubtipoProduccionId = v.MetadatoSubtipoProduccionId
-						metadato.FechaCreacion = time_bogota.TiempoBogotaFormato()
-						if _, errTr = o.Insert(&metadato); errTr != nil {
-							err = errTr
-							fmt.Println(err)
-							_ = o.Rollback()
-							return
+						if metadato.Id != 0 {
+							if _, errTr = o.Update(&metadato, "Valor", "FechaModificacion"); errTr != nil {
+								err = errTr
+								fmt.Println(err)
+								_ = o.Rollback()
+								return
+							}
+						} else {
+							fmt.Println("Paso")
+							metadato.ProduccionAcademicaId = m.ProduccionAcademica
+							metadato.MetadatoSubtipoProduccionId = v.MetadatoSubtipoProduccionId
+							if _, errTr = o.Insert(&metadato); errTr != nil {
+								err = errTr
+								fmt.Println(err)
+								_ = o.Rollback()
+								return
+							}
 						}
 					}
 

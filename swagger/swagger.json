@@ -188,6 +188,179 @@
                 }
             }
         },
+        "/categoria_produccion/": {
+            "get": {
+                "tags": [
+                    "categoria_produccion"
+                ],
+                "description": "get CategoriaProduccion",
+                "operationId": "CategoriaProduccionController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.CategoriaProduccion"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "categoria_produccion"
+                ],
+                "description": "create CategoriaProduccion",
+                "operationId": "CategoriaProduccionController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for CategoriaProduccion content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.CategoriaProduccion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.CategoriaProduccion"
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            }
+        },
+        "/categoria_produccion/{id}": {
+            "get": {
+                "tags": [
+                    "categoria_produccion"
+                ],
+                "description": "get CategoriaProduccion by id",
+                "operationId": "CategoriaProduccionController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.CategoriaProduccion"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "categoria_produccion"
+                ],
+                "description": "update the CategoriaProduccion",
+                "operationId": "CategoriaProduccionController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for CategoriaProduccion content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.CategoriaProduccion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.CategoriaProduccion"
+                        }
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "categoria_produccion"
+                ],
+                "description": "delete the CategoriaProduccion",
+                "operationId": "CategoriaProduccionController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            }
+        },
         "/estado_autor_produccion/": {
             "get": {
                 "tags": [
@@ -880,13 +1053,13 @@
                 }
             }
         },
-        "/soporte_produccion_academica/": {
+        "/puntaje_subtipo_produccion/": {
             "get": {
                 "tags": [
-                    "soporte_produccion_academica"
+                    "puntaje_subtipo_produccion"
                 ],
-                "description": "get SoporteProduccionAcademica",
-                "operationId": "SoporteProduccionAcademicaController.Get All",
+                "description": "get PuntajeSubtipoProduccion",
+                "operationId": "PuntajeSubtipoProduccionController.Get All",
                 "parameters": [
                     {
                         "in": "query",
@@ -929,7 +1102,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.SoporteProduccionAcademica"
+                            "$ref": "#/definitions/models.PuntajeSubtipoProduccion"
                         }
                     },
                     "404": {
@@ -939,24 +1112,24 @@
             },
             "post": {
                 "tags": [
-                    "soporte_produccion_academica"
+                    "puntaje_subtipo_produccion"
                 ],
-                "description": "create SoporteProduccionAcademica",
-                "operationId": "SoporteProduccionAcademicaController.Post",
+                "description": "create PuntajeSubtipoProduccion",
+                "operationId": "PuntajeSubtipoProduccionController.Post",
                 "parameters": [
                     {
                         "in": "body",
                         "name": "body",
-                        "description": "body for SoporteProduccionAcademica content",
+                        "description": "body for PuntajeSubtipoProduccion content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.SoporteProduccionAcademica"
+                            "$ref": "#/definitions/models.PuntajeSubtipoProduccion"
                         }
                     }
                 ],
                 "responses": {
                     "201": {
-                        "description": "{int} models.SoporteProduccionAcademica"
+                        "description": "{int} models.PuntajeSubtipoProduccion"
                     },
                     "400": {
                         "description": "the request contains incorrect syntax"
@@ -964,13 +1137,13 @@
                 }
             }
         },
-        "/soporte_produccion_academica/{id}": {
+        "/puntaje_subtipo_produccion/{id}": {
             "get": {
                 "tags": [
-                    "soporte_produccion_academica"
+                    "puntaje_subtipo_produccion"
                 ],
-                "description": "get SoporteProduccionAcademica by id",
-                "operationId": "SoporteProduccionAcademicaController.Get One",
+                "description": "get PuntajeSubtipoProduccion by id",
+                "operationId": "PuntajeSubtipoProduccionController.Get One",
                 "parameters": [
                     {
                         "in": "path",
@@ -984,7 +1157,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.SoporteProduccionAcademica"
+                            "$ref": "#/definitions/models.PuntajeSubtipoProduccion"
                         }
                     },
                     "404": {
@@ -994,10 +1167,10 @@
             },
             "put": {
                 "tags": [
-                    "soporte_produccion_academica"
+                    "puntaje_subtipo_produccion"
                 ],
-                "description": "update the SoporteProduccionAcademica",
-                "operationId": "SoporteProduccionAcademicaController.Put",
+                "description": "update the PuntajeSubtipoProduccion",
+                "operationId": "PuntajeSubtipoProduccionController.Put",
                 "parameters": [
                     {
                         "in": "path",
@@ -1009,10 +1182,10 @@
                     {
                         "in": "body",
                         "name": "body",
-                        "description": "body for SoporteProduccionAcademica content",
+                        "description": "body for PuntajeSubtipoProduccion content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.SoporteProduccionAcademica"
+                            "$ref": "#/definitions/models.PuntajeSubtipoProduccion"
                         }
                     }
                 ],
@@ -1020,7 +1193,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.SoporteProduccionAcademica"
+                            "$ref": "#/definitions/models.PuntajeSubtipoProduccion"
                         }
                     },
                     "400": {
@@ -1030,10 +1203,356 @@
             },
             "delete": {
                 "tags": [
-                    "soporte_produccion_academica"
+                    "puntaje_subtipo_produccion"
                 ],
-                "description": "delete the SoporteProduccionAcademica",
-                "operationId": "SoporteProduccionAcademicaController.Delete",
+                "description": "delete the PuntajeSubtipoProduccion",
+                "operationId": "PuntajeSubtipoProduccionController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            }
+        },
+        "/sistema/": {
+            "get": {
+                "tags": [
+                    "sistema"
+                ],
+                "description": "get Sistema",
+                "operationId": "SistemaController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Sistema"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "sistema"
+                ],
+                "description": "create Sistema",
+                "operationId": "SistemaController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for Sistema content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Sistema"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.Sistema"
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            }
+        },
+        "/sistema/{id}": {
+            "get": {
+                "tags": [
+                    "sistema"
+                ],
+                "description": "get Sistema by id",
+                "operationId": "SistemaController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Sistema"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "sistema"
+                ],
+                "description": "update the Sistema",
+                "operationId": "SistemaController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for Sistema content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Sistema"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Sistema"
+                        }
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "sistema"
+                ],
+                "description": "delete the Sistema",
+                "operationId": "SistemaController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            }
+        },
+        "/sistema_tipo_produccion/": {
+            "get": {
+                "tags": [
+                    "sistema_tipo_produccion"
+                ],
+                "description": "get SistemaTipoProduccion",
+                "operationId": "SistemaTipoProduccionController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.SistemaTipoProduccion"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "sistema_tipo_produccion"
+                ],
+                "description": "create SistemaTipoProduccion",
+                "operationId": "SistemaTipoProduccionController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for SistemaTipoProduccion content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.SistemaTipoProduccion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.SistemaTipoProduccion"
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            }
+        },
+        "/sistema_tipo_produccion/{id}": {
+            "get": {
+                "tags": [
+                    "sistema_tipo_produccion"
+                ],
+                "description": "get SistemaTipoProduccion by id",
+                "operationId": "SistemaTipoProduccionController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.SistemaTipoProduccion"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "sistema_tipo_produccion"
+                ],
+                "description": "update the SistemaTipoProduccion",
+                "operationId": "SistemaTipoProduccionController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for SistemaTipoProduccion content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.SistemaTipoProduccion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.SistemaTipoProduccion"
+                        }
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "sistema_tipo_produccion"
+                ],
+                "description": "delete the SistemaTipoProduccion",
+                "operationId": "SistemaTipoProduccionController.Delete",
                 "parameters": [
                     {
                         "in": "path",
@@ -1573,6 +2092,24 @@
             }
         },
         "/tr_produccion_academica/": {
+            "get": {
+                "tags": [
+                    "tr_produccion_academica"
+                ],
+                "description": "get TrProduccionAcademicaController",
+                "operationId": "TrProduccionAcademicaController.Get All",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TrProduccionAcademicaController"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
             "post": {
                 "tags": [
                     "tr_produccion_academica"
@@ -1693,11 +2230,11 @@
         }
     },
     "definitions": {
-        "44407.\u003cnil\u003e.AutorProduccionAcademica": {
+        "58488.\u003cnil\u003e.AutorProduccionAcademica": {
             "title": "AutorProduccionAcademica",
             "type": "object"
         },
-        "44454.\u003cnil\u003e.MetadatoProduccionAcademica": {
+        "58538.\u003cnil\u003e.MetadatoProduccionAcademica": {
             "title": "MetadatoProduccionAcademica",
             "type": "object"
         },
@@ -1712,12 +2249,10 @@
                     "$ref": "#/definitions/models.EstadoAutorProduccion"
                 },
                 "FechaCreacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "FechaModificacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "Id": {
                     "type": "integer",
@@ -1729,6 +2264,34 @@
                 },
                 "ProduccionAcademicaId": {
                     "$ref": "#/definitions/models.ProduccionAcademica"
+                }
+            }
+        },
+        "models.CategoriaProduccion": {
+            "title": "CategoriaProduccion",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "Descripcion": {
+                    "type": "string"
+                },
+                "FechaCreacion": {
+                    "type": "string"
+                },
+                "FechaModificacion": {
+                    "type": "string"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Nombre": {
+                    "type": "string"
+                },
+                "TipoPuntaje": {
+                    "type": "string"
                 }
             }
         },
@@ -1746,12 +2309,10 @@
                     "type": "string"
                 },
                 "FechaCreacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "FechaModificacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "Id": {
                     "type": "integer",
@@ -1774,12 +2335,10 @@
                     "type": "boolean"
                 },
                 "FechaCreacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "FechaModificacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "Id": {
                     "type": "integer",
@@ -1804,12 +2363,10 @@
                     "type": "boolean"
                 },
                 "FechaCreacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "FechaModificacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "Id": {
                     "type": "integer",
@@ -1835,12 +2392,10 @@
                     "format": "datetime"
                 },
                 "FechaCreacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "FechaModificacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "Id": {
                     "type": "integer",
@@ -1857,34 +2412,90 @@
                 }
             }
         },
-        "models.SoporteProduccionAcademica": {
-            "title": "SoporteProduccionAcademica",
+        "models.PuntajeSubtipoProduccion": {
+            "title": "PuntajeSubtipoProduccion",
             "type": "object",
             "properties": {
                 "Activo": {
                     "type": "boolean"
                 },
+                "Caracteristicas": {
+                    "type": "string"
+                },
+                "CodigoAbreviacion": {
+                    "type": "string"
+                },
                 "Descripcion": {
                     "type": "string"
                 },
-                "Documento": {
-                    "type": "integer",
-                    "format": "int64"
-                },
                 "FechaCreacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "FechaModificacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "Id": {
                     "type": "integer",
                     "format": "int64"
                 },
-                "ProduccionAcademicaId": {
-                    "$ref": "#/definitions/models.ProduccionAcademica"
+                "Nombre": {
+                    "type": "string"
+                },
+                "SubtipoProduccionId": {
+                    "$ref": "#/definitions/models.SubtipoProduccion"
+                }
+            }
+        },
+        "models.Sistema": {
+            "title": "Sistema",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "CodigoAbreviacion": {
+                    "type": "string"
+                },
+                "FechaCreacion": {
+                    "type": "string"
+                },
+                "FechaModificacion": {
+                    "type": "string"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Nombre": {
+                    "type": "string"
+                },
+                "Referencia": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.SistemaTipoProduccion": {
+            "title": "SistemaTipoProduccion",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "FechaCreacion": {
+                    "type": "string"
+                },
+                "FechaModificacion": {
+                    "type": "string"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "SistemaId": {
+                    "$ref": "#/definitions/models.Sistema"
+                },
+                "TipoProduccionId": {
+                    "$ref": "#/definitions/models.TipoProduccion"
                 }
             }
         },
@@ -1895,6 +2506,9 @@
                 "Activo": {
                     "type": "boolean"
                 },
+                "CategoriaProduccion": {
+                    "$ref": "#/definitions/models.CategoriaProduccion"
+                },
                 "CodigoAbreviacion": {
                     "type": "string"
                 },
@@ -1902,12 +2516,10 @@
                     "type": "string"
                 },
                 "FechaCreacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "FechaModificacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "Id": {
                     "type": "integer",
@@ -1939,12 +2551,10 @@
                     "type": "string"
                 },
                 "FechaCreacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "FechaModificacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "FormDefinition": {
                     "type": "string"
@@ -1976,12 +2586,10 @@
                     "type": "string"
                 },
                 "FechaCreacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "FechaModificacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "Id": {
                     "type": "integer",
@@ -2001,10 +2609,10 @@
             "type": "object",
             "properties": {
                 "Autores": {
-                    "$ref": "#/definitions/44407.\u003cnil\u003e.AutorProduccionAcademica"
+                    "$ref": "#/definitions/58488.\u003cnil\u003e.AutorProduccionAcademica"
                 },
                 "Metadatos": {
-                    "$ref": "#/definitions/44454.\u003cnil\u003e.MetadatoProduccionAcademica"
+                    "$ref": "#/definitions/58538.\u003cnil\u003e.MetadatoProduccionAcademica"
                 },
                 "ProduccionAcademica": {
                     "$ref": "#/definitions/models.ProduccionAcademica"
@@ -2042,16 +2650,28 @@
             "description": "ProduccionAcademicaController operations for ProduccionAcademica\n"
         },
         {
+            "name": "categoria_produccion",
+            "description": "CategoriaProduccionController operations for CategoriaProduccion\n"
+        },
+        {
+            "name": "puntaje_subtipo_produccion",
+            "description": "PuntajeSubtipoProduccionController operations for PuntajeSubtipoProduccion\n"
+        },
+        {
+            "name": "sistema_tipo_produccion",
+            "description": "SistemaTipoProduccionController operations for SistemaTipoProduccion\n"
+        },
+        {
+            "name": "sistema",
+            "description": "SistemaController operations for Sistema\n"
+        },
+        {
             "name": "tr_produccion_academica",
             "description": "operations for TrProduccionAcademica\n"
         },
         {
             "name": "estado_autor_produccion",
             "description": "EstadoAutorProduccionController operations for EstadoAutorProduccion\n"
-        },
-        {
-            "name": "soporte_produccion_academica",
-            "description": "SoporteProduccionAcademicaController operations for SoporteProduccionAcademica\n"
         },
         {
             "name": "autor_produccion_academica",
