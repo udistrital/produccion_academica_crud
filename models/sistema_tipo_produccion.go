@@ -5,54 +5,53 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
+	
 
 	"github.com/astaxie/beego/orm"
 )
 
-type EstadoAutorProduccion struct {
-	Id                int       `orm:"column(id);pk;auto"`
-	Nombre            string    `orm:"column(nombre)"`
-	Descripcion       string    `orm:"column(descripcion);null"`
-	CodigoAbreviacion string    `orm:"column(codigo_abreviacion);null"`
-	Activo            bool      `orm:"column(activo)"`
-	NumeroOrden       float64   `orm:"column(numero_orden);null"`
-	FechaCreacion     string    `orm:"column(fecha_creacion);type(timestamp without time zone)"`
-	FechaModificacion string    `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+type SistemaTipoProduccion struct {
+	Id                int             `orm:"column(id);pk;auto"`
+	Activo            bool            `orm:"column(activo)"`
+	FechaCreacion     string       `orm:"column(fecha_creacion);type(timestamp without time zone)"`
+	FechaModificacion string       `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+	SistemaId         *Sistema        `orm:"column(sistema_id);rel(fk)"`
+	TipoProduccionId  *TipoProduccion `orm:"column(tipo_produccion_id);rel(fk)"`
 }
 
-func (t *EstadoAutorProduccion) TableName() string {
-	return "estado_autor_produccion"
+func (t *SistemaTipoProduccion) TableName() string {
+	return "sistema_tipo_produccion"
 }
 
 func init() {
-	orm.RegisterModel(new(EstadoAutorProduccion))
+	orm.RegisterModel(new(SistemaTipoProduccion))
 }
 
-// AddEstadoAutorProduccion insert a new EstadoAutorProduccion into database and returns
+// AddSistemaTipoProduccion insert a new SistemaTipoProduccion into database and returns
 // last inserted Id on success.
-func AddEstadoAutorProduccion(m *EstadoAutorProduccion) (id int64, err error) {
+func AddSistemaTipoProduccion(m *SistemaTipoProduccion) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetEstadoAutorProduccionById retrieves EstadoAutorProduccion by Id. Returns error if
+// GetSistemaTipoProduccionById retrieves SistemaTipoProduccion by Id. Returns error if
 // Id doesn't exist
-func GetEstadoAutorProduccionById(id int) (v *EstadoAutorProduccion, err error) {
+func GetSistemaTipoProduccionById(id int) (v *SistemaTipoProduccion, err error) {
 	o := orm.NewOrm()
-	v = &EstadoAutorProduccion{Id: id}
+	v = &SistemaTipoProduccion{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllEstadoAutorProduccion retrieves all EstadoAutorProduccion matches certain condition. Returns empty list if
+// GetAllSistemaTipoProduccion retrieves all SistemaTipoProduccion matches certain condition. Returns empty list if
 // no records exist
-func GetAllEstadoAutorProduccion(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllSistemaTipoProduccion(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(EstadoAutorProduccion)).RelatedSel()
+	qs := o.QueryTable(new(SistemaTipoProduccion)).RelatedSel()
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
@@ -102,7 +101,7 @@ func GetAllEstadoAutorProduccion(query map[string]string, fields []string, sortb
 		}
 	}
 
-	var l []EstadoAutorProduccion
+	var l []SistemaTipoProduccion
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -125,11 +124,11 @@ func GetAllEstadoAutorProduccion(query map[string]string, fields []string, sortb
 	return nil, err
 }
 
-// UpdateEstadoAutorProduccion updates EstadoAutorProduccion by Id and returns error if
+// UpdateSistemaTipoProduccion updates SistemaTipoProduccion by Id and returns error if
 // the record to be updated doesn't exist
-func UpdateEstadoAutorProduccionById(m *EstadoAutorProduccion) (err error) {
+func UpdateSistemaTipoProduccionById(m *SistemaTipoProduccion) (err error) {
 	o := orm.NewOrm()
-	v := EstadoAutorProduccion{Id: m.Id}
+	v := SistemaTipoProduccion{Id: m.Id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -140,15 +139,15 @@ func UpdateEstadoAutorProduccionById(m *EstadoAutorProduccion) (err error) {
 	return
 }
 
-// DeleteEstadoAutorProduccion deletes EstadoAutorProduccion by Id and returns error if
+// DeleteSistemaTipoProduccion deletes SistemaTipoProduccion by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteEstadoAutorProduccion(id int) (err error) {
+func DeleteSistemaTipoProduccion(id int) (err error) {
 	o := orm.NewOrm()
-	v := EstadoAutorProduccion{Id: id}
+	v := SistemaTipoProduccion{Id: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&EstadoAutorProduccion{Id: id}); err == nil {
+		if num, err = o.Delete(&SistemaTipoProduccion{Id: id}); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}

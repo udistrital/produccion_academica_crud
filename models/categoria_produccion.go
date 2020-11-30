@@ -9,50 +9,49 @@ import (
 	"github.com/astaxie/beego/orm"
 )
 
-type EstadoAutorProduccion struct {
+type CategoriaProduccion struct {
 	Id                int       `orm:"column(id);pk;auto"`
 	Nombre            string    `orm:"column(nombre)"`
 	Descripcion       string    `orm:"column(descripcion);null"`
-	CodigoAbreviacion string    `orm:"column(codigo_abreviacion);null"`
 	Activo            bool      `orm:"column(activo)"`
-	NumeroOrden       float64   `orm:"column(numero_orden);null"`
-	FechaCreacion     string    `orm:"column(fecha_creacion);type(timestamp without time zone)"`
-	FechaModificacion string    `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+	TipoPuntaje       string    `orm:"column(tipo_puntaje);null"`
+	FechaCreacion     string `orm:"column(fecha_creacion);type(timestamp without time zone)"`
+	FechaModificacion string `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
 }
 
-func (t *EstadoAutorProduccion) TableName() string {
-	return "estado_autor_produccion"
+func (t *CategoriaProduccion) TableName() string {
+	return "categoria_produccion"
 }
 
 func init() {
-	orm.RegisterModel(new(EstadoAutorProduccion))
+	orm.RegisterModel(new(CategoriaProduccion))
 }
 
-// AddEstadoAutorProduccion insert a new EstadoAutorProduccion into database and returns
+// AddCategoriaProduccion insert a new CategoriaProduccion into database and returns
 // last inserted Id on success.
-func AddEstadoAutorProduccion(m *EstadoAutorProduccion) (id int64, err error) {
+func AddCategoriaProduccion(m *CategoriaProduccion) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetEstadoAutorProduccionById retrieves EstadoAutorProduccion by Id. Returns error if
+// GetCategoriaProduccionById retrieves CategoriaProduccion by Id. Returns error if
 // Id doesn't exist
-func GetEstadoAutorProduccionById(id int) (v *EstadoAutorProduccion, err error) {
+func GetCategoriaProduccionById(id int) (v *CategoriaProduccion, err error) {
 	o := orm.NewOrm()
-	v = &EstadoAutorProduccion{Id: id}
+	v = &CategoriaProduccion{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllEstadoAutorProduccion retrieves all EstadoAutorProduccion matches certain condition. Returns empty list if
+// GetAllCategoriaProduccion retrieves all CategoriaProduccion matches certain condition. Returns empty list if
 // no records exist
-func GetAllEstadoAutorProduccion(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllCategoriaProduccion(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(EstadoAutorProduccion)).RelatedSel()
+	qs := o.QueryTable(new(CategoriaProduccion)).RelatedSel()
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
@@ -102,7 +101,7 @@ func GetAllEstadoAutorProduccion(query map[string]string, fields []string, sortb
 		}
 	}
 
-	var l []EstadoAutorProduccion
+	var l []CategoriaProduccion
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -125,11 +124,11 @@ func GetAllEstadoAutorProduccion(query map[string]string, fields []string, sortb
 	return nil, err
 }
 
-// UpdateEstadoAutorProduccion updates EstadoAutorProduccion by Id and returns error if
+// UpdateCategoriaProduccion updates CategoriaProduccion by Id and returns error if
 // the record to be updated doesn't exist
-func UpdateEstadoAutorProduccionById(m *EstadoAutorProduccion) (err error) {
+func UpdateCategoriaProduccionById(m *CategoriaProduccion) (err error) {
 	o := orm.NewOrm()
-	v := EstadoAutorProduccion{Id: m.Id}
+	v := CategoriaProduccion{Id: m.Id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -140,15 +139,15 @@ func UpdateEstadoAutorProduccionById(m *EstadoAutorProduccion) (err error) {
 	return
 }
 
-// DeleteEstadoAutorProduccion deletes EstadoAutorProduccion by Id and returns error if
+// DeleteCategoriaProduccion deletes CategoriaProduccion by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteEstadoAutorProduccion(id int) (err error) {
+func DeleteCategoriaProduccion(id int) (err error) {
 	o := orm.NewOrm()
-	v := EstadoAutorProduccion{Id: id}
+	v := CategoriaProduccion{Id: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&EstadoAutorProduccion{Id: id}); err == nil {
+		if num, err = o.Delete(&CategoriaProduccion{Id: id}); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}

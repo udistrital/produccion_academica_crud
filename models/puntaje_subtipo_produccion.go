@@ -5,54 +5,56 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
-	"time"
+	
 
 	"github.com/astaxie/beego/orm"
 )
 
-type SoporteProduccionAcademica struct {
-	Id                    int                  `orm:"column(id);pk;auto"`
-	Documento             int                  `orm:"column(documento)"`
-	Descripcion           string               `orm:"column(descripcion);null"`
-	Activo                bool                 `orm:"column(activo)"`
-	FechaCreacion         time.Time            `orm:"column(fecha_creacion);type(timestamp without time zone)"`
-	FechaModificacion     time.Time            `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
-	ProduccionAcademicaId *ProduccionAcademica `orm:"column(produccion_academica_id);rel(fk)"`
+type PuntajeSubtipoProduccion struct {
+	Id                  int                `orm:"column(id);pk;auto"`
+	Nombre              string             `orm:"column(nombre)"`
+	Descripcion         string             `orm:"column(descripcion)"`
+	CodigoAbreviacion   string             `orm:"column(codigo_abreviacion);"`
+	Activo              bool               `orm:"column(activo)"`
+	Caracteristicas     string             `orm:"column(caracteristicas);type(json);"`
+	FechaCreacion       string          `orm:"column(fecha_creacion);type(timestamp without time zone)"`
+	FechaModificacion   string          `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+	SubtipoProduccionId *SubtipoProduccion `orm:"column(subtipo_produccion);rel(fk)"`
 }
 
-func (t *SoporteProduccionAcademica) TableName() string {
-	return "soporte_produccion_academica"
+func (t *PuntajeSubtipoProduccion) TableName() string {
+	return "puntaje_subtipo_produccion"
 }
 
 func init() {
-	orm.RegisterModel(new(SoporteProduccionAcademica))
+	orm.RegisterModel(new(PuntajeSubtipoProduccion))
 }
 
-// AddSoporteProduccionAcademica insert a new SoporteProduccionAcademica into database and returns
+// AddPuntajeSubtipoProduccion insert a new PuntajeSubtipoProduccion into database and returns
 // last inserted Id on success.
-func AddSoporteProduccionAcademica(m *SoporteProduccionAcademica) (id int64, err error) {
+func AddPuntajeSubtipoProduccion(m *PuntajeSubtipoProduccion) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetSoporteProduccionAcademicaById retrieves SoporteProduccionAcademica by Id. Returns error if
+// GetPuntajeSubtipoProduccionById retrieves PuntajeSubtipoProduccion by Id. Returns error if
 // Id doesn't exist
-func GetSoporteProduccionAcademicaById(id int) (v *SoporteProduccionAcademica, err error) {
+func GetPuntajeSubtipoProduccionById(id int) (v *PuntajeSubtipoProduccion, err error) {
 	o := orm.NewOrm()
-	v = &SoporteProduccionAcademica{Id: id}
+	v = &PuntajeSubtipoProduccion{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllSoporteProduccionAcademica retrieves all SoporteProduccionAcademica matches certain condition. Returns empty list if
+// GetAllPuntajeSubtipoProduccion retrieves all PuntajeSubtipoProduccion matches certain condition. Returns empty list if
 // no records exist
-func GetAllSoporteProduccionAcademica(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllPuntajeSubtipoProduccion(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(SoporteProduccionAcademica)).RelatedSel()
+	qs := o.QueryTable(new(PuntajeSubtipoProduccion)).RelatedSel()
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
@@ -102,7 +104,7 @@ func GetAllSoporteProduccionAcademica(query map[string]string, fields []string, 
 		}
 	}
 
-	var l []SoporteProduccionAcademica
+	var l []PuntajeSubtipoProduccion
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -125,11 +127,11 @@ func GetAllSoporteProduccionAcademica(query map[string]string, fields []string, 
 	return nil, err
 }
 
-// UpdateSoporteProduccionAcademica updates SoporteProduccionAcademica by Id and returns error if
+// UpdatePuntajeSubtipoProduccion updates PuntajeSubtipoProduccion by Id and returns error if
 // the record to be updated doesn't exist
-func UpdateSoporteProduccionAcademicaById(m *SoporteProduccionAcademica) (err error) {
+func UpdatePuntajeSubtipoProduccionById(m *PuntajeSubtipoProduccion) (err error) {
 	o := orm.NewOrm()
-	v := SoporteProduccionAcademica{Id: m.Id}
+	v := PuntajeSubtipoProduccion{Id: m.Id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -140,15 +142,15 @@ func UpdateSoporteProduccionAcademicaById(m *SoporteProduccionAcademica) (err er
 	return
 }
 
-// DeleteSoporteProduccionAcademica deletes SoporteProduccionAcademica by Id and returns error if
+// DeletePuntajeSubtipoProduccion deletes PuntajeSubtipoProduccion by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteSoporteProduccionAcademica(id int) (err error) {
+func DeletePuntajeSubtipoProduccion(id int) (err error) {
 	o := orm.NewOrm()
-	v := SoporteProduccionAcademica{Id: id}
+	v := PuntajeSubtipoProduccion{Id: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&SoporteProduccionAcademica{Id: id}); err == nil {
+		if num, err = o.Delete(&PuntajeSubtipoProduccion{Id: id}); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}
