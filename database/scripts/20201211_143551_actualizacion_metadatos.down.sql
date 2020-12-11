@@ -1,0 +1,3 @@
+delete from produccion_academica.tipo_metadato;
+delete from produccion_academica.metadato_subtipo_produccion;
+delete from produccion_academica.subtipo_produccion;
