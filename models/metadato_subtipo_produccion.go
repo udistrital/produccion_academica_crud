@@ -14,6 +14,7 @@ type MetadatoSubtipoProduccion struct {
 	Activo              bool               `orm:"column(activo)"`
 	FechaCreacion       string             `orm:"column(fecha_creacion);type(timestamp without time zone)"`
 	FechaModificacion   string             `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+	Orden               float64            `orm:"column(orden);null"`
 	TipoMetadatoId      *TipoMetadato      `orm:"column(tipo_metadato_id);rel(fk)"`
 	SubtipoProduccionId *SubtipoProduccion `orm:"column(subtipo_produccion_id);rel(fk)"`
 }
