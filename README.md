@@ -79,7 +79,7 @@ Pruebas unitarias
 
 
 ## Modelo de Datos
-[Modelo de Datos API CRUD Produción académica](https://user-images.githubusercontent.com/14035745/66079435-a8cdf300-e529-11e9-9f4e-7ca2b0807c06.png)
+[Modelo de Datos API CRUD Produción académica](https://user-images.githubusercontent.com/44172561/102785218-98db4280-436b-11eb-845b-e41dbb1011ec.png)
 
 
 ## Licencia
