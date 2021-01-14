@@ -16,7 +16,7 @@
 -- 	TABLESPACE = pg_default
 -- 	OWNER = postgres;
 -- -- ddl-end --
--- 
+--
 
 -- object: produccion_academica | type: SCHEMA --
 -- DROP SCHEMA IF EXISTS produccion_academica CASCADE;
