@@ -20,6 +20,7 @@ type PuntajeSubtipoProduccion struct {
 	FechaCreacion       string          `orm:"column(fecha_creacion);type(timestamp without time zone)"`
 	FechaModificacion   string          `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
 	SubtipoProduccionId *SubtipoProduccion `orm:"column(subtipo_produccion);rel(fk)"`
+	Normatividad        string             `orm:"column(normatividad)"`
 }
 
 func (t *PuntajeSubtipoProduccion) TableName() string {
