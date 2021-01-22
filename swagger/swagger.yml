@@ -1470,10 +1470,10 @@ paths:
         "404":
           description: not found resource
 definitions:
-  58488.<nil>.AutorProduccionAcademica:
+  56741.<nil>.AutorProduccionAcademica:
     title: AutorProduccionAcademica
     type: object
-  58538.<nil>.MetadatoProduccionAcademica:
+  56790.<nil>.MetadatoProduccionAcademica:
     title: MetadatoProduccionAcademica
     type: object
   models.AutorProduccionAcademica:
@@ -1569,6 +1569,9 @@ definitions:
       Id:
         type: integer
         format: int64
+      Orden:
+        type: number
+        format: double
       SubtipoProduccionId:
         $ref: '#/definitions/models.SubtipoProduccion'
       TipoMetadatoId:
@@ -1615,6 +1618,8 @@ definitions:
         type: integer
         format: int64
       Nombre:
+        type: string
+      Normatividad:
         type: string
       SubtipoProduccionId:
         $ref: '#/definitions/models.SubtipoProduccion'
@@ -1731,9 +1736,9 @@ definitions:
     type: object
     properties:
       Autores:
-        $ref: '#/definitions/58488.<nil>.AutorProduccionAcademica'
+        $ref: '#/definitions/56741.<nil>.AutorProduccionAcademica'
       Metadatos:
-        $ref: '#/definitions/58538.<nil>.MetadatoProduccionAcademica'
+        $ref: '#/definitions/56790.<nil>.MetadatoProduccionAcademica'
       ProduccionAcademica:
         $ref: '#/definitions/models.ProduccionAcademica'
   models.TrProduccionAcademicaController:
