@@ -2230,11 +2230,11 @@
         }
     },
     "definitions": {
-        "58488.\u003cnil\u003e.AutorProduccionAcademica": {
+        "56741.\u003cnil\u003e.AutorProduccionAcademica": {
             "title": "AutorProduccionAcademica",
             "type": "object"
         },
-        "58538.\u003cnil\u003e.MetadatoProduccionAcademica": {
+        "56790.\u003cnil\u003e.MetadatoProduccionAcademica": {
             "title": "MetadatoProduccionAcademica",
             "type": "object"
         },
@@ -2372,6 +2372,10 @@
                     "type": "integer",
                     "format": "int64"
                 },
+                "Orden": {
+                    "type": "number",
+                    "format": "double"
+                },
                 "SubtipoProduccionId": {
                     "$ref": "#/definitions/models.SubtipoProduccion"
                 },
@@ -2439,6 +2443,9 @@
                     "format": "int64"
                 },
                 "Nombre": {
+                    "type": "string"
+                },
+                "Normatividad": {
                     "type": "string"
                 },
                 "SubtipoProduccionId": {
@@ -2609,10 +2616,10 @@
             "type": "object",
             "properties": {
                 "Autores": {
-                    "$ref": "#/definitions/58488.\u003cnil\u003e.AutorProduccionAcademica"
+                    "$ref": "#/definitions/56741.\u003cnil\u003e.AutorProduccionAcademica"
                 },
                 "Metadatos": {
-                    "$ref": "#/definitions/58538.\u003cnil\u003e.MetadatoProduccionAcademica"
+                    "$ref": "#/definitions/56790.\u003cnil\u003e.MetadatoProduccionAcademica"
                 },
                 "ProduccionAcademica": {
                     "$ref": "#/definitions/models.ProduccionAcademica"
