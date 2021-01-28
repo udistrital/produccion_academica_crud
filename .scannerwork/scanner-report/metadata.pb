@@ -1,5 +1,0 @@
-¢√çÃ÷-produccion_academica_crud(:5
-go/
-AWz312l2m7yxM-XuGq8kGolint Rulesgo ®–›æœ-B
-golang
-golangÙÇ›æœ-

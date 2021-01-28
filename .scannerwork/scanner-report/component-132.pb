@@ -1,1 +1,0 @@
-„;database/migrations/20190714_155629_inserts_parametricas.go 2goX=hr;database/migrations/20190714_155629_inserts_parametricas.go
