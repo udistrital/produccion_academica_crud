@@ -1,0 +1,9 @@
+{
+  "title": "Example Schema",
+  "type": "object",
+  "properties": {
+    "ProduccionAcademica": { "type": "ProduccionAcademica" },
+    "Autores": { "type": "[]AutorProduccionAcademica" },
+    "Metadatos": { "type": "[]MetadatoProduccionAcademica" }
+  }
+}

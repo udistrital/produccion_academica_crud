@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
-	"time"
 
 	"github.com/astaxie/beego/orm"
+	"github.com/udistrital/utils_oas/time_bogota"
 )
 
 type SubtipoProduccion struct {
@@ -17,9 +17,9 @@ type SubtipoProduccion struct {
 	CodigoAbreviacion string          `orm:"column(codigo_abreviacion);null"`
 	Activo            bool            `orm:"column(activo)"`
 	NumeroOrden       float64         `orm:"column(numero_orden);null"`
-	FechaCreacion     time.Time       `orm:"column(fecha_creacion);type(timestamp without time zone)"`
-	FechaModificacion time.Time       `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
 	TipoProduccionId  *TipoProduccion `orm:"column(tipo_produccion_id);rel(fk)"`
+	FechaCreacion     string          `orm:"column(fecha_creacion);null"`
+	FechaModificacion string          `orm:"column(fecha_modificacion);null"`
 }
 
 func (t *SubtipoProduccion) TableName() string {
@@ -33,6 +33,8 @@ func init() {
 // AddSubtipoProduccion insert a new SubtipoProduccion into database and returns
 // last inserted Id on success.
 func AddSubtipoProduccion(m *SubtipoProduccion) (id int64, err error) {
+	m.FechaCreacion = time_bogota.TiempoBogotaFormato()
+	m.FechaModificacion = time_bogota.TiempoBogotaFormato()
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
@@ -132,10 +134,11 @@ func GetAllSubtipoProduccion(query map[string]string, fields []string, sortby []
 func UpdateSubtipoProduccionById(m *SubtipoProduccion) (err error) {
 	o := orm.NewOrm()
 	v := SubtipoProduccion{Id: m.Id}
+	m.FechaModificacion = time_bogota.TiempoBogotaFormato()
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Update(m); err == nil {
+		if num, err = o.Update(m, "Nombre", "Descripcion", "CodigoAbreviacion", "Activo", "NumeroOrden", "TipoProduccionId", "FechaModificacion"); err == nil {
 			fmt.Println("Number of records updated in database:", num)
 		}
 	}

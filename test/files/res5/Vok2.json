@@ -1,0 +1,14 @@
+{
+  "title": "Example Schema",
+  "type": "object",
+  "properties": {
+    "Id": { "type": "integer" },
+    "Titulo": { "type": "string" },
+    "Resumen": { "type": "string" },
+    "Fecha": { "type": "string" },
+    "Activo": { "type": "boolean" },
+    "SubtipoProduccionId": { "type": "SubtipoProduccion" },
+    "FechaCreacion": { "type": "string" },
+    "FechaModificacion": { "type": "string" }
+  }
+}

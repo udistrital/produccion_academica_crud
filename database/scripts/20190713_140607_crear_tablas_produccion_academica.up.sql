@@ -1,3 +1,23 @@
+-- Database generated with pgModeler (PostgreSQL Database Modeler).
+-- pgModeler  version: 0.9.2-alpha1
+-- PostgreSQL version: 10.0
+-- Project Site: pgmodeler.io
+-- Model Author: ---
+
+
+-- Database creation must be done outside a multicommand file.
+-- These commands were put in this file only as a convenience.
+-- -- object: core | type: DATABASE --
+-- -- DROP DATABASE IF EXISTS core;
+-- CREATE DATABASE core
+-- 	ENCODING = 'UTF8'
+-- 	LC_COLLATE = 'en_US'
+-- 	LC_CTYPE = 'en_US'
+-- 	TABLESPACE = pg_default
+-- 	OWNER = postgres;
+-- -- ddl-end --
+--
+
 -- object: produccion_academica | type: SCHEMA --
 -- DROP SCHEMA IF EXISTS produccion_academica CASCADE;
 CREATE SCHEMA produccion_academica;
@@ -178,7 +198,7 @@ COMMENT ON COLUMN produccion_academica.tipo_metadato.fecha_modificacion IS 'Camp
 -- DROP TABLE IF EXISTS produccion_academica.soporte_produccion_academica CASCADE;
 CREATE TABLE produccion_academica.soporte_produccion_academica (
 	id serial NOT NULL,
-	documento integer NOT NULL,
+	documento_id integer NOT NULL,
 	descripcion character varying(250),
 	activo boolean NOT NULL,
 	fecha_creacion timestamp NOT NULL,
@@ -192,7 +212,7 @@ COMMENT ON TABLE produccion_academica.soporte_produccion_academica IS 'Tabla que
 -- ddl-end --
 COMMENT ON COLUMN produccion_academica.soporte_produccion_academica.id IS 'Identificador de la tabla';
 -- ddl-end --
-COMMENT ON COLUMN produccion_academica.soporte_produccion_academica.documento IS 'Documento que se referencia como soporte (Se hace referencia a a tabla documento).';
+COMMENT ON COLUMN produccion_academica.soporte_produccion_academica.documento_id IS 'Documento que se referencia como soporte (Se hace referencia a a tabla documento).';
 -- ddl-end --
 COMMENT ON COLUMN produccion_academica.soporte_produccion_academica.descripcion IS 'Descripción del documento soporte.';
 -- ddl-end --
@@ -205,7 +225,7 @@ COMMENT ON COLUMN produccion_academica.soporte_produccion_academica.fecha_modifi
 -- DROP TABLE IF EXISTS produccion_academica.autor_produccion_academica CASCADE;
 CREATE TABLE produccion_academica.autor_produccion_academica (
 	id serial NOT NULL,
-	persona integer NOT NULL,
+	persona_id integer NOT NULL,
 	activo boolean NOT NULL,
 	fecha_creacion timestamp NOT NULL,
 	fecha_modificacion timestamp NOT NULL,
@@ -219,7 +239,7 @@ COMMENT ON TABLE produccion_academica.autor_produccion_academica IS 'Tabla que a
 -- ddl-end --
 COMMENT ON COLUMN produccion_academica.autor_produccion_academica.id IS 'Identificador de la tabla';
 -- ddl-end --
-COMMENT ON COLUMN produccion_academica.autor_produccion_academica.persona IS 'Persona a la que se referencia como autor (Se hace referencia a a tabla persona).';
+COMMENT ON COLUMN produccion_academica.autor_produccion_academica.persona_id IS 'Persona a la que se referencia como autor (Se hace referencia a a tabla persona).';
 -- ddl-end --
 COMMENT ON COLUMN produccion_academica.autor_produccion_academica.fecha_creacion IS 'Campo para el registro de creacion de un autor de producion academica';
 -- ddl-end --
@@ -312,8 +332,8 @@ ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --
 
 -- object: fk_metadato_produccion_academica_metadato_subtipo_pro_4208 | type: CONSTRAINT --
--- ALTER TABLE produccion_academica.metadato_produccion_academica DROP CONSTRAINT IF EXISTS fk_metadato_produccion_academica_metadato_subtipo_pro_4208 CASCADE;
-ALTER TABLE produccion_academica.metadato_produccion_academica ADD CONSTRAINT fk_metadato_produccion_academica_metadato_subtipo_pro_4208 FOREIGN KEY (metadato_subtipo_produccion_id)
+-- ALTER TABLE produccion_academica.metadato_produccion_academica DROP CONSTRAINT IF EXISTS fk_metadato_produccion_academica_metadato_subtipo CASCADE;
+ALTER TABLE produccion_academica.metadato_produccion_academica ADD CONSTRAINT fk_metadato_produccion_academica_metadato_subtipo FOREIGN KEY (metadato_subtipo_produccion_id)
 REFERENCES produccion_academica.metadato_subtipo_produccion (id) MATCH FULL
 ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --
@@ -347,6 +367,6 @@ ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --
 
 -- Permisos de usuario
-GRANT USAGE ON SCHEMA produccion_academica TO desarrollooas;
-GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA produccion_academica TO desarrollooas;
-GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA produccion_academica TO desarrollooas;
+GRANT USAGE ON SCHEMA produccion_academica TO test;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA produccion_academica TO test;
+GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA produccion_academica TO test;
