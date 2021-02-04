@@ -18,8 +18,30 @@ type TrProduccionAcademicaController struct {
 func (c *TrProduccionAcademicaController) URLMapping() {
 	c.Mapping("Post", c.Post)
 	c.Mapping("GetAllByPersona", c.GetAllByPersona)
+	c.Mapping("GetAll", c.GetAll)
 	c.Mapping("Delete", c.Delete)
 	c.Mapping("Put", c.Put)
+}
+
+// GetAll ...
+// @Title Get All
+// @Description get TrProduccionAcademicaController
+// @Success 200 {object} models.TrProduccionAcademicaController
+// @Failure 404 not found resource
+// @router / [get]
+func (c *TrProduccionAcademicaController) GetAll() {
+	l, err := models.GetAllProduccionesAcademicas()
+	if err != nil {
+		logs.Error(err)
+		c.Data["system"] = err
+		c.Abort("404")
+	} else {
+		if l == nil {
+			l = append(l, map[string]interface{}{})
+		}
+		c.Data["json"] = l
+	}
+	c.ServeJSON()
 }
 
 // GetAllByPersona ...
@@ -39,6 +61,9 @@ func (c *TrProduccionAcademicaController) GetAllByPersona() {
 		c.Data["system"] = err
 		c.Abort("404")
 	} else {
+		if l == nil {
+			l = append(l, map[string]interface{}{})
+		}
 		if l == nil {
 			l = append(l, map[string]interface{}{})
 		}

@@ -52,6 +52,30 @@ func init() {
 			),
 		),
 
+		beego.NSNamespace("/categoria_produccion",
+			beego.NSInclude(
+				&controllers.CategoriaProduccionController{},
+			),
+		),
+
+		beego.NSNamespace("/puntaje_subtipo_produccion",
+			beego.NSInclude(
+				&controllers.PuntajeSubtipoProduccionController{},
+			),
+		),
+
+		beego.NSNamespace("/sistema_tipo_produccion",
+			beego.NSInclude(
+				&controllers.SistemaTipoProduccionController{},
+			),
+		),
+
+		beego.NSNamespace("/sistema",
+			beego.NSInclude(
+				&controllers.SistemaController{},
+			),
+		),
+
 		beego.NSNamespace("/tr_produccion_academica",
 			beego.NSInclude(
 				&controllers.TrProduccionAcademicaController{},
@@ -61,12 +85,6 @@ func init() {
 		beego.NSNamespace("/estado_autor_produccion",
 			beego.NSInclude(
 				&controllers.EstadoAutorProduccionController{},
-			),
-		),
-
-		beego.NSNamespace("/soporte_produccion_academica",
-			beego.NSInclude(
-				&controllers.SoporteProduccionAcademicaController{},
 			),
 		),
 
