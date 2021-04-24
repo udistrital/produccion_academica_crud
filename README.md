@@ -14,7 +14,8 @@ El API provee la gestion de las diferentes produccion que puede tener un tercero
 ```shell
 PRODUCCION_ACADEMICA_CRUD_PGDB=[nombre de la base de datos]
 PRODUCCION_ACADEMICA_CRUD_PGPASS=[password del usuario]
-PRODUCCION_ACADEMICA_CRUD_PGURLS=[direccion de la base de datos]
+PRODUCCION_ACADEMICA_CRUD_PGHOST=[direccion de la base de datos]
+PRODUCCION_ACADEMICA_CRUD_PGPORT=[puerto de conexión con la base de datos]
 PRODUCCION_ACADEMICA_CRUD_PGUSER=[usuario con acceso a la base de datos]
 PRODUCCION_ACADEMICA_CRUD_PGSCHEMA=[esquema donde se ubican las tablas]
 PRODUCCION_ACADEMICA_CRUD_HTTP_PORT=[puerto de ejecucion] bee run
@@ -34,7 +35,7 @@ cd $GOPATH/src/github.com/udistrital/produccion_academica_crud
 git pull origin develop && git checkout develop
 
 # 4. alimentar todas las variables de entorno que utiliza el proyecto.
-PRODUCCION_ACADEMICA_CRUD_HTTP_PORT=8080 PRODUCCION_ACADEMICA_CRUD_DB_HOST=127.0.0.1:27017 PRODUCCION_ACADEMICA_CRUD_SOME_VARIABLE=some_value bee run
+PRODUCCION_ACADEMICA_CRUD_HTTP_PORT=8080 PRODUCCION_ACADEMICA_CRUD_PGHOST=127.0.0.1:27017 PRODUCCION_ACADEMICA_CRUD_SOME_VARIABLE=some_value bee run
 ```
 
 ### Ejecución Dockerfile
