@@ -40,26 +40,25 @@ func (c *CategoriaProduccionController) Post() {
 
 		v.FechaCreacion = time_bogota.TiempoBogotaFormato()
 		v.FechaModificacion = time_bogota.TiempoBogotaFormato()
-		
 
-			if _, err := models.AddCategoriaProduccion(&v); err == nil {
+		if _, err := models.AddCategoriaProduccion(&v); err == nil {
 
-				c.Ctx.Output.SetStatus(201)
-				c.Data["json"] = v
-			} else {
-				logs.Error(err)
-				//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
-				c.Data["system"] = err
-				c.Abort("400")
-			}
+			c.Ctx.Output.SetStatus(201)
+			c.Data["json"] = v
 		} else {
 			logs.Error(err)
 			//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
 			c.Data["system"] = err
 			c.Abort("400")
 		}
-		c.ServeJSON()
+	} else {
+		logs.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		c.Data["system"] = err
+		c.Abort("400")
 	}
+	c.ServeJSON()
+}
 
 // GetOne ...
 // @Title Get One
@@ -68,21 +67,21 @@ func (c *CategoriaProduccionController) Post() {
 // @Success 200 {object} models.CategoriaProduccion
 // @Failure 404 not found resource
 // @router /:id [get]
-	func(c *CategoriaProduccionController) GetOne() {
-	
-		idStr := c.Ctx.Input.Param(":id")
-		id, _ := strconv.Atoi(idStr)
-		v, err := models.GetCategoriaProduccionById(id)
-		if err != nil {
-			logs.Error(err)
-			//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
-			c.Data["system"] = err
-			c.Abort("404")
-		} else {
-			c.Data["json"] = v
-		}
-		c.ServeJSON()
+func (c *CategoriaProduccionController) GetOne() {
+
+	idStr := c.Ctx.Input.Param(":id")
+	id, _ := strconv.Atoi(idStr)
+	v, err := models.GetCategoriaProduccionById(id)
+	if err != nil {
+		logs.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		c.Data["system"] = err
+		c.Abort("404")
+	} else {
+		c.Data["json"] = v
 	}
+	c.ServeJSON()
+}
 
 // GetAll ...
 // @Title Get All
@@ -96,62 +95,62 @@ func (c *CategoriaProduccionController) Post() {
 // @Success 200 {object} models.CategoriaProduccion
 // @Failure 404 not found resource
 // @router / [get]
-	func(c *CategoriaProduccionController) GetAll()	{
-		var fields []string
-		var sortby []string
-		var order []string
-		var query = make(map[string]string)
-		var limit int64 = 10
-		var offset int64
+func (c *CategoriaProduccionController) GetAll() {
+	var fields []string
+	var sortby []string
+	var order []string
+	var query = make(map[string]string)
+	var limit int64 = 10
+	var offset int64
 
-		// fields: col1,col2,entity.col3
-		if v := c.GetString("fields"); v != "" {
-			fields = strings.Split(v, ",")
-		}
-		// limit: 10 (default is 10)
-		if v, err := c.GetInt64("limit"); err == nil {
-			limit = v
-		}
-		// offset: 0 (default is 0)
-		if v, err := c.GetInt64("offset"); err == nil {
-			offset = v
-		}
-		// sortby: col1,col2
-		if v := c.GetString("sortby"); v != "" {
-			sortby = strings.Split(v, ",")
-		}
-		// order: desc,asc
-		if v := c.GetString("order"); v != "" {
-			order = strings.Split(v, ",")
-		}
-		// query: k:v,k:v
-		if v := c.GetString("query"); v != "" {
-			for _, cond := range strings.Split(v, ",") {
-				kv := strings.SplitN(cond, ":", 2)
-				if len(kv) != 2 {
-					c.Data["json"] = errors.New("Error: invalid query key/value pair")
-					c.ServeJSON()
-					return
-				}
-				k, v := kv[0], kv[1]
-				query[k] = v
-			}
-		}
-
-		l, err := models.GetAllCategoriaProduccion(query, fields, sortby, order, offset, limit)
-		if err != nil {
-			logs.Error(err)
-			//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
-			c.Data["system"] = err
-			c.Abort("404")
-		} else {
-			if l == nil {
-				l = append(l, map[string]interface{}{})
-			}
-			c.Data["json"] = l
-		}
-		c.ServeJSON()
+	// fields: col1,col2,entity.col3
+	if v := c.GetString("fields"); v != "" {
+		fields = strings.Split(v, ",")
 	}
+	// limit: 10 (default is 10)
+	if v, err := c.GetInt64("limit"); err == nil {
+		limit = v
+	}
+	// offset: 0 (default is 0)
+	if v, err := c.GetInt64("offset"); err == nil {
+		offset = v
+	}
+	// sortby: col1,col2
+	if v := c.GetString("sortby"); v != "" {
+		sortby = strings.Split(v, ",")
+	}
+	// order: desc,asc
+	if v := c.GetString("order"); v != "" {
+		order = strings.Split(v, ",")
+	}
+	// query: k:v,k:v
+	if v := c.GetString("query"); v != "" {
+		for _, cond := range strings.Split(v, ",") {
+			kv := strings.SplitN(cond, ":", 2)
+			if len(kv) != 2 {
+				c.Data["json"] = errors.New("Error: invalid query key/value pair")
+				c.ServeJSON()
+				return
+			}
+			k, v := kv[0], kv[1]
+			query[k] = v
+		}
+	}
+
+	l, err := models.GetAllCategoriaProduccion(query, fields, sortby, order, offset, limit)
+	if err != nil {
+		logs.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		c.Data["system"] = err
+		c.Abort("404")
+	} else {
+		if l == nil {
+			l = append(l, map[string]interface{}{})
+		}
+		c.Data["json"] = l
+	}
+	c.ServeJSON()
+}
 
 // Put ...
 // @Title Put
@@ -161,29 +160,31 @@ func (c *CategoriaProduccionController) Post() {
 // @Success 200 {object} models.CategoriaProduccion
 // @Failure 400 the request contains incorrect syntax
 // @router /:id [put]
-	func(c *CategoriaProduccionController) Put()	{
-		idStr := c.Ctx.Input.Param(":id")
-		id, _ := strconv.Atoi(idStr)
-		v := models.CategoriaProduccion{Id: id}
-		if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-			v.FechaCreacion = time_bogota.TiempoCorreccionFormato(v.FechaCreacion)
+func (c *CategoriaProduccionController) Put() {
+	idStr := c.Ctx.Input.Param(":id")
+	id, _ := strconv.Atoi(idStr)
+	v := models.CategoriaProduccion{Id: id}
+	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
+		if get, errGet := models.GetCategoriaProduccionById(id); errGet == nil {
+			v.FechaCreacion = time_bogota.TiempoCorreccionFormato(get.FechaCreacion)
 			v.FechaModificacion = time_bogota.TiempoBogotaFormato()
-			if err := models.UpdateCategoriaProduccionById(&v); err == nil {				
-						c.Data["json"] = v
-				} else {
-					logs.Error(err)
-					//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
-					c.Data["system"] = err
-					c.Abort("400")
-				}
-			} else {
-				logs.Error(err)
-				//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
-				c.Data["system"] = err
-				c.Abort("400")
-			}
-			c.ServeJSON()
 		}
+		if err := models.UpdateCategoriaProduccionById(&v); err == nil {
+			c.Data["json"] = v
+		} else {
+			logs.Error(err)
+			//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+			c.Data["system"] = err
+			c.Abort("400")
+		}
+	} else {
+		logs.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		c.Data["system"] = err
+		c.Abort("400")
+	}
+	c.ServeJSON()
+}
 
 // Delete ...
 // @Title Delete
@@ -205,4 +206,3 @@ func (c *CategoriaProduccionController) Delete() {
 	}
 	c.ServeJSON()
 }
-
