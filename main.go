@@ -12,6 +12,7 @@ import (
 	"github.com/astaxie/beego/plugins/cors"
 	_ "github.com/lib/pq"
 	"github.com/udistrital/auditoria"
+	"github.com/udistrital/utils_oas/xray"
 )
 
 func init() {
@@ -49,7 +50,7 @@ func main() {
 	logPath += beego.AppConfig.String("logPath")
 	logPath += "\"}"
 	logs.SetLogger(logs.AdapterFile, logPath)
-
+	xray.InitXRay()
 	apistatus.Init()
 	auditoria.InitMiddleware()
 	beego.Run()
