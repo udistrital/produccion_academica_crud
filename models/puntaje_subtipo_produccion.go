@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
-	
 
 	"github.com/astaxie/beego/orm"
 )
@@ -17,8 +16,8 @@ type PuntajeSubtipoProduccion struct {
 	CodigoAbreviacion   string             `orm:"column(codigo_abreviacion);"`
 	Activo              bool               `orm:"column(activo)"`
 	Caracteristicas     string             `orm:"column(caracteristicas);type(json);"`
-	FechaCreacion       string          `orm:"column(fecha_creacion);type(timestamp without time zone)"`
-	FechaModificacion   string          `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+	FechaCreacion       string             `orm:"column(fecha_creacion);type(timestamp without time zone)"`
+	FechaModificacion   string             `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
 	SubtipoProduccionId *SubtipoProduccion `orm:"column(subtipo_produccion);rel(fk)"`
 	Normatividad        string             `orm:"column(normatividad)"`
 }
