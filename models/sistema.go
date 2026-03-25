@@ -5,17 +5,16 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
-	
 
 	"github.com/astaxie/beego/orm"
 )
 
 type Sistema struct {
-	Id                int       `orm:"column(id);pk;auto"`
-	Nombre            string    `orm:"column(nombre)"`
-	CodigoAbreviacion string    `orm:"column(codigo_abreviacion);null"`
-	Referencia        string    `orm:"column(referencia);type(json);"`
-	Activo            bool      `orm:"column(activo)"`
+	Id                int    `orm:"column(id);pk;auto"`
+	Nombre            string `orm:"column(nombre)"`
+	CodigoAbreviacion string `orm:"column(codigo_abreviacion);null"`
+	Referencia        string `orm:"column(referencia);type(json);"`
+	Activo            bool   `orm:"column(activo)"`
 	FechaCreacion     string `orm:"column(fecha_creacion);type(timestamp without time zone)"`
 	FechaModificacion string `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
 }

@@ -10,11 +10,11 @@ import (
 )
 
 type CategoriaProduccion struct {
-	Id                int       `orm:"column(id);pk;auto"`
-	Nombre            string    `orm:"column(nombre)"`
-	Descripcion       string    `orm:"column(descripcion);null"`
-	Activo            bool      `orm:"column(activo)"`
-	TipoPuntaje       string    `orm:"column(tipo_puntaje);null"`
+	Id                int    `orm:"column(id);pk;auto"`
+	Nombre            string `orm:"column(nombre)"`
+	Descripcion       string `orm:"column(descripcion);null"`
+	Activo            bool   `orm:"column(activo)"`
+	TipoPuntaje       string `orm:"column(tipo_puntaje);null"`
 	FechaCreacion     string `orm:"column(fecha_creacion);type(timestamp without time zone)"`
 	FechaModificacion string `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
 }
